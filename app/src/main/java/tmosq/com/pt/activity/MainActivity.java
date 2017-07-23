@@ -1,9 +1,10 @@
-package tmosq.com.pt;
+package tmosq.com.pt.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.MainActivityBinding;
 import tmosq.com.pt.viewModel.MainViewModel;
 

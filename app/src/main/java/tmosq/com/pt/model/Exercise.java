@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import tmosq.com.pt.model.exercise_support_enums.BodyFocus;
 import tmosq.com.pt.model.exercise_support_enums.Difficulty;
 import tmosq.com.pt.model.exercise_support_enums.Equipment;
-import tmosq.com.pt.model.exercise_support_enums.WorkOutTypes;
+import tmosq.com.pt.model.exercise_support_enums.WorkOutType;
 
 @Data
 @Builder
@@ -23,7 +23,7 @@ public class Exercise {
     private BodyFocus bodyFocus;
 
     @SerializedName("type")
-    private WorkOutTypes workOutTypes;
+    private WorkOutType workOutType;
 
     private String workout;
 

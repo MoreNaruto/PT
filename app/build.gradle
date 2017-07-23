@@ -32,14 +32,14 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.google.guava:guava:20.0'
-    compile "com.google.code.gson:gson:2.7"
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
-    provided 'org.glassfish:javax.annotation:10.0-b28'
-    provided 'org.projectlombok:lombok:1.16.16'
-
-    testCompile "org.robolectric:robolectric:3.3.2"
+    testCompile 'org.robolectric:robolectric:3.3.2'
     testCompile 'junit:junit:4.12'
 
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    provided 'org.projectlombok:lombok:1.16.16'
 }

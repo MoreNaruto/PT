@@ -1,31 +1,38 @@
 package tmosq.com.pt.model.exercise_support_enums;
 
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+
+import java.lang.reflect.Type;
+
 public enum Equipment {
-    MEDICINE_BALL("medicine ball"),
+    BANDS("bands"),
     BARBELL("barbell"),
+    BICYCLE("bicycle"),
+    CABLE("cable"),
+    CHAIR("chair"),
+    CONES("cones"),
+    DUMBBELL("dumbbell"),
+    EXERCISE_BALL("exercise ball"),
+    EZ_CURL_BAR("E-Z Curl Bar"),
+    FOAM_ROLL("foam roll"),
+    KETTLEBELL("kettlebell"),
+    MACHINE("machine"),
+    MEDICINE_BALL("medicine ball"),
+    NONE("none"),
     PLATE("plate"),
     RICKSHAW("rickshaw"),
-    DUMBBELL("dumbbell"),
-    NONE("none"),
-    CABLE("cable"),
-    KETTLEBELL("kettlebell"),
-    BANDS("bands"),
-    FOAM_ROLL("foam roll"),
-    EXERCISE_BALL("exercise ball"),
-    MACHINE("machine"),
-    WORKOUT_BOX("workout box"),
-    CHAIR("chair"),
     ROLLER("roller"),
-    EZ_CURL_BAR("E-Z Curl Bar"),
-    CONES("cones"),
-    TONING_WHEEL("toning wheel"),
     ROPE("rope"),
-    STONE("stone"),
-    SLED("sled"),
-    BICYCLE("bicycle"),
-    TREADMILL("treadmill"),
     ROW("row"),
-    TRAP_BAR("trap bar");
+    SLED("sled"),
+    STONE("stone"),
+    TONING_WHEEL("toning wheel"),
+    TRAP_BAR("trap bar"),
+    TREADMILL("treadmill"),
+    WORKOUT_BOX("workout box");
 
     private String equipmentNameAlias;
 
@@ -42,5 +49,13 @@ public enum Equipment {
             }
         }
         return null;
+    }
+
+    public static class EquipmentDeserializer implements JsonDeserializer<Equipment> {
+
+        @Override
+        public Equipment deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            return fromString(json.getAsString());
+        }
     }
 }
