@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="tmosq.com.pt.activity.PreWorkoutActivity">
 
     <data>
@@ -18,13 +15,13 @@
 
         <LinearLayout
             android:layout_width="500dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/length_of_workout_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -68,7 +65,8 @@
                     <CheckBox
                         android:id="@+id/abdominals_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -82,7 +80,8 @@
                     <CheckBox
                         android:id="@+id/abductors_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -98,7 +97,8 @@
                     <CheckBox
                         android:id="@+id/adductors_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -112,7 +112,8 @@
                     <CheckBox
                         android:id="@+id/biceps_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -128,7 +129,8 @@
                     <CheckBox
                         android:id="@+id/calves_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -142,7 +144,8 @@
                     <CheckBox
                         android:id="@+id/chest_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -158,7 +161,8 @@
                     <CheckBox
                         android:id="@+id/forearms_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -172,7 +176,8 @@
                     <CheckBox
                         android:id="@+id/glutes_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -188,7 +193,8 @@
                     <CheckBox
                         android:id="@+id/hamstring_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -202,7 +208,8 @@
                     <CheckBox
                         android:id="@+id/lats_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -218,7 +225,8 @@
                     <CheckBox
                         android:id="@+id/lower_back_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -232,7 +240,8 @@
                     <CheckBox
                         android:id="@+id/middle_back_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -248,7 +257,8 @@
                     <CheckBox
                         android:id="@+id/neck_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -262,7 +272,8 @@
                     <CheckBox
                         android:id="@+id/quadriceps_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -278,7 +289,8 @@
                     <CheckBox
                         android:id="@+id/shoulders_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -292,7 +304,8 @@
                     <CheckBox
                         android:id="@+id/traps_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -308,7 +321,8 @@
                     <CheckBox
                         android:id="@+id/triceps_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickBodyFocusCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -358,7 +372,8 @@
                     <CheckBox
                         android:id="@+id/bands_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -372,7 +387,8 @@
                     <CheckBox
                         android:id="@+id/barbell_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -388,7 +404,8 @@
                     <CheckBox
                         android:id="@+id/bicycle_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -402,7 +419,8 @@
                     <CheckBox
                         android:id="@+id/cable_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -418,7 +436,8 @@
                     <CheckBox
                         android:id="@+id/chair_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -432,7 +451,8 @@
                     <CheckBox
                         android:id="@+id/cones_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -448,7 +468,8 @@
                     <CheckBox
                         android:id="@+id/dumbbell_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -462,7 +483,8 @@
                     <CheckBox
                         android:id="@+id/exercise_ball_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -478,7 +500,8 @@
                     <CheckBox
                         android:id="@+id/ez_curl_bar_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -492,7 +515,8 @@
                     <CheckBox
                         android:id="@+id/foam_roll_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -508,7 +532,8 @@
                     <CheckBox
                         android:id="@+id/kettlebell_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -522,7 +547,8 @@
                     <CheckBox
                         android:id="@+id/machine_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -538,7 +564,8 @@
                     <CheckBox
                         android:id="@+id/medicine_ball_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -552,7 +579,8 @@
                     <CheckBox
                         android:id="@+id/plate_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -568,7 +596,8 @@
                     <CheckBox
                         android:id="@+id/rickshaw_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -582,7 +611,8 @@
                     <CheckBox
                         android:id="@+id/roller_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -598,7 +628,8 @@
                     <CheckBox
                         android:id="@+id/rope_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -612,7 +643,8 @@
                     <CheckBox
                         android:id="@+id/row_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -628,7 +660,8 @@
                     <CheckBox
                         android:id="@+id/sled_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -642,7 +675,8 @@
                     <CheckBox
                         android:id="@+id/stone_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -658,7 +692,8 @@
                     <CheckBox
                         android:id="@+id/toning_wheel_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -672,7 +707,8 @@
                     <CheckBox
                         android:id="@+id/trap_bar_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -688,7 +724,8 @@
                     <CheckBox
                         android:id="@+id/treadmill_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -702,7 +739,8 @@
                     <CheckBox
                         android:id="@+id/workout_box_checkbox"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -717,7 +755,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginEnd="60dp"
-                android:text="@string/make_workout" />
+                android:text="@string/make_workout"
+                android:onClick="@{viewModel.clickMakeWorkOutButton}"/>
         </LinearLayout>
     </ScrollView>
 </layout>

@@ -37,6 +37,7 @@ dependencies {
 
     testCompile 'org.robolectric:robolectric:3.3.2'
     testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-all:1.8.4'
 
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
