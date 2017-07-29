@@ -30,13 +30,13 @@ public class PreWorkoutActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pre_workout);
-
-        ButterKnife.bind(this);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_pre_workout);
         preWorkOutViewModel = new PreWorkOutViewModel(this);
         binding.setViewModel(preWorkOutViewModel);
+
+        setContentView(binding.getRoot());
+        ButterKnife.bind(this);
     }
 
     @Override
@@ -71,7 +71,6 @@ public class PreWorkoutActivity extends Activity {
 
             }
         });
-        staticAdapter.notifyDataSetChanged();
     }
 
     private void setWorkoutLengthDropDownMenuAdapter() {
@@ -95,6 +94,5 @@ public class PreWorkoutActivity extends Activity {
 
             }
         });
-        staticAdapter.notifyDataSetChanged();
     }
 }
