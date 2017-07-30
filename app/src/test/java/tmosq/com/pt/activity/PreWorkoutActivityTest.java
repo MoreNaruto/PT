@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import tmosq.com.pt.BuildConfig;
 import tmosq.com.pt.R;
 import tmosq.com.pt.model.exercise_support_enums.Difficulty;
+import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 import tmosq.com.pt.viewModel.PreWorkOutViewModel;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -70,6 +71,24 @@ public class PreWorkoutActivityTest {
         verify(activity.preWorkOutViewModel).setWorkOutDifficulty("basic");
         verify(activity.preWorkOutViewModel).setWorkOutDifficulty("intermediate");
         verify(activity.preWorkOutViewModel).setWorkOutDifficulty("advanced");
+    }
+
+    @Test
+    public void onStart_setWorkoutRegimentDropDownMenuAdapter() throws Exception {
+        final ArrayList<String> workOutRegiment = new ArrayList<>();
+        for (WorkoutRegiment workoutRegiment : WorkoutRegiment.values()) {
+            workOutRegiment.add(workoutRegiment.getWorkOutRegimentNameAlias());
+        }
+
+        PreWorkoutActivity activity = activityController.create().start().get();
+
+        ArrayAdapter<String> staticAdapter = new ArrayAdapter<>(
+                activity,
+                R.layout.support_simple_spinner_dropdown_item,
+                workOutRegiment);
+
+        assertThat(activity.workoutRegimentDropDownMenu.getAdapter().getItem(0))
+                .isEqualTo(staticAdapter.getItem(0));
     }
 
     @Test

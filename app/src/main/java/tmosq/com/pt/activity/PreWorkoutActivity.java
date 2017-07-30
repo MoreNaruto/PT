@@ -24,6 +24,9 @@ public class PreWorkoutActivity extends Activity {
     @BindView(R.id.workout_difficulty_dropdown_menu)
     Spinner workoutDifficultyDropDownMenu;
 
+    @BindView(R.id.workout_regiment_dropdown_menu)
+    Spinner workoutRegimentDropDownMenu;
+
     protected ActivityPreWorkoutBinding binding;
     protected PreWorkOutViewModel preWorkOutViewModel;
 
@@ -45,6 +48,11 @@ public class PreWorkoutActivity extends Activity {
 
         setWorkoutLengthDropDownMenuAdapter();
         setWorkoutDifficultyDropDownMenuAdapter();
+        setWorkoutRegimentDropDownMenuAdapter();
+    }
+
+    private void setWorkoutRegimentDropDownMenuAdapter() {
+
     }
 
     private void setWorkoutDifficultyDropDownMenuAdapter() {

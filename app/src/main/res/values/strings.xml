@@ -46,4 +46,5 @@
     <string name="make_workout">Make Workout</string>
     <string name="row">Row</string>
     <string name="stone">Stone</string>
+    <string name="select_the_type_of_workout">Select the type of workout</string>
 </resources>

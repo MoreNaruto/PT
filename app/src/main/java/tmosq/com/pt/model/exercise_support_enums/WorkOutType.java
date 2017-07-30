@@ -7,16 +7,22 @@ import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 
+import static tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment.CARDIO;
+import static tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment.CROSS_FIT;
+import static tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment.POWER_LIFTING;
+
 public enum WorkOutType {
-    BODY("body"),
-    POWER_WEIGHT("power weight"),
-    WEIGHTED_MOVEMENTS("weighted movements"),
-    WARM_UP_AND_COOL_OFF("warm-up/cool-off");
+    BODY("body", new String[]{CROSS_FIT.getWorkOutRegimentNameAlias(), CARDIO.getWorkOutRegimentNameAlias()}),
+    POWER_WEIGHT("power weight", new String[]{POWER_LIFTING.getWorkOutRegimentNameAlias()}),
+    WARM_UP_AND_COOL_OFF("warm-up/cool-off", new String[]{POWER_LIFTING.getWorkOutRegimentNameAlias(), CROSS_FIT.getWorkOutRegimentNameAlias(), CARDIO.getWorkOutRegimentNameAlias()}),
+    WEIGHTED_MOVEMENTS("weighted movements", new String[]{CROSS_FIT.getWorkOutRegimentNameAlias(), POWER_LIFTING.getWorkOutRegimentNameAlias()});
 
     private String workOutTypesNameAlias;
+    private String[] workOutRegimentNameAliases;
 
-    WorkOutType(String workOutTypesNameAlias) {
+    WorkOutType(String workOutTypesNameAlias, String[] workOutRegimentNameAliases) {
         this.workOutTypesNameAlias = workOutTypesNameAlias;
+        this.workOutRegimentNameAliases = workOutRegimentNameAliases;
     }
 
     public String getWorkOutTypesNameAlias() {
@@ -31,6 +37,10 @@ public enum WorkOutType {
             }
         }
         return null;
+    }
+
+    public String[] getWorkOutRegimentNameAliases() {
+        return workOutRegimentNameAliases;
     }
 
     public static class WorkOutTypesDeserializer implements JsonDeserializer<WorkOutType> {
