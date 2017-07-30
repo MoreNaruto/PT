@@ -92,6 +92,21 @@ public class PreWorkoutActivityTest {
     }
 
     @Test
+    public void onStart_whenItemIsSelected_setWorkOutRegiment() throws Exception {
+        PreWorkoutActivity activity = activityController.create().start().get();
+
+        activity.preWorkOutViewModel = mock(PreWorkOutViewModel.class);
+
+        activity.workoutRegimentDropDownMenu.setSelection(0);
+        activity.workoutRegimentDropDownMenu.setSelection(1);
+        activity.workoutRegimentDropDownMenu.setSelection(2);
+
+        verify(activity.preWorkOutViewModel).setWorkOutRegiment("cardio");
+        verify(activity.preWorkOutViewModel).setWorkOutRegiment("cross fit");
+        verify(activity.preWorkOutViewModel).setWorkOutRegiment("power lifting");
+    }
+
+    @Test
     public void onStart_setUpWorkOutLengthDropDownMenuAdapter() throws Exception {
         final Integer[] allottedLengthsOfTimes = {30, 45, 60, 75, 90, 105, 120};
 

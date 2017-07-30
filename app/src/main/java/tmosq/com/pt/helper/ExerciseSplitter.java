@@ -22,6 +22,11 @@ import tmosq.com.pt.model.exercise_support_enums.Equipment;
 import tmosq.com.pt.model.exercise_support_enums.WorkOutType;
 
 public class ExerciseSplitter {
+    public static final String WORK_OUT_REGIMENT = "workoutRegiment";
+    public static final String WORK_OUT_LENGTH = "workoutLength";
+    public static final String WORK_OUT_DIFFICULTY = "workoutDifficulty";
+    public static final String LIST_OF_EXCLUDED_EQUIPMENT= "listOfExcludedEquipment";
+    public static final String LIST_OF_ACTIVE_BODY_FOCUSES = "listOfActiveBodyFocuses";
 
     protected List<Exercise> exercises;
     private Context context;

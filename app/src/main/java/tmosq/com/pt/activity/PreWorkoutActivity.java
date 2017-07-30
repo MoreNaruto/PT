@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.ActivityPreWorkoutBinding;
 import tmosq.com.pt.model.exercise_support_enums.Difficulty;
+import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 import tmosq.com.pt.viewModel.PreWorkOutViewModel;
 
 public class PreWorkoutActivity extends Activity {
@@ -52,7 +53,29 @@ public class PreWorkoutActivity extends Activity {
     }
 
     private void setWorkoutRegimentDropDownMenuAdapter() {
+        final ArrayList<String> workOutRegiment = new ArrayList<>();
+        for (WorkoutRegiment workoutRegiment : WorkoutRegiment.values()) {
+            workOutRegiment.add(workoutRegiment.getWorkOutRegimentNameAlias());
+        }
 
+        ArrayAdapter<String> staticAdapter = new ArrayAdapter<>(
+                this,
+                R.layout.support_simple_spinner_dropdown_item,
+                workOutRegiment);
+
+        staticAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        workoutRegimentDropDownMenu.setAdapter(staticAdapter);
+        workoutRegimentDropDownMenu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                preWorkOutViewModel.setWorkOutRegiment(workOutRegiment.get(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void setWorkoutDifficultyDropDownMenuAdapter() {

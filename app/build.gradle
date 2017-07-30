@@ -28,18 +28,18 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
+
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.google.guava:guava:20.0'
     compile 'com.google.code.gson:gson:2.7'
-
     testCompile 'org.robolectric:robolectric:3.3.2'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-all:1.8.4'
-
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-
     provided 'org.glassfish:javax.annotation:10.0-b28'
     provided 'org.projectlombok:lombok:1.16.16'
 }
