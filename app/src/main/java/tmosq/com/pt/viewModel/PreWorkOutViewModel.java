@@ -11,13 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tmosq.com.pt.activity.WorkoutActivity;
-import tmosq.com.pt.helper.ExerciseSplitter;
 import tmosq.com.pt.model.exercise_support_enums.BodyFocus;
 import tmosq.com.pt.model.exercise_support_enums.Difficulty;
 import tmosq.com.pt.model.exercise_support_enums.Equipment;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 
-import static tmosq.com.pt.helper.ExerciseSplitter.*;
+import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
+import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_EXCLUDED_EQUIPMENT;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_DIFFICULTY;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 
 public class PreWorkOutViewModel {
     private Context context;
