@@ -1,6 +1,5 @@
 package tmosq.com.pt.activity;
 
-import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
 import org.junit.Before;
@@ -8,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.android.controller.ActivityController;
 import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
@@ -19,24 +19,22 @@ import tmosq.com.pt.viewModel.PreWorkOutViewModel;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, manifest = "src/main/AndroidManifest.xml", sdk = 21)
 public class PreWorkoutActivityTest {
-
-    private PreWorkoutActivity activity;
+    private ActivityController<PreWorkoutActivity> activityController;
 
     @Before
     public void setUp() throws Exception {
-        activity = Robolectric.setupActivity(PreWorkoutActivity.class);
+        activityController = Robolectric.buildActivity(PreWorkoutActivity.class);
     }
 
     @Test
     public void onCreate_bindsToViewModel() throws Exception {
-        activity.onCreate(new Bundle());
+        PreWorkoutActivity activity = activityController.create().get();
 
         assertEquals(activity.binding.getViewModel(), activity.preWorkOutViewModel);
     }
@@ -47,13 +45,13 @@ public class PreWorkoutActivityTest {
         for (Difficulty difficulty : Difficulty.values()) {
             difficultyValues.add(difficulty.getDifficultyNameAlias());
         }
+
+        PreWorkoutActivity activity = activityController.create().start().get();
+
         ArrayAdapter<String> staticAdapter = new ArrayAdapter<>(
                 activity,
                 R.layout.support_simple_spinner_dropdown_item,
                 difficultyValues);
-
-
-        activity.onStart();
 
         assertThat(activity.workoutDifficultyDropDownMenu.getAdapter().getItem(0))
                 .isEqualTo(staticAdapter.getItem(0));
@@ -61,24 +59,28 @@ public class PreWorkoutActivityTest {
 
     @Test
     public void onStart_whenItemIsSelected_setWorkOutDifficulty() throws Exception {
+        PreWorkoutActivity activity = activityController.create().start().get();
+
         activity.preWorkOutViewModel = mock(PreWorkOutViewModel.class);
 
-        activity.onStart();
-
         activity.workoutDifficultyDropDownMenu.setSelection(0);
+        activity.workoutDifficultyDropDownMenu.setSelection(1);
+        activity.workoutDifficultyDropDownMenu.setSelection(2);
 
         verify(activity.preWorkOutViewModel).setWorkOutDifficulty("basic");
+        verify(activity.preWorkOutViewModel).setWorkOutDifficulty("intermediate");
+        verify(activity.preWorkOutViewModel).setWorkOutDifficulty("advanced");
     }
 
     @Test
     public void onStart_setUpWorkOutLengthDropDownMenuAdapter() throws Exception {
         final Integer[] allottedLengthsOfTimes = {30, 45, 60, 75, 90, 105, 120};
+
+        PreWorkoutActivity activity = activityController.create().start().get();
         ArrayAdapter<Integer> staticAdapter = new ArrayAdapter<>(
                 activity,
                 R.layout.support_simple_spinner_dropdown_item,
                 allottedLengthsOfTimes);
-
-        activity.onStart();
 
         assertThat(activity.workoutLengthDropDownMenu.getAdapter().getItem(0))
                 .isEqualTo(staticAdapter.getItem(0));
@@ -86,12 +88,23 @@ public class PreWorkoutActivityTest {
 
     @Test
     public void onStart_whenItemIsSelected_setWorkOutLength() throws Exception {
+        PreWorkoutActivity activity = activityController.create().start().get();
         activity.preWorkOutViewModel = mock(PreWorkOutViewModel.class);
 
-        activity.onStart();
-
         activity.workoutLengthDropDownMenu.setSelection(0);
+        activity.workoutLengthDropDownMenu.setSelection(1);
+        activity.workoutLengthDropDownMenu.setSelection(2);
+        activity.workoutLengthDropDownMenu.setSelection(3);
+        activity.workoutLengthDropDownMenu.setSelection(4);
+        activity.workoutLengthDropDownMenu.setSelection(5);
+        activity.workoutLengthDropDownMenu.setSelection(6);
 
         verify(activity.preWorkOutViewModel).setWorkOutLength(30);
+        verify(activity.preWorkOutViewModel).setWorkOutLength(45);
+        verify(activity.preWorkOutViewModel).setWorkOutLength(60);
+        verify(activity.preWorkOutViewModel).setWorkOutLength(75);
+        verify(activity.preWorkOutViewModel).setWorkOutLength(90);
+        verify(activity.preWorkOutViewModel).setWorkOutLength(105);
+        verify(activity.preWorkOutViewModel).setWorkOutLength(120);
     }
 }

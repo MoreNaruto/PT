@@ -29,8 +29,8 @@ public enum BodyFocus {
     TRICEPS("triceps", R.id.triceps_checkbox);
 
     private String bodyPartNameAlias;
-
     private Integer resourceCheckBoxId;
+
     BodyFocus(String bodyPartNameAlias, Integer resourceCheckBoxId) {
         this.bodyPartNameAlias = bodyPartNameAlias;
         this.resourceCheckBoxId = resourceCheckBoxId;
@@ -46,7 +46,7 @@ public enum BodyFocus {
         return null;
     }
 
-    public static BodyFocus fromResourceCheckBoxId(Integer resourceCheckBoxId){
+    public static BodyFocus fromResourceCheckBoxId(Integer resourceCheckBoxId) {
         if (resourceCheckBoxId != null) {
             for (BodyFocus bodyFocus : BodyFocus.values()) {
                 if (resourceCheckBoxId.equals(bodyFocus.resourceCheckBoxId)) {

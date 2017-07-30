@@ -37,8 +37,8 @@ public enum Equipment {
     WORKOUT_BOX("workout box", R.id.workout_box_checkbox);
 
     private String equipmentNameAlias;
-
     private Integer resourceIdCheckBox;
+
     Equipment(String equipmentNameAlias, Integer resourceIdCheckBox) {
         this.equipmentNameAlias = equipmentNameAlias;
         this.resourceIdCheckBox = resourceIdCheckBox;
