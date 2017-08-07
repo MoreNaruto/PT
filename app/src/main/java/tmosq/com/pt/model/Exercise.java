@@ -25,6 +25,7 @@ public class Exercise {
     @SerializedName("type")
     private WorkOutType workOutType;
 
+    @SerializedName("workout")
     private String workout;
 
     @SerializedName("averageSecondPerRep")

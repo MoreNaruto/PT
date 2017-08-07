@@ -459,7 +459,7 @@
 		"id": 39,
 		"bodyFocus": "hamstring",
 		"type": "power weight",
-		"workout": "smith machine stiff-legged 	deadlift",
+		"workout": "smith machine-stiff-legged-deadlift",
 		"averageSecondPerRep": 3.0,
 		"forTime": false,
 		"partner": false,
@@ -536,7 +536,7 @@
 		"forTime": false,
 		"partner": false,
 		"alternatingSides": false,
-		"difficulty": "inchworm",
+		"difficulty": "basic",
 		"equipment type": "barbell"
 	},
 	{

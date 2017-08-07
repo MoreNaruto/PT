@@ -42,9 +42,7 @@ public class ExerciseSplitterTest {
                 .equipment(BARBELL)
                 .build();
 
-        exerciseSplitter.generateAllExercises();
-
-        assertEquals(exerciseSplitter.exercises.get(0), exercise);
+        assertEquals(exerciseSplitter.generateAllExercises().get(0), exercise);
     }
 
 }

@@ -28,15 +28,13 @@ public class ExerciseSplitter {
     public static final String LIST_OF_EXCLUDED_EQUIPMENT= "listOfExcludedEquipment";
     public static final String LIST_OF_ACTIVE_BODY_FOCUSES = "listOfActiveBodyFocuses";
 
-    protected List<Exercise> exercises;
     private Context context;
 
     public ExerciseSplitter(Context context) {
         this.context = context;
-        exercises = new ArrayList<>();
     }
 
-    public void generateAllExercises() {
+    public List<Exercise> generateAllExercises() {
         InputStream inputStream = context.getResources().openRawResource(R.raw.exercises);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         Type listType = new TypeToken<ArrayList<Exercise>>() {
@@ -50,6 +48,6 @@ public class ExerciseSplitter {
 
         Gson gson = gsonBuilder.create();
 
-        exercises = gson.fromJson(bufferedReader, listType);
+        return gson.fromJson(bufferedReader, listType);
     }
 }

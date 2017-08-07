@@ -2,6 +2,7 @@ package tmosq.com.pt.model.exercise_support_enums;
 
 import org.junit.Test;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static org.junit.Assert.*;
 
 public class WorkOutTypeTest {
@@ -23,9 +24,9 @@ public class WorkOutTypeTest {
 
     @Test
     public void getWorkOutRegimentNameAliases() throws Exception {
-        assertEquals(WorkOutType.BODY.getWorkOutRegimentNameAliases(), new String[]{"cross fit", "cardio"});
-        assertEquals(WorkOutType.WEIGHTED_MOVEMENTS.getWorkOutRegimentNameAliases(), new String[]{"cross fit", "power lifting"});
-        assertEquals(WorkOutType.POWER_WEIGHT.getWorkOutRegimentNameAliases(), new String[]{"power lifting"});
-        assertEquals(WorkOutType.WARM_UP_AND_COOL_OFF.getWorkOutRegimentNameAliases(), new String[]{"power lifting", "cross fit", "cardio"});
+        assertEquals(WorkOutType.BODY.getWorkOutRegimentNameAliases(), newArrayList("cross fit", "cardio"));
+        assertEquals(WorkOutType.WEIGHTED_MOVEMENTS.getWorkOutRegimentNameAliases(), newArrayList("cross fit", "power lifting"));
+        assertEquals(WorkOutType.POWER_WEIGHT.getWorkOutRegimentNameAliases(), newArrayList("power lifting"));
+        assertEquals(WorkOutType.WARM_UP_AND_COOL_OFF.getWorkOutRegimentNameAliases(), newArrayList("power lifting", "cross fit", "cardio"));
     }
 }

@@ -89,7 +89,7 @@ public class PreWorkOutViewModel {
             public void onClick(View view) {
                 Intent intent = new Intent(context, WorkoutActivity.class);
                 intent.putExtra(WORK_OUT_REGIMENT, workOutRegiment);
-                intent.putExtra(WORK_OUT_LENGTH, workOutLength);
+                intent.putExtra(WORK_OUT_LENGTH, workOutLength.intValue());
                 intent.putExtra(WORK_OUT_DIFFICULTY, workOutDifficulty);
                 intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(excludedEquipment));
                 intent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(activeBodyFocuses));
