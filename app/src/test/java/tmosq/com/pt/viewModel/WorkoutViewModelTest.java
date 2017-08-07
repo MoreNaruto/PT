@@ -14,9 +14,11 @@ import org.robolectric.annotation.Config;
 import tmosq.com.pt.BuildConfig;
 import tmosq.com.pt.activity.WorkoutActivity;
 import tmosq.com.pt.model.Exercise;
+import tmosq.com.pt.model.exercise_support_enums.WorkOutType;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_EXCLUDED_EQUIPMENT;
@@ -59,11 +61,11 @@ public class WorkoutViewModelTest {
         String kickUps = "kick ups";
         String rockers = "rockers";
 
-        Exercise firstExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise firstExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(monkeyBars).build();
-        Exercise secondExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise secondExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDUCTORS).averageSecondsPerRep(5.0).workout(kickUps).build();
-        Exercise thirdExercise = Exercise.builder().equipment(KETTLEBELL).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise thirdExercise = Exercise.builder().equipment(KETTLEBELL).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(FOREARMS).averageSecondsPerRep(5.0).workout(rockers).build();
 
         workoutViewModel.allExercises = newArrayList(firstExercise, secondExercise, thirdExercise);
@@ -87,13 +89,13 @@ public class WorkoutViewModelTest {
         String rockers = "rockers";
         String jobbers = "jobbers";
 
-        Exercise firstExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise firstExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(monkeyBars).build();
-        Exercise secondExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise secondExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDUCTORS).averageSecondsPerRep(5.0).workout(kickUps).build();
-        Exercise thirdExercise = Exercise.builder().equipment(KETTLEBELL).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise thirdExercise = Exercise.builder().equipment(KETTLEBELL).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(FOREARMS).averageSecondsPerRep(5.0).workout(rockers).build();
-        Exercise fourthExercise = Exercise.builder().equipment(MACHINE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise fourthExercise = Exercise.builder().equipment(MACHINE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(FOREARMS).averageSecondsPerRep(5.0).workout(jobbers).build();
         workoutViewModel.allExercises = newArrayList(firstExercise, secondExercise, thirdExercise, fourthExercise);
 
@@ -118,13 +120,13 @@ public class WorkoutViewModelTest {
         String rockers = "rockers";
         String jobbers = "jobbers";
 
-        Exercise firstExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise firstExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(monkeyBars).build();
-        Exercise secondExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise secondExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDUCTORS).averageSecondsPerRep(5.0).workout(kickUps).build();
-        Exercise thirdExercise = Exercise.builder().equipment(BARBELL).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise thirdExercise = Exercise.builder().equipment(BARBELL).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(FOREARMS).averageSecondsPerRep(5.0).workout(rockers).build();
-        Exercise fourthExercise = Exercise.builder().equipment(MACHINE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise fourthExercise = Exercise.builder().equipment(MACHINE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(FOREARMS).averageSecondsPerRep(5.0).workout(jobbers).build();
         workoutViewModel.allExercises = newArrayList(firstExercise, secondExercise, thirdExercise, fourthExercise);
 
@@ -149,13 +151,13 @@ public class WorkoutViewModelTest {
         String rockers = "rockers";
         String jobbers = "jobbers";
 
-        Exercise firstExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(BASIC).workOutType(POWER_WEIGHT)
+        Exercise firstExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(BASIC).workOutType(POWER_WEIGHT).forTime(false)
                 .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(monkeyBars).build();
-        Exercise secondExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(INTERMEDIATE).workOutType(BODY)
+        Exercise secondExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(INTERMEDIATE).workOutType(BODY).forTime(false)
                 .bodyFocus(ABDUCTORS).averageSecondsPerRep(5.0).workout(kickUps).build();
-        Exercise thirdExercise = Exercise.builder().equipment(MACHINE).difficulty(BASIC).workOutType(WEIGHTED_MOVEMENTS)
+        Exercise thirdExercise = Exercise.builder().equipment(MACHINE).difficulty(BASIC).workOutType(WEIGHTED_MOVEMENTS).forTime(false)
                 .bodyFocus(FOREARMS).averageSecondsPerRep(5.0).workout(rockers).build();
-        Exercise fourthExercise = Exercise.builder().equipment(MACHINE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise fourthExercise = Exercise.builder().equipment(MACHINE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(FOREARMS).averageSecondsPerRep(5.0).workout(jobbers).build();
         workoutViewModel.allExercises = newArrayList(firstExercise, secondExercise, thirdExercise, fourthExercise);
 
@@ -180,13 +182,13 @@ public class WorkoutViewModelTest {
         String rockers = "rockers";
         String jobbers = "jobbers";
 
-        Exercise firstExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise firstExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(monkeyBars).build();
-        Exercise secondExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise secondExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(CALVES).averageSecondsPerRep(5.0).workout(kickUps).build();
-        Exercise thirdExercise = Exercise.builder().equipment(MACHINE).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise thirdExercise = Exercise.builder().equipment(MACHINE).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(CHEST).averageSecondsPerRep(5.0).workout(rockers).build();
-        Exercise fourthExercise = Exercise.builder().equipment(MACHINE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF)
+        Exercise fourthExercise = Exercise.builder().equipment(MACHINE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(FOREARMS).averageSecondsPerRep(5.0).workout(jobbers).build();
         workoutViewModel.allExercises = newArrayList(firstExercise, secondExercise, thirdExercise, fourthExercise);
 
@@ -196,6 +198,66 @@ public class WorkoutViewModelTest {
         assertFalse(filteredWorkoutStrings.contains(kickUps));
         assertFalse(filteredWorkoutStrings.contains(rockers));
         assertTrue(filteredWorkoutStrings.contains(jobbers));
+    }
+
+    @Test
+    public void fullWorkout_createFullWorkout_withRepsAndSets() throws Exception {
+        Intent initialIntent = getInitialIntent();
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(initialIntent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        String monkeyBars = "monkey bars";
+        String kickUps = "kick ups";
+        String rockers = "rockers";
+        String jobbers = "jobbers";
+
+        Exercise firstExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(monkeyBars).build();
+        Exercise secondExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(kickUps).build();
+        Exercise thirdExercise = Exercise.builder().equipment(MACHINE).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(FOREARMS).averageSecondsPerRep(5.0).workout(rockers).build();
+        Exercise fourthExercise = Exercise.builder().equipment(MACHINE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(FOREARMS).averageSecondsPerRep(5.0).workout(jobbers).build();
+        workoutViewModel.allExercises = newArrayList(firstExercise, secondExercise, thirdExercise, fourthExercise);
+
+        String filteredWorkoutStrings = workoutViewModel.fullWorkout();
+
+        assertTrue(filteredWorkoutStrings.contains("3 sets of 10 reps\nRest for 30 seconds in between each set\n"));
+    }
+
+    @Test
+    public void fullWorkout_whenTimeLimitIsExceeded_shouldOnlyHaveSomeOfTheExercises() throws Exception {
+        Intent initialIntent = getInitialIntent();
+        initialIntent.putExtra(WORK_OUT_LENGTH, 5);
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(initialIntent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        String monkeyBars = "monkey bars";
+        String kickUps = "kick ups";
+        String rockers = "rockers";
+        String jobbers = "jobbers";
+
+        Exercise firstExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(BASIC).workOutType(BODY).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(monkeyBars).build();
+        Exercise secondExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(INTERMEDIATE).workOutType(BODY).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(kickUps).build();
+        Exercise thirdExercise = Exercise.builder().equipment(MACHINE).difficulty(BASIC).workOutType(BODY).forTime(false)
+                .bodyFocus(FOREARMS).averageSecondsPerRep(5.0).workout(rockers).build();
+        Exercise fourthExercise = Exercise.builder().equipment(MACHINE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
+                .bodyFocus(FOREARMS).averageSecondsPerRep(5.0).workout(jobbers).build();
+        workoutViewModel.allExercises = newArrayList(firstExercise, secondExercise, thirdExercise, fourthExercise);
+
+        String filteredWorkoutStrings = workoutViewModel.fullWorkout();
+
+        assertFalse(filteredWorkoutStrings.contains(monkeyBars) &&
+                filteredWorkoutStrings.contains(kickUps) &&
+                filteredWorkoutStrings.contains(rockers) &&
+                filteredWorkoutStrings.contains(jobbers));
     }
 
     @NonNull

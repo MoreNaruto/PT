@@ -6,6 +6,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.gson.Gson;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,13 +21,17 @@ import tmosq.com.pt.model.exercise_support_enums.WorkOutType;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_EXCLUDED_EQUIPMENT;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_DIFFICULTY;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
-import static tmosq.com.pt.model.exercise_support_enums.Difficulty.ADVANCED;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.BASIC;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.INTERMEDIATE;
 
 public class WorkoutViewModel {
+    public static final int NUMBER_OF_REPS = 10;
+    public static final double NUMBER_OF_SETS = 3.0;
+    public static final int SECONDS_TO_REST = 30 / 60;
     private final Intent intent;
+    private BigDecimal lengthOfWorkout;
     protected WorkoutActivity workoutActivity;
     protected List<Exercise> allExercises;
 
@@ -34,6 +39,7 @@ public class WorkoutViewModel {
         this.workoutActivity = workoutActivity;
         intent = workoutActivity.getIntent();
         allExercises = new ExerciseSplitter(workoutActivity).generateAllExercises();
+        lengthOfWorkout = BigDecimal.valueOf(intent.getIntExtra(WORK_OUT_LENGTH, 60));
     }
 
     public String fullWorkout() {
@@ -47,10 +53,22 @@ public class WorkoutViewModel {
         });
 
         for (Exercise currentExercise : exercises) {
-            stringBuilder.append(currentExercise.getWorkout());
+            while (lengthOfWorkout.compareTo(BigDecimal.ZERO) != -1) {
+                estimatedTimeToDoWorkoutCycle(currentExercise);
+                stringBuilder.append(currentExercise.getWorkout())
+                        .append(": 3 sets of 10 reps\nRest for 30 seconds in between each set\n");
+                break;
+            }
         }
 
         return stringBuilder.toString();
+    }
+
+    private void estimatedTimeToDoWorkoutCycle(Exercise currentExercise) {
+        BigDecimal workOutCycleTime = BigDecimal.valueOf(currentExercise.getAverageSecondsPerRep() * NUMBER_OF_REPS / 60);
+        workOutCycleTime = workOutCycleTime.multiply(BigDecimal.valueOf(NUMBER_OF_SETS));
+        workOutCycleTime = workOutCycleTime.add(BigDecimal.valueOf(SECONDS_TO_REST));
+        lengthOfWorkout = lengthOfWorkout.subtract(workOutCycleTime);
     }
 
     private Boolean filterExercises(Exercise exercise) {
@@ -61,7 +79,7 @@ public class WorkoutViewModel {
     }
 
     private Boolean filterOutBodyPartsNotFocusedOn(BodyFocus bodyFocus) {
-        if (bodyFocus == null){
+        if (bodyFocus == null) {
             return false;
         }
 
@@ -70,7 +88,7 @@ public class WorkoutViewModel {
     }
 
     private Boolean filterOutWorkoutsNotInTheRegiment(WorkOutType workOutType) {
-        if (workOutType == null){
+        if (workOutType == null) {
             return false;
         }
 
@@ -79,7 +97,7 @@ public class WorkoutViewModel {
     }
 
     private Boolean filterOutUnavailableEquipment(Equipment equipment) {
-        if (equipment == null){
+        if (equipment == null) {
             return false;
         }
 
@@ -90,7 +108,7 @@ public class WorkoutViewModel {
     private Boolean filterOutDifficulty(Difficulty difficulty) {
         Difficulty userDifficulty = Difficulty.fromString(intent.getStringExtra(WORK_OUT_DIFFICULTY));
 
-        if (difficulty == null){
+        if (difficulty == null) {
             return false;
         }
 
