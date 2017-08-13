@@ -14,11 +14,9 @@ import org.robolectric.annotation.Config;
 import tmosq.com.pt.BuildConfig;
 import tmosq.com.pt.activity.WorkoutActivity;
 import tmosq.com.pt.model.Exercise;
-import tmosq.com.pt.model.exercise_support_enums.WorkOutType;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_EXCLUDED_EQUIPMENT;
@@ -225,7 +223,7 @@ public class WorkoutViewModelTest {
 
         String filteredWorkoutStrings = workoutViewModel.fullWorkout();
 
-        assertTrue(filteredWorkoutStrings.contains("3 sets of 10 reps\nRest for 30 seconds in between each set\n"));
+        assertTrue(filteredWorkoutStrings.contains("3 sets of 10 reps\nRest for 30 seconds in between each set\n\n"));
     }
 
     @Test

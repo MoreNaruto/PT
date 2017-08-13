@@ -27,9 +27,9 @@ import static tmosq.com.pt.model.exercise_support_enums.Difficulty.BASIC;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.INTERMEDIATE;
 
 public class WorkoutViewModel {
-    public static final int NUMBER_OF_REPS = 10;
-    public static final double NUMBER_OF_SETS = 3.0;
-    public static final int SECONDS_TO_REST = 30 / 60;
+    public static final Integer NUMBER_OF_REPS = 10;
+    public static final Double NUMBER_OF_SETS = 3.0;
+    public static final Double SECONDS_TO_REST = 30.0 / 60.0;
     private final Intent intent;
     private BigDecimal lengthOfWorkout;
     protected WorkoutActivity workoutActivity;
@@ -56,7 +56,7 @@ public class WorkoutViewModel {
             while (lengthOfWorkout.compareTo(BigDecimal.ZERO) != -1) {
                 estimatedTimeToDoWorkoutCycle(currentExercise);
                 stringBuilder.append(currentExercise.getWorkout())
-                        .append(": 3 sets of 10 reps\nRest for 30 seconds in between each set\n");
+                        .append(": 3 sets of 10 reps\nRest for 30 seconds in between each set\n\n");
                 break;
             }
         }
@@ -66,8 +66,8 @@ public class WorkoutViewModel {
 
     private void estimatedTimeToDoWorkoutCycle(Exercise currentExercise) {
         BigDecimal workOutCycleTime = BigDecimal.valueOf(currentExercise.getAverageSecondsPerRep() * NUMBER_OF_REPS / 60);
-        workOutCycleTime = workOutCycleTime.multiply(BigDecimal.valueOf(NUMBER_OF_SETS));
         workOutCycleTime = workOutCycleTime.add(BigDecimal.valueOf(SECONDS_TO_REST));
+        workOutCycleTime = workOutCycleTime.multiply(BigDecimal.valueOf(NUMBER_OF_SETS));
         lengthOfWorkout = lengthOfWorkout.subtract(workOutCycleTime);
     }
 
