@@ -47,4 +47,7 @@
     <string name="row">Row</string>
     <string name="stone">Stone</string>
     <string name="select_the_type_of_workout">Select the type of workout</string>
+    <string name="warm_up"><u>Warm Up</u></string>
+    <string name="your_workout_for_today"><u>Your Workout for Today</u></string>
+    <string name="cool_off"><u>Cool Off</u></string>
 </resources>
