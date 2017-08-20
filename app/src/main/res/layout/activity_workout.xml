@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@{viewModel.warmUpRoutine}"
+            android:visibility="@{viewModel.warmUpWorkoutVisibility}"
             android:textSize="12sp"
             tools:text="Here are today's warmup" />
 
@@ -66,6 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@{viewModel.coolOffRoutine}"
+            android:visibility="@{viewModel.coolOffWorkoutVisibility}"
             android:textSize="12sp"
             tools:text="Here are today's warmup" />
     </LinearLayout>

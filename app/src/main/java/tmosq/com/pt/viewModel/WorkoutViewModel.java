@@ -1,6 +1,7 @@
 package tmosq.com.pt.viewModel;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import java.math.BigDecimal;
@@ -10,6 +11,7 @@ import tmosq.com.pt.activity.WorkoutActivity;
 import tmosq.com.pt.helper.ExerciseSplitter;
 import tmosq.com.pt.model.Exercise;
 
+import static java.math.BigDecimal.TEN;
 import static java.math.BigDecimal.ZERO;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
 
@@ -20,6 +22,7 @@ public class WorkoutViewModel {
     private static final Double SECONDS_TO_REST_FOR_REGULAR_WORKOUT = 30.0 / 60.0;
     private static final Double SECONDS_TO_REST_FOR_COOL_OFF_AND_WARM_UP_WORKOUT = 15.0 / 60.0;
     private static final Double PADDING_TIME = 2.0;
+    public static final int MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF = 40;
     private final ExerciseFilter exerciseFilter;
 
     protected List<Exercise> filteredExercises;
@@ -32,14 +35,47 @@ public class WorkoutViewModel {
     }
 
     public int warmUpWorkoutVisibility() {
-        return View.VISIBLE;
+        return intent.getIntExtra(WORK_OUT_LENGTH, 60) > MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF ? View.VISIBLE : View.GONE;
+    }
+
+    public int coolOffWorkoutVisibility() {
+        return intent.getIntExtra(WORK_OUT_LENGTH, 60) > MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF ? View.VISIBLE : View.GONE;
     }
 
     public String warmUpRoutine() {
+        return getWarmUpAndCoolOffRoutine();
+    }
+
+    public String coolOffRoutine() {
+        return getWarmUpAndCoolOffRoutine();
+    }
+
+    public String mainWorkoutRoutine() {
+        StringBuilder stringBuilder = new StringBuilder();
+        final BigDecimal lengthOfWarmUpAndCoolOff = TEN;
+        BigDecimal lengthOfWorkout = BigDecimal.valueOf(intent.getIntExtra(WORK_OUT_LENGTH, 60)).subtract(lengthOfWarmUpAndCoolOff);
+
+        List<Exercise> filteredOutWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, false);
+
+        for (Exercise currentExercise : filteredOutWarmUpAndCoolOffExercises) {
+            if (lengthOfWorkout.compareTo(ZERO) == 1) {
+                lengthOfWorkout = lengthOfWorkout.subtract(estimatedTimeToDoWorkoutCycle(currentExercise));
+                stringBuilder.append(currentExercise.getWorkout())
+                        .append(": 3 sets of 10 reps\nRest for 30 seconds in between each set\n\n");
+            } else {
+                break;
+            }
+        }
+
+        return stringBuilder.toString();
+    }
+
+    @NonNull
+    private String getWarmUpAndCoolOffRoutine() {
         StringBuilder stringBuilder = new StringBuilder();
         BigDecimal lengthOfWorkout = BigDecimal.valueOf(intent.getIntExtra(WORK_OUT_LENGTH, 60));
 
-        if (lengthOfWorkout.compareTo(BigDecimal.valueOf(40.0)) == 1) {
+        if (lengthOfWorkout.compareTo(BigDecimal.valueOf(MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF)) == 1) {
             BigDecimal minutesForCoolOffAndWarmUpRegiment = BigDecimal.valueOf(5.0);
             List<Exercise> filteredWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, true);
 
@@ -53,32 +89,6 @@ public class WorkoutViewModel {
                 }
             }
         }
-        return stringBuilder.toString();
-    }
-
-    public int coolOffWorkoutVisibility() {
-        return View.VISIBLE;
-    }
-
-    public String coolOffRoutine() {
-        return "";
-    }
-
-    public String mainWorkoutRoutine() {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        BigDecimal lengthOfWorkout = BigDecimal.valueOf(intent.getIntExtra(WORK_OUT_LENGTH, 60));
-
-        for (Exercise currentExercise : filteredExercises) {
-            if (lengthOfWorkout.compareTo(ZERO) == 1) {
-                lengthOfWorkout = lengthOfWorkout.subtract(estimatedTimeToDoWorkoutCycle(currentExercise));
-                stringBuilder.append(currentExercise.getWorkout())
-                        .append(": 3 sets of 10 reps\nRest for 30 seconds in between each set\n\n");
-            } else {
-                break;
-            }
-        }
-
         return stringBuilder.toString();
     }
 
