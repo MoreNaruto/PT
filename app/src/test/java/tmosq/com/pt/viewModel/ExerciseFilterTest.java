@@ -14,6 +14,7 @@ import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import tmosq.com.pt.BuildConfig;
 import tmosq.com.pt.activity.WorkoutActivity;
@@ -67,7 +68,7 @@ public class ExerciseFilterTest {
 
         ArrayList<Exercise> exercises = newArrayList(basicExercise, intermediateExercise, advancedExercise);
 
-        Collection<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
+        List<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
 
         assertTrue(filteredExercises.contains(basicExercise));
         assertTrue(filteredExercises.contains(intermediateExercise));
@@ -94,7 +95,7 @@ public class ExerciseFilterTest {
 
         ArrayList<Exercise> exercises = newArrayList(basicExercise, intermediateExercise, advancedExercise);
 
-        Collection<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
+        List<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
 
         assertTrue(filteredExercises.contains(basicExercise));
         assertTrue(filteredExercises.contains(intermediateExercise));
@@ -121,7 +122,7 @@ public class ExerciseFilterTest {
 
         ArrayList<Exercise> exercises = newArrayList(basicExercise, intermediateExercise, advancedExercise);
 
-        Collection<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
+        List<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
 
         assertTrue(filteredExercises.contains(basicExercise));
         assertFalse(filteredExercises.contains(intermediateExercise));
@@ -144,7 +145,7 @@ public class ExerciseFilterTest {
 
         ArrayList<Exercise> exercises = newArrayList(bandExercise, chairExercise, foamRollExercise, bicycleExercise);
 
-        Collection<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
+        List<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
 
         assertFalse(filteredExercises.contains(bandExercise));
         assertTrue(filteredExercises.contains(chairExercise));
@@ -168,7 +169,7 @@ public class ExerciseFilterTest {
 
         ArrayList<Exercise> exercises = newArrayList(bodyExercise, powerWeightExercise, weightedMovementExercise, warmUpAndCoolOffMovementExercise);
 
-        Collection<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
+        List<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
 
         assertTrue(filteredExercises.contains(bodyExercise));
         assertFalse(filteredExercises.contains(powerWeightExercise));
@@ -192,10 +193,58 @@ public class ExerciseFilterTest {
 
         ArrayList<Exercise> exercises = newArrayList(abdominalExercise, abductorExercise, bicepExercise, calvesExercise);
 
-        Collection<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
+        List<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
 
         assertTrue(filteredExercises.contains(abdominalExercise));
         assertFalse(filteredExercises.contains(bicepExercise));
+        assertTrue(filteredExercises.contains(abductorExercise));
+        assertFalse(filteredExercises.contains(calvesExercise));
+    }
+
+    @Test
+    public void filterWarmUpAndCoolOffExercises_filterOutNonWarmUpAndCoolOffExercises() throws Exception {
+        Exercise abdominalExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+
+        Exercise bicepExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(POWER_WEIGHT).forTime(false)
+                .bodyFocus(BICEPS).averageSecondsPerRep(5.0).build();
+
+        Exercise abductorExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(POWER_WEIGHT).forTime(false)
+                .bodyFocus(ABDUCTORS).averageSecondsPerRep(5.0).build();
+
+        Exercise calvesExercise = Exercise.builder().equipment(CHAIR).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(CALVES).averageSecondsPerRep(5.0).build();
+
+        ArrayList<Exercise> exercises = newArrayList(abdominalExercise, abductorExercise, bicepExercise, calvesExercise);
+
+        List<Exercise> filteredExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(exercises, true);
+
+        assertTrue(filteredExercises.contains(abdominalExercise));
+        assertFalse(filteredExercises.contains(bicepExercise));
+        assertFalse(filteredExercises.contains(abductorExercise));
+        assertTrue(filteredExercises.contains(calvesExercise));
+    }
+
+    @Test
+    public void filterWarmUpAndCoolOffExercises_filterOutWarmUpAndCoolOffExercises() throws Exception {
+        Exercise abdominalExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+
+        Exercise bicepExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(POWER_WEIGHT).forTime(false)
+                .bodyFocus(BICEPS).averageSecondsPerRep(5.0).build();
+
+        Exercise abductorExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(POWER_WEIGHT).forTime(false)
+                .bodyFocus(ABDUCTORS).averageSecondsPerRep(5.0).build();
+
+        Exercise calvesExercise = Exercise.builder().equipment(CHAIR).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(CALVES).averageSecondsPerRep(5.0).build();
+
+        ArrayList<Exercise> exercises = newArrayList(abdominalExercise, abductorExercise, bicepExercise, calvesExercise);
+
+        List<Exercise> filteredExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(exercises, false);
+
+        assertFalse(filteredExercises.contains(abdominalExercise));
+        assertTrue(filteredExercises.contains(bicepExercise));
         assertTrue(filteredExercises.contains(abductorExercise));
         assertFalse(filteredExercises.contains(calvesExercise));
     }

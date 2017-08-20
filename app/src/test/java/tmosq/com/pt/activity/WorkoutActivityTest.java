@@ -23,8 +23,8 @@ public class WorkoutActivityTest {
     }
 
     @Test
-    public void onCreate_bindsToViewModel() throws Exception {
-        WorkoutActivity activity = activityController.create().get();
+    public void onStart_bindsToViewModel() throws Exception {
+        WorkoutActivity activity = activityController.create().start().get();
 
         assertEquals(activity.binding.getViewModel(), activity.workoutViewModel);
     }

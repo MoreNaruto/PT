@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 
 import tmosq.com.pt.activity.WorkoutActivity;
 import tmosq.com.pt.helper.ExerciseSplitter;
@@ -12,7 +12,6 @@ import tmosq.com.pt.model.Exercise;
 
 import static java.math.BigDecimal.ZERO;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
-import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.WARM_UP_AND_COOL_OFF;
 
 public class WorkoutViewModel {
     private static final Integer NUMBER_OF_REPS = 10;
@@ -21,14 +20,15 @@ public class WorkoutViewModel {
     private static final Double SECONDS_TO_REST_FOR_REGULAR_WORKOUT = 30.0 / 60.0;
     private static final Double SECONDS_TO_REST_FOR_COOL_OFF_AND_WARM_UP_WORKOUT = 15.0 / 60.0;
     private static final Double PADDING_TIME = 2.0;
+    private final ExerciseFilter exerciseFilter;
 
-    protected Collection<Exercise> filteredExercises;
-    private BigDecimal lengthOfWorkout;
+    protected List<Exercise> filteredExercises;
+    private final Intent intent;
 
     public WorkoutViewModel(WorkoutActivity workoutActivity) {
-        Intent intent = workoutActivity.getIntent();
-        lengthOfWorkout = BigDecimal.valueOf(intent.getIntExtra(WORK_OUT_LENGTH, 60));
-        filteredExercises = new ExerciseFilter(intent).filterExercises(new ExerciseSplitter(workoutActivity).generateAllExercises());
+        intent = workoutActivity.getIntent();
+        exerciseFilter = new ExerciseFilter(intent);
+        filteredExercises = exerciseFilter.filterExercises(new ExerciseSplitter(workoutActivity).generateAllExercises());
     }
 
     public int warmUpWorkoutVisibility() {
@@ -37,15 +37,22 @@ public class WorkoutViewModel {
 
     public String warmUpRoutine() {
         StringBuilder stringBuilder = new StringBuilder();
-        BigDecimal minutesForCoolOffAndWarmUpRegiment = BigDecimal.valueOf(5.0);
+        BigDecimal lengthOfWorkout = BigDecimal.valueOf(intent.getIntExtra(WORK_OUT_LENGTH, 60));
 
-        for (Exercise currentExercise : filteredExercises) {
-            if (currentExercise.getWorkOutType().equals(WARM_UP_AND_COOL_OFF) && minutesForCoolOffAndWarmUpRegiment.compareTo(ZERO) != -1) {
-                minutesForCoolOffAndWarmUpRegiment.subtract(estimatedTimeToDoCoolOffAndWarmUpExercise(currentExercise));
-                stringBuilder.append(currentExercise.getWorkout());
+        if (lengthOfWorkout.compareTo(BigDecimal.valueOf(40.0)) == 1) {
+            BigDecimal minutesForCoolOffAndWarmUpRegiment = BigDecimal.valueOf(5.0);
+            List<Exercise> filteredWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, true);
+
+            for (Exercise currentExercise : filteredWarmUpAndCoolOffExercises) {
+                if (minutesForCoolOffAndWarmUpRegiment.compareTo(ZERO) == 1) {
+                    minutesForCoolOffAndWarmUpRegiment = minutesForCoolOffAndWarmUpRegiment.subtract(estimatedTimeToDoCoolOffAndWarmUpExercise(currentExercise));
+                    stringBuilder.append(currentExercise.getWorkout())
+                            .append(": 2 sets of 10 reps\nRest for 15 seconds in between each set\n\n");
+                } else {
+                    break;
+                }
             }
         }
-
         return stringBuilder.toString();
     }
 
@@ -60,11 +67,14 @@ public class WorkoutViewModel {
     public String mainWorkoutRoutine() {
         StringBuilder stringBuilder = new StringBuilder();
 
+        BigDecimal lengthOfWorkout = BigDecimal.valueOf(intent.getIntExtra(WORK_OUT_LENGTH, 60));
+
         for (Exercise currentExercise : filteredExercises) {
-            while (lengthOfWorkout.compareTo(ZERO) != -1) {
-                estimatedTimeToDoWorkoutCycle(currentExercise);
+            if (lengthOfWorkout.compareTo(ZERO) == 1) {
+                lengthOfWorkout = lengthOfWorkout.subtract(estimatedTimeToDoWorkoutCycle(currentExercise));
                 stringBuilder.append(currentExercise.getWorkout())
                         .append(": 3 sets of 10 reps\nRest for 30 seconds in between each set\n\n");
+            } else {
                 break;
             }
         }
@@ -79,11 +89,11 @@ public class WorkoutViewModel {
         return timeOfExerciseRegiment;
     }
 
-    private void estimatedTimeToDoWorkoutCycle(Exercise currentExercise) {
+    private BigDecimal estimatedTimeToDoWorkoutCycle(Exercise currentExercise) {
         BigDecimal workOutCycleTime = BigDecimal.valueOf(currentExercise.getAverageSecondsPerRep() * NUMBER_OF_REPS / 60.0);
         workOutCycleTime = workOutCycleTime.add(BigDecimal.valueOf(SECONDS_TO_REST_FOR_REGULAR_WORKOUT));
         workOutCycleTime = workOutCycleTime.multiply(BigDecimal.valueOf(NUMBER_OF_SETS_FOR_REGULAR_WORKOUT));
         workOutCycleTime = workOutCycleTime.add(BigDecimal.valueOf(PADDING_TIME));
-        lengthOfWorkout = lengthOfWorkout.subtract(workOutCycleTime);
+        return workOutCycleTime;
     }
 }

@@ -1,6 +1,9 @@
 package tmosq.com.pt.viewModel;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+
+import com.google.gson.Gson;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +19,11 @@ import tmosq.com.pt.model.Exercise;
 import static com.google.common.collect.Lists.newArrayList;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
+import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_EXCLUDED_EQUIPMENT;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_DIFFICULTY;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 import static tmosq.com.pt.model.exercise_support_enums.BodyFocus.ABDOMINALS;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.ADVANCED;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.BASIC;
@@ -35,10 +42,7 @@ public class WorkoutViewModelTest {
 
     @Before
     public void setUp() throws Exception {
-        Intent intent = new Intent();
-        intent.putExtra(WORK_OUT_LENGTH, 60);
-
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(getInitialIntent()).create().get();
 
         workoutViewModel = new WorkoutViewModel(workoutActivity);
     }
@@ -107,5 +111,51 @@ public class WorkoutViewModelTest {
                 warmUpRoutine.contains(morningKicks) &&
                 warmUpRoutine.contains(starDays) &&
                 warmUpRoutine.contains(uberWalks));
+    }
+
+    @Test
+    public void warmRoutine_shouldHaveAStringContainingTheAmountForWarmUp() throws Exception {
+        String hyperRocks = "hyper rocks";
+
+        Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+
+        workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne);
+
+        String warmUpRoutine = workoutViewModel.warmUpRoutine();
+
+        assertTrue(warmUpRoutine.contains(": 2 sets of 10 reps\nRest for 15 seconds in between each set\n\n"));
+    }
+
+    @Test
+    public void warmRoutine_ifWarmUpRoutineIsLessThanOrEqualTo45Minutes_thenWarmUpRoutineShouldNotExist() throws Exception {
+        Intent intent = getInitialIntent();
+        intent.putExtra(WORK_OUT_LENGTH, 40);
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        String hyperRocks = "hyper rocks";
+
+        Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+
+        workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne);
+
+        String warmUpRoutine = workoutViewModel.warmUpRoutine();
+
+        assertFalse(warmUpRoutine.contains(": 2 sets of 10 reps\nRest for 15 seconds in between each set\n\n"));
+    }
+
+    @NonNull
+    private Intent getInitialIntent() {
+        Intent initialIntent = new Intent();
+        initialIntent.putExtra(WORK_OUT_REGIMENT, "cross fit");
+        initialIntent.putExtra(WORK_OUT_LENGTH, 50);
+        initialIntent.putExtra(WORK_OUT_DIFFICULTY, "advanced");
+        initialIntent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(newArrayList("bands", "barbell", "bicycle", "exercise ball")));
+        initialIntent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(newArrayList("abdominals", "abductors", "forearms")));
+        return initialIntent;
     }
 }

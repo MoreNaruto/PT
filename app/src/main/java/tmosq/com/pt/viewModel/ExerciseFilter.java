@@ -6,6 +6,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,9 +17,11 @@ import tmosq.com.pt.model.exercise_support_enums.Difficulty;
 import tmosq.com.pt.model.exercise_support_enums.Equipment;
 import tmosq.com.pt.model.exercise_support_enums.WorkOutType;
 
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_DIFFICULTY;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.BASIC;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.INTERMEDIATE;
+import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.WARM_UP_AND_COOL_OFF;
 
 public class ExerciseFilter {
     protected Intent intent;
@@ -30,8 +33,8 @@ public class ExerciseFilter {
     }
 
 
-    Collection<Exercise> filterExercises(List<Exercise> exercises) {
-        return Collections2.filter(exercises, new Predicate<Exercise>() {
+    List<Exercise> filterExercises(List<Exercise> exercises) {
+        Collection<Exercise> filteredExercises = Collections2.filter(exercises, new Predicate<Exercise>() {
             @Override
             public boolean apply(Exercise exercise) {
                 return filterOutDifficulty(exercise.getDifficulty()) &&
@@ -40,10 +43,28 @@ public class ExerciseFilter {
                         filterOutBodyPartsNotFocusedOn(exercise.getBodyFocus());
             }
         });
+        return new ArrayList<>(filteredExercises);
+    }
+
+    public List<Exercise> filterWarmUpAndCoolOffExercises(List<Exercise> exercises, final Boolean isFilteringInWarmUpsAndCoolOffs) {
+        Collection<Exercise> filteredExercises = Collections2.filter(exercises, new Predicate<Exercise>() {
+            @Override
+            public boolean apply(Exercise exercise) {
+                return filteringWarmUpsAndCoolOffs(exercise.getWorkOutType(), isFilteringInWarmUpsAndCoolOffs);
+            }
+        });
+        return new ArrayList<>(filteredExercises);
+    }
+
+    private Boolean filteringWarmUpsAndCoolOffs(WorkOutType workOutType, Boolean isFilteringInWarmUpsAndCoolOffs) {
+        if (workOutType.equals(WARM_UP_AND_COOL_OFF)) {
+            return isFilteringInWarmUpsAndCoolOffs;
+        } else
+            return !isFilteringInWarmUpsAndCoolOffs;
     }
 
     private Boolean filterOutDifficulty(Difficulty difficulty) {
-        Difficulty userDifficulty = Difficulty.fromString(intent.getStringExtra(ExerciseSplitter.WORK_OUT_DIFFICULTY));
+        Difficulty userDifficulty = Difficulty.fromString(intent.getStringExtra(WORK_OUT_DIFFICULTY));
 
         if (difficulty == null) {
             return false;
