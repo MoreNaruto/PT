@@ -126,7 +126,7 @@ public class WorkoutViewModelTest {
 
         String warmUpRoutine = workoutViewModel.warmUpRoutine();
 
-        assertTrue(warmUpRoutine.contains(": 2 sets of 10 reps\nRest for 15 seconds in between each set\n\n"));
+        assertTrue(warmUpRoutine.contains(": 2 sets of 10 reps\n\n"));
     }
 
     @Test
@@ -148,6 +148,26 @@ public class WorkoutViewModelTest {
         String warmUpRoutine = workoutViewModel.warmUpRoutine();
 
         assertFalse(warmUpRoutine.contains(": 2 sets of 10 reps\nRest for 15 seconds in between each set\n\n"));
+    }
+
+    @Test
+    public void warmUpRoutine_ifNoCoolOffOrWarmUpRoutineExists_thenDisplayCoolOffAndWarmUpRoutineAreNotAvailableMessage() throws Exception {
+        Intent intent = getInitialIntent();
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        String hyperRocks = "hyper rocks";
+
+        Exercise nonCoolOffExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+
+        workoutViewModel.filteredExercises = newArrayList(nonCoolOffExercise);
+
+        String warmUpRoutine = workoutViewModel.warmUpRoutine();
+
+        assertTrue(warmUpRoutine.contains("There are no cool offs/warm up exercises that meet this criteria"));
     }
 
     @Test
@@ -275,7 +295,7 @@ public class WorkoutViewModelTest {
 
         String coolOffRoutine = workoutViewModel.coolOffRoutine();
 
-        assertTrue(coolOffRoutine.contains(": 2 sets of 10 reps\nRest for 15 seconds in between each set\n\n"));
+        assertTrue(coolOffRoutine.contains(": 2 sets of 10 reps\n\n"));
     }
 
     @Test
@@ -300,6 +320,26 @@ public class WorkoutViewModelTest {
     }
 
     @Test
+    public void coolOffRoutine_ifNoCoolOffOrWarmUpRoutineExists_thenDisplayCoolOffAndWarmUpRoutineAreNotAvailableMessage() throws Exception {
+        Intent intent = getInitialIntent();
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        String hyperRocks = "hyper rocks";
+
+        Exercise nonCoolOffExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+
+        workoutViewModel.filteredExercises = newArrayList(nonCoolOffExercise);
+
+        String coolOffRoutine = workoutViewModel.coolOffRoutine();
+
+        assertTrue(coolOffRoutine.contains("There are no cool offs/warm up exercises that meet this criteria"));
+    }
+
+    @Test
     public void mainWorkoutRoutine_shouldContainTheAmountOfWorkouts() throws Exception {
         String hyperRocks = "hyper rocks";
 
@@ -310,7 +350,7 @@ public class WorkoutViewModelTest {
 
         String mainWorkoutRoutine = workoutViewModel.mainWorkoutRoutine();
 
-        assertTrue(mainWorkoutRoutine.contains(": 3 sets of 10 reps\nRest for 30 seconds in between each set\n\n"));
+        assertTrue(mainWorkoutRoutine.contains(": 3 sets of 10 reps\n\n"));
     }
 
     @Test
@@ -441,6 +481,86 @@ public class WorkoutViewModelTest {
                 mainWorkoutRoutine.contains(flybys) &&
                 mainWorkoutRoutine.contains(yolkers) &&
                 mainWorkoutRoutine.contains(fryers));
+    }
+
+    @Test
+    public void mainWorkoutRoutine_ifNoNonWarmUpAndCoolOffWorkoutRoutineExists_thenDisplayNoWorkoutRoutineAreNotAvailableMessage() throws Exception {
+        Intent intent = getInitialIntent();
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        String hyperRocks = "hyper rocks";
+
+        Exercise nonCoolOffExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+
+        workoutViewModel.filteredExercises = newArrayList(nonCoolOffExercise);
+
+        String mainWorkoutRoutine = workoutViewModel.mainWorkoutRoutine();
+
+        assertTrue(mainWorkoutRoutine.contains("There are no exercises that meet this criteria"));
+    }
+
+    @Test
+    public void mainWorkoutRoutine_noDuplicateWorkouts() throws Exception {
+        Intent intent = getInitialIntent();
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        String hyperRocks = "hyper rocks";
+
+        Exercise nonCoolOffExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+
+        workoutViewModel.filteredExercises = newArrayList(nonCoolOffExercise);
+
+        String mainWorkoutRoutine = workoutViewModel.mainWorkoutRoutine();
+
+        assertFalse(mainWorkoutRoutine.replaceFirst(hyperRocks, "").contains(hyperRocks));
+    }
+
+    @Test
+    public void warmUpRoutine_noDuplicateWorkouts() throws Exception {
+        Intent intent = getInitialIntent();
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        String hyperRocks = "hyper rocks";
+
+        Exercise warmUpExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+
+        workoutViewModel.filteredExercises = newArrayList(warmUpExercise);
+
+        String warmUpRoutine = workoutViewModel.warmUpRoutine();
+
+        assertFalse(warmUpRoutine.replaceFirst(hyperRocks, "").contains(hyperRocks));
+    }
+
+    @Test
+    public void coolOffRoutine_noDuplicateWorkouts() throws Exception {
+        Intent intent = getInitialIntent();
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        String hyperRocks = "hyper rocks";
+
+        Exercise warmUpExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+
+        workoutViewModel.filteredExercises = newArrayList(warmUpExercise);
+
+        String coolOffRoutine = workoutViewModel.coolOffRoutine();
+
+        assertFalse(coolOffRoutine.replaceFirst(hyperRocks, "").contains(hyperRocks));
     }
 
     @NonNull
