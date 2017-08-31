@@ -50,4 +50,5 @@
     <string name="warm_up"><u>Warm Up</u></string>
     <string name="your_workout_for_today"><u>Your Workout for Today</u></string>
     <string name="cool_off"><u>Cool Off</u></string>
+    <string name="do_you_have_a_partner">Do you have a partner?</string>
 </resources>

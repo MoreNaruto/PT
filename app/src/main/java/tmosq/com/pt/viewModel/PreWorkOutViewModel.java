@@ -16,6 +16,7 @@ import tmosq.com.pt.model.exercise_support_enums.Difficulty;
 import tmosq.com.pt.model.exercise_support_enums.Equipment;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 
+import static tmosq.com.pt.helper.ExerciseSplitter.HAS_PARTNER;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_EXCLUDED_EQUIPMENT;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_DIFFICULTY;
@@ -29,6 +30,7 @@ public class PreWorkOutViewModel {
     private String workOutRegiment;
     private List<String> activeBodyFocuses;
     private List<String> excludedEquipment;
+    private Boolean hasPartner;
 
     public PreWorkOutViewModel(Context context) {
         this.context = context;
@@ -37,6 +39,7 @@ public class PreWorkOutViewModel {
         workOutDifficulty = Difficulty.BASIC.getDifficultyNameAlias();
         activeBodyFocuses = new ArrayList<>();
         excludedEquipment = new ArrayList<>();
+        hasPartner = false;
     }
 
     public void setWorkOutRegiment(String workOutRegiment) {
@@ -83,6 +86,17 @@ public class PreWorkOutViewModel {
         };
     }
 
+    public View.OnClickListener clickPartnerBox() {
+        return new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                CheckBox partnerCheckBox = (CheckBox) view;
+                hasPartner = partnerCheckBox.isChecked();
+            }
+        };
+    }
+
     public View.OnClickListener clickMakeWorkOutButton() {
         return new View.OnClickListener() {
             @Override
@@ -91,6 +105,7 @@ public class PreWorkOutViewModel {
                 intent.putExtra(WORK_OUT_REGIMENT, workOutRegiment);
                 intent.putExtra(WORK_OUT_LENGTH, workOutLength.intValue());
                 intent.putExtra(WORK_OUT_DIFFICULTY, workOutDifficulty);
+                intent.putExtra(HAS_PARTNER, hasPartner);
                 intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(excludedEquipment));
                 intent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(activeBodyFocuses));
                 context.startActivity(intent);

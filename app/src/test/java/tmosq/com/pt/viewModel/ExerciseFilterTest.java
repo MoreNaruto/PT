@@ -22,6 +22,7 @@ import tmosq.com.pt.model.Exercise;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.junit.Assert.*;
+import static tmosq.com.pt.helper.ExerciseSplitter.HAS_PARTNER;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_EXCLUDED_EQUIPMENT;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_DIFFICULTY;
@@ -31,6 +32,7 @@ import static tmosq.com.pt.model.exercise_support_enums.BodyFocus.ABDOMINALS;
 import static tmosq.com.pt.model.exercise_support_enums.BodyFocus.ABDUCTORS;
 import static tmosq.com.pt.model.exercise_support_enums.BodyFocus.BICEPS;
 import static tmosq.com.pt.model.exercise_support_enums.BodyFocus.CALVES;
+import static tmosq.com.pt.model.exercise_support_enums.BodyFocus.FOREARMS;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.ADVANCED;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.BASIC;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.INTERMEDIATE;
@@ -249,6 +251,31 @@ public class ExerciseFilterTest {
         assertFalse(filteredExercises.contains(calvesExercise));
     }
 
+    @Test
+    public void filterPartnerExercises_whenUserDoesNotHavePartner_filterOutPartnerExercises() throws Exception {
+        Exercise abdominalExerciseWithPartnerNeeded = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(BODY).forTime(false)
+                .bodyFocus(ABDOMINALS).partnerNeeded(true).averageSecondsPerRep(5.0).build();
+
+        Exercise forearmsExerciseWithoutPartnerNeeded = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(BODY).forTime(false)
+                .bodyFocus(FOREARMS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
+
+        Exercise abductorExerciseWithPartnerNeeded = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(BODY).forTime(false)
+                .bodyFocus(ABDUCTORS).partnerNeeded(true).averageSecondsPerRep(5.0).build();
+
+        Exercise abdominalExerciseWithOutPartnerNeeded = Exercise.builder().equipment(CHAIR).difficulty(ADVANCED).workOutType(BODY).forTime(false)
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
+
+        ArrayList<Exercise> exercises = newArrayList(abdominalExerciseWithPartnerNeeded, abductorExerciseWithPartnerNeeded,
+                forearmsExerciseWithoutPartnerNeeded, abdominalExerciseWithOutPartnerNeeded);
+
+        List<Exercise> filteredExercises = exerciseFilter.filterExercises(exercises);
+
+        assertFalse(filteredExercises.contains(abdominalExerciseWithPartnerNeeded));
+        assertTrue(filteredExercises.contains(forearmsExerciseWithoutPartnerNeeded));
+        assertFalse(filteredExercises.contains(abductorExerciseWithPartnerNeeded));
+        assertTrue(filteredExercises.contains(abdominalExerciseWithOutPartnerNeeded));
+    }
+
     @NonNull
     private Intent getInitialIntent() {
         Intent initialIntent = new Intent();
@@ -257,6 +284,7 @@ public class ExerciseFilterTest {
         initialIntent.putExtra(WORK_OUT_DIFFICULTY, "advanced");
         initialIntent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(newArrayList("bands", "barbell", "bicycle", "exercise ball")));
         initialIntent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(newArrayList("abdominals", "abductors", "forearms")));
+        initialIntent.putExtra(HAS_PARTNER, false);
         return initialIntent;
     }
 }

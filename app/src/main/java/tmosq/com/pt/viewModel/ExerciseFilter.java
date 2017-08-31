@@ -17,6 +17,7 @@ import tmosq.com.pt.model.exercise_support_enums.Difficulty;
 import tmosq.com.pt.model.exercise_support_enums.Equipment;
 import tmosq.com.pt.model.exercise_support_enums.WorkOutType;
 
+import static tmosq.com.pt.helper.ExerciseSplitter.HAS_PARTNER;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_DIFFICULTY;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.BASIC;
@@ -40,7 +41,8 @@ public class ExerciseFilter {
                 return filterOutDifficulty(exercise.getDifficulty()) &&
                         filterOutUnavailableEquipment(exercise.getEquipment()) &&
                         filterOutWorkoutsNotInTheRegiment(exercise.getWorkOutType()) &&
-                        filterOutBodyPartsNotFocusedOn(exercise.getBodyFocus());
+                        filterOutBodyPartsNotFocusedOn(exercise.getBodyFocus()) &&
+                        filterOutPartnerNeeded(exercise.getPartnerNeeded());
             }
         });
         return new ArrayList<>(filteredExercises);
@@ -101,5 +103,12 @@ public class ExerciseFilter {
 
         List<String> activeBodyFocuses = gson.fromJson(intent.getStringExtra(ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES), List.class);
         return activeBodyFocuses.contains(bodyFocus.getBodyPartNameAlias());
+    }
+
+    private Boolean filterOutPartnerNeeded(Boolean needsPartner) {
+        Boolean isPartnerAvailable = intent.getBooleanExtra(HAS_PARTNER, false);
+
+        return isPartnerAvailable || !needsPartner;
+
     }
 }

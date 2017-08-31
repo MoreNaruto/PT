@@ -31,6 +31,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.robolectric.RuntimeEnvironment.application;
+import static tmosq.com.pt.helper.ExerciseSplitter.HAS_PARTNER;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_EXCLUDED_EQUIPMENT;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_DIFFICULTY;
@@ -65,12 +66,42 @@ public class PreWorkOutViewModelTest {
     }
 
     @Test
-    public void clickMakeWorkOutButton_whenUserMakesChanges_startWorkOutActivityWithChanges() throws Exception {
+    public void clickMakeWorkOutButton_whenWorkOutRegimentIsUpdated_startWorkOutWithNewWorkOutRegiment() throws Exception {
+        ArgumentCaptor<Intent> intentArgumentCaptor = ArgumentCaptor.forClass(Intent.class);
+        preWorkOutViewModel.setWorkOutRegiment(WorkoutRegiment.POWER_LIFTING.getWorkOutRegimentNameAlias());
+
+        preWorkOutViewModel.clickMakeWorkOutButton().onClick(new View(application));
+
+        verify(mockContext).startActivity(intentArgumentCaptor.capture());
+        assertEquals(intentArgumentCaptor.getValue().getStringExtra(WORK_OUT_REGIMENT), WorkoutRegiment.POWER_LIFTING.getWorkOutRegimentNameAlias());
+    }
+
+    @Test
+    public void clickMakeWorkOutButton_whenWorkOutLengthIsUpdated_startWorkoutWithNewWorkOutLength() throws Exception {
+        ArgumentCaptor<Intent> intentArgumentCaptor = ArgumentCaptor.forClass(Intent.class);
+        preWorkOutViewModel.setWorkOutLength(55);
+
+        preWorkOutViewModel.clickMakeWorkOutButton().onClick(new View(application));
+
+        verify(mockContext).startActivity(intentArgumentCaptor.capture());
+        assertEquals(intentArgumentCaptor.getValue().getSerializableExtra(WORK_OUT_LENGTH), 55);;
+    }
+
+    @Test
+    public void clickMakeWorkOutButton_whenWorkOutDifficultyIsUpdated_startWorkoutWithNewDifficulty() throws Exception {
+        ArgumentCaptor<Intent> intentArgumentCaptor = ArgumentCaptor.forClass(Intent.class);
+        preWorkOutViewModel.setWorkOutDifficulty(Difficulty.ADVANCED.getDifficultyNameAlias());
+
+        preWorkOutViewModel.clickMakeWorkOutButton().onClick(new View(application));
+
+        verify(mockContext).startActivity(intentArgumentCaptor.capture());
+        assertEquals(intentArgumentCaptor.getValue().getStringExtra(WORK_OUT_DIFFICULTY), Difficulty.ADVANCED.getDifficultyNameAlias());
+    }
+
+    @Test
+    public void clickMakeWorkOutButton_whenAddingBodyFocuses_startWorkOutActivityWithBodyFocuses() throws Exception {
         ArgumentCaptor<Intent> intentArgumentCaptor = ArgumentCaptor.forClass(Intent.class);
         CheckBox defaultValue = new CheckBox(application);
-        preWorkOutViewModel.setWorkOutRegiment(WorkoutRegiment.POWER_LIFTING.getWorkOutRegimentNameAlias());
-        preWorkOutViewModel.setWorkOutLength(55);
-        preWorkOutViewModel.setWorkOutDifficulty(Difficulty.ADVANCED.getDifficultyNameAlias());
 
         defaultValue.setChecked(true);
         defaultValue.setId(R.id.biceps_checkbox);
@@ -78,6 +109,23 @@ public class PreWorkOutViewModelTest {
         defaultValue.setId(R.id.abductors_checkbox);
         preWorkOutViewModel.clickBodyFocusCheckBox().onClick(defaultValue);
 
+        preWorkOutViewModel.clickMakeWorkOutButton().onClick(new View(application));
+
+        ArrayList<String> activeBodyFocuses = new ArrayList<>();
+
+        activeBodyFocuses.add(BodyFocus.BICEPS.getBodyPartNameAlias());
+        activeBodyFocuses.add(BodyFocus.ABDUCTORS.getBodyPartNameAlias());
+
+        verify(mockContext).startActivity(intentArgumentCaptor.capture());
+        assertEquals(intentArgumentCaptor.getValue().getStringExtra(LIST_OF_ACTIVE_BODY_FOCUSES), new Gson().toJson(activeBodyFocuses));
+    }
+
+    @Test
+    public void clickMakeWorkOutButton_whenRemovingExcludedEquipment_startWorkOutActivityWithExcludedEquipment() throws Exception {
+        ArgumentCaptor<Intent> intentArgumentCaptor = ArgumentCaptor.forClass(Intent.class);
+        CheckBox defaultValue = new CheckBox(application);
+
+        defaultValue.setChecked(true);
         defaultValue.setId(R.id.bands_checkbox);
         preWorkOutViewModel.clickEquipmentCheckBox().onClick(defaultValue);
         defaultValue.setId(R.id.cable_checkbox);
@@ -86,19 +134,27 @@ public class PreWorkOutViewModelTest {
         preWorkOutViewModel.clickMakeWorkOutButton().onClick(new View(application));
 
         ArrayList<String> excludedEquipments = new ArrayList<>();
-        ArrayList<String> activeBodyFocuses = new ArrayList<>();
-
-        activeBodyFocuses.add(BodyFocus.BICEPS.getBodyPartNameAlias());
-        activeBodyFocuses.add(BodyFocus.ABDUCTORS.getBodyPartNameAlias());
 
         excludedEquipments.add(Equipment.BANDS.getEquipmentNameAlias());
         excludedEquipments.add(Equipment.CABLE.getEquipmentNameAlias());
 
         verify(mockContext).startActivity(intentArgumentCaptor.capture());
-        assertEquals(intentArgumentCaptor.getValue().getStringExtra(WORK_OUT_REGIMENT), WorkoutRegiment.POWER_LIFTING.getWorkOutRegimentNameAlias());
-        assertEquals(intentArgumentCaptor.getValue().getSerializableExtra(WORK_OUT_LENGTH), 55);
-        assertEquals(intentArgumentCaptor.getValue().getStringExtra(WORK_OUT_DIFFICULTY), Difficulty.ADVANCED.getDifficultyNameAlias());
         assertEquals(intentArgumentCaptor.getValue().getStringExtra(LIST_OF_EXCLUDED_EQUIPMENT), new Gson().toJson(excludedEquipments));
-        assertEquals(intentArgumentCaptor.getValue().getStringExtra(LIST_OF_ACTIVE_BODY_FOCUSES), new Gson().toJson(activeBodyFocuses));
+    }
+
+    @Test
+    public void clickMakeWorkOutButton_whenHavingAPartner_startWorkOutActivityWithPartner() throws Exception {
+        ArgumentCaptor<Intent> intentArgumentCaptor = ArgumentCaptor.forClass(Intent.class);
+        CheckBox defaultValue = new CheckBox(application);
+
+        defaultValue.setChecked(true);
+        defaultValue.setId(R.id.partner_checkbox);
+
+        preWorkOutViewModel.clickPartnerBox().onClick(defaultValue);
+
+        preWorkOutViewModel.clickMakeWorkOutButton().onClick(new View(application));
+
+        verify(mockContext).startActivity(intentArgumentCaptor.capture());
+        assertEquals(intentArgumentCaptor.getValue().getBooleanExtra(HAS_PARTNER, false), true);
     }
 }
