@@ -106,9 +106,6 @@ public class ExerciseFilter {
     }
 
     private Boolean filterOutPartnerNeeded(Boolean needsPartner) {
-        Boolean isPartnerAvailable = intent.getBooleanExtra(HAS_PARTNER, false);
-
-        return isPartnerAvailable || !needsPartner;
-
+        return intent.getBooleanExtra(HAS_PARTNER, false) || !needsPartner;
     }
 }

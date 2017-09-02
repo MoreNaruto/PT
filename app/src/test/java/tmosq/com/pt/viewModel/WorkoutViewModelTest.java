@@ -57,16 +57,16 @@ public class WorkoutViewModelTest {
         String morningKicks = "morning kicks";
 
         Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(hyperRocks).build();
 
         Exercise warmUpExerciseTwo = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(lowTides).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(lowTides).build();
 
         Exercise nonWarmUpExerciseOne = Exercise.builder().equipment(FOAM_ROLL).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(jetPacks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(jetPacks).build();
 
         Exercise nonWarmUpExerciseTwo = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(morningKicks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(morningKicks).build();
 
         workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne, warmUpExerciseTwo, nonWarmUpExerciseOne, nonWarmUpExerciseTwo);
 
@@ -86,22 +86,22 @@ public class WorkoutViewModelTest {
         String uberWalks = "uber walks";
 
         Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(10.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(10.0).workout(hyperRocks).build();
 
         Exercise warmUpExerciseTwo = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(10.0).workout(lowTides).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(10.0).workout(lowTides).build();
 
         Exercise warmUpExerciseThree = Exercise.builder().equipment(FOAM_ROLL).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(10.0).workout(jetPacks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(10.0).workout(jetPacks).build();
 
         Exercise warmUpExerciseFour = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(10.0).workout(morningKicks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(10.0).workout(morningKicks).build();
 
         Exercise warmUpExerciseFive = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(10.0).workout(starDays).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(10.0).workout(starDays).build();
 
         Exercise warmUpExerciseSix = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(10.0).workout(uberWalks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(10.0).workout(uberWalks).build();
 
         workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne, warmUpExerciseTwo,
                 warmUpExerciseThree, warmUpExerciseFour, warmUpExerciseFive, warmUpExerciseSix);
@@ -120,13 +120,13 @@ public class WorkoutViewModelTest {
         String hyperRocks = "hyper rocks";
 
         Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(hyperRocks).build();
 
         workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne);
 
         String warmUpRoutine = workoutViewModel.warmUpRoutine();
 
-        assertTrue(warmUpRoutine.contains(": 2 sets of 10 reps\n\n"));
+        assertTrue(warmUpRoutine.contains(": 2 sets of 10 reps"));
     }
 
     @Test
@@ -147,7 +147,7 @@ public class WorkoutViewModelTest {
 
         String warmUpRoutine = workoutViewModel.warmUpRoutine();
 
-        assertFalse(warmUpRoutine.contains(": 2 sets of 10 reps\nRest for 15 seconds in between each set\n\n"));
+        assertFalse(warmUpRoutine.contains(": 2 sets of 10 reps"));
     }
 
     @Test
@@ -195,6 +195,40 @@ public class WorkoutViewModelTest {
     }
 
     @Test
+    public void warmUpRoutine_noDuplicateWorkouts() throws Exception {
+        Intent intent = getInitialIntent();
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        String hyperRocks = "hyper rocks";
+
+        Exercise warmUpExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+
+        workoutViewModel.filteredExercises = newArrayList(warmUpExercise);
+
+        String warmUpRoutine = workoutViewModel.warmUpRoutine();
+
+        assertFalse(warmUpRoutine.replaceFirst(hyperRocks, "").contains(hyperRocks));
+    }
+
+    @Test
+    public void warmUpRoutine_alternateSides() throws Exception {
+        String hyperRocks = "hyper rocks";
+
+        Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).alternateSide(true).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+
+        workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne);
+
+        String warmUpRoutine = workoutViewModel.warmUpRoutine();
+
+        assertTrue(warmUpRoutine.contains("(5 reps each side)"));
+    }
+
+    @Test
     public void coolOffWorkoutVisibility_ifWorkoutRoutineIsLessThanOrEqualTo40Minutes_thenCoolOffWorkoutShouldBeGone() throws Exception {
         Intent intent = getInitialIntent();
         intent.putExtra(WORK_OUT_LENGTH, 40);
@@ -226,16 +260,16 @@ public class WorkoutViewModelTest {
         String morningKicks = "morning kicks";
 
         Exercise coolOffExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(hyperRocks).build();
 
         Exercise coolOffExerciseTwo = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(lowTides).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(lowTides).build();
 
         Exercise nonCoolOffExerciseOne = Exercise.builder().equipment(FOAM_ROLL).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(jetPacks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(jetPacks).build();
 
         Exercise nonCoolOffExerciseTwo = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(morningKicks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(morningKicks).build();
 
         workoutViewModel.filteredExercises = newArrayList(coolOffExerciseOne, coolOffExerciseTwo, nonCoolOffExerciseOne, nonCoolOffExerciseTwo);
 
@@ -255,22 +289,22 @@ public class WorkoutViewModelTest {
         String uberWalks = "uber walks";
 
         Exercise coolOffExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(10.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(10.0).workout(hyperRocks).build();
 
         Exercise coolOffExerciseTwo = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(10.0).workout(lowTides).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(10.0).workout(lowTides).build();
 
         Exercise coolOffExerciseThree = Exercise.builder().equipment(FOAM_ROLL).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(10.0).workout(jetPacks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(10.0).workout(jetPacks).build();
 
         Exercise coolOffExerciseFour = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(10.0).workout(morningKicks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(10.0).workout(morningKicks).build();
 
         Exercise coolOffExerciseFive = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(10.0).workout(starDays).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(10.0).workout(starDays).build();
 
         Exercise warmUpExerciseSix = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(10.0).workout(uberWalks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(10.0).workout(uberWalks).build();
 
         workoutViewModel.filteredExercises = newArrayList(coolOffExerciseOne, coolOffExerciseTwo,
                 coolOffExerciseThree, coolOffExerciseFour, coolOffExerciseFive, warmUpExerciseSix);
@@ -289,13 +323,13 @@ public class WorkoutViewModelTest {
         String hyperRocks = "hyper rocks";
 
         Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(hyperRocks).build();
 
         workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne);
 
         String coolOffRoutine = workoutViewModel.coolOffRoutine();
 
-        assertTrue(coolOffRoutine.contains(": 2 sets of 10 reps\n\n"));
+        assertTrue(coolOffRoutine.contains(": 2 sets of 10 reps"));
     }
 
     @Test
@@ -316,7 +350,7 @@ public class WorkoutViewModelTest {
 
         String coolOffRoutine = workoutViewModel.coolOffRoutine();
 
-        assertFalse(coolOffRoutine.contains(": 2 sets of 10 reps\nRest for 15 seconds in between each set\n\n"));
+        assertFalse(coolOffRoutine.contains(": 2 sets of 10 reps"));
     }
 
     @Test
@@ -340,17 +374,51 @@ public class WorkoutViewModelTest {
     }
 
     @Test
+    public void coolOffRoutine_noDuplicateWorkouts() throws Exception {
+        Intent intent = getInitialIntent();
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        String hyperRocks = "hyper rocks";
+
+        Exercise warmUpExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+
+        workoutViewModel.filteredExercises = newArrayList(warmUpExercise);
+
+        String coolOffRoutine = workoutViewModel.coolOffRoutine();
+
+        assertFalse(coolOffRoutine.replaceFirst(hyperRocks, "").contains(hyperRocks));
+    }
+
+    @Test
+    public void coolOffRoutine_alternateSides() throws Exception {
+        String hyperRocks = "hyper rocks";
+
+        Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).alternateSide(true).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+
+        workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne);
+
+        String coolOffRoutine = workoutViewModel.coolOffRoutine();
+
+        assertTrue(coolOffRoutine.contains("(5 reps each side)"));
+    }
+
+    @Test
     public void mainWorkoutRoutine_shouldContainTheAmountOfWorkouts() throws Exception {
         String hyperRocks = "hyper rocks";
 
         Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(hyperRocks).build();
 
         workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne);
 
         String mainWorkoutRoutine = workoutViewModel.mainWorkoutRoutine();
 
-        assertTrue(mainWorkoutRoutine.contains(": 3 sets of 10 reps\n\n"));
+        assertTrue(mainWorkoutRoutine.contains(": 3 sets of 10 reps"));
     }
 
     @Test
@@ -361,16 +429,16 @@ public class WorkoutViewModelTest {
         String morningKicks = "morning kicks";
 
         Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(hyperRocks).build();
 
         Exercise warmUpExerciseTwo = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(lowTides).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(lowTides).build();
 
         Exercise nonWarmUpExerciseOne = Exercise.builder().equipment(FOAM_ROLL).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(jetPacks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(jetPacks).build();
 
         Exercise nonWarmUpExerciseTwo = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(morningKicks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(morningKicks).build();
 
         workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne, warmUpExerciseTwo, nonWarmUpExerciseOne, nonWarmUpExerciseTwo);
 
@@ -392,28 +460,28 @@ public class WorkoutViewModelTest {
         String yolkers = "yolkers";
 
         Exercise mainExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(hyperRocks).build();
 
         Exercise mainExerciseTwo = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(lowTides).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(lowTides).build();
 
         Exercise mainExerciseThree = Exercise.builder().equipment(FOAM_ROLL).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(jetPacks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(jetPacks).build();
 
         Exercise mainExerciseFour = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(morningKicks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(morningKicks).build();
 
         Exercise mainExerciseFive = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(starDays).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(starDays).build();
 
         Exercise mainExerciseSix = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(uberWalks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(uberWalks).build();
 
         Exercise mainExerciseSeven = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(flybys).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(flybys).build();
 
         Exercise mainExerciseEight = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(yolkers).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(yolkers).build();
 
         workoutViewModel.filteredExercises = newArrayList(mainExerciseOne, mainExerciseTwo,
                 mainExerciseThree, mainExerciseFour, mainExerciseFive, mainExerciseSix, mainExerciseSeven, mainExerciseEight);
@@ -442,31 +510,31 @@ public class WorkoutViewModelTest {
         String fryers = "fryers";
 
         Exercise mainExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(hyperRocks).build();
 
         Exercise mainExerciseTwo = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(lowTides).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(lowTides).build();
 
         Exercise mainExerciseThree = Exercise.builder().equipment(FOAM_ROLL).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(jetPacks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(jetPacks).build();
 
         Exercise mainExerciseFour = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(morningKicks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(morningKicks).build();
 
         Exercise mainExerciseFive = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(starDays).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(starDays).build();
 
         Exercise mainExerciseSix = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(uberWalks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(uberWalks).build();
 
         Exercise mainExerciseSeven = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(flybys).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(flybys).build();
 
         Exercise mainExerciseEight = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(yolkers).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(yolkers).build();
 
         Exercise mainExerciseNine = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(3.0).workout(fryers).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(fryers).build();
 
         workoutViewModel.filteredExercises = newArrayList(mainExerciseOne, mainExerciseTwo,
                 mainExerciseThree, mainExerciseFour, mainExerciseFive, mainExerciseSix, mainExerciseSeven, mainExerciseEight, mainExerciseNine);
@@ -514,7 +582,7 @@ public class WorkoutViewModelTest {
         String hyperRocks = "hyper rocks";
 
         Exercise nonCoolOffExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(hyperRocks).build();
 
         workoutViewModel.filteredExercises = newArrayList(nonCoolOffExercise);
 
@@ -524,43 +592,17 @@ public class WorkoutViewModelTest {
     }
 
     @Test
-    public void warmUpRoutine_noDuplicateWorkouts() throws Exception {
-        Intent intent = getInitialIntent();
-
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
-
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
-
+    public void mainWorkout_alternateSides() throws Exception {
         String hyperRocks = "hyper rocks";
 
-        Exercise warmUpExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+        Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
+                .bodyFocus(ABDOMINALS).alternateSide(true).averageSecondsPerRep(5.0).workout(hyperRocks).build();
 
-        workoutViewModel.filteredExercises = newArrayList(warmUpExercise);
+        workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne);
 
-        String warmUpRoutine = workoutViewModel.warmUpRoutine();
+        String mainWorkoutRoutine = workoutViewModel.mainWorkoutRoutine();
 
-        assertFalse(warmUpRoutine.replaceFirst(hyperRocks, "").contains(hyperRocks));
-    }
-
-    @Test
-    public void coolOffRoutine_noDuplicateWorkouts() throws Exception {
-        Intent intent = getInitialIntent();
-
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
-
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
-
-        String hyperRocks = "hyper rocks";
-
-        Exercise warmUpExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
-
-        workoutViewModel.filteredExercises = newArrayList(warmUpExercise);
-
-        String coolOffRoutine = workoutViewModel.coolOffRoutine();
-
-        assertFalse(coolOffRoutine.replaceFirst(hyperRocks, "").contains(hyperRocks));
+        assertTrue(mainWorkoutRoutine.contains("(5 reps each side)"));
     }
 
     @NonNull

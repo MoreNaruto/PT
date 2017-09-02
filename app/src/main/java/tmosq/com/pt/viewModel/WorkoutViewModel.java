@@ -73,7 +73,9 @@ public class WorkoutViewModel {
 
             lengthOfWorkout = lengthOfWorkout.subtract(estimatedTimeToDoWorkoutCycle(currentExercise));
             stringBuilder.append(currentExercise.getWorkout())
-                    .append(": 3 sets of 10 reps\n\n");
+                    .append(": 3 sets of 10 reps ")
+                    .append(generateAlternateSideRepetitionString(currentExercise))
+                    .append("\n\n");
         }
         return stringBuilder.toString();
     }
@@ -100,11 +102,19 @@ public class WorkoutViewModel {
                 numberOfExercises--;
 
                 minutesForCoolOffAndWarmUpRegiment = minutesForCoolOffAndWarmUpRegiment.subtract(estimatedTimeToDoCoolOffAndWarmUpExercise(currentExercise));
-                stringBuilder.append(currentExercise.getWorkout())
-                        .append(": 2 sets of 10 reps\n\n");
+                stringBuilder
+                        .append(currentExercise.getWorkout())
+                        .append(": 2 sets of 10 reps ")
+                        .append(generateAlternateSideRepetitionString(currentExercise))
+                        .append("\n\n");
             }
         }
         return stringBuilder.toString();
+    }
+
+    @NonNull
+    private String generateAlternateSideRepetitionString(Exercise currentExercise) {
+        return currentExercise.getAlternateSide() ? "(5 reps each side)" : "";
     }
 
     private BigDecimal estimatedTimeToDoCoolOffAndWarmUpExercise(Exercise currentExercise) {
