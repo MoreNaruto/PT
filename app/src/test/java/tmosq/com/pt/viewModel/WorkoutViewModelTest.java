@@ -167,27 +167,6 @@ public class WorkoutViewModelTest {
     }
 
     @Test
-    public void warmRoutine_ifWorkoutRoutineIsLessThanOrEqualTo40Minutes_thenWarmUpRoutineShouldNotExist() throws Exception {
-        Intent intent = getInitialIntent();
-        intent.putExtra(WORK_OUT_LENGTH, 40);
-
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
-
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
-
-        String hyperRocks = "hyper rocks";
-
-        Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
-
-        workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne);
-
-        String warmUpRoutine = workoutViewModel.warmUpRoutine();
-
-        assertFalse(warmUpRoutine.contains(": 2 sets of 10 reps"));
-    }
-
-    @Test
     public void warmUpRoutine_ifNoCoolOffOrWarmUpRoutineExists_thenDisplayCoolOffAndWarmUpRoutineAreNotAvailableMessage() throws Exception {
         Intent intent = getInitialIntent();
 
@@ -406,27 +385,6 @@ public class WorkoutViewModelTest {
     }
 
     @Test
-    public void coolOffRoutine_ifWarmUpRoutineIsLessThanOrEqualTo45Minutes_thenWarmUpRoutineShouldNotExist() throws Exception {
-        Intent intent = getInitialIntent();
-        intent.putExtra(WORK_OUT_LENGTH, 40);
-
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
-
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
-
-        String hyperRocks = "hyper rocks";
-
-        Exercise coolOffExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
-
-        workoutViewModel.filteredExercises = newArrayList(coolOffExercise);
-
-        String coolOffRoutine = workoutViewModel.coolOffRoutine();
-
-        assertFalse(coolOffRoutine.contains(": 2 sets of 10 reps"));
-    }
-
-    @Test
     public void coolOffRoutine_ifNoCoolOffOrWarmUpRoutineExists_thenDisplayCoolOffAndWarmUpRoutineAreNotAvailableMessage() throws Exception {
         Intent intent = getInitialIntent();
 
@@ -437,7 +395,7 @@ public class WorkoutViewModelTest {
         String hyperRocks = "hyper rocks";
 
         Exercise nonCoolOffExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(hyperRocks).build();
 
         workoutViewModel.filteredExercises = newArrayList(nonCoolOffExercise);
 
@@ -604,10 +562,10 @@ public class WorkoutViewModelTest {
                 .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(flybys).build();
 
         Exercise mainExerciseEight = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(yolkers).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(6.0).workout(yolkers).build();
 
         Exercise mainExerciseNine = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout(fryers).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(6.0).workout(fryers).build();
 
         workoutViewModel.filteredExercises = newArrayList(mainExerciseOne, mainExerciseTwo,
                 mainExerciseThree, mainExerciseFour, mainExerciseFive, mainExerciseSix, mainExerciseSeven, mainExerciseEight, mainExerciseNine);
@@ -635,7 +593,7 @@ public class WorkoutViewModelTest {
         String hyperRocks = "hyper rocks";
 
         Exercise nonCoolOffExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout(hyperRocks).build();
+                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout(hyperRocks).build();
 
         workoutViewModel.filteredExercises = newArrayList(nonCoolOffExercise);
 

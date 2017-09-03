@@ -13,7 +13,6 @@ import tmosq.com.pt.helper.ExerciseSplitter;
 import tmosq.com.pt.model.Exercise;
 
 import static java.math.BigDecimal.ONE;
-import static java.math.BigDecimal.TEN;
 import static java.math.BigDecimal.ZERO;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
 
@@ -66,7 +65,7 @@ public class WorkoutViewModel {
             return "There are no exercises that meet this criteria";
         }
 
-        BigDecimal lengthOfWorkout = BigDecimal.valueOf(workOutLength).subtract(TEN);
+        BigDecimal lengthOfWorkout = BigDecimal.valueOf(workOutLength).subtract(timeOfWarmUpOrCoolOff().multiply(BigDecimal.valueOf(2.0)));
 
         while (lengthOfWorkout.compareTo(ZERO) == 1 && !filteredOutWarmUpAndCoolOffExercises.isEmpty()) {
             final int randomIndex = random.nextInt(numberOfExercises);
@@ -86,31 +85,28 @@ public class WorkoutViewModel {
     @NonNull
     private String getWarmUpAndCoolOffRoutine() {
         StringBuilder stringBuilder = new StringBuilder();
-        BigDecimal lengthOfWorkout = BigDecimal.valueOf(workOutLength);
 
-        if (lengthOfWorkout.compareTo(BigDecimal.valueOf(MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF)) == 1) {
-            List<Exercise> filteredWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, true);
-            int numberOfExercises = filteredWarmUpAndCoolOffExercises.size();
+        List<Exercise> filteredWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, true);
+        int numberOfExercises = filteredWarmUpAndCoolOffExercises.size();
 
-            if (filteredWarmUpAndCoolOffExercises.isEmpty()) {
-                return "There are no cool offs/warm up exercises that meet this criteria";
-            }
+        if (filteredWarmUpAndCoolOffExercises.isEmpty()) {
+            return "There are no cool offs/warm up exercises that meet this criteria";
+        }
 
-            BigDecimal minutesForCoolOffAndWarmUpRegiment = timeOfWarmUpOrCoolOff();
+        BigDecimal minutesForCoolOffAndWarmUpRegiment = timeOfWarmUpOrCoolOff();
 
-            while (minutesForCoolOffAndWarmUpRegiment.compareTo(ZERO) == 1 && !filteredWarmUpAndCoolOffExercises.isEmpty()) {
-                final int randomIndex = random.nextInt(numberOfExercises);
-                Exercise currentExercise = filteredWarmUpAndCoolOffExercises.get(randomIndex);
-                filteredWarmUpAndCoolOffExercises.remove(randomIndex);
-                numberOfExercises--;
+        while (minutesForCoolOffAndWarmUpRegiment.compareTo(ZERO) == 1 && !filteredWarmUpAndCoolOffExercises.isEmpty()) {
+            final int randomIndex = random.nextInt(numberOfExercises);
+            Exercise currentExercise = filteredWarmUpAndCoolOffExercises.get(randomIndex);
+            filteredWarmUpAndCoolOffExercises.remove(randomIndex);
+            numberOfExercises--;
 
-                minutesForCoolOffAndWarmUpRegiment = minutesForCoolOffAndWarmUpRegiment.subtract(estimatedTimeToDoCoolOffAndWarmUpExercise(currentExercise));
-                stringBuilder
-                        .append(currentExercise.getWorkout())
-                        .append(": 2 sets of 10 reps ")
-                        .append(generateAlternateSideRepetitionString(currentExercise))
-                        .append("\n\n");
-            }
+            minutesForCoolOffAndWarmUpRegiment = minutesForCoolOffAndWarmUpRegiment.subtract(estimatedTimeToDoCoolOffAndWarmUpExercise(currentExercise));
+            stringBuilder
+                    .append(currentExercise.getWorkout())
+                    .append(": 2 sets of 10 reps ")
+                    .append(generateAlternateSideRepetitionString(currentExercise))
+                    .append("\n\n");
         }
         return stringBuilder.toString();
     }
@@ -120,7 +116,7 @@ public class WorkoutViewModel {
         BigDecimal timeOfTypicalFullWorkout = BigDecimal.valueOf(60.0);
         BigDecimal timeOfTypicalWarmUpAndCoolOff = BigDecimal.valueOf(10.0);
 
-        return ONE.multiply(timeOfFullWorkout).multiply(timeOfTypicalWarmUpAndCoolOff).divide(timeOfTypicalFullWorkout, 3, 1).divide(BigDecimal.valueOf(2.0), 2 ,1);
+        return ONE.multiply(timeOfFullWorkout).multiply(timeOfTypicalWarmUpAndCoolOff).divide(timeOfTypicalFullWorkout, 3, 1).divide(BigDecimal.valueOf(2.0), 2, 1);
     }
 
     @NonNull
