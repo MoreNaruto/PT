@@ -24,6 +24,7 @@ public class WorkoutViewModel {
     private static final Double SECONDS_TO_REST_FOR_COOL_OFF_AND_WARM_UP_WORKOUT = 15.0 / 60.0;
     private static final Double PADDING_TIME = 2.0;
     private static final int MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF = 40;
+    public static final int WORKOUT_LENGTH_IS_GREATER_THAN_ZERO = 1;
     private final ExerciseFilter exerciseFilter;
     private final int workOutLength;
 
@@ -67,7 +68,7 @@ public class WorkoutViewModel {
 
         BigDecimal lengthOfWorkout = BigDecimal.valueOf(workOutLength).subtract(timeOfWarmUpOrCoolOff().multiply(BigDecimal.valueOf(2.0)));
 
-        while (lengthOfWorkout.compareTo(ZERO) == 1 && !filteredOutWarmUpAndCoolOffExercises.isEmpty()) {
+        while (lengthOfWorkout.compareTo(ZERO) == WORKOUT_LENGTH_IS_GREATER_THAN_ZERO && !filteredOutWarmUpAndCoolOffExercises.isEmpty()) {
             final int randomIndex = random.nextInt(numberOfExercises);
             Exercise currentExercise = filteredOutWarmUpAndCoolOffExercises.get(randomIndex);
             filteredOutWarmUpAndCoolOffExercises.remove(randomIndex);
@@ -95,7 +96,7 @@ public class WorkoutViewModel {
 
         BigDecimal minutesForCoolOffAndWarmUpRegiment = timeOfWarmUpOrCoolOff();
 
-        while (minutesForCoolOffAndWarmUpRegiment.compareTo(ZERO) == 1 && !filteredWarmUpAndCoolOffExercises.isEmpty()) {
+        while (minutesForCoolOffAndWarmUpRegiment.compareTo(ZERO) == WORKOUT_LENGTH_IS_GREATER_THAN_ZERO && !filteredWarmUpAndCoolOffExercises.isEmpty()) {
             final int randomIndex = random.nextInt(numberOfExercises);
             Exercise currentExercise = filteredWarmUpAndCoolOffExercises.get(randomIndex);
             filteredWarmUpAndCoolOffExercises.remove(randomIndex);
