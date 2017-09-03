@@ -60,13 +60,13 @@ public class ExerciseFilterTest {
     @Test
     public void filterExercises_whenDifficultyIsAdvanced_allDifficultiesAreValid() throws Exception {
         Exercise basicExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise intermediateExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise advancedExercise = Exercise.builder().equipment(CHAIR).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         ArrayList<Exercise> exercises = newArrayList(basicExercise, intermediateExercise, advancedExercise);
 
@@ -87,13 +87,13 @@ public class ExerciseFilterTest {
         exerciseFilter = new ExerciseFilter(workoutActivity.getIntent());
 
         Exercise basicExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise intermediateExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise advancedExercise = Exercise.builder().equipment(CHAIR).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         ArrayList<Exercise> exercises = newArrayList(basicExercise, intermediateExercise, advancedExercise);
 
@@ -114,13 +114,13 @@ public class ExerciseFilterTest {
         exerciseFilter = new ExerciseFilter(workoutActivity.getIntent());
 
         Exercise basicExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise intermediateExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise advancedExercise = Exercise.builder().equipment(CHAIR).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         ArrayList<Exercise> exercises = newArrayList(basicExercise, intermediateExercise, advancedExercise);
 
@@ -134,16 +134,16 @@ public class ExerciseFilterTest {
     @Test
     public void filterExercises_filterOutExercisesThatRequireExcludedEquipment() throws Exception {
         Exercise bandExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise chairExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise foamRollExercise = Exercise.builder().equipment(FOAM_ROLL).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise bicycleExercise = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         ArrayList<Exercise> exercises = newArrayList(bandExercise, chairExercise, foamRollExercise, bicycleExercise);
 
@@ -158,16 +158,16 @@ public class ExerciseFilterTest {
     @Test
     public void filterExercises_filterOutWorkOutTypeNotIncludedInTheWorkOutRegiment() throws Exception {
         Exercise bodyExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise powerWeightExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(POWER_WEIGHT).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise weightedMovementExercise = Exercise.builder().equipment(CHAIR).difficulty(ADVANCED).workOutType(WEIGHTED_MOVEMENTS).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise warmUpAndCoolOffMovementExercise = Exercise.builder().equipment(CHAIR).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         ArrayList<Exercise> exercises = newArrayList(bodyExercise, powerWeightExercise, weightedMovementExercise, warmUpAndCoolOffMovementExercise);
 
@@ -182,16 +182,16 @@ public class ExerciseFilterTest {
     @Test
     public void filterExercises_filterOutExercisesThatAreNotFocusedOnTheListedBodyParts() throws Exception {
         Exercise abdominalExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise bicepExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(BICEPS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(BICEPS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise abductorExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(ABDUCTORS).averageSecondsPerRep(5.0).build();
+                .bodyFocus(ABDUCTORS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         Exercise calvesExercise = Exercise.builder().equipment(CHAIR).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
-                .bodyFocus(CALVES).averageSecondsPerRep(5.0).build();
+                .bodyFocus(CALVES).partnerNeeded(false).averageSecondsPerRep(5.0).build();
 
         ArrayList<Exercise> exercises = newArrayList(abdominalExercise, abductorExercise, bicepExercise, calvesExercise);
 
