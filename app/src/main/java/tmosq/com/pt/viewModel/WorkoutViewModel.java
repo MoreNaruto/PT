@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -24,13 +25,14 @@ public class WorkoutViewModel {
     private static final Double SECONDS_TO_REST_FOR_COOL_OFF_AND_WARM_UP_WORKOUT = 15.0 / 60.0;
     private static final Double PADDING_TIME = 2.0;
     private static final int MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF = 40;
-    public static final int WORKOUT_LENGTH_IS_GREATER_THAN_ZERO = 1;
+    private static final int WORKOUT_LENGTH_IS_GREATER_THAN_ZERO = 1;
     private final ExerciseFilter exerciseFilter;
     private final int workOutLength;
 
-    protected List<Exercise> filteredExercises;
+    List<Exercise> filteredExercises;
     private final Intent intent;
     private final Random random;
+    private List<Exercise> filteredWarmUpAndCoolOffExercises;
 
     public WorkoutViewModel(WorkoutActivity workoutActivity) {
         intent = workoutActivity.getIntent();
@@ -39,6 +41,7 @@ public class WorkoutViewModel {
 
         random = new Random();
         workOutLength = intent.getIntExtra(WORK_OUT_LENGTH, 60);
+        filteredWarmUpAndCoolOffExercises = new ArrayList<>();
     }
 
     public int warmUpWorkoutVisibility() {
@@ -59,26 +62,17 @@ public class WorkoutViewModel {
 
     public String mainWorkoutRoutine() {
         StringBuilder stringBuilder = new StringBuilder();
-        List<Exercise> filteredOutWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, false);
-        int numberOfExercises = filteredOutWarmUpAndCoolOffExercises.size();
+        filteredWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, false);
 
-        if (filteredOutWarmUpAndCoolOffExercises.isEmpty()) {
+        if (filteredWarmUpAndCoolOffExercises.isEmpty()) {
             return "There are no exercises that meet this criteria";
         }
 
-        BigDecimal lengthOfWorkout = BigDecimal.valueOf(workOutLength).subtract(timeOfWarmUpOrCoolOff().multiply(BigDecimal.valueOf(2.0)));
+        BigDecimal lengthOfWorkout = BigDecimal.valueOf(workOutLength)
+                .subtract(timeOfWarmUpOrCoolOff().multiply(BigDecimal.valueOf(2.0)));
 
-        while (lengthOfWorkout.compareTo(ZERO) == WORKOUT_LENGTH_IS_GREATER_THAN_ZERO && !filteredOutWarmUpAndCoolOffExercises.isEmpty()) {
-            final int randomIndex = random.nextInt(numberOfExercises);
-            Exercise currentExercise = filteredOutWarmUpAndCoolOffExercises.get(randomIndex);
-            filteredOutWarmUpAndCoolOffExercises.remove(randomIndex);
-            numberOfExercises--;
-
-            lengthOfWorkout = lengthOfWorkout.subtract(estimatedTimeToDoWorkoutCycle(currentExercise));
-            stringBuilder.append(currentExercise.getWorkout())
-                    .append(": 3 sets of 10 reps ")
-                    .append(generateAlternateSideRepetitionString(currentExercise))
-                    .append("\n\n");
+        while (lengthOfWorkout.compareTo(ZERO) == WORKOUT_LENGTH_IS_GREATER_THAN_ZERO && !filteredWarmUpAndCoolOffExercises.isEmpty()) {
+            lengthOfWorkout = remainingTimeOfRegiment(stringBuilder, lengthOfWorkout, false, ": 3 sets of 10 reps");
         }
         return stringBuilder.toString();
     }
@@ -87,29 +81,43 @@ public class WorkoutViewModel {
     private String getWarmUpAndCoolOffRoutine() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        List<Exercise> filteredWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, true);
-        int numberOfExercises = filteredWarmUpAndCoolOffExercises.size();
+        filteredWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, true);
 
         if (filteredWarmUpAndCoolOffExercises.isEmpty()) {
             return "There are no cool offs/warm up exercises that meet this criteria";
         }
 
-        BigDecimal minutesForCoolOffAndWarmUpRegiment = timeOfWarmUpOrCoolOff();
+        BigDecimal remainingTimeOfWarmUpAndCoolOffRegiment = timeOfWarmUpOrCoolOff();
 
-        while (minutesForCoolOffAndWarmUpRegiment.compareTo(ZERO) == WORKOUT_LENGTH_IS_GREATER_THAN_ZERO && !filteredWarmUpAndCoolOffExercises.isEmpty()) {
-            final int randomIndex = random.nextInt(numberOfExercises);
-            Exercise currentExercise = filteredWarmUpAndCoolOffExercises.get(randomIndex);
-            filteredWarmUpAndCoolOffExercises.remove(randomIndex);
-            numberOfExercises--;
-
-            minutesForCoolOffAndWarmUpRegiment = minutesForCoolOffAndWarmUpRegiment.subtract(estimatedTimeToDoCoolOffAndWarmUpExercise(currentExercise));
-            stringBuilder
-                    .append(currentExercise.getWorkout())
-                    .append(": 2 sets of 10 reps ")
-                    .append(generateAlternateSideRepetitionString(currentExercise))
-                    .append("\n\n");
+        while (remainingTimeOfWarmUpAndCoolOffRegiment.compareTo(ZERO) == WORKOUT_LENGTH_IS_GREATER_THAN_ZERO && !filteredWarmUpAndCoolOffExercises.isEmpty()) {
+            remainingTimeOfWarmUpAndCoolOffRegiment = remainingTimeOfRegiment(
+                    stringBuilder,
+                    remainingTimeOfWarmUpAndCoolOffRegiment,
+                    true,
+                    ": 2 sets of 10 reps ");
         }
         return stringBuilder.toString();
+    }
+
+    private BigDecimal remainingTimeOfRegiment(StringBuilder stringBuilder,
+                                               BigDecimal minutesForCoolOffAndWarmUpRegiment,
+                                               Boolean isEstimatingTimeForCoolOff,
+                                               String exerciseRepsAndSets) {
+        final int randomIndex = random.nextInt(filteredWarmUpAndCoolOffExercises.size());
+        Exercise currentExercise = filteredWarmUpAndCoolOffExercises.get(randomIndex);
+        filteredWarmUpAndCoolOffExercises.remove(randomIndex);
+
+        minutesForCoolOffAndWarmUpRegiment = minutesForCoolOffAndWarmUpRegiment
+                .subtract(isEstimatingTimeForCoolOff ?
+                        estimatedTimeToDoCoolOffAndWarmUpExercise(currentExercise) :
+                        estimatedTimeToDoWorkoutCycle(currentExercise));
+
+        stringBuilder
+                .append(currentExercise.getWorkout())
+                .append(exerciseRepsAndSets)
+                .append(generateAlternateSideRepetitionString(currentExercise))
+                .append("\n\n");
+        return minutesForCoolOffAndWarmUpRegiment;
     }
 
     private BigDecimal timeOfWarmUpOrCoolOff() {
