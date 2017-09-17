@@ -252,6 +252,30 @@ public class ExerciseFilterTest {
     }
 
     @Test
+    public void filterForSpecificBodyFocus_filterOutAllWorkoutsNotFocusedOnTheParticularBodyPart() throws Exception {
+        Exercise abdominalExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+
+        Exercise anotherAbdominalExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(POWER_WEIGHT).forTime(false)
+                .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).build();
+
+        Exercise abductorExercise = Exercise.builder().equipment(CHAIR).difficulty(INTERMEDIATE).workOutType(POWER_WEIGHT).forTime(false)
+                .bodyFocus(ABDUCTORS).averageSecondsPerRep(5.0).build();
+
+        Exercise calvesExercise = Exercise.builder().equipment(CHAIR).difficulty(ADVANCED).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(CALVES).averageSecondsPerRep(5.0).build();
+
+        ArrayList<Exercise> exercises = newArrayList(abdominalExercise, abductorExercise, anotherAbdominalExercise, calvesExercise);
+
+        List<Exercise> filteredExercises = exerciseFilter.filterForSpecificBodyFocus(exercises, ABDOMINALS);
+
+        assertTrue(filteredExercises.contains(abdominalExercise));
+        assertTrue(filteredExercises.contains(anotherAbdominalExercise));
+        assertFalse(filteredExercises.contains(abductorExercise));
+        assertFalse(filteredExercises.contains(calvesExercise));
+    }
+
+    @Test
     public void filterPartnerExercises_whenUserDoesNotHavePartner_filterOutPartnerExercises() throws Exception {
         Exercise abdominalExerciseWithPartnerNeeded = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(BODY).forTime(false)
                 .bodyFocus(ABDOMINALS).partnerNeeded(true).averageSecondsPerRep(5.0).build();

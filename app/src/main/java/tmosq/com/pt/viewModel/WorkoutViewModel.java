@@ -4,14 +4,19 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.View;
 
+import com.google.gson.Gson;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import tmosq.com.pt.activity.WorkoutActivity;
 import tmosq.com.pt.helper.ExerciseSplitter;
 import tmosq.com.pt.model.Exercise;
+import tmosq.com.pt.model.exercise_support_enums.BodyFocus;
 
 import static java.math.BigDecimal.ONE;
 import static java.math.BigDecimal.ZERO;
@@ -32,7 +37,6 @@ public class WorkoutViewModel {
     List<Exercise> filteredExercises;
     private final Intent intent;
     private final Random random;
-    private List<Exercise> filteredWarmUpAndCoolOffExercises;
 
     public WorkoutViewModel(WorkoutActivity workoutActivity) {
         intent = workoutActivity.getIntent();
@@ -41,7 +45,6 @@ public class WorkoutViewModel {
 
         random = new Random();
         workOutLength = intent.getIntExtra(WORK_OUT_LENGTH, 60);
-        filteredWarmUpAndCoolOffExercises = new ArrayList<>();
     }
 
     public int warmUpWorkoutVisibility() {
@@ -61,27 +64,114 @@ public class WorkoutViewModel {
     }
 
     public String mainWorkoutRoutine() {
-        StringBuilder stringBuilder = new StringBuilder();
-        filteredWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, false);
+        List<Exercise> filteredOutWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, false);
 
-        if (filteredWarmUpAndCoolOffExercises.isEmpty()) {
+        if (filteredOutWarmUpAndCoolOffExercises.isEmpty()) {
             return "There are no exercises that meet this criteria";
         }
 
         BigDecimal lengthOfWorkout = BigDecimal.valueOf(workOutLength)
                 .subtract(timeOfWarmUpOrCoolOff().multiply(BigDecimal.valueOf(2.0)));
 
-        while (lengthOfWorkout.compareTo(ZERO) == WORKOUT_LENGTH_IS_GREATER_THAN_ZERO && !filteredWarmUpAndCoolOffExercises.isEmpty()) {
-            lengthOfWorkout = remainingTimeOfRegiment(stringBuilder, lengthOfWorkout, false, ": 3 sets of 10 reps");
+        List<String> activeBodyFocuses = new Gson().fromJson(intent.getStringExtra(ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES), List.class);
+        Map<String, List<Exercise>> bodyFocusExerciseMap = new HashMap<>();
+        Map<String, List<String>> bodyFocusExerciseRegimentMap = new HashMap<>();
+
+        createInitialBodyExerciseMapForActiveBodyFocuses(
+                filteredOutWarmUpAndCoolOffExercises,
+                activeBodyFocuses,
+                bodyFocusExerciseMap,
+                bodyFocusExerciseRegimentMap
+        );
+
+        int bodyFocusIndex = 0;
+        while (lengthOfWorkout.compareTo(ZERO) == WORKOUT_LENGTH_IS_GREATER_THAN_ZERO && !bodyFocusExerciseMap.isEmpty()) {
+            if (bodyFocusIndex >= activeBodyFocuses.size()) {
+                bodyFocusIndex = 0;
+            }
+
+            while (!bodyFocusExerciseMap.isEmpty() && bodyFocusExerciseMap.get(activeBodyFocuses.get(bodyFocusIndex)).size() == 0) {
+                bodyFocusExerciseMap.remove(activeBodyFocuses.get(bodyFocusIndex));
+                activeBodyFocuses.remove(bodyFocusIndex);
+            }
+
+            if (bodyFocusExerciseMap.isEmpty()){
+                break;
+            }
+
+            Exercise exerciseForSpecificBodyFocus = generateExerciseForSpecificBodyFocus(
+                    bodyFocusIndex,
+                    activeBodyFocuses,
+                    bodyFocusExerciseMap,
+                    bodyFocusExerciseRegimentMap
+            );
+
+            lengthOfWorkout = remainingTimeOfRegiment(lengthOfWorkout, false, exerciseForSpecificBodyFocus);
+
+            bodyFocusIndex++;
+        }
+        List<String> activeBodyFocusesRightNow = new Gson().fromJson(intent.getStringExtra(ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES), List.class);
+
+        return generateFullWorkout(activeBodyFocuses, bodyFocusExerciseRegimentMap);
+    }
+
+    private String generateFullWorkout(List<String> activeBodyFocuses, Map<String, List<String>> bodyFocusExerciseRegimentMap) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String activeBodyFocusString : activeBodyFocuses) {
+            List<String> allWorkoutsForSpecificBodyFocus = bodyFocusExerciseRegimentMap.get(activeBodyFocusString);
+            for (String workoutForSpecificBodyFocus : allWorkoutsForSpecificBodyFocus) {
+                stringBuilder.append(workoutForSpecificBodyFocus);
+            }
         }
         return stringBuilder.toString();
+    }
+
+    private void createInitialBodyExerciseMapForActiveBodyFocuses(List<Exercise> filteredOutWarmUpAndCoolOffExercises, List<String> activeBodyFocuses, Map<String, List<Exercise>> bodyFocusExerciseMap, Map<String, List<String>> bodyFocusExerciseRegimentMap) {
+        List<String> initialActiveBodyFocuses = new ArrayList<>(activeBodyFocuses);
+        for (String activeBodyFocusString : initialActiveBodyFocuses) {
+            List<Exercise> bodyFocusExercises = exerciseFilter.filterForSpecificBodyFocus(filteredOutWarmUpAndCoolOffExercises, BodyFocus.fromString(activeBodyFocusString));
+            if (bodyFocusExercises.isEmpty()) {
+                activeBodyFocuses.remove(activeBodyFocusString);
+            } else {
+                bodyFocusExerciseMap.put(activeBodyFocusString, bodyFocusExercises);
+                bodyFocusExerciseRegimentMap.put(activeBodyFocusString, new ArrayList<String>());
+            }
+        }
+    }
+
+    @NonNull
+    private Exercise generateExerciseForSpecificBodyFocus(int bodyFocusIndex,
+                                                          List<String> activeBodyFocuses,
+                                                          Map<String, List<Exercise>> bodyFocusExerciseMap,
+                                                          Map<String, List<String>> bodyFocusExerciseRegimentMap) {
+        Exercise currentExercise = getBodyFocusExercise(bodyFocusIndex, activeBodyFocuses, bodyFocusExerciseMap);
+        String exerciseRegiment = currentExercise.getWorkout() +
+                ": 3 sets of 10 reps" +
+                generateAlternateSideRepetitionString(currentExercise) +
+                "\n\n";
+
+        List<String> existingExerciseRegiment = bodyFocusExerciseRegimentMap.get(activeBodyFocuses.get(bodyFocusIndex));
+        existingExerciseRegiment.add(exerciseRegiment);
+
+        bodyFocusExerciseRegimentMap.put(activeBodyFocuses.get(bodyFocusIndex), existingExerciseRegiment);
+        return currentExercise;
+    }
+
+    private Exercise getBodyFocusExercise(int bodyFocusIndex, List<String> activeBodyFocuses, Map<String, List<Exercise>> bodyFocusExerciseMap) {
+        List<Exercise> bodyFocusExercises = bodyFocusExerciseMap.get(activeBodyFocuses.get(bodyFocusIndex));
+
+        final int randomIndex = random.nextInt(bodyFocusExercises.size());
+        Exercise currentExercise = bodyFocusExercises.get(randomIndex);
+        bodyFocusExercises.remove(randomIndex);
+        bodyFocusExerciseMap.put(activeBodyFocuses.get(bodyFocusIndex), bodyFocusExercises);
+        return currentExercise;
     }
 
     @NonNull
     private String getWarmUpAndCoolOffRoutine() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        filteredWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, true);
+        List<Exercise> filteredWarmUpAndCoolOffExercises = exerciseFilter.filterWarmUpAndCoolOffExercises(filteredExercises, true);
 
         if (filteredWarmUpAndCoolOffExercises.isEmpty()) {
             return "There are no cool offs/warm up exercises that meet this criteria";
@@ -90,33 +180,34 @@ public class WorkoutViewModel {
         BigDecimal remainingTimeOfWarmUpAndCoolOffRegiment = timeOfWarmUpOrCoolOff();
 
         while (remainingTimeOfWarmUpAndCoolOffRegiment.compareTo(ZERO) == WORKOUT_LENGTH_IS_GREATER_THAN_ZERO && !filteredWarmUpAndCoolOffExercises.isEmpty()) {
+            final int randomIndex = random.nextInt(filteredWarmUpAndCoolOffExercises.size());
+            Exercise currentExercise = filteredWarmUpAndCoolOffExercises.get(randomIndex);
+            filteredWarmUpAndCoolOffExercises.remove(randomIndex);
+
             remainingTimeOfWarmUpAndCoolOffRegiment = remainingTimeOfRegiment(
-                    stringBuilder,
                     remainingTimeOfWarmUpAndCoolOffRegiment,
                     true,
-                    ": 2 sets of 10 reps ");
+                    currentExercise);
+
+            stringBuilder
+                    .append(currentExercise.getWorkout())
+                    .append(": 2 sets of 10 reps")
+                    .append(generateAlternateSideRepetitionString(currentExercise))
+                    .append("\n\n");
         }
         return stringBuilder.toString();
     }
 
-    private BigDecimal remainingTimeOfRegiment(StringBuilder stringBuilder,
-                                               BigDecimal minutesForCoolOffAndWarmUpRegiment,
+    private BigDecimal remainingTimeOfRegiment(BigDecimal minutesForCoolOffAndWarmUpRegiment,
                                                Boolean isEstimatingTimeForCoolOff,
-                                               String exerciseRepsAndSets) {
-        final int randomIndex = random.nextInt(filteredWarmUpAndCoolOffExercises.size());
-        Exercise currentExercise = filteredWarmUpAndCoolOffExercises.get(randomIndex);
-        filteredWarmUpAndCoolOffExercises.remove(randomIndex);
+                                               Exercise currentExercise) {
+
 
         minutesForCoolOffAndWarmUpRegiment = minutesForCoolOffAndWarmUpRegiment
                 .subtract(isEstimatingTimeForCoolOff ?
                         estimatedTimeToDoCoolOffAndWarmUpExercise(currentExercise) :
                         estimatedTimeToDoWorkoutCycle(currentExercise));
 
-        stringBuilder
-                .append(currentExercise.getWorkout())
-                .append(exerciseRepsAndSets)
-                .append(generateAlternateSideRepetitionString(currentExercise))
-                .append("\n\n");
         return minutesForCoolOffAndWarmUpRegiment;
     }
 
@@ -125,7 +216,10 @@ public class WorkoutViewModel {
         BigDecimal timeOfTypicalFullWorkout = BigDecimal.valueOf(60.0);
         BigDecimal timeOfTypicalWarmUpAndCoolOff = BigDecimal.valueOf(10.0);
 
-        return ONE.multiply(timeOfFullWorkout).multiply(timeOfTypicalWarmUpAndCoolOff).divide(timeOfTypicalFullWorkout, 3, 1).divide(BigDecimal.valueOf(2.0), 2, 1);
+        return ONE.multiply(timeOfFullWorkout)
+                .multiply(timeOfTypicalWarmUpAndCoolOff)
+                .divide(timeOfTypicalFullWorkout, 3, 1)
+                .divide(BigDecimal.valueOf(2.0), 2, 1);
     }
 
     @NonNull

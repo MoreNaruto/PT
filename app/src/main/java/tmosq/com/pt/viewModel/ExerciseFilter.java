@@ -25,10 +25,10 @@ import static tmosq.com.pt.model.exercise_support_enums.Difficulty.INTERMEDIATE;
 import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.WARM_UP_AND_COOL_OFF;
 
 public class ExerciseFilter {
-    protected Intent intent;
+    private Intent intent;
     private Gson gson;
 
-    public ExerciseFilter(Intent intent) {
+    ExerciseFilter(Intent intent) {
         this.intent = intent;
         this.gson = new Gson();
     }
@@ -48,11 +48,21 @@ public class ExerciseFilter {
         return new ArrayList<>(filteredExercises);
     }
 
-    public List<Exercise> filterWarmUpAndCoolOffExercises(List<Exercise> exercises, final Boolean isFilteringInWarmUpsAndCoolOffs) {
+    List<Exercise> filterWarmUpAndCoolOffExercises(List<Exercise> exercises, final Boolean isFilteringInWarmUpsAndCoolOffs) {
         Collection<Exercise> filteredExercises = Collections2.filter(exercises, new Predicate<Exercise>() {
             @Override
             public boolean apply(Exercise exercise) {
                 return filteringWarmUpsAndCoolOffs(exercise.getWorkOutType(), isFilteringInWarmUpsAndCoolOffs);
+            }
+        });
+        return new ArrayList<>(filteredExercises);
+    }
+
+    List<Exercise> filterForSpecificBodyFocus(List<Exercise> exercises, final BodyFocus bodyFocus) {
+        Collection<Exercise> filteredExercises = Collections2.filter(exercises, new Predicate<Exercise>() {
+            @Override
+            public boolean apply(Exercise exercise) {
+                return exercise.getBodyFocus().equals(bodyFocus);
             }
         });
         return new ArrayList<>(filteredExercises);
@@ -101,7 +111,7 @@ public class ExerciseFilter {
             return false;
         }
 
-        List<String> activeBodyFocuses = gson.fromJson(intent.getStringExtra(ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES), List.class);
+        List activeBodyFocuses = gson.fromJson(intent.getStringExtra(ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES), List.class);
         return activeBodyFocuses.contains(bodyFocus.getBodyPartNameAlias());
     }
 
