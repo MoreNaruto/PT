@@ -19,6 +19,7 @@ import tmosq.com.pt.model.Exercise;
 import tmosq.com.pt.model.exercise_support_enums.BodyFocus;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -249,6 +250,24 @@ public class WorkoutViewModelTest {
     }
 
     @Test
+    public void warmUpRoutine_whenWorkoutLengthIsLessThanOrEqualToForty_returnABlankString() throws Exception {
+        Intent intent = getInitialIntent();
+        intent.putExtra(WORK_OUT_LENGTH, 35);
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).alternateSide(true).averageSecondsPerRep(5.0).workout("hyperRocks").build();
+
+        workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne);
+
+
+        assertThat(workoutViewModel.warmUpRoutine()).isEqualTo("");
+    }
+
+    @Test
     public void coolOffWorkoutVisibility_ifWorkoutRoutineIsLessThanOrEqualTo40Minutes_thenCoolOffWorkoutShouldBeGone() throws Exception {
         Intent intent = getInitialIntent();
         intent.putExtra(WORK_OUT_LENGTH, 40);
@@ -440,6 +459,24 @@ public class WorkoutViewModelTest {
         String coolOffRoutine = workoutViewModel.coolOffRoutine();
 
         assertTrue(coolOffRoutine.contains("(5 reps each side)"));
+    }
+
+    @Test
+    public void coolOffRoutine_whenWorkoutLengthIsLessThanOrEqualToForty_returnABlankString() throws Exception {
+        Intent intent = getInitialIntent();
+        intent.putExtra(WORK_OUT_LENGTH, 35);
+
+        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+
+        workoutViewModel = new WorkoutViewModel(workoutActivity);
+
+        Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
+                .bodyFocus(ABDOMINALS).alternateSide(true).averageSecondsPerRep(5.0).workout("hyperRocks").build();
+
+        workoutViewModel.filteredExercises = newArrayList(warmUpExerciseOne);
+
+
+        assertThat(workoutViewModel.coolOffRoutine()).isEqualTo("");
     }
 
     @Test

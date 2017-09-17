@@ -18,6 +18,8 @@ import tmosq.com.pt.helper.ExerciseSplitter;
 import tmosq.com.pt.model.Exercise;
 import tmosq.com.pt.model.exercise_support_enums.BodyFocus;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 import static java.math.BigDecimal.ONE;
 import static java.math.BigDecimal.ZERO;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
@@ -48,11 +50,11 @@ public class WorkoutViewModel {
     }
 
     public int warmUpWorkoutVisibility() {
-        return workOutLength > MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF ? View.VISIBLE : View.GONE;
+        return workOutLength > MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF ? VISIBLE : GONE;
     }
 
     public int coolOffWorkoutVisibility() {
-        return workOutLength > MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF ? View.VISIBLE : View.GONE;
+        return workOutLength > MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF ? VISIBLE : GONE;
     }
 
     public String warmUpRoutine() {
@@ -73,26 +75,28 @@ public class WorkoutViewModel {
         BigDecimal lengthOfWorkout = BigDecimal.valueOf(workOutLength)
                 .subtract(timeOfWarmUpOrCoolOff().multiply(BigDecimal.valueOf(2.0)));
 
-        List<String> activeBodyFocuses = new Gson().fromJson(intent.getStringExtra(ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES), List.class);
+        List<String> chosenBodyFocuses = new Gson().fromJson(intent.getStringExtra(ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES), List.class);
         Map<String, List<Exercise>> bodyFocusExerciseMap = new HashMap<>();
         Map<String, List<String>> bodyFocusExerciseRegimentMap = new HashMap<>();
+        List<String> bodyFocusesWithExercises = new ArrayList<>();
 
         createInitialBodyExerciseMapForActiveBodyFocuses(
                 filteredOutWarmUpAndCoolOffExercises,
-                activeBodyFocuses,
+                chosenBodyFocuses,
                 bodyFocusExerciseMap,
                 bodyFocusExerciseRegimentMap
         );
 
         int bodyFocusIndex = 0;
         while (lengthOfWorkout.compareTo(ZERO) == WORKOUT_LENGTH_IS_GREATER_THAN_ZERO && !bodyFocusExerciseMap.isEmpty()) {
-            if (bodyFocusIndex >= activeBodyFocuses.size()) {
+            if (bodyFocusIndex >= chosenBodyFocuses.size()) {
                 bodyFocusIndex = 0;
             }
 
-            while (!bodyFocusExerciseMap.isEmpty() && bodyFocusExerciseMap.get(activeBodyFocuses.get(bodyFocusIndex)).size() == 0) {
-                bodyFocusExerciseMap.remove(activeBodyFocuses.get(bodyFocusIndex));
-                activeBodyFocuses.remove(bodyFocusIndex);
+            while (!bodyFocusExerciseMap.isEmpty() && bodyFocusExerciseMap.get(chosenBodyFocuses.get(bodyFocusIndex)).size() == 0) {
+                bodyFocusExerciseMap.remove(chosenBodyFocuses.get(bodyFocusIndex));
+                bodyFocusesWithExercises.add(chosenBodyFocuses.get(bodyFocusIndex));
+                chosenBodyFocuses.remove(bodyFocusIndex);
             }
 
             if (bodyFocusExerciseMap.isEmpty()){
@@ -101,7 +105,7 @@ public class WorkoutViewModel {
 
             Exercise exerciseForSpecificBodyFocus = generateExerciseForSpecificBodyFocus(
                     bodyFocusIndex,
-                    activeBodyFocuses,
+                    chosenBodyFocuses,
                     bodyFocusExerciseMap,
                     bodyFocusExerciseRegimentMap
             );
@@ -110,9 +114,8 @@ public class WorkoutViewModel {
 
             bodyFocusIndex++;
         }
-        List<String> activeBodyFocusesRightNow = new Gson().fromJson(intent.getStringExtra(ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES), List.class);
 
-        return generateFullWorkout(activeBodyFocuses, bodyFocusExerciseRegimentMap);
+        return generateFullWorkout(bodyFocusesWithExercises, bodyFocusExerciseRegimentMap);
     }
 
     private String generateFullWorkout(List<String> activeBodyFocuses, Map<String, List<String>> bodyFocusExerciseRegimentMap) {
@@ -212,6 +215,9 @@ public class WorkoutViewModel {
     }
 
     private BigDecimal timeOfWarmUpOrCoolOff() {
+        if (workOutLength <= MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF ){
+            return ZERO;
+        }
         BigDecimal timeOfFullWorkout = BigDecimal.valueOf(workOutLength);
         BigDecimal timeOfTypicalFullWorkout = BigDecimal.valueOf(60.0);
         BigDecimal timeOfTypicalWarmUpAndCoolOff = BigDecimal.valueOf(10.0);
