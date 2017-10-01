@@ -87,6 +87,18 @@ public class WorkoutViewModel {
                 bodyFocusExerciseRegimentMap
         );
 
+        workoutRegimentForSpecificBodyFocus(
+                lengthOfWorkout,
+                chosenBodyFocuses,
+                bodyFocusExerciseMap,
+                bodyFocusExerciseRegimentMap,
+                bodyFocusesWithExercises
+        );
+
+        return generateFullWorkout(bodyFocusesWithExercises, bodyFocusExerciseRegimentMap);
+    }
+
+    private void workoutRegimentForSpecificBodyFocus(BigDecimal lengthOfWorkout, List<String> chosenBodyFocuses, Map<String, List<Exercise>> bodyFocusExerciseMap, Map<String, List<String>> bodyFocusExerciseRegimentMap, List<String> bodyFocusesWithExercises) {
         int bodyFocusIndex = 0;
         while (lengthOfWorkout.compareTo(ZERO) == WORKOUT_LENGTH_IS_GREATER_THAN_ZERO && !bodyFocusExerciseMap.isEmpty()) {
             if (bodyFocusIndex >= chosenBodyFocuses.size()) {
@@ -114,8 +126,6 @@ public class WorkoutViewModel {
 
             bodyFocusIndex++;
         }
-
-        return generateFullWorkout(bodyFocusesWithExercises, bodyFocusExerciseRegimentMap);
     }
 
     private String generateFullWorkout(List<String> activeBodyFocuses, Map<String, List<String>> bodyFocusExerciseRegimentMap) {
@@ -180,6 +190,11 @@ public class WorkoutViewModel {
             return "There are no cool offs/warm up exercises that meet this criteria";
         }
 
+        createWarmUpAndCoolOffWorkoutRegiment(stringBuilder, filteredWarmUpAndCoolOffExercises);
+        return stringBuilder.toString();
+    }
+
+    private void createWarmUpAndCoolOffWorkoutRegiment(StringBuilder stringBuilder, List<Exercise> filteredWarmUpAndCoolOffExercises) {
         BigDecimal remainingTimeOfWarmUpAndCoolOffRegiment = timeOfWarmUpOrCoolOff();
 
         while (remainingTimeOfWarmUpAndCoolOffRegiment.compareTo(ZERO) == WORKOUT_LENGTH_IS_GREATER_THAN_ZERO && !filteredWarmUpAndCoolOffExercises.isEmpty()) {
@@ -198,7 +213,6 @@ public class WorkoutViewModel {
                     .append(generateAlternateSideRepetitionString(currentExercise))
                     .append("\n\n");
         }
-        return stringBuilder.toString();
     }
 
     private BigDecimal remainingTimeOfRegiment(BigDecimal minutesForCoolOffAndWarmUpRegiment,
