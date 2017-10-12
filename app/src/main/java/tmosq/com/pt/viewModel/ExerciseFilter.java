@@ -17,7 +17,9 @@ import tmosq.com.pt.model.exercise_support_enums.Difficulty;
 import tmosq.com.pt.model.exercise_support_enums.Equipment;
 import tmosq.com.pt.model.exercise_support_enums.WorkOutType;
 
+import static tmosq.com.pt.helper.ExerciseSplitter.*;
 import static tmosq.com.pt.helper.ExerciseSplitter.HAS_PARTNER;
+import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_DIFFICULTY;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.BASIC;
@@ -32,7 +34,6 @@ public class ExerciseFilter {
         this.intent = intent;
         this.gson = new Gson();
     }
-
 
     List<Exercise> filterExercises(List<Exercise> exercises) {
         Collection<Exercise> filteredExercises = Collections2.filter(exercises, new Predicate<Exercise>() {
@@ -93,7 +94,7 @@ public class ExerciseFilter {
             return false;
         }
 
-        List<String> excludedEquipments = gson.fromJson(intent.getStringExtra(ExerciseSplitter.LIST_OF_EXCLUDED_EQUIPMENT), List.class);
+        List<String> excludedEquipments = gson.fromJson(intent.getStringExtra(LIST_OF_EXCLUDED_EQUIPMENT), List.class);
         return !excludedEquipments.contains(equipment.getEquipmentNameAlias());
     }
 
@@ -111,7 +112,7 @@ public class ExerciseFilter {
             return false;
         }
 
-        List activeBodyFocuses = gson.fromJson(intent.getStringExtra(ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES), List.class);
+        List activeBodyFocuses = gson.fromJson(intent.getStringExtra(LIST_OF_ACTIVE_BODY_FOCUSES), List.class);
         return activeBodyFocuses.contains(bodyFocus.getBodyPartNameAlias());
     }
 
