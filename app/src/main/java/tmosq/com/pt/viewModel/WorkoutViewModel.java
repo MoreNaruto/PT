@@ -130,17 +130,6 @@ public class WorkoutViewModel {
         }
     }
 
-    private String generateFullWorkout(BodyFocusExercise bodyFocusExercise) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String activeBodyFocusString : bodyFocusExercise.getBodyFocusesWithExercises()) {
-            List<String> allWorkoutsForSpecificBodyFocus = bodyFocusExercise.getBodyFocusExerciseRegimentMap().get(activeBodyFocusString);
-            for (String workoutForSpecificBodyFocus : allWorkoutsForSpecificBodyFocus) {
-                stringBuilder.append(workoutForSpecificBodyFocus);
-            }
-        }
-        return stringBuilder.toString();
-    }
-
     private void createInitialBodyExerciseMapForActiveBodyFocuses(List<Exercise> filteredOutWarmUpAndCoolOffExercises, BodyFocusExercise bodyFocusExercise) {
         List<String> initialActiveBodyFocuses = new ArrayList<>(bodyFocusExercise.getChosenBodyFocuses());
         for (String activeBodyFocusString : initialActiveBodyFocuses) {
@@ -153,6 +142,17 @@ public class WorkoutViewModel {
                 bodyFocusExercise.getBodyFocusesWithExercises().add(activeBodyFocusString);
             }
         }
+    }
+
+    private String generateFullWorkout(BodyFocusExercise bodyFocusExercise) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String activeBodyFocusString : bodyFocusExercise.getBodyFocusesWithExercises()) {
+            List<String> allWorkoutsForSpecificBodyFocus = bodyFocusExercise.getBodyFocusExerciseRegimentMap().get(activeBodyFocusString);
+            for (String workoutForSpecificBodyFocus : allWorkoutsForSpecificBodyFocus) {
+                stringBuilder.append(workoutForSpecificBodyFocus);
+            }
+        }
+        return stringBuilder.toString();
     }
 
     @NonNull
