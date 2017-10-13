@@ -7,8 +7,10 @@ import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 
+import lombok.Getter;
 import tmosq.com.pt.R;
 
+@Getter
 public enum Equipment {
     BANDS("bands", R.id.bands_checkbox),
     BARBELL("barbell", R.id.barbell_checkbox),
@@ -23,7 +25,6 @@ public enum Equipment {
     KETTLEBELL("kettlebell", R.id.kettlebell_checkbox),
     MACHINE("machine", R.id.machine_checkbox),
     MEDICINE_BALL("medicine ball", R.id.medicine_ball_checkbox),
-    NONE("none", 0),
     PLATE("plate", R.id.plate_checkbox),
     RICKSHAW("rickshaw", R.id.rickshaw_checkbox),
     ROLLER("roller", R.id.roller_checkbox),
@@ -54,7 +55,7 @@ public enum Equipment {
         return null;
     }
 
-    public static Equipment fromResourceCheckBoxId(Integer resourceCheckBoxId){
+    public static Equipment fromResourceCheckBoxId(Integer resourceCheckBoxId) {
         if (resourceCheckBoxId != null) {
             for (Equipment equipment : Equipment.values()) {
                 if (resourceCheckBoxId.equals(equipment.resourceIdCheckBox)) {
@@ -63,10 +64,6 @@ public enum Equipment {
             }
         }
         return null;
-    }
-
-    public String getEquipmentNameAlias() {
-        return equipmentNameAlias;
     }
 
     public static class EquipmentDeserializer implements JsonDeserializer<Equipment> {

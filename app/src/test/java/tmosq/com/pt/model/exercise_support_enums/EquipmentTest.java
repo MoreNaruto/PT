@@ -22,7 +22,6 @@ public class EquipmentTest {
         assertEquals(Equipment.fromString("kettlebell"), Equipment.KETTLEBELL);
         assertEquals(Equipment.fromString("machine"), Equipment.MACHINE);
         assertEquals(Equipment.fromString("medicine ball"), Equipment.MEDICINE_BALL);
-        assertEquals(Equipment.fromString("none"), Equipment.NONE);
         assertEquals(Equipment.fromString("plate"), Equipment.PLATE);
         assertEquals(Equipment.fromString("rickshaw"), Equipment.RICKSHAW);
         assertEquals(Equipment.fromString("roller"), Equipment.ROLLER);
@@ -61,7 +60,6 @@ public class EquipmentTest {
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.kettlebell_checkbox), Equipment.KETTLEBELL);
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.machine_checkbox), Equipment.MACHINE);
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.medicine_ball_checkbox), Equipment.MEDICINE_BALL);
-        assertEquals(Equipment.fromResourceCheckBoxId(0), Equipment.NONE);
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.plate_checkbox), Equipment.PLATE);
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.rickshaw_checkbox), Equipment.RICKSHAW);
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.roller_checkbox), Equipment.ROLLER);
@@ -100,7 +98,6 @@ public class EquipmentTest {
         assertEquals(Equipment.KETTLEBELL.getEquipmentNameAlias(), "kettlebell");
         assertEquals(Equipment.MACHINE.getEquipmentNameAlias(), "machine");
         assertEquals(Equipment.MEDICINE_BALL.getEquipmentNameAlias(), "medicine ball");
-        assertEquals(Equipment.NONE.getEquipmentNameAlias(), "none");
         assertEquals(Equipment.PLATE.getEquipmentNameAlias(), "plate");
         assertEquals(Equipment.RICKSHAW.getEquipmentNameAlias(), "rickshaw");
         assertEquals(Equipment.ROLLER.getEquipmentNameAlias(), "roller");

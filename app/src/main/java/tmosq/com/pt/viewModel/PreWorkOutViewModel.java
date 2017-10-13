@@ -1,15 +1,18 @@
 package tmosq.com.pt.viewModel;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import tmosq.com.pt.R;
+import tmosq.com.pt.activity.PreWorkoutActivity;
 import tmosq.com.pt.activity.WorkoutActivity;
 import tmosq.com.pt.model.exercise_support_enums.BodyFocus;
 import tmosq.com.pt.model.exercise_support_enums.Difficulty;
@@ -24,21 +27,21 @@ import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 
 public class PreWorkOutViewModel {
-    private Context context;
+    private PreWorkoutActivity preWorkoutActivity;
     private Integer workOutLength;
     private String workOutDifficulty;
     private String workOutRegiment;
     private List<String> activeBodyFocuses;
-    private List<String> excludedEquipment;
+    private List<String> excludedEquipments;
     private Boolean hasPartner;
 
-    public PreWorkOutViewModel(Context context) {
-        this.context = context;
+    public PreWorkOutViewModel(PreWorkoutActivity preWorkoutActivity) {
+        this.preWorkoutActivity = preWorkoutActivity;
         workOutRegiment = WorkoutRegiment.CARDIO.getWorkOutRegimentNameAlias();
         workOutLength = 30;
         workOutDifficulty = Difficulty.BASIC.getDifficultyNameAlias();
         activeBodyFocuses = new ArrayList<>();
-        excludedEquipment = new ArrayList<>();
+        excludedEquipments = new ArrayList<>();
         hasPartner = false;
     }
 
@@ -78,9 +81,9 @@ public class PreWorkOutViewModel {
                 CheckBox equipmentCheckBox = (CheckBox) view;
                 String equipment = Equipment.fromResourceCheckBoxId(view.getId()).getEquipmentNameAlias();
                 if (equipmentCheckBox.isChecked()) {
-                    excludedEquipment.add(equipment);
+                    excludedEquipments.add(equipment);
                 } else {
-                    excludedEquipment.remove(equipment);
+                    excludedEquipments.remove(equipment);
                 }
             }
         };
@@ -101,14 +104,39 @@ public class PreWorkOutViewModel {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, WorkoutActivity.class);
+                Intent intent = new Intent(preWorkoutActivity, WorkoutActivity.class);
                 intent.putExtra(WORK_OUT_REGIMENT, workOutRegiment);
                 intent.putExtra(WORK_OUT_LENGTH, workOutLength.intValue());
                 intent.putExtra(WORK_OUT_DIFFICULTY, workOutDifficulty);
                 intent.putExtra(HAS_PARTNER, hasPartner);
-                intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(excludedEquipment));
+                intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(excludedEquipments));
                 intent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(activeBodyFocuses));
-                context.startActivity(intent);
+                preWorkoutActivity.startActivity(intent);
+            }
+        };
+    }
+
+    public View.OnClickListener clickSelectAllEquipmentCheckBox() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView textView = (TextView) view;
+
+                if (textView.getText().equals(preWorkoutActivity.getString(R.string.select_all))) {
+                    textView.setText(preWorkoutActivity.getString(R.string.unselect_all));
+                    for (Equipment equipment : Equipment.values()) {
+                        excludedEquipments.add(equipment.getEquipmentNameAlias());
+                        CheckBox checkBox = (CheckBox) preWorkoutActivity.findViewById(equipment.getResourceIdCheckBox());
+                        checkBox.setChecked(true);
+                    }
+                } else {
+                    textView.setText(preWorkoutActivity.getString(R.string.select_all));
+                    excludedEquipments.clear();
+                    for (Equipment equipment : Equipment.values()) {
+                        CheckBox checkBox = (CheckBox) preWorkoutActivity.findViewById(equipment.getResourceIdCheckBox());
+                        checkBox.setChecked(false);
+                    }
+                }
             }
         };
     }

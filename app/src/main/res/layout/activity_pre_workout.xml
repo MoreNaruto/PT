@@ -4,7 +4,6 @@
     tools:context="tmosq.com.pt.activity.PreWorkoutActivity">
 
     <data>
-
         <variable
             name="viewModel"
             type="tmosq.com.pt.viewModel.PreWorkOutViewModel" />
@@ -30,7 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/length_of_workout"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <Spinner
@@ -56,7 +55,7 @@
                     android:layout_height="wrap_content"
 
                     android:text="@string/focal_body_parts"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -344,7 +343,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/workout_difficulty"
-                    android:textSize="22sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <Spinner
                     android:id="@+id/workout_difficulty_dropdown_menu"
@@ -361,11 +361,29 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/equipment_accessibility"
-                    android:textSize="22sp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/equipment_accessibility"
+                        android:layout_marginEnd="20dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/select_all_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/hyperlinkColor"
+                        android:text="@string/select_all"
+                        android:textSize="16sp"
+                        android:onClick="@{viewModel.clickSelectAllEquipmentCheckBox}"/>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -763,7 +781,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/select_the_type_of_workout"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <Spinner
@@ -788,7 +806,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:text="@string/do_you_have_a_partner"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <CheckBox

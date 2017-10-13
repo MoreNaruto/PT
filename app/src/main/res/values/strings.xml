@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PT</string>
     <string name="length_of_workout">Select the length of the work.</string>
-    <string name="focal_body_parts">Choose the focal body parts</string>
+    <string name="focal_body_parts">Focal Body Parts</string>
     <string name="abdominals">Abdominals</string>
     <string name="abductors">Abductors</string>
     <string name="adductors">Adductors</string>
@@ -19,10 +19,10 @@
     <string name="shoulders">Shoulders</string>
     <string name="traps">Traps</string>
     <string name="triceps">Triceps</string>
-    <string name="workout_difficulty">How difficult should the workout be?</string>
+    <string name="workout_difficulty">Difficulty</string>
     <string name="bands">Bands</string>
     <string name="barbell">Barbell</string>
-    <string name="equipment_accessibility">Choose equipment you do not have</string>
+    <string name="equipment_accessibility">Equipment to Exclude</string>
     <string name="bicycle">Bicycle</string>
     <string name="cable">Cable</string>
     <string name="chair">Chair</string>
@@ -46,9 +46,11 @@
     <string name="make_workout">Make Workout</string>
     <string name="row">Row</string>
     <string name="stone">Stone</string>
-    <string name="select_the_type_of_workout">Select the type of workout</string>
+    <string name="select_the_type_of_workout">Workout Type</string>
+    <string name="select_all">Select all</string>
+    <string name="unselect_all">Unselect all</string>
     <string name="warm_up"><u>Warm Up</u></string>
     <string name="your_workout_for_today"><u>Your Workout for Today</u></string>
     <string name="cool_off"><u>Cool Off</u></string>
-    <string name="do_you_have_a_partner">Do you have a partner?</string>
+    <string name="do_you_have_a_partner">Partner Available</string>
 </resources>
