@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">PT</string>
-    <string name="length_of_workout">Select the length of the work.</string>
+    <string name="length_of_workout">Length of workout</string>
     <string name="focal_body_parts">Focal Body Parts</string>
     <string name="abdominals">Abdominals</string>
     <string name="abductors">Abductors</string>
