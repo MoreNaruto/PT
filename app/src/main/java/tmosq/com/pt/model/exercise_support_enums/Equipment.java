@@ -15,6 +15,7 @@ public enum Equipment {
     BANDS("bands", R.id.bands_checkbox),
     BARBELL("barbell", R.id.barbell_checkbox),
     BICYCLE("bicycle", R.id.bicycle_checkbox),
+    BOSU_BALL("bosu ball", R.id.bosu_ball),
     CABLE("cable", R.id.cable_checkbox),
     CHAIR("chair", R.id.chair_checkbox),
     CONES("cones", R.id.cones_checkbox),

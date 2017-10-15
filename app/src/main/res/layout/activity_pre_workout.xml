@@ -4,6 +4,7 @@
     tools:context="tmosq.com.pt.activity.PreWorkoutActivity">
 
     <data>
+
         <variable
             name="viewModel"
             type="tmosq.com.pt.viewModel.PreWorkOutViewModel" />
@@ -344,7 +345,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/workout_difficulty"
                     android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/workout_difficulty_dropdown_menu"
@@ -369,19 +370,19 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/equipment_accessibility"
                         android:layout_marginEnd="20dp"
+                        android:text="@string/equipment_accessibility"
                         android:textSize="18sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/select_all_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textColor="@color/hyperlinkColor"
+                        android:onClick="@{viewModel.clickSelectAllEquipmentCheckBox}"
                         android:text="@string/select_all"
-                        android:textSize="16sp"
-                        android:onClick="@{viewModel.clickSelectAllEquipmentCheckBox}"/>
+                        android:textColor="@color/hyperlinkColor"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -767,6 +768,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/workout_box" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/bosu_ball"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bosu_ball" />
                 </LinearLayout>
             </LinearLayout>
 
