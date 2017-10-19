@@ -2280,7 +2280,7 @@
     "type": "body",
     "workout": "PUSH-UPS WITH FEET ON AN EXERCISE BALL",
     "averageSecondPerRep": 3.5,
-    "forTime": false,
+    "forTime": false, 
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
@@ -2297,7 +2297,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Lie on the floor face down and body straight with your toes on the floor and the hands wider than shoulder width for a wide hand position and closer than shoulder width for a close hand position. Make sure you are holding your torso up at arms length.\n\n2. Lower yourself until your chest almost touches the floor as you inhale.\n\n3. Using your pectoral muscles, press your upper body back up to the starting position and squeeze your chest. Breathe out as you perform this step.\n\n4. After a second pause at the contracted position, repeat the movement for the prescribed amount of repetitions."
   },
   {
     "id": 178,
@@ -2309,7 +2310,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Assume a push-up position with your body straight, supported by your extended arms. Your hands should be outside of shoulder width. This will be your starting position.\n\n2. Initiate the movement by flexing the elbows and leaning to one side, lowering your torso to the ground.\n\n3. Return to the starting position by extending your elbows, pushing yourself back to center.\n\n4. On the next repetition lower yourself to the other side, again returning to the starting position after the rep is complete. Continue alternating until the set is finished."
   },
   {
     "id": 179,
@@ -2321,7 +2323,8 @@
     "partner": false,
     "alternatingSides": true,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Begin by moving the pulleys to the high position, select the resistance to be used, and take a handle in each hand.\n\n2. Step forward in front of both pulleys with your arms extended in front of you, bringing your hands together. Your head and chest should be up as you lean forward, while your feet should be staggered. This will be your starting position.\n\n3. Keeping your left arm in place, allow your right arm to extend out to the side, maintaining a slight bend at the elbow. The right arm should be perpendicular to the body at approximately shoulder level.\n\n4. Return your arm back to the starting position by pulling your hand back to the midline of the body.\n\n5. Hold for a second at the starting position and repeat the movement on the opposite side. Continue alternating back and forth for the prescribed number of repetitions."
   },
   {
     "id": 180,
@@ -2333,7 +2336,8 @@
     "partner": false,
     "alternatingSides": true,
     "difficulty": "advanced",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Begin laying prone on the ground. Move yourself into a position supporting your weight on your toes and one arm. Your working arm should be placed directly under the shoulder, fully extended. Your legs should be extended, and for this movement you may need a wider base, placing your feet further apart than in a normal push-up.\n\n2. Maintain good posture, and place your free hand behind your back. This will be your starting position.\n\n3. Lower yourself by allowing the elbow to flex until you touch the ground.\n\n4. Descend slowly, and reverse direction be extending the arm to return to the starting position."
   },
   {
     "id": 181,
@@ -2345,7 +2349,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "machine"
+    "equipment type": "machine",
+    "description": "1. Place a flat bench underneath the smith machine. Now place the barbell at a height that you can reach when lying down and your arms are almost fully extended. Once the weight you need is selected, lie down on the flat bench. Using a pronated grip that is wider than shoulder width, unlock the bar from the rack and hold it straight over you with your arms locked. This will be your starting position.\n\n2. As you breathe in, come down slowly until you feel the bar on your middle chest.\n\n3. After a second pause, bring the bar back to the starting position as you breathe out and push the bar using your chest muscles. Lock your arms in the contracted position, hold for a second and then start coming down slowly again. Tip: It should take at least twice as long to go down than to come up.\n\n4. Repeat the movement for the prescribed amount of repetitions.\n\n5. When you are done, lock the bar back in the rack."
   },
   {
     "id": 182,
@@ -2357,7 +2362,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "machine"
+    "equipment type": "machine",
+    "description": "1. Position a decline bench in the rack so that the bar will be above your chest. Load an appropriate weight and take your place on the bench.\n\n2. Rotate the bar to unhook it from the rack and fully extend your arms. Your back should be slightly arched and your shoulder blades retracted. This will be your starting position.\n\n3. Begin the movement by flexing your arms, lowering the bar to your chest.\n\n4. Pause briefly, and then extend your arms to push the weight back to the starting position.\n\n5. After completing the desired number of repetitions, rotate the bar to rack the weight."
   },
   {
     "id": 183,
@@ -2369,7 +2375,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "machine"
+    "equipment type": "machine",
+    "description": "1. Place an incline bench underneath the smith machine. Place the barbell at a height that you can reach when lying down and your arms are almost fully extended. Once the weight you need is selected, lie down on the incline bench and make sure your upper chest is aligned with the barbell. Using a pronated grip (palms facing forward) that is wider than shoulder width, unlock the bar from the rack and hold it straight over you with your arms locked. This will be your starting position.\n\n2. As you breathe in, come down slowly until you feel the bar on your upper chest.\n\n3. After a second pause, bring the bar back to the starting position as you breathe out and push the bar using your chest muscles. Lock your arms in the contracted position, hold for a second and then start coming down slowly again. Tip: It should take at least twice as long to go down than to come up.\n\n4. Repeat the movement for the prescribed amount of repetitions.\n\n5. When you are done, place the bar back in the rack."
   },
   {
     "id": 184,
@@ -2381,7 +2388,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Assume a prone position with your body straight, supported by your extended arms and your toes. Your hands should be outside of shoulder width but staggered, with one being higher than the other. This will be your starting position.\n\n2. Initiate the movement by flexing the elbows, lowering your torso to the ground. Do not allow your hips to rise or to sag.\n\n3. Pause at the bottom of the motion, and then extend at the elbows to return to the starting position.\n\n4. At the completion of this set, reverse your hand position for the next round."
   },
   {
     "id": 185,
@@ -2393,7 +2401,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Position dual pulleys to chest height and select an appropriate weight. Stand a foot or two in front of the cables, holding one in each hand. You can stagger your stance for better stability.\n\n2. Position the upper arm at a 90 degree angle with the shoulder blades together. This will be your starting position.\n\n3. Keeping the rest of the body stationary, extend through the elbows to press the handles forward, drawing them together in front of you.\n\n4. Pause at the top of the motion, and return to the starting position."
   },
   {
     "id": 186,
@@ -2405,7 +2414,8 @@
     "partner": false,
     "alternatingSides": true,
     "difficulty": "intermediate",
-    "equipment type": "dumbbell"
+    "equipment type": "dumbbell",
+    "description": "1. Place a dumbbell standing up on a flat bench.\n\n2. Ensuring that the dumbbell stays securely placed at the top of the bench, lie perpendicular to the bench (torso across it as in forming a cross) with only your shoulders lying on the surface. Hips should be below the bench and legs bent with feet firmly on the floor. The head will be off the bench as well.\n\n3. Grasp the dumbbell with both hands and hold it straight over your chest at arms length. Both palms should be pressing against the underside one of the sides of the dumbbell. This will be your starting position.\n\n4. While keeping your arms straight, lower the weight slowly in an arc behind your head while breathing in until you feel a stretch on the chest.\n\n5. At that point, bring the dumbbell back to the starting position using the arc through which the weight was lowered and exhale as you perform this movement.\n\n6. Hold the weight on the initial position for a second and repeat the motion for the prescribed number of repetitions."
   },
   {
     "id": 187,
@@ -2416,8 +2426,9 @@
     "forTime": false,
     "partner": false,
     "alternatingSides": false,
-    "difficulty": "intermediate",
-    "equipment type": "none"
+    "difficulty": "advanced",
+    "equipment type": "none",
+    "description": "1. As an optional advanced starting technique, fall forward from standing into a push-up position. Keep your core tight and body straight as your hands make contact with the ground.\n\n2. Otherwise, get in the top position of a push-up, with your arms extended, back and neck in a straight line, and core tight. This will be your starting position.\n\n3. Descend into the bottom position of a push-up with arms flexed to 90-degrees, back still straight, and core kept tight.\n\n4. Push upwards as powerfully as possible from both your hands and feet, propelling yourself upwards into the air. Both your hands and feet should lose contact with the ground. Extend your arms forward while in the air so that your body is in a straight line.\n\n5. Land back into a push-up position this is one repetition. Allow your momentum to carry you into the bottom position of a push-up and immediately transition into a second repetition.\n\n6. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 188,
@@ -2429,7 +2440,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Adjust the straps to an appropriate height. The lower the position the more difficult the movement will be.\n\n2. Lean into the handles with your arms out in front of you, bracing your feet against a stable object if necessary. Your body should be straight, spine neutral, and your arms extended and palms facing each other. This will be your starting position.\n\n3. Perform the exercise by allowing your arms to move laterally, away from the midline of the body, lowering your torso between the handles. The elbows may bend slightly during the movement. Pause when the upper arm is perpendicular to the torso, and then return to the starting position."
   },
   {
     "id": 189,
@@ -2441,7 +2453,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Anchor your suspension straps securely to the top of a rack or other object. Grab the handles with an overhand grip and set yourself up in a push-up position so that your body forms a straight line from your shoulders to your ankles. Your arms should be fully extended and your core tight to help maintain proper position.\n\n2. Maintaining a straight, ridged torso, descend slowly by allowing the elbows to flex.\n\n3. Continue until your elbows break 90 degrees, pausing before you extend to return to the starting position."
   },
   {
     "id": 190,
@@ -2453,7 +2466,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "kettlebell"
+    "equipment type": "kettlebell",
+    "description": "1. Stand erect with your chest out and shoulders back, maintaining the natural arch in your back. Your knees should be unlocked, feet hip-width apart.\n\n2. Press a pair of light-weight plates in place against each other isometrically in front of you with a palms-in/fingers forward grip about shoulder height.\n\n3. Extend your arms directly out in front of you in the same horizontal plane, then bring the plates back into your chest.\n\n4. Repeat for the required number of reps."
   },
   {
     "id": 191,
@@ -2465,7 +2479,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Begin in the top position of a push-up: arms extended, back and neck in a straight line, and core tight with your hands slightly wider than shoulder width. This will be your starting position.\n\n2. Lower yourself to a bottom push-up position with your chest slightly above the floor. Rock backwards by bringing your elbows back and forearms to the ground, pushing through your palms. Your hips may rise slightly as you move back. This is OK.\n\n3. Transition back to the bottom push-up position by rocking forward. Then, push up to the starting position. This is one repetition.\n\n4. Repeat for the recommended number of repetitions."
   },
   {
     "id": 192,
@@ -2477,7 +2492,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "advanced",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Get into the push-up position, keeping your body in a straight line. This will be your starting position.\n\n2. Descend and then explosively push upward plyometric style, elevating your upper body as high as you can off the floor. As you rise up, in a fluid but fast motion bring your hands together in front of you and clap. Continue the motion so that you're clapping behind your torso at the apex of the movement, then once again in front of you before re-setting your hands on the floor to catch yourself.\n\n3. Smoothly descend into the next rep and repeat."
   },
   {
     "id": 193,
@@ -2489,7 +2505,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Begin in the up position of a push-up: arms extended, back and neck in a straight line, and core tight. This will be your starting position.\n\n2. Descend into the bottom position of the push-up by flexing at the elbows into a 90-degree position.\n\n3. Lean (and shift your body weight) to one side by attempting to place your front deltoid on your palm. Simultaneously, extend your opposite arm into a straight line. Your bent arm may move slightly to accommodate your other arm fully extending. This is okay.\n\n4. Next, transition your weight to your opposite arm, repeating the same motions. Once completed, this is one repetition.\n\n5. Rock back and forth, and repeat for recommended number of repetitions."
   },
   {
     "id": 194,
@@ -2501,7 +2518,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "plate"
+    "equipment type": "plate",
+    "description": "1. Start by holding a plate with both hands at chest level. Lower yourself down into a kneeling position, and bring the plate behind your head. Take one hand off of the plate and bring it down to the floor to help support your body while you place the weight on your back. Extend your legs back so that you are in a full plank position. Once the plate feels secure on your back, bring your other arm down and place your hands about 36 inches apart. This part can be simplified by having a partner place the weight on your back. This will be your starting position.\n\n2. Lower yourself down until your chest almost touches the floor as you inhale. Next, breathe out and press your upper body back into the starting position.\n\n3. Repeat this pattern for the desired number of repetitions."
   },
   {
     "id": 195,
