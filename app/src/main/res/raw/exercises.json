@@ -2706,14 +2706,15 @@
   {
     "id": 209,
     "bodyFocus": "calves",
-    "type": "body",
+    "type": "warm-up/cool-off",
     "workout": "KNEE CIRCLES",
     "averageSecondPerRep": 3.0,
     "forTime": false,
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Stand with your legs together and hands by your waist.\n\n2. Now move your knees in a circular motion as you breathe normally.\n\n3. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 210,
@@ -2723,9 +2724,10 @@
     "averageSecondPerRep": 4.0,
     "forTime": false,
     "partner": false,
-    "alternatingSides": false,
+    "alternatingSides": true,
     "difficulty": "basic",
-    "equipment type": "bands"
+    "equipment type": "bands",
+    "description": "1. In a seated position, loop a belt, rope, or band around one foot. This will be your starting position.\n\n2. With the leg extended and the heel off of the ground, pull on the belt so that the foot is inverted, with the inside of the foot being pulled towards you. Hold for 10-20 seconds, and then switch sides."
   },
   {
     "id": 211,
@@ -2735,9 +2737,10 @@
     "averageSecondPerRep": 4.0,
     "forTime": false,
     "partner": false,
-    "alternatingSides": false,
+    "alternatingSides": true,
     "difficulty": "basic",
-    "equipment type": "foam roll"
+    "equipment type": "foam roll",
+    "description": "1. Lay on your side, supporting your weight on your forearm and on a foam roller placed on the outside of your lower leg. Your upper leg can either be on top of your lower leg, or you can cross it in front of you. This will be your starting position.\n\n2. Raise your hips off of the ground and begin to roll from below the knee to above the ankle on the side of your leg, pausing at points of tension for 10-30 seconds. Repeat on the other leg."
   },
   {
     "id": 212,
@@ -2747,9 +2750,10 @@
     "averageSecondPerRep": 4.0,
     "forTime": false,
     "partner": false,
-    "alternatingSides": false,
+    "alternatingSides": true,
     "difficulty": "basic",
-    "equipment type": "bands"
+    "equipment type": "bands",
+    "description": "1. In a seated position, loop a belt, rope, or band around one foot. This will be your starting position.\n\n2. With the leg extended and the heel off of the ground, pull on the belt so that the foot is everted, with the outside of the foot being pulled towards you. Hold for 10-20 seconds, and then switch sides."
   },
   {
     "id": 213,
@@ -2761,7 +2765,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "barbell"
+    "equipment type": "barbell",
+    "description": "1. This exercise is best performed inside a squat rack for safety purposes. To begin, first set the bar on a rack that best matches your height. Once the correct height is chosen and the bar is loaded, step under the bar and place it on the back of your shoulders (slightly below the neck).\n\n2. Hold on to the bar using both arms at each side and lift it off the rack by first pushing with your legs and at the same time straightening your torso.\n\n3. Step away from the rack and position your legs using a shoulder width medium stance with the toes slightly pointed out. Keep your head up at all times as looking down will get you off balance. Also maintain a straight back and keep the knees with a slight bend; never locked. This will be your starting position.\n\n4. Raise your heels as you breathe out by extending your ankles as high as possible and flexing your calf. Ensure that the knee is kept stationary at all times. There should be no bending (other than the slight initial bend we created during positioning) at any time. Hold the contracted position by a second before you start to go back down.\n\n5. Go back slowly to the starting position as you breathe in by lowering your heels as you bend the ankles until calves are stretched.\n\n6. Now lift your toes by contracting the tibia muscles in the front of the calves as you breathe out.\n\n7. Hold for a second and bring them back down as you breathe in.\n\n8. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 214,
@@ -2773,7 +2778,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "machine"
+    "equipment type": "machine",
+    "description": "1. Sit on the machine and place your toes on the lower portion of the platform provided with the heels extending off. Choose the toe positioning of your choice (forward, in, or out) as per the beginning of this chapter.\n\n2. Place your lower thighs under the lever pad, which will need to be adjusted according to the height of your thighs. Now place your hands on top of the lever pad in order to prevent it from slipping forward.\n\n3. Lift the lever slightly by pushing your heels up and release the safety bar. This will be your starting position.\n\n4. Slowly lower your heels by bending at the ankles until the calves are fully stretched. Inhale as you perform this movement.\n\n5. Raise the heels by extending the ankles as high as possible as you contract the calves and breathe out. Hold the top contraction for a second.\n\n6. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 215,
@@ -2785,7 +2791,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Sit up straight on an exercise mat.\n\n2. Bend one knee and put that foot on the floor to stabilize the torso.\n\n3. Straighten your other leg and flex your ankle.\n\n4. Using a band, towel, or your hand if you can reach, pull the toes toward you. Hold for 10 to 20 seconds, then switch sides."
   },
   {
     "id": 216,
@@ -2797,7 +2804,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "machine"
+    "equipment type": "machine",
+    "description": "1. Place a block or weight plate below the bar on the Smith machine. Set the bar to a position that best matches your height. Once the correct height is chosen and the bar is loaded, step onto the plates with the balls of your feet and place the bar on the back of your shoulders.\n\n2. Take the bar with both hands facing forward. Rotate the bar to unrack it. This will be your starting position.\n\n3. Raise your heels as high as possible by pushing off of the balls of your feet, flexing your calf at the top of the contraction. Your knees should remain extended. Hold the contracted position for a second before you start to go back down.\n\n4. Return slowly to the starting position as you breathe in while lowering your heels.\n\n5. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 217,
@@ -2809,7 +2817,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "machine"
+    "equipment type": "machine",
+    "description": "1. Adjust the barbell on the smith machine to fit your height and align a raised platform right under the bar.\n\n2. Stand on the platform with the heels of your feet secured on top of it with the balls of your feet extending off it. Position your toes facing forward with a shoulder width stance.\n\n3. Now, place your shoulders under the barbell while maintaining the foot positioning described and push the barbell up by extending your hips and knees until your torso is standing erect. The knees should be kept with a slight bend; never locked. This will be your starting position. Tip: The barbell on your back is only for balance purposes.\n\n4. Raise the balls of your feet as you breathe out by extending your toes as high as possible and flexing your calf. Ensure that the knee is kept stationary at all times. There should be no bending at any time. Hold the contracted position for a second before you start to go back down.\n\n5. Slowly go back down to the starting position as you breathe in by lowering the balls of your feet and toes.\n\n6. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 218,
@@ -2821,7 +2830,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "barbell"
+    "equipment type": "barbell",
+    "description": "1. This exercise is best performed inside a squat rack for safety purposes. To begin, first set the bar on a rack that best matches your height. Once the correct height is chosen and the bar is loaded, step under the bar and place the bar on the back of your shoulders (slightly below the neck).\n\n2. Hold on to the bar using both arms at each side and lift it off the rack by first pushing with your legs and at the same time straightening your torso.\n\n3. Step away from the rack and position your legs using a shoulder width medium stance with the toes slightly pointed out. Keep your head up at all times as looking down will get you off balance and also maintain a straight back. The knees should be kept with a slight bend; never locked. This will be your starting position. Tip: For better range of motion you may also place the ball of your feet on a wooden block but be careful as this option requires more balance and a sturdy block.\n\n4. Raise your heels as you breathe out by extending your ankles as high as possible and flexing your calf. Ensure that the knee is kept stationary at all times. There should be no bending at any time. Hold the contracted position by a second before you start to go back down.\n\n5. Go back slowly to the starting position as you breathe in by lowering your heels as you bend the ankles until calves are stretched.\n\n6. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 219,
@@ -2833,7 +2843,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "machine"
+    "equipment type": "machine",
+    "description": "1. Adjust the padded lever of the calf raise machine to fit your height.\n\n2. Place your shoulders under the pads provided and position your toes facing forward (or using any of the two other positions described at the beginning of the chapter). The balls of your feet should be secured on top of the calf block with the heels extending off it. Push the lever up by extending your hips and knees until your torso is standing erect. The knees should be kept with a slight bend; never locked. Toes should be facing forward, outwards or inwards as described at the beginning of the chapter. This will be your starting position.\n\n3. Raise your heels as you breathe out by extending your ankles as high as possible and flexing your calf. Ensure that the knee is kept stationary at all times. There should be no bending at any time. Hold the contracted position by a second before you start to go back down.\n\n4. Go back slowly to the starting position as you breathe in by lowering your heels as you bend the ankles until calves are stretched.\n\n5. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 220,
@@ -2845,7 +2856,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Place your right heel on a step with your knee extended and lean forward to grab your right toe with your right hand. Your left knee should be slightly bent and your back should be straight.\n\n2. Support your weight on your left leg and place your left hand on your left thigh.\n\n3. Pull your right toes toward your knee until you feel a stretch in your calf."
   },
   {
     "id": 221,
@@ -2857,7 +2869,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Stand with your feet hip-distance apart, one foot slightly in front of the other.\n\n2. Bend both knees, keeping your back heel on the floor. Switch sides."
   },
   {
     "id": 222,
@@ -2869,7 +2882,8 @@
     "partner": false,
     "alternatingSides": true,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Stand up with your torso upright and a dumbbell in each hand being held at arms length. The elbows should be close to the torso.\n\n2. The palms of the hands should be facing your torso. This will be your starting position.\n\n3. While holding the upper arm stationary, curl the right weight forward while contracting the biceps as you breathe out. Continue the movement until your biceps is fully contracted and the dumbbells are at shoulder level. Hold the contracted position for a second as you squeeze the biceps. Tip: Only the forearms should move.\n\n4. Slowly begin to bring the dumbbells back to starting position as your breathe in.\n\n5. Repeat the movement with the left hand. This equals one repetition.\n\n6. Continue alternating in this manner for the recommended amount of repetitions."
   },
   {
     "id": 223,
@@ -2881,7 +2895,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "dumbbell"
+    "equipment type": "dumbbell",
+    "description": "1. Sit down on an incline bench with a dumbbell in each hand being held at arms length. Tip: Keep the elbows close to the torso.This will be your starting position.\n\n2. While holding the upper arm stationary, curl the right weight forward while contracting the biceps as you breathe out. As you do so, rotate the hand so that the palm is facing up. Continue the movement until your biceps is fully contracted and the dumbbells are at shoulder level. Hold the contracted position for a second as you squeeze the biceps. Tip: Only the forearms should move.\n\n3. Slowly begin to bring the dumbbell back to starting position as your breathe in.\n\n4. Repeat the movement with the left hand. This equals one repetition.\n\n5. Continue alternating in this manner for the recommended amount of repetitions."
   },
   {
     "id": 224,
@@ -2893,7 +2908,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "barbell"
+    "equipment type": "barbell",
+    "description": "1. Stand up with your torso upright while holding a barbell at a shoulder-width grip. The palm of your hands should be facing forward and the elbows should be close to the torso. This will be your starting position.\n\n2. While holding the upper arms stationary, curl the weights forward while contracting the biceps as you breathe out. Tip: Only the forearms should move.\n\n3. Continue the movement until your biceps are fully contracted and the bar is at shoulder level. Hold the contracted position for a second and squeeze the biceps hard.\n\n4. Slowly begin to bring the bar back to starting position as your breathe in.\n\n5. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 225,
@@ -2905,7 +2921,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "barbell"
+    "equipment type": "barbell",
+    "description": "1. Lie against an incline bench, with your arms holding a barbell and hanging down in a horizontal line. This will be your starting position.\n\n2. While keeping the upper arms stationary, curl the weight up as high as you can while squeezing the biceps. Breathe out as you perform this portion of the movement. Tip: Only the forearms should move. Do not swing the arms.\n\n3. After a second contraction, slowly go back to the starting position as you inhale. Tip: Make sure that you go all of the way down.\n\n4. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 226,
@@ -2917,7 +2934,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "dumbbell"
+    "equipment type": "dumbbell",
+    "description": "1. Begin in a standing position with a dumbbell in each hand. Your arms should be hanging at your sides with your palms facing forward. Look directly ahead, keeping your chest up, with your feet shoulder-width apart. This will be your starting position.\n\n2. Initiate the movement by flexing the elbows to curl the weight. Do not use momentum or flex through the shoulder, instead use a controlled motion.\n\n3. Execute the pressing movement by extending the arm, flexing and abducting the shoulder to rotate the arm as you press above your head.\n\n4. Pause at the top of the motion before reversing the movement to return to the starting position. Complete the desired number of repetitions before switching to the opposite side."
   },
   {
     "id": 227,
@@ -2929,7 +2947,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Attach a rope attachment to a low pulley and stand facing the machine about 12 inches away from it.\n\n2. Grasp the rope with a neutral (palms-in) grip and stand straight up keeping the natural arch of the back and your torso stationary.\n\n3. Put your elbows in by your side and keep them there stationary during the entire movement. Tip: Only the forearms should move; not your upper arms. This will be your starting position.\n\n4. Using your biceps, pull your arms up as you exhale until your biceps touch your forearms. Tip: Remember to keep the elbows in and your upper arms stationary.\n\n5. After a 1 second contraction where you squeeze your biceps, slowly start to bring the weight back to the original position.\n\n6. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 228,
@@ -2941,7 +2960,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Place a preacher bench about 2 feet in front of a pulley machine.\n\n2. Attach a straight bar to the low pulley.\n\n3. Sit at the preacher bench with your elbow and upper arms firmly on top of the bench pad and have someone hand you the bar from the low pulley.\n\n4. Grab the bar and fully extend your arms on top of the preacher bench pad. This will be your starting position.\n\n5. Now start pilling the weight up towards your shoulders and squeeze the biceps hard at the top of the movement. Exhale as you perform this motion. Also, hold for a second at the top.\n\n6. Now slowly lower the weight to the starting position.\n\n7. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 229,
@@ -2953,7 +2973,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "barbell"
+    "equipment type": "barbell",
+    "description": "1. Stand up with your torso upright while holding an E-Z Curl Bar at the closer inner handle. The palm of your hands should be facing forward and they should be slightly tilted inwards due to the shape of the bar. The elbows should be close to the torso. This will be your starting position.\n\n2. While holding the upper arms stationary, curl the weights forward while contracting the biceps as you breathe out. Tip: Only the forearms should move.\n\n3. Continue the movement until your biceps are fully contracted and the bar is at shoulder level. Hold the contracted position for a second and squeeze the biceps hard.\n\n4. Slowly begin to bring the bar back to starting position as your breathe in.\n\n5. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 230,
@@ -2965,7 +2986,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "E-Z Curl Bar"
+    "equipment type": "E-Z Curl Bar",
+    "description": "1. Attach a band to each end of the bar. Take the bar, placing a foot on the middle of the band. Stand upright with a narrow, supinated grip on the EZ bar. The elbows should be close to the torso. This will be your starting position.\n\n2. While keeping the upper arms in place, flex the elbows to execute the curl. Exhale as the weight is lifted.\n\n3. Continue the movement until your biceps are fully contracted and the bar is at shoulder level. Hold the contracted position for a second and squeeze the biceps hard.\n\n4. Slowly begin to bring the bar back to starting position as your breathe in.\n\n5. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 231,
