@@ -19,15 +19,6 @@ import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 import tmosq.com.pt.viewModel.PreWorkOutViewModel;
 
 public class PreWorkoutActivity extends Activity {
-    @BindView(R.id.workout_length_dropdown_menu)
-    Spinner workoutLengthDropDownMenu;
-
-    @BindView(R.id.workout_difficulty_dropdown_menu)
-    Spinner workoutDifficultyDropDownMenu;
-
-    @BindView(R.id.workout_regiment_dropdown_menu)
-    Spinner workoutRegimentDropDownMenu;
-
     protected ActivityPreWorkoutBinding binding;
     protected PreWorkOutViewModel preWorkOutViewModel;
 
@@ -64,8 +55,8 @@ public class PreWorkoutActivity extends Activity {
                 workOutRegiment);
 
         staticAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        workoutRegimentDropDownMenu.setAdapter(staticAdapter);
-        workoutRegimentDropDownMenu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.workoutRegimentDropdownMenu.setAdapter(staticAdapter);
+        binding.workoutRegimentDropdownMenu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 preWorkOutViewModel.setWorkOutRegiment(workOutRegiment.get(position));
@@ -90,8 +81,8 @@ public class PreWorkoutActivity extends Activity {
                 difficultyValues);
 
         staticAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        workoutDifficultyDropDownMenu.setAdapter(staticAdapter);
-        workoutDifficultyDropDownMenu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.workoutDifficultyDropdownMenu.setAdapter(staticAdapter);
+        binding.workoutDifficultyDropdownMenu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 preWorkOutViewModel.setWorkOutDifficulty(difficultyValues.get(position));
@@ -113,8 +104,8 @@ public class PreWorkoutActivity extends Activity {
                 allottedLengthsOfTimes);
 
         staticAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        workoutLengthDropDownMenu.setAdapter(staticAdapter);
-        workoutLengthDropDownMenu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.workoutLengthDropdownMenu.setAdapter(staticAdapter);
+        binding.workoutLengthDropdownMenu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 preWorkOutViewModel.setWorkOutLength(allottedLengthsOfTimes[position]);
