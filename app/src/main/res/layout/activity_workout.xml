@@ -4,6 +4,7 @@
     tools:context="tmosq.com.pt.activity.WorkoutActivity">
 
     <data>
+
         <variable
             name="viewModel"
             type="tmosq.com.pt.viewModel.WorkoutViewModel" />
@@ -16,63 +17,83 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/warm_up_divider_text_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:background="@drawable/divider"
+                android:padding="10dp"
                 android:text="@string/warm_up"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:visibility="@{viewModel.warmUpWorkoutVisibility}" />
+                android:textColor="@color/dividerText"
+                android:visibility="@{viewModel.warmUpAndCoolOffListItemsVisibility}" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/warm_up_text_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="@{viewModel.warmUpRoutine}"
-                android:textSize="12sp"
-                android:visibility="@{viewModel.warmUpWorkoutVisibility}"
-                tools:text="Here are today's warmup" />
+                android:text="@string/empty_warm_and_cool_off_exercises"
+                android:visibility="@{viewModel.warmUpAndCoolOffEmptyVisibility}"
+                tools:text="@string/empty_warm_and_cool_off_exercises" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/warm_up_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:visibility="@{viewModel.warmUpAndCoolOffListItemsVisibility}" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/main_workout_divider_text_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="@string/your_workout_for_today"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:background="@drawable/divider"
+                android:padding="10dp"
+                android:text="@string/workout_divider_text"
+                android:textColor="@color/dividerText"
+                android:visibility="@{viewModel.warmUpAndCoolOffListItemsVisibility}" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/main_workout_text_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_margin="20dp"
-                android:text="@{viewModel.mainWorkoutRoutine}"
-                android:textSize="12sp"
-                tools:text="Workout of the day" />
+                android:text="@string/empty_warm_and_cool_off_exercises"
+                android:visibility="@{viewModel.mainWorkoutEmptyVisibility}"
+                tools:text="@string/empty_warm_and_cool_off_exercises" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/main_workout_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:visibility="@{viewModel.mainWorkoutListItemsVisibility}" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/cool_off_divider_text_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:background="@drawable/divider"
+                android:padding="10dp"
                 android:text="@string/cool_off"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:visibility="@{viewModel.coolOffWorkoutVisibility}" />
+                android:textColor="@color/dividerText"
+                android:visibility="@{viewModel.warmUpAndCoolOffListItemsVisibility}" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/cool_off_text_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="@{viewModel.coolOffRoutine}"
-                android:textSize="12sp"
-                android:visibility="@{viewModel.coolOffWorkoutVisibility}"
-                tools:text="Here are today's warmup" />
+                android:text="@string/empty_warm_and_cool_off_exercises"
+                android:visibility="@{viewModel.warmUpAndCoolOffEmptyVisibility}"
+                tools:text="@string/empty_warm_and_cool_off_exercises" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/cool_off_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                android:visibility="@{viewModel.warmUpAndCoolOffListItemsVisibility}" />
         </LinearLayout>
     </ScrollView>
 </layout>

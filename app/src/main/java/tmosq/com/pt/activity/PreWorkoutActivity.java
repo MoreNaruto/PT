@@ -6,12 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.ActivityPreWorkoutBinding;
 import tmosq.com.pt.model.exercise_support_enums.Difficulty;
@@ -31,7 +28,6 @@ public class PreWorkoutActivity extends Activity {
         binding.setViewModel(preWorkOutViewModel);
 
         setContentView(binding.getRoot());
-        ButterKnife.bind(this);
     }
 
     @Override

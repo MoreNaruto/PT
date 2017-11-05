@@ -54,7 +54,7 @@ public class PreWorkoutActivityTest {
                 R.layout.support_simple_spinner_dropdown_item,
                 difficultyValues);
 
-        assertThat(activity.workoutDifficultyDropDownMenu.getAdapter().getItem(0))
+        assertThat(activity.binding.workoutDifficultyDropdownMenu.getAdapter().getItem(0))
                 .isEqualTo(staticAdapter.getItem(0));
     }
 
@@ -64,9 +64,9 @@ public class PreWorkoutActivityTest {
 
         activity.preWorkOutViewModel = mock(PreWorkOutViewModel.class);
 
-        activity.workoutDifficultyDropDownMenu.setSelection(0);
-        activity.workoutDifficultyDropDownMenu.setSelection(1);
-        activity.workoutDifficultyDropDownMenu.setSelection(2);
+        activity.binding.workoutDifficultyDropdownMenu.setSelection(0);
+        activity.binding.workoutDifficultyDropdownMenu.setSelection(1);
+        activity.binding.workoutDifficultyDropdownMenu.setSelection(2);
 
         verify(activity.preWorkOutViewModel).setWorkOutDifficulty("basic");
         verify(activity.preWorkOutViewModel).setWorkOutDifficulty("intermediate");
@@ -87,7 +87,7 @@ public class PreWorkoutActivityTest {
                 R.layout.support_simple_spinner_dropdown_item,
                 workOutRegiment);
 
-        assertThat(activity.workoutRegimentDropDownMenu.getAdapter().getItem(0))
+        assertThat(activity.binding.workoutRegimentDropdownMenu.getAdapter().getItem(0))
                 .isEqualTo(staticAdapter.getItem(0));
     }
 
@@ -97,9 +97,9 @@ public class PreWorkoutActivityTest {
 
         activity.preWorkOutViewModel = mock(PreWorkOutViewModel.class);
 
-        activity.workoutRegimentDropDownMenu.setSelection(0);
-        activity.workoutRegimentDropDownMenu.setSelection(1);
-        activity.workoutRegimentDropDownMenu.setSelection(2);
+        activity.binding.workoutRegimentDropdownMenu.setSelection(0);
+        activity.binding.workoutRegimentDropdownMenu.setSelection(1);
+        activity.binding.workoutRegimentDropdownMenu.setSelection(2);
 
         verify(activity.preWorkOutViewModel).setWorkOutRegiment("cardio");
         verify(activity.preWorkOutViewModel).setWorkOutRegiment("cross fit");
@@ -116,7 +116,7 @@ public class PreWorkoutActivityTest {
                 R.layout.support_simple_spinner_dropdown_item,
                 allottedLengthsOfTimes);
 
-        assertThat(activity.workoutLengthDropDownMenu.getAdapter().getItem(0))
+        assertThat(activity.binding.workoutLengthDropdownMenu.getAdapter().getItem(0))
                 .isEqualTo(staticAdapter.getItem(0));
     }
 
@@ -125,13 +125,13 @@ public class PreWorkoutActivityTest {
         PreWorkoutActivity activity = activityController.create().start().get();
         activity.preWorkOutViewModel = mock(PreWorkOutViewModel.class);
 
-        activity.workoutLengthDropDownMenu.setSelection(0);
-        activity.workoutLengthDropDownMenu.setSelection(1);
-        activity.workoutLengthDropDownMenu.setSelection(2);
-        activity.workoutLengthDropDownMenu.setSelection(3);
-        activity.workoutLengthDropDownMenu.setSelection(4);
-        activity.workoutLengthDropDownMenu.setSelection(5);
-        activity.workoutLengthDropDownMenu.setSelection(6);
+        activity.binding.workoutLengthDropdownMenu.setSelection(0);
+        activity.binding.workoutLengthDropdownMenu.setSelection(1);
+        activity.binding.workoutLengthDropdownMenu.setSelection(2);
+        activity.binding.workoutLengthDropdownMenu.setSelection(3);
+        activity.binding.workoutLengthDropdownMenu.setSelection(4);
+        activity.binding.workoutLengthDropdownMenu.setSelection(5);
+        activity.binding.workoutLengthDropdownMenu.setSelection(6);
 
         verify(activity.preWorkOutViewModel).setWorkOutLength(30);
         verify(activity.preWorkOutViewModel).setWorkOutLength(45);

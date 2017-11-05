@@ -17,7 +17,7 @@ public class BodyFocusExercise {
 
     Map<String, List<Exercise>> bodyFocusExerciseMap;
 
-    Map<String, List<String>> bodyFocusExerciseRegimentMap;
+    Map<String, List<Exercise>> bodyFocusExercisesForWorkout;
 
     List<String> bodyFocusesWithExercises;
 }

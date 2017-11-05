@@ -54,4 +54,7 @@
     <string name="cool_off"><u>Cool Off</u></string>
     <string name="do_you_have_a_partner">Partner Available</string>
     <string name="bosu_ball">Bosu Ball</string>
+    <string name="workout_divider_text">Workout</string>
+    <string name="empty_warm_and_cool_off_exercises">There are no cool offs/warm up exercises that meet this criteria</string>
+    <string name="picture_here">Picture here</string>
 </resources>

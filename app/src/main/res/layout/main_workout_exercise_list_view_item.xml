@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="tmosq.com.pt.viewModel.MainWorkoutExerciseViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:background="@drawable/main_workout_gradient_background"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="101dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/picture_here"
+            android:src="@drawable/pt_logo"
+            tools:src="@drawable/pt_logo" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.exerciseWorkout}"
+                android:textSize="20sp"
+                tools:text="Roller Curls" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:text="@{viewModel.exerciseRegiment}"
+                tools:text="2 sets for 10 reps" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="160dp"
+                android:paddingTop="15dp"
+                android:text="@{viewModel.exerciseDifficulty}"
+                tools:text="Difficulty: Basic" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>
