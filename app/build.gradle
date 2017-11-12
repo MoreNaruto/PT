@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "tmosq.com.pt"
         minSdkVersion 19
@@ -10,6 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -42,4 +43,5 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     provided 'org.glassfish:javax.annotation:10.0-b28'
     provided 'org.projectlombok:lombok:1.16.16'
+    annotationProcessor "org.projectlombok:lombok:1.16.16"
 }
