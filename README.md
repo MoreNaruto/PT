@@ -10,12 +10,12 @@ PMT aka Personal Mobile Trainer will solve your problems.
 
 Make your workout choices 
 
-![alt choice_workout](/read_me_images/choice_screen.jpg)
-![alt choice_workout_2](/read_me_images/choice_screen_2.jpg)
+![alt choice_workout](/read_me_images/choice_screen)
+![alt choice_workout_2](/read_me_images/choice_screen_2)
 
 Then do the workout 
 
-![alt workout](/read_me_images/workout.jpg)
-![alt workout_2](/read_me_images/workout_2.jpg)
+![alt workout](/read_me_images/workout)
+![alt workout_2](/read_me_images/workout_2)
 
 Very simple! Very straightforward! And all done for you with over 750 different workouts
