@@ -43,5 +43,5 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     provided 'org.glassfish:javax.annotation:10.0-b28'
     provided 'org.projectlombok:lombok:1.16.16'
-    annotationProcessor "org.projectlombok:lombok:1.16.16"
+    annotationProcessor 'org.projectlombok:lombok:1.16.16'
 }
