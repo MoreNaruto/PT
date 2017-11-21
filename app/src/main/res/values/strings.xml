@@ -58,4 +58,6 @@
     <string name="empty_warm_and_cool_off_exercises">There are no cool offs/warm up exercises that meet this criteria</string>
     <string name="picture_here">Picture here</string>
     <string name="straps">Straps</string>
+    <string name="v_bar">V-Bar</string>
+    <string name="t_bar">T-bar</string>
 </resources>

@@ -34,10 +34,13 @@ public enum Equipment {
     SLED("sled", R.id.sled_checkbox),
     STONE("stone", R.id.stone_checkbox),
     STRAPS("straps", R.id.straps_checkbox),
+    T_BAR("t-bar", R.id.t_bar_checkbox),
     TONING_WHEEL("toning wheel", R.id.toning_wheel_checkbox),
     TRAP_BAR("trap bar", R.id.trap_bar_checkbox),
     TREADMILL("treadmill", R.id.treadmill_checkbox),
-    WORKOUT_BOX("workout box", R.id.workout_box_checkbox);
+    WORKOUT_BOX("workout box", R.id.workout_box_checkbox),
+    V_BAR("v-bar", R.id.v_bar_checkbox);
+
 
     private String equipmentNameAlias;
     private Integer resourceIdCheckBox;
