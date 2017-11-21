@@ -33,6 +33,7 @@ public enum Equipment {
     ROW("row", R.id.row_checkbox),
     SLED("sled", R.id.sled_checkbox),
     STONE("stone", R.id.stone_checkbox),
+    STRAPS("straps", R.id.straps_checkbox),
     TONING_WHEEL("toning wheel", R.id.toning_wheel_checkbox),
     TRAP_BAR("trap bar", R.id.trap_bar_checkbox),
     TREADMILL("treadmill", R.id.treadmill_checkbox),

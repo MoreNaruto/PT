@@ -712,6 +712,21 @@
                     android:orientation="horizontal">
 
                     <CheckBox
+                        android:id="@+id/straps_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/straps" />
+
+                    <Space
+                        android:layout_width="77dp"
+                        android:layout_height="wrap_content" />
+
+                    <CheckBox
                         android:id="@+id/toning_wheel_checkbox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -721,10 +736,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/toning_wheel" />
+                </LinearLayout>
 
-                    <Space
-                        android:layout_width="36dp"
-                        android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
 
                     <CheckBox
                         android:id="@+id/trap_bar_checkbox"
@@ -736,12 +754,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/trap_bar" />
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    <Space
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content" />
 
                     <CheckBox
                         android:id="@+id/treadmill_checkbox"
@@ -754,20 +770,6 @@
                         android:layout_height="wrap_content"
                         android:text="@string/treadmill" />
 
-                    <Space
-                        android:layout_width="61dp"
-                        android:layout_height="wrap_content" />
-
-                    <CheckBox
-                        android:id="@+id/workout_box_checkbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/workout_box" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -785,6 +787,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bosu_ball" />
+
+                    <Space
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content" />
+
+                    <CheckBox
+                        android:id="@+id/workout_box_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/workout_box" />
                 </LinearLayout>
             </LinearLayout>
 

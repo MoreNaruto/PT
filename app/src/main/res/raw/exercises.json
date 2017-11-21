@@ -4677,7 +4677,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Lie on your stomach with your arms out to your sides. This will be your starting position.\n\n2. Using your lower back muscles, extend your spine lifting your chest off of the ground. Do not use your arms to push yourself up. Keep your head up during the movement. Repeat for 10-20 repetitions."
   },
   {
     "id": 361,
@@ -4686,10 +4687,11 @@
     "workout": "MEDICINE BALL FULL TWIST",
     "averageSecondPerRep": 6.0,
     "forTime": true,
-    "partner": false,
+    "partner": true,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "medicine ball"
+    "equipment type": "medicine ball",
+    "description": "1. For this exercise you will need a medicine ball and a partner. Stand back to back with your partner, spaced 2-3 feet apart. This will be your starting position.\n\n2. Hold the ball in front of the trunk. Open the hips and turn the shoulders at the same time as your partner.\n\n3. For full rotation, you and your partner should twist in the same direction, i.e. counter-clockwise.\n\n4. Pass the ball to your partner, and both of you can now twist in the opposite direction to repeat the procedure."
   },
   {
     "id": 362,
@@ -4699,9 +4701,10 @@
     "averageSecondPerRep": 6.0,
     "forTime": false,
     "partner": false,
-    "alternatingSides": false,
+    "alternatingSides": true,
     "difficulty": "basic",
-    "equipment type": "medicine ball"
+    "equipment type": "medicine ball",
+    "description": "1. Stand with your side several feet away from a wall. Hold a medicine ball with both hands in an athletic stance. This will be your starting position.\n\n2. Begin by rotating your shoulders away from the wall winding up in preparation for the throw. Immediately reverse direction, turning your shoulders and releasing the ball against the wall as fast as you can.\n\n3. Receive the ball on the bounce and repeat the exercise for the desired number of repetitions."
   },
   {
     "id": 363,
@@ -4713,7 +4716,8 @@
     "partner": false,
     "alternatingSides": true,
     "difficulty": "intermediate",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Connect a standard handle to a tower. Move cable to highest pulley position.\n\n2. Stand with side to cable. With one hand, reach up and grab handle with underhand grip.\n\n3. Pull down cable until elbow touches your side and the handle is by your shoulder.\n\n4. Position feet hip-width apart. Place free hand on hip to help gauge pivot point.\n\n5. Keep arm in static position. Contract oblique to bring the weight down in a side crunch.\n\n6. Once you reach maximum contraction, slowly release the weight to the starting position. The weight stack should never be unloaded in a resting position. The aim is constant tension during the set.\n\n7. Then, reposition and repeat the same series of movements on the opposite side."
   },
   {
     "id": 364,
@@ -4725,7 +4729,8 @@
     "partner": false,
     "alternatingSides": true,
     "difficulty": "basic",
-    "equipment type": "medicine ball"
+    "equipment type": "medicine ball",
+    "description": "1. Start in a standing position with a staggered, athletic stance. Hold a medicine ball in one hand, on the same side as your back leg. This will be your starting position.\n\n2. Begin by winding the arm, raising the medicine ball above your head. As you do so, extend through the hips, knees, and ankles to load up for the slam.\n\n3. At peak extension, flex the shoulders, spine, and hips to throw the ball hard into the ground directly in front of you.\n\n4. Catch the ball on the bounce and continue for the desired number of repetitions."
   },
   {
     "id": 365,
@@ -4737,7 +4742,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Standing straight up, lace your fingers together and open your palms to the ceiling. Keep your shoulders down as you extend your arms up.\n\n2. To create a full torso stretch, pull your tailbone down and stabilize your torso as you do this. Stretch the muscles on both the front and the back of the torso."
   },
   {
     "id": 366,
@@ -4749,7 +4755,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Connect a standard handle to a tower, and, if possible, position the cable to shoulder height. If not, a low pulley will suffice.\n\n2. With your side to the cable, grab the handle with both hands and step away from the tower. You should be approximately arms length away from the pulley, with the tension of the weight on the cable.\n\n3. With your feet positioned hip-width apart and knees slightly bent, hold the cable to the middle of your chest. This will be your starting position.\n\n4. Press the cable away from your chest, fully extending both arms. You core should be tight and engaged.\n\n5. Hold the repetition for several seconds before returning to the starting position.\n\n6. At the conclusion of the set, repeat facing the other direction."
   },
   {
     "id": 367,
@@ -4761,7 +4768,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Connect a standard handle to a tower, and position the cable to shoulder height.\n\n2. With your side to the cable, grab the handle with one hand and step away from the tower. You should be approximately arms length away from the pulley, with the tension of the weight on the cable. Align outstretched arm with cable.\n\n3. With your feet positioned hip-width apart, pull the cable into your chest and grab the handle with your other hand. Both hands should be on the handle at this time.\n\n4. Facing forward, press the cable away from your chest. You core should be tight and engaged.\n\n5. Keeping your hips straight, twist your torso away from the pulley until you get a full quarter rotation.\n\n6. Maintain your rigid stance and straight arms. Return to the neutral position in a slow and controlled manner. Your arms should be extended in front of you.\n\n7. With the side tension still engaging your core, bring your hands to your chest and immediately press outward to a fully extended position. This constitutes one rep.\n\n8. Then, reposition and repeat the same series of movements on the opposite side."
   },
   {
     "id": 368,
@@ -4773,7 +4781,8 @@
     "partner": true,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "medicine"
+    "equipment type": "medicine",
+    "description": "1. Balance your body weight on your hips with your legs semi-extended and off the floor. Lean back so your torso is at a 45-degree angle to the floor, making sure to keep your back straight and not rounded. You should be about 6 feet in front of your partner.\n\n2. Hold a weighted medicine ball in your hands just above your chest. This will be your starting position.\n\n3. Rotate your torso all the way to the right, back to the left, and to the right again by contracting your obliques, not simply turning only at the shoulders.\n\n4. With the ball back in front of you, pass across to your partner, who does the same three-touch motion before passing it back."
   },
   {
     "id": 369,
@@ -4785,7 +4794,8 @@
     "partner": true,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "medicine"
+    "equipment type": "medicine",
+    "description": "1. Get into a plank position with your weight evenly distributed on your elbows and toes, keeping your back straight and your hips in line with your back.\n\n2. Your partner should mirror your body position about 2 feet in front of and facing you. This will be your starting position.\n\n3. Maintaining your body weight on three limbs, raise one hand in front of your body and reach across to tap your partner's hand.\n\n4. Lower and re-establish the plank position and complete on the opposite side."
   },
   {
     "id": 370,
@@ -4797,7 +4807,8 @@
     "partner": true,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Hang from a pull-up bar with your arms extended and your feet together (use ab straps if your grip is weak). Lock a slight bend in your knees. This will be your starting position.\n\n2. Without swinging your body, contract your lower abs to raise your knees just past a position in which your thighs are parallel to the floor.\n\n3. As your pelvis begins to curl upward, your partner should place his hand just above your knees to push your legs back down to the starting position, keeping his hand in contact with your legs at all times.\n\n4. Engage your abs and try to resist the movement. With their free hand your partner can push against your lower back to ensure your body doesn't swing."
   },
   {
     "id": 371,
@@ -4809,7 +4820,8 @@
     "partner": true,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Hang from a pull-up bar with your arms extended and your feet together (use ab straps if your grip is weak). Lock a slight bend in your knees. This will be your starting position.\n\n2. Without swinging your body, contract your lower abs to raise your knees just past a position in which your thighs are parallel to the floor.\n\n3. As your pelvis begins to curl upward, your partner should forcefully press down just above your knees to push your legs back to the starting position.\n\n4. Engage your abs and try to resist the movement. With their free hand your partner can push against your lower back to ensure your body doesn't swing."
   },
   {
     "id": 372,
@@ -4821,7 +4833,8 @@
     "partner": true,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Lie supine on the floor with your feet together; your partner should position one foot on either side of your head and stand upright with his knees slightly bent. Grasp your partner's ankles to stabilize your torso. This will be your starting position.\n\n2. With a slight bend in your knees, do a reverse-crunch movement, raising your feet toward your partner while lifting your hips off the floor.\n\n3. Your partner should grab your ankles and push your feet to one side or the other. Don't allow your feet to contact the floor to keep tension on the muscle.\n\n4. Bring your legs back to the center and repeat to the opposite side."
   },
   {
     "id": 373,
@@ -4833,7 +4846,8 @@
     "partner": true,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Lie supine on the floor with your feet together; your partner should position one foot on either side of your head and stand upright with his knees slightly bent. Grasp your partner's ankles to stabilize your torso. This will be your starting position.\n\n2. With a slight bend in your knees, do a reverse-crunch movement, raising your feet toward your partner while lifting your hips off the floor.\n\n3. Your partner should grab your ankles and push your feet back toward the start position. Don't allow your feet to contact the floor and smoothly reverse the direction, repeating for reps."
   },
   {
     "id": 374,
@@ -4845,7 +4859,8 @@
     "partner": true,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "medicine ball"
+    "equipment type": "medicine ball",
+    "description": "1. Balance your body weight on your hips with your legs semi-extended and off the floor. Lean back so your torso is at a 45-degree angle to the floor, making sure to keep your back straight and not rounded. You should be sitting next to your partner, about 4 feet away.\n\n2. Hold a weighted medicine ball in your hands just above your chest. This will be your starting position.\n\n3. Rotate away from your partner, back to the inside, and then back to the outside before passing the ball to your partner. Make sure you're contracting your obliques to twist, not simply moving only at the shoulders.\n\n4. Each person should do three touches before passing the medicine ball back."
   },
   {
     "id": 375,
@@ -4857,7 +4872,8 @@
     "partner": true,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Start in the sit-up position with your knees bent and feet flat on the floor. Your partner should be in the same position facing you with his feet hooked under your ankles so that your body weights can anchor each other down.\n\n2. Lie back on the floor and position your hands above your head. This will be your starting position.\n\n3. Contract your abs to simultaneously rise up, extending your right hand to touch his.\n\n4. Reverse the motion, coming all the way back down to the starting position, before rising up again, giving a high five to the opposite side."
   },
   {
     "id": 376,
@@ -4869,7 +4885,8 @@
     "partner": true,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Lie face-up on the floor, knees bent and feet flat on the floor about hip-width apart. Cross your fingertips and raise your hands above your head while your partner carefully holds your feet down by stepping on your toes.\n\n2. Your partner should extend one hand out in front of them and above your knees. This will be your starting position.\n\n3. Initiate the movement by contracting your abs to lift your shoulder blades off the floor, reaching to touch your partner's hand. Use the strength of your abs to drive higher, not simply reaching with your arms.\n\n4. Don't allow your shoulder blades to come completely down between reps to keep tension on the muscle. Your partner can move the target point higher or lower, and to one side or the other, to increase the challenge."
   },
   {
     "id": 377,
@@ -4881,7 +4898,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Get into a prone position on the floor, supporting your weight on your toes and your forearms. Your arms are bent and directly below the shoulder.\n\n2. Keep your body straight at all times, and hold this position as long as possible. To increase difficulty, an arm or leg can be raised."
   },
   {
     "id": 378,
@@ -4893,7 +4911,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "plate"
+    "equipment type": "plate",
+    "description": "1. Lie down on the floor or an exercise mat with your legs fully extended and your upper body upright. Grab the plate by its sides with both hands out in front of your abdominals with your arms slightly bent.\n\n2. Slowly cross your legs near your ankles and lift them up off the ground. Your knees should also be bent slightly. Note: Move your upper body back slightly to help keep you balanced turning this exercise. This is the starting position.\n\n3. Move the plate to the left side and touch the floor with it. Breathe out as you perform that movement.\n\n4. Come back to the starting position as you breathe in and then repeat the movement but this time to the right side of the body. Tip: Use a slow controlled movement at all times. Jerking motions can injure the back.\n\n5. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 379,
@@ -4905,7 +4924,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "barbell"
+    "equipment type": "barbell",
+    "description": "1. To begin, lie down on a bench with a barbell resting on your chest. Position your legs so they are secure on the extension of the abdominal bench. This is the starting position.\n\n2. While inhaling, tighten your abdominals and glutes. Simultaneously curl your torso as you do when performing a sit-up and press the barbell to an overhead position while exhaling. Tip: Use your arms to push the barbell out as you perform this exercise while still focusing on the abdominal muscles.\n\n3. Lower your upper body back down to the starting position while bringing the barbell back down to your torso. Remember to breathe in while lowering the body.\n\n4. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 380,
@@ -4917,7 +4937,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Lie down on the floor with your legs fully extended and arms to the side of your torso with the palms on the floor. Your arms should be stationary for the entire exercise.\n\n2. Move your legs up so that your thighs are perpendicular to the floor and feet are together and parallel to the floor. This is the starting position.\n\n3. While inhaling, move your legs towards the torso as you roll your pelvis backwards and you raise your hips off the floor. At the end of this movement your knees will be touching your chest.\n\n4. Hold the contraction for a second and move your legs back to the starting position while exhaling.\n\n5. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 381,
@@ -4929,7 +4950,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Kneel 1-2 feet in front of a cable system with a rope attached.\n\n2. After selecting an appropriate weight, grasp the rope with both hands reaching overhead. Your torso should be upright in the starting position.\n\n3. To begin, flex at the spine, attempting to bring your rib cage to your legs as you pull the cable down.\n\n4. Pause at the bottom of the motion, and then slowly return to the starting position.\n\n5. These can be done with twists or to the side to hit the obliques."
   },
   {
     "id": 382,
@@ -4941,7 +4963,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "plate"
+    "equipment type": "plate",
+    "description": "1. Lie down on the floor placing your feet either under something that will not move or by having a partner hold them. Your legs should be bent at the knees.\n\n2. Elevate your upper body so that it creates an imaginary V-shape with your thighs. Your arms should be fully extended in front of you perpendicular to your torso and with the hands clasped. This is the starting position.\n\n3. Twist your torso to the right side until your arms are parallel with the floor while breathing out.\n\n4. Hold the contraction for a second and move back to the starting position while breathing out. Now move to the opposite side performing the same techniques you applied to the right side.\n\n5. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 383,
@@ -4953,7 +4976,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. To begin, lie down with your back pressed against the floor or on an exercise mat (optional). Your arms should be fully extended to the sides with your palms facing down. Note: The arms should be stationary the entire time.\n\n2. With a slight bend at the knees, lift your legs up so that your heels are about 6 inches off the ground. This is the starting position.\n\n3. Now lift your left leg up to about a 45 degree angle while your right leg is lowered until the heel is about 2-3 inches from the ground.\n\n4. Switch movements by raising your right leg up and lowering your left leg. Remember to breathe while performing this exercise.\n\n5. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 384,
@@ -4965,7 +4989,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "barbell"
+    "equipment type": "barbell",
+    "description": "1. Start out by sitting at the end of a flat bench with a barbell placed on top of your thighs. Your feet should be shoulder width apart from each other.\n\n2. Grip the bar with your palms facing down and make sure your hands are wider than shoulder width apart from each other. Begin to lift the barbell up over your head until your arms are fully extended.\n\n3. Now lower the barbell behind your head until it is resting along the base of your neck. This is the starting position.\n\n4. While keeping your feet and head stationary, move your waist from side to side so that your oblique muscles feel the contraction. Only move from side to side as far as your waist will allow you to go. Stretching or moving too far can cause an injury to occur. Tip: Use a slow and controlled motion.\n\n5. Remember to breathe out while twisting your body to the side and in when moving back to the starting position.\n\n6. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 385,
@@ -4977,7 +5002,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Sit on a bench with the legs stretched out in front of you slightly below parallel and your arms holding on to the sides of the bench. Your torso should be leaning backwards around a 45-degree angle from the bench. This will be your starting position.\n\n2. Bring the knees in toward you as you move your torso closer to them at the same time. Breathe out as you perform this movement.\n\n3. After a second pause, go back to the starting position as you inhale.\n\n4. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 386,
@@ -4989,7 +5015,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Sit on a bench with the legs stretched out in front of you slightly below parallel and your arms holding on to the sides of the bench. Your torso should be leaning backwards around a 45-degree angle from the bench. This will be your starting position.\n\n2. Bring the knees in toward you as you move your torso closer to them at the same time. Breathe out as you perform this movement.\n\n3. After a second pause, go back to the starting position as you inhale.\n\n4. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 387,
@@ -5001,7 +5028,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Sit up straight on an exercise mat.\n\n2. Touch the soles of your feet together with your feet six to eight inches in front of your hips.\n\n3. Place one hand on the floor beside you and your other hand behind your head.\n\n4. Lift your elbow to the ceiling as you incline your torso to the other side. Hold for 10 to 20 seconds, then switch sides."
   },
   {
     "id": 388,
@@ -5013,7 +5041,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. To begin, lie down with your back pressed against the floor or on an exercise mat (optional). Your arms should be fully extended to the sides with your palms facing down. Note: The arms should be stationary the entire time.\n\n2. With a slight bend at the knees, lift your legs up so that your heels are about 6 inches off the ground. Contract your abs and bring your back slightly off the floor This is the starting position.\n\n3. Kick both legs outwards, as if you were opening a pair of scissors. Bring your legs back to the center and cross them over each other (closing scissors).\n\n4. Perform the scissor kick in alternating fashion, keeping your abs flexed at all times.\n\n5. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 389,
@@ -5024,8 +5053,9 @@
     "forTime": true,
     "partner": false,
     "alternatingSides": false,
-    "difficulty": "basic",
-    "equipment type": "none"
+    "difficulty": "intermediate",
+    "equipment type": "none",
+    "description": "1. Get into a push-up position with your arms fully extended, your body in a straight line, and up on your toes. This will be your starting position.\n\n2. Quickly bring one hand up to tap the opposite-side shoulder, placing that hand back on the floor before repeating to the opposite side. Concurrently your body will slightly shift from one side to the other to better maintain balance. Move back and forth for the designated number of reps."
   },
   {
     "id": 390,
@@ -5037,7 +5067,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Works your obliques and helps stabilize your spine. Lie on your side and support your body between your forearm and knee to your feet. Hold position for two to four seconds.\n\n2. Repeat on the other side."
   },
   {
     "id": 391,
@@ -5049,7 +5080,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Works your obliques. Lying on your right side and keeping your left leg over your right one, place your right hand in a comfortable spot and clasp your left hand behind your head.\n\n2. Bring your torso and left leg toward each other as you pull with your obliques. Squeeze for a moment and return to the starting position. You can use ankle weights to make it tougher!"
   },
   {
     "id": 392,
@@ -5061,7 +5093,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Lie down on the floor placing your feet either under something that will not move or by having a partner hold them. Your legs should be bent at the knees.\n\n2. Place your hands behind your head and lock them together by clasping your fingers. This is the starting position.\n\n3. Elevate your upper body so that it creates an imaginary V-shape with your thighs. Breathe out when performing this part of the exercise.\n\n4. Once you feel the contraction for a second, lower your upper body back down to the starting position while inhaling.\n\n5. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 393,
@@ -5073,7 +5106,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "advanced",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Start in a dead hang position with your hands slightly wider than shoulder-width.\n\n2. Without using momentum, bring your toes up toward your head and allow your feet to continue through your arms.\n\n3. Stay in a pike position and bring your toes toward the ground. Finish with your arms in full extension.\n\n4. To initiate the rewind, tuck your head in and bring your thighs toward your chest. Finish in the hanging positioning, and then lower yourself down to the ground to complete one push-up.\n\n5. This is one repetition. Complete for the desired number of repetitions."
   },
   {
     "id": 394,
@@ -5085,7 +5119,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "machine"
+    "equipment type": "machine",
+    "description": "1. Position a bench in the rack and load the bar to an appropriate weight. Lie down on the bench, placing the bottom of your feet against the bar. Unlock the bar and extend your legs. You may need to use your hands to assist you. For added stability grasp the sides of the Smith Machine. This will be your starting position.\n\n2. Initiate the movement by rotating your pelvis, flexing your spine to raise your hips off of the bench. Maintain a slight bend in the knees throughout the motion.\n\n3. After a brief pause, return the hips to the bench.\n\n4. Repeat for the desired number of repetitions."
   },
   {
     "id": 395,
@@ -5097,7 +5132,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "dumbbell"
+    "equipment type": "dumbbell",
+    "description": "1. Hold a dumbbell in each hand with a pronated grip. Your feet should be wide with your hips and knees extended. This will be your starting position.\n\n2. Begin the movement by pulling both of the dumbbells to one side next to your hip, rotating your torso.\n\n3. Keeping your arms straight and the dumbbells parallel to the ground, rotate your torso to swing the weights to your opposite side.\n\n4. Continue alternating, rotating from one side to the other until the set is complete."
   },
   {
     "id": 396,
@@ -5109,7 +5145,8 @@
     "partner": false,
     "alternatingSides": true,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Begin in a prone position on the floor. Support your weight on your hands and toes, with your feet together and your body straight. Your arms should be bent to 90 degrees. This will be your starting position.\n\n2. Initiate the movement by raising one foot off of the ground. Externally rotate the leg and bring the knee toward your elbow, as far forward as possible.\n\n3. Return this leg to the starting position and repeat on the opposite side."
   },
   {
     "id": 397,
@@ -5121,7 +5158,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "exercise ball"
+    "equipment type": "exercise ball",
+    "description": "1. Get in the push-up position with your hands shoulder-width apart, securing a large stability ball under your lower quads. Your body should be almost straight with your feet together off the floor. This is your start position.\n\n2. Contract your lower abs to raise your hips as high as you can, allowing the ball to roll down to your shins under control and bringing your knees into your chest.\n\n3. Push your knees back out and allow your abs to relax to roll the ball back in the reverse direction.\n\n4. Repeat for the required number of reps."
   },
   {
     "id": 398,
@@ -5131,9 +5169,10 @@
     "averageSecondPerRep": 2.5,
     "forTime": false,
     "partner": false,
-    "alternatingSides": false,
+    "alternatingSides": true,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Connect a standard handle on a tower, and move the cable to the lowest pulley position.\n\n2. With your side to the cable, grab the handle with one hand and step away from the tower. You should be approximately arm's length away from the pulley, with the tension of the weight on the cable. Your outstretched arm should be aligned with the cable.\n\n3. With your feet positioned shoulder width apart, squat down and grab the handle with both hands. Your arms should still be fully extended.\n\n4. In one motion, pull the handle up and across your body until your arms are in a fully-extended position above your head.\n\n5. Keep your back straight and your arms close to your body as you pivot your back foot and straighten your legs to get a full range of motion.\n\n6. Retract your arms and then your body. Return to the neutral position in a slow and controlled manner.\n\n7. Then, reposition and repeat the same series of movements on the opposite side."
   },
   {
     "id": 399,
@@ -5143,21 +5182,23 @@
     "averageSecondPerRep": 2.5,
     "forTime": false,
     "partner": false,
-    "alternatingSides": false,
+    "alternatingSides": true,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Connect a standard handle to a tower, and move the cable to the highest pulley position.\n\n2. With your side to the cable, grab the handle with one hand and step away from the tower. You should be approximately arm's length away from the pulley, with the tension of the weight on the cable. Your outstretched arm should be aligned with the cable.\n\n3. With your feet positioned shoulder width apart, reach upward with your other hand and grab the handle with both hands. Your arms should still be fully extended.\n\n4. In one motion, pull the handle down and across your body to your front knee while rotating your torso.\n\n5. Keep your back and arms straight and core tight while you pivot your back foot and bend your knees to get a full range of motion.\n\n6. Maintain your stance and straight arms. Return to the neutral position in a slow and controlled manner.\n\n7. Then, reposition and repeat the same series of movements on the opposite side."
   },
   {
     "id": 400,
     "bodyFocus": "abdominals",
-    "type": "weighted movements",
+    "type": "warm-up/cool-off",
     "workout": "STANDING LATERAL STRETCH",
     "averageSecondPerRep": 2.0,
     "forTime": false,
     "partner": false,
     "alternatingSides": true,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "none",
+    "description": "1. Take a slightly wider than hip distance stance with your knees slightly bent.\n\n2. Place your right hand on your right hip to support the spine.\n\n3. Raise your left arm in a vertical line and place your left hand behind your head. Keep it there as you incline your torso to the right.\n\n4. Keep your weight evenly distributed between both legs (don't lean into your left hip). Switch sides."
   },
   {
     "id": 401,
@@ -5169,19 +5210,21 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Attach a rope to a high pulley and select an appropriate weight.\n\n2. Stand with your back to the cable tower. Take the rope with both hands over your shoulders, holding it to your upper chest. This will be your starting position.\n\n3. Perform the movement by flexing the spine, crunching the weight down as far as you can.\n\n4. Hold the peak contraction for a moment before returning to the starting position."
   },
   {
     "id": 401,
     "bodyFocus": "abdominals",
     "type": "body",
     "workout": "STOMACH VACUUM",
-    "averageSecondPerRep": 2.5,
+    "averageSecondPerRep": 20.0,
     "forTime": false,
     "partner": false,
     "alternatingSides": false,
-    "difficulty": "intermediate",
-    "equipment type": "none"
+    "difficulty": "basic",
+    "equipment type": "none",
+    "description": "1. To begin, stand straight with your feet shoulder width apart from each other. Place your hands on your hips. This is the starting position.\n\n2. Now slowly inhale as much air as possible and then start to exhale as much as possible while bringing your stomach in as much as possible and hold this position. Try to visualize your navel touching your backbone.\n\n3. One isometric contraction is around 20 seconds. During the 20 second hold, try to breathe normally. Then inhale and bring your stomach back to the starting position.\n\n4. Once you have practiced this exercise, try to perform this exercise for longer than 20 seconds. Tip: You can work your way up to 40-60 seconds.\n\n5. Repeat for the recommended amount of sets."
   },
   {
     "id": 402,
@@ -5193,7 +5236,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Begin by lying on your back on the ground. Your legs should be straight and your arms at your side. This will be your starting position.\n\n2. To perform the movement, rotate and elevate your pelvis to raise your glutes from the floor.\n\n3. After a brief pause, return to the starting position."
   },
   {
     "id": 403,
@@ -5205,7 +5249,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Begin by lying on your back on the ground. Your legs should be straight and your arms extended behind your head. This will be your starting position.\n\n2. To perform the movement, tuck the knees toward your chest, rotating your pelvis to lift your glutes from the floor. As you do so, flex the spine, bringing your arms back over your head to perform a simultaneous crunch motion.\n\n3. After a brief pause, return to the starting position."
   },
   {
     "id": 404,
@@ -5217,7 +5262,8 @@
     "partner": false,
     "alternatingSides": true,
     "difficulty": "intermediate",
-    "equipment type": "medicine ball"
+    "equipment type": "medicine ball",
+    "description": "1. Lay on the ground on your back with your knees bent. Hold the ball with one hand, extending the arm fully behind your head. This will be your starting position.\n\n2. Initiate the movement at the shoulder, throwing the ball directly forward of you as you sit up, attempting to go for maximum distance.\n\n3. The ball can be thrown to a partner or bounced off of a wall."
   },
   {
     "id": 405,
@@ -5229,7 +5275,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "medicine ball"
+    "equipment type": "medicine ball",
+    "description": "1. Lay on the ground on your back with your knees bent.\n\n2. Hold the ball with both hands, extending the arms fully behind your head. This will be your starting position.\n\n3. Initiate the movement at the shoulder, throwing the ball directly forward of you as you sit up, attempting to go for maximum distance.\n\n4. The ball can be thrown to a partner or bounced off of a wall."
   },
   {
     "id": 406,
@@ -5241,7 +5288,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "straps",
+    "description": "1. Adjust the straps so the handles are at an appropriate height. From a push up position in front of the suspension system, place your feet into the handles. Begin with your legs straight and your hips extended. This will be your starting position.\n\n2. Initiate the movement by flexing the hips and knees, drawing your knees towards your chest. Pause during the peak contraction, and then return to the starting position."
   },
   {
     "id": 407,
@@ -5253,7 +5301,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "straps",
+    "description": "1. Adjust the straps so the handles are at an appropriate height, below waist level.\n\n2. Begin standing and grasping the handles. Lean into the straps, moving to an incline push-up position. This will be your starting position.\n\n3. Keeping your arms straight, lean further into the suspension straps, bringing your body closer to the ground, allowing your shoulders to extend, raising your arms up and over your head.\n\n4. Maintain a neutral spine and keep the rest of your body straight, your shoulders being the only joints allowed to move.\n\n5. Pause during the peak contraction, and then return to the starting position."
   },
   {
     "id": 408,
@@ -5265,7 +5314,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "straps",
+    "description": "1. Secure a set of suspension straps with the handles hanging about a foot off of the ground. Move yourself into a pushup plank position facing away from the rack.\n\n2. Place your feet into the handles. You should maintain a straight posture, not allowing the hips to sag. This will be your starting position.\n\n3. Begin the movement by flexing the knees and hips, drawing the knees to your torso. As you do so, anteriorly tilt your pelvis, allowing your spine to flex.\n\n4. At the top of the controlled motion, return to the starting position."
   },
   {
     "id": 409,
@@ -5277,7 +5327,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. To begin, lie down on the floor or an exercise mat with your back pressed against the floor. Your arms should be lying across your sides with the palms facing down.\n\n2. Your legs should be touching each other. Slowly elevate your legs up in the air until they are almost perpendicular to the floor with a slight bend at the knees. Your feet should be parallel to the floor.\n\n3. Move your arms so that they are fully extended at a 45 degree angle from the floor. This is the starting position.\n\n4. While keeping your lower back pressed against the floor, slowly lift your torso and use your hands to try and touch your toes. Remember to exhale while perform this part of the exercise.\n\n5. Slowly begin to lower your torso and arms back down to the starting position while inhaling. Remember to keep your arms straight out pointing towards your toes.\n\n6. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 410,
@@ -5289,7 +5340,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "exercise ball"
+    "equipment type": "exercise ball",
+    "description": "1. Stand upright holding an exercise ball with both hands. Extend your arms so the ball is straight out in front of you. This will be your starting position.\n\n2. Rotate your torso to one side, keeping your eyes on the ball as you move. Now, rotate back to the opposite direction."
   },
   {
     "id": 411,
@@ -5301,7 +5353,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. To begin, lie down on the floor or an exercise mat with your back pressed against the floor. Your arms should be lying across your sides with the palms facing down.\n\n2. Your legs should be crossed by wrapping one ankle around the other. Slowly elevate your legs up in the air until your thighs are perpendicular to the floor with a slight bend at the knees. Note: Your knees and toes should be parallel to the floor as opposed to the thighs.\n\n3. Move your arms from the floor and cross them so they are resting on your chest. This is the starting position.\n\n4. While keeping your lower back pressed against the floor, slowly lift your torso. Remember to exhale while perform this part of the exercise.\n\n5. Slowly begin to lower your torso back down to the starting position while inhaling.\n\n6. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 412,
@@ -5312,8 +5365,9 @@
     "forTime": false,
     "partner": false,
     "alternatingSides": false,
-    "difficulty": "advanced",
-    "equipment type": "medicine ball"
+    "difficulty": "intermediate",
+    "equipment type": "medicine ball",
+    "description": "1. Lie supine on the floor holding a medicine ball between your hands just off your chest with your head and feet just off the floor, legs fully extended. This will be your starting position.\n\n2. Keeping your abdominals isometrically contracted to prevent your feet from touching the floor, throw the ball a few feet directly upward and catch it on the way down. Immediately repeat again for reps or time."
   },
   {
     "id": 413,
@@ -5325,7 +5379,8 @@
     "partner": false,
     "alternatingSides": true,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Raise a plate overhead with both hands. Once you have control of the weight, remove one hand. Keep your arm fully extended and your eyes focused on the plate.\n\n2. Stand with your feet shoulder-width apart and knees slightly bent. This will be your starting position.\n\n3. Begin walking at a controlled pace, maintaining a fully extended arm overhead.\n\n4. Walk for recommended number of steps or time."
   },
   {
     "id": 414,
@@ -5337,7 +5392,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "advanced",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Begin by standing with your feet arms distance away from the wall. Turn so that your back is facing the wall. Position your feet so that they are shoulder-width apart and place your hands on the floor with your shoulders stacked over your hands and wrists.\n\n2. Bring your feet up on to the wall. The closer you are to the wall, the more challenging the exercise will be. Your arms should be fully extended and your core tight. This will be your starting position.\n\n3. Keeping your arms straight and core tight, bring one knee to the opposite elbow. Quickly return to the starting position and repeat on the other side.\n\n4. Continue alternating for the recommended number of repetitions or time."
   },
   {
     "id": 415,
@@ -5349,7 +5405,8 @@
     "partner": false,
     "alternatingSides": true,
     "difficulty": "intermediate",
-    "equipment type": "exercise ball"
+    "equipment type": "exercise ball",
+    "description": "1. To begin, lie down on an exercise ball with your left side of the torso (waist, hips and shoulder) pressed against the ball.\n\n2. Your feet should be on the floor while your legs are crossed and hanging from the ball. Hold a weighted plate with your right hand directly to the right side of your head. Tip: Make sure the smooth side of the plate is resting against your head.\n\n3. Place your left arm across your torso so that your palm is on your obliques. There should be a right angle between your left forearm and upper arm. This is the starting position.\n\n4. Raise the side of your torso up by laterally flexing at the waist while exhaling.\n\n5. Hold the contraction for a second and slowly lower yourself back down to the starting position while inhaling.\n\n6. Repeat for the recommended amount of repetitions.\n\n7. Switch sides and repeat the exercise."
   },
   {
     "id": 416,
@@ -5361,7 +5418,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "plate"
+    "equipment type": "plate",
+    "description": "1. Lie flat on your back with your feet flat on the ground or resting on a bench with your knees bent at a 90 degree angle.\n\n2. Hold a weight to your chest, or you may hold it extended above your torso. This will be your starting position.\n\n3. Now, exhale and slowly begin to roll your shoulders off the floor. Your shoulders should come up off the floor about 4 inches while your lower back remains on the floor.\n\n4. At the top of the movement, flex your abdominals and hold for a brief pause.\n\n5. Then inhale and slowly lower yourself back down to the starting position."
   },
   {
     "id": 417,
@@ -5373,7 +5431,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "bands"
+    "equipment type": "bands",
+    "description": "1. Start out by strapping the bands around the base of the decline bench. Place the handles towards the inside of the decline bench so that when lying down, you can reach for both of them.\n\n2. Position your legs through the decline machine until they are secured. Now reach for the exercise bands with both hands. Use a pronated (palms forward) grip to grasp the handles. Position them near your collar bone and rotate your wrist to a neutral grip (palms facing the torso). Note: Your arms should remain stationary throughout the exercise. This is the starting position.\n\n3. Move your torso upward until your upper body is perpendicular to the floor while exhaling. Hold the contraction for a second and lower your upper body back down to the starting position while inhaling.\n\n4. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 418,
@@ -5385,7 +5444,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "medicine ball"
+    "equipment type": "medicine ball",
+    "description": "1. Begin by lying on your back on the ground. Your legs should be straight and your arms extended behind your head holding a medicine ball. This will be your starting position.\n\n2. To perform the movement, tuck the knees toward your chest, rotating your pelvis to lift your glutes from the floor. As you do so, flex the spine, bringing your arms back over your head to perform a simultaneous crunch motion.\n\n3. After a brief pause, return to the starting position."
   },
   {
     "id": 419,
@@ -5397,7 +5457,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "advanced",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Hang from a pull-up bar using a pronated grip. Your arms and legs should be extended. This will be your starting position.\n\n2. Begin by quickly raising one knee as high as you can. Do not swing your body or your legs.\n\n3. Immediately reverse the motion, returning that leg to the starting position. Simultaneously raise the opposite knee as high as possible.\n\n4. Continue alternating between legs until the set is complete."
   },
   {
     "id": 420,
@@ -5409,7 +5470,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "advanced",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. With a grip well outside shoulder width, hang freely from an overhead bar as you would doing a pull-up. This will be your starting position.\n\n2. Instead of pulling yourself directly up to the bar, contract your lats to instead go in a counter-clockwise direction, pulling yourself partway up to the right side and continue going upward as you move back toward the center of the bar. Here your chin should meet the bar at the apex of the move.\n\n3. Continue in a circular motion until you are back to the center, reaching full arm extension.\n\n4. Complete for the designated number of reps in the same counter-clockwise motion. Because of the asymmetrical motion you'll repeat the move for the same number of reps going in a clockwise direction as well."
   },
   {
     "id": 421,
@@ -5421,7 +5483,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Use an assisted pull-up machine or securely attach a heavy-duty band to a pull-up station, securing it around just one knee. The tension should be taut enough to pull that lower leg up. Grasp the bar with an underhand grip, about shoulder-width apart, and hang at full arm extension. This is your start position.\n\n2. Keeping your body straight, contract your biceps and lats to pull yourself up as high as you can, driving your elbows down.\n\n3. Slowly release to full arm extension. Repeat for the required number of repetitions and safely dismount from the apparatus."
   },
   {
     "id": 422,
@@ -5433,7 +5496,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "bands"
+    "equipment type": "bands",
+    "description": "1. Choke the band around the center of the pullup bar. You can use different bands to provide varying levels of assistance.\n\n2. Pull the end of the band down, and place one bent knee into the loop, ensuring it won't slip out. Take a medium to wide grip on the bar. This will be your starting position.\n\n3. Pull yourself upward by contracting the lats as you flex the elbow. The elbow should be driven to your side. Pull to the front, attempting to get your chin over the bar. Avoid swinging or jerking movements.\n\n4. After a brief pause, return to the starting position."
   },
   {
     "id": 423,
@@ -5445,7 +5509,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "barbell"
+    "equipment type": "barbell",
+    "description": "1. Lie on a flat bench with a barbell using a shoulder grip width.\n\n2. Hold the bar straight over your chest with a bend in your arms. This will be your starting position.\n\n3. While keeping your arms in the bent arm position, lower the weight slowly in an arc behind your head while breathing in until you feel a stretch on the chest.\n\n4. At that point, bring the barbell back to the starting position using the arc through which the weight was lowered and exhale as you perform this movement.\n\n5. Hold the weight on the initial position for a second and repeat the motion for the prescribed number of repetitions."
   },
   {
     "id": 424,
@@ -5457,7 +5522,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Begin standing under a bar with your legs shoulder-width apart. This will be your starting position.\n\n2. Descend into a squat by pushing your hips and butt backwards. Continue down until the upper legs are at or just below parallel to the floor. Inhale as you perform this portion of the movement.\n\n3. Place your hands on the floor and kick your legs back so you end up with your stomach and thighs on the floor. Your elbows should be bent. This should be done quickly.\n\n4. From this position, press up like you're doing a push-up and push your hips up. Jump your feet under your hips and begin to stand as you prepare to jump up.\n\n5. Finish the movement by jumping in the air and bringing your hands over your head to grab a strong hold on the bar. Immediately pull yourself up until your chin is just above the bar. This is one repetition.\n\n6. Descend from the pull-up by allowing your arms to extend and then let go of the bar to return to the ground. Repeat for recommended number of repetitions."
   },
   {
     "id": 425,
@@ -5469,7 +5535,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Lie on incline an bench facing away from a high pulley machine that has a straight bar attachment on it.\n\n2. Grasp the straight bar attachment overhead with a pronated (overhand; palms down) shoulder width grip and extend your arms in front of you. The bar should be around 2 inches away from your upper thighs. This will be your starting position.\n\n3. Keeping the upper arms stationary, lift your arms back in a semi circle until the bar is straight over your head. Breathe in during this portion of the movement.\n\n4. Slowly go back to the starting position using your lats and hold the contraction once you reach the starting position. Breathe out during the execution of this movement.\n\n5. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 426,
@@ -5481,7 +5548,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "medicine ball"
+    "equipment type": "medicine ball",
+    "description": "1. Begin standing while facing a wall or a partner.\n\n2. Using both hands, position the ball behind your head, stretching as much as possible, and forcefully throw the ball forward.\n\n3. Ensure that you follow your throw through, being prepared to receive your rebound from your throw. If you are throwing against the wall, make sure that you stand close enough to the wall to receive the rebound, and aim a little higher than you would with a partner."
   },
   {
     "id": 427,
@@ -5493,7 +5561,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Sit upright on a chair.\n\n2. Bend to one side with your arm over your head. You can hold onto the chair with your free hand.\n\n3. Hold for 10 seconds, and repeat for your other side."
   },
   {
     "id": 428,
@@ -5505,7 +5574,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Grab the pull-up bar with the palms facing your torso and a grip closer than the shoulder width.\n\n2. As you have both arms extended in front of you holding the bar at the chosen grip width, keep your torso as straight as possible while creating a curvature on your lower back and sticking your chest out. This is your starting position. Tip: Keeping the torso as straight as possible maximizes biceps stimulation while minimizing back involvement.\n\n3. As you breathe out, pull your torso up until your head is around the level of the pull-up bar. Concentrate on using the biceps muscles in order to perform the movement. Keep the elbows close to your body. Tip: The upper torso should remain stationary as it moves through space and only the arms should move. The forearms should do no other work other than hold the bar.\n\n4. After a second of squeezing the biceps in the contracted position, slowly lower your torso back to the starting position; when your arms are fully extended. Breathe in as you perform this portion of the movement.\n\n5. Repeat this motion for the prescribed amount of repetitions."
   },
   {
     "id": 429,
@@ -5517,7 +5587,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Sit down on a pull-down machine with a wide bar attached to the top pulley. Make sure that you adjust the knee pad of the machine to fit your height. These pads will prevent your body from being raised by the resistance attached to the bar.\n\n2. Grab the bar with the palms facing forward using the prescribed grip. Note on grips: For a wide grip, your hands need to be spaced out at a distance wider than your shoulder width. For a medium grip, your hands need to be spaced out at a distance equal to your shoulder width and for a close grip at a distance smaller than your shoulder width.\n\n3. As you have both arms extended in front of you - while holding the bar at the chosen grip width - bring your torso back around 30 degrees or so while creating a curvature on your lower back and sticking your chest out. This is your starting position.\n\n4. As you breathe out, bring the bar down until it touches your upper chest by drawing the shoulders and the upper arms down and back. Tip: Concentrate on squeezing the back muscles once you reach the full contracted position. The upper torso should remain stationary (only the arms should move). The forearms should do no other work except for holding the bar; therefore do not try to pull the bar down using the forearms.\n\n5. After a second in the contracted position, while squeezing your shoulder blades together, slowly raise the bar back to the starting position when your arms are fully extended and the lats are fully stretched. Inhale during this portion of the movement.\n\n6. Repeat this motion for the prescribed amount of repetitions."
   },
   {
     "id": 430,
@@ -5529,7 +5600,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Stand with your feet shoulder width apart. This will be your starting position.\n\n2. Keeping your arms straight, swing them straight up in front of you 5-10 times, increasing the range of motion each time until your arms are above your head."
   },
   {
     "id": 431,
@@ -5541,7 +5613,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Get a platform of some sort (it can be an aerobics or calf raise platform) that is around 4-6 inches in height.\n\n2. Place it on the seat of the cable row machine.\n\n3. Sit down on the machine and place your feet on the front platform or crossbar provided making sure that your knees are slightly bent and not locked.\n\n4. Lean over as you keep the natural alignment of your back and grab the V-bar handles.\n\n5. With your arms extended pull back until your torso is at a 90-degree angle from your legs. Your back should be slightly arched and your chest should be sticking out. You should be feeling a nice stretch on your lats as you hold the bar in front of you. This is the starting position of the exercise.\n\n6. Keeping the torso stationary, pull the handles back towards your torso while keeping the arms close to it until you touch the abdominals. Breathe out as you perform that movement. At that point you should be squeezing your back muscles hard. Hold that contraction for a second and slowly go back to the original position while breathing in.\n\n7. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 432,
@@ -5553,7 +5626,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Either standing or seated on a high bench, grasp two stirrup cables that are attached to the high pulleys. Grab with the opposing hand so your arms are crisscrossed about you and your palms are facing forward.\n\n2. Keeping your chest up and maintaining a slight arch in your lower back, pull the handles down as if you were doing a regular pulldown. The range of motion will be more of an arc. During the movement, rotate your hands so that in the bottom position your palms face each other rather than forward. Return slowly to the starting position and repeat."
   },
   {
     "id": 433,
@@ -5565,7 +5639,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Grasp the pull-up bar with a shoulder width underhand grip.\n\n2. Now hang with your arms fully extended and stick your chest out and lean back. Tip: You will be leaning back throughout the entire movement. This will be your starting position.\n\n3. Start pulling yourself towards the bar with your spine arched throughout the movement and your head leaning back as far away from the bar as possible. Exhale as you perform this portion of the movement. Tip: At the upper end of the movement, your hips and legs will be at about a 45-degree angle to the floor.\n\n4. Keep pulling until your collarbone passes the bar and your lower chest or sternum area touches it. Hold that contraction for a second. Tip: By the time you've completed this portion of the movement; your head will be parallel to the floor.\n\n5. Slowly start going back to the starting position as you inhale.\n\n6. Repeat for the recommended amount of repetitions."
   },
   {
     "id": 434,
@@ -5576,8 +5651,9 @@
     "forTime": false,
     "partner": false,
     "alternatingSides": false,
-    "difficulty": "intermediate",
-    "equipment type": "none"
+    "difficulty": "advanced",
+    "equipment type": "none",
+    "description": "1. Grip the rings using a false grip, with the base of your palms on top of the rings.\n\n2. Begin with a movement swinging your legs backward slightly.\n\n3. Counter that movement by swinging your legs forward and up, jerking your chin and chest back, pulling yourself up with both arms as you do so. As you reach the top position of the pull-up, pull the rings to your armpits as you roll your shoulders forward, allowing your elbows to move straight back behind you. This puts you into the proper position to continue into the dip portion of the movement.\n\n4. Maintaining control and stability, extend through the elbow to complete the motion.\n\n5. Use care when lowering yourself to the ground."
   },
   {
     "id": 435,
@@ -5589,7 +5665,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Select the appropriate weight using a pulley that is above your head. Attach a rope to the cable and kneel a couple of feet away, holding the rope out in front of you with both arms extended. This will be your starting position.\n\n2. Initiate the movement by flexing the elbows and fully retracting your shoulders, pulling the rope toward your upper chest with your elbows out.\n\n3. After pausing briefly, slowly return to the starting position."
   },
   {
     "id": 436,
@@ -5601,7 +5678,8 @@
     "partner": false,
     "alternatingSides": true,
     "difficulty": "basic",
-    "equipment type": "cable"
+    "equipment type": "cable",
+    "description": "1. Attach a single handle to a high pulley and make your weight selection.\n\n2. Kneel in front of the cable tower, taking the cable with one hand with your arm extended. This will be your starting position.\n\n3. Starting with your palm facing forward, pull the weight down to your torso by flexing the elbow and retract the shoulder blade. As you do so, rotate the wrist so that at the completion of the movement, your palm is now facing you.\n\n4. After a brief pause, return to the starting position."
   },
   {
     "id": 437,
@@ -5613,7 +5691,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "advanced",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. With an underhand, shoulder-width grip, hang from a pull-up bar, then elevate your feet by bending at the hips so that your legs are now perpendicular to your torso. Your abs should be isometrically contracted to hold this body position. This will be your starting position.\n\n2. Contract your biceps and lats to pull your chin over the bar in a smooth motion, then release to descend just short of full arm extension. Repeat for reps."
   },
   {
     "id": 438,
@@ -5625,7 +5704,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "foam roll"
+    "equipment type": "foam roll",
+    "description": "1. While lying on the floor, place a foam roll under your back and to one side, just behind your arm pit. This will be your starting position.\n\n2. Keep the arm of the side being stretched behind and to the side of you as you shift your weight onto your lats, keeping your upper body off of the ground. Hold for 10-30 seconds, and switch sides."
   },
   {
     "id": 439,
@@ -5637,7 +5717,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "basic",
-    "equipment type": "machine"
+    "equipment type": "machine",
+    "description": "1. Load an appropriate weight onto the pins and adjust the seat height so that the handles are at chest level. Grasp the handles with either a neutral or pronated grip. This will be your starting position.\n\n2. Pull the handles towards your torso, retracting your shoulder blades as you flex the elbow.\n\n3. Pause at the bottom of the motion, and then slowly return the handles to the starting position. For multiple repetitions, avoid completely returning the weight to the stops to keep tension on the muscles being worked."
   },
   {
     "id": 440,
@@ -5649,7 +5730,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "rope"
+    "equipment type": "rope",
+    "description": "1. Attach a climbing rope to a high beam or cross member. Below it, ensure that the smith machine bar is locked in place with the safeties and cannot move. Alternatively, a secure box could also be utilized.\n\n2. Stand on the bar, using the rope to balance yourself. This will be your starting position.\n\n3. Keeping your body straight, lean back and lower your body by slowly going hand over hand with the rope. Continue until you are perpendicular to the ground.\n\n4. Keeping your body straight, reverse the motion, going hand over hand back to the starting position."
   },
   {
     "id": 441,
@@ -5661,7 +5743,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "machine",
+    "description": "1. Use an assisted pull-up machine or securely attach a heavy-duty band to a pull-up station, securing it around just one knee. The tension should be taut enough to pull that lower leg up. Grasp the bar with an overhand grip just outside shoulder width and hang at full arm extension. This is your start position.\n\n2. Keeping your body straight, contract your lats to pull yourself up as high as you can, driving your elbows down.\n\n3. Slowly release to full arm extension. Repeat for the required number of reps and safely dismount from the apparatus."
   },
   {
     "id": 442,
@@ -5673,7 +5756,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Grip the rings using a false grip, with the base of your palms on top of the rings. Initiate a pull up by pulling the elbows down to your side, flexing the elbows.\n\n2. As you reach the top position of the pull-up, pull the rings to your armpits as you roll your shoulders forward, allowing your elbows to move straight back behind you. This puts you into the proper position to continue into the dip portion of the movement.\n\n3. Maintaining control and stability, extend through the elbow to complete the motion.\n\n4. Use care when lowering yourself to the ground."
   },
   {
     "id": 443,
@@ -5685,7 +5769,8 @@
     "partner": false,
     "alternatingSides": false,
     "difficulty": "intermediate",
-    "equipment type": "none"
+    "equipment type": "none",
+    "description": "1. Standing under a bar, or on a box if necessary, jump up, grabbing the bar with a slightly wider than shoulder-width grip. Using the momentum from your jump, pull yourself upwards until your chin is above the bar. This is your starting position.\n\n2. Slowly lower yourself, keeping a tight core and focus on the lats. Allow your arms to slowly extend as you inch closer to the ground. Aim for 3 to 5 seconds until your arms are fully extended.\n\n3. Upon reaching full extension, let go of the bar and return to the ground.\n\n4. Repeat for recommended number of repetitions."
   },
   {
     "id": 444,
