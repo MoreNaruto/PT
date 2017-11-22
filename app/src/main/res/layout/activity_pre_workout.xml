@@ -835,6 +835,23 @@
                         android:layout_height="wrap_content"
                         android:text="@string/t_bar" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/jumping_rope_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.clickEquipmentCheckBox}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/jumping_rope" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout

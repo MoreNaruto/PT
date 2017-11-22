@@ -23,6 +23,7 @@ public enum Equipment {
     EXERCISE_BALL("exercise ball", R.id.exercise_ball_checkbox),
     EZ_CURL_BAR("E-Z Curl Bar", R.id.ez_curl_bar_checkbox),
     FOAM_ROLL("foam roll", R.id.foam_roll_checkbox),
+    JUMPING_ROPE("jumping rope", R.id.jumping_rope_checkbox),
     KETTLEBELL("kettlebell", R.id.kettlebell_checkbox),
     MACHINE("machine", R.id.machine_checkbox),
     MEDICINE_BALL("medicine ball", R.id.medicine_ball_checkbox),
