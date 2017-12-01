@@ -1,42 +1,106 @@
 package tmosq.com.pt.activity;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.databinding.Observable;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
 import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.ActivityPreWorkoutBinding;
+import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
 import tmosq.com.pt.model.exercise_support_enums.Difficulty;
+import tmosq.com.pt.model.exercise_support_enums.Equipment;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 import tmosq.com.pt.viewModel.PreWorkOutViewModel;
 
-public class PreWorkoutActivity extends Activity {
+import static tmosq.com.pt.helper.ExerciseSplitter.HAS_PARTNER;
+import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
+import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_EXCLUDED_EQUIPMENT;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_DIFFICULTY;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
+
+public class PreWorkoutActivity extends AppCompatActivity {
     protected ActivityPreWorkoutBinding binding;
     protected PreWorkOutViewModel preWorkOutViewModel;
+    private LengthOfWorkoutFragment lengthOfWorkoutFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_pre_workout);
-        preWorkOutViewModel = new PreWorkOutViewModel(this);
+        preWorkOutViewModel = new PreWorkOutViewModel();
         binding.setViewModel(preWorkOutViewModel);
 
         setContentView(binding.getRoot());
+
+        lengthOfWorkoutFragment = new LengthOfWorkoutFragment();
+
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(R.id.workout_length_frame_id, lengthOfWorkoutFragment, "length_of_workout_fragment");
+        fragmentTransaction.commit();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        setWorkoutLengthDropDownMenuAdapter();
+        preWorkOutViewModel.makeWorkoutButtonClicked.addOnPropertyChangedCallback(navigateToWorkoutActivityCallback());
+        preWorkOutViewModel.selectAllEquipmentClicked.addOnPropertyChangedCallback(selectAllTextCallback());
         setWorkoutDifficultyDropDownMenuAdapter();
         setWorkoutRegimentDropDownMenuAdapter();
+    }
+
+    private Observable.OnPropertyChangedCallback selectAllTextCallback() {
+        final PreWorkoutActivity activity = this;
+        return new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable observable, int i) {
+                if (preWorkOutViewModel.selectAllEquipmentClicked.get().equals(activity.getString(R.string.select_all))) {
+                    binding.selectAllTextView.setText(activity.getString(R.string.unselect_all));
+                    for (Equipment equipment : Equipment.values()) {
+                        CheckBox checkBox = (CheckBox) activity.findViewById(equipment.getResourceIdCheckBox());
+                        checkBox.setChecked(true);
+                    }
+                } else {
+                    binding.selectAllTextView.setText(activity.getString(R.string.select_all));
+                    for (Equipment equipment : Equipment.values()) {
+                        CheckBox checkBox = (CheckBox) activity.findViewById(equipment.getResourceIdCheckBox());
+                        checkBox.setChecked(false);
+                    }
+                }
+            }
+        };
+    }
+
+    private Observable.OnPropertyChangedCallback navigateToWorkoutActivityCallback() {
+        final PreWorkoutActivity activity = this;
+        return new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable observable, int i) {
+                Intent intent = new Intent(activity, WorkoutActivity.class);
+                intent.putExtra(WORK_OUT_REGIMENT, preWorkOutViewModel.getWorkOutRegiment().get());
+                intent.putExtra(WORK_OUT_LENGTH, lengthOfWorkoutFragment.getLengthOfWorkout());
+                intent.putExtra(WORK_OUT_DIFFICULTY, preWorkOutViewModel.getWorkoutDifficulty().get());
+                intent.putExtra(HAS_PARTNER, preWorkOutViewModel.getHasPartner().get());
+                intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(preWorkOutViewModel.getExcludedEquipments().get()));
+                intent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(preWorkOutViewModel.getActiveBodyFocuses().get()));
+                activity.startActivity(intent);
+            }
+        };
     }
 
     private void setWorkoutRegimentDropDownMenuAdapter() {
@@ -82,29 +146,6 @@ public class PreWorkoutActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 preWorkOutViewModel.setWorkOutDifficulty(difficultyValues.get(position));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }
-
-    private void setWorkoutLengthDropDownMenuAdapter() {
-        final Integer[] allottedLengthsOfTimes = {30, 45, 60, 75, 90, 105, 120};
-
-        ArrayAdapter<Integer> staticAdapter = new ArrayAdapter<>(
-                this,
-                R.layout.support_simple_spinner_dropdown_item,
-                allottedLengthsOfTimes);
-
-        staticAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.workoutLengthDropdownMenu.setAdapter(staticAdapter);
-        binding.workoutLengthDropdownMenu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                preWorkOutViewModel.setWorkOutLength(allottedLengthsOfTimes[position]);
             }
 
             @Override

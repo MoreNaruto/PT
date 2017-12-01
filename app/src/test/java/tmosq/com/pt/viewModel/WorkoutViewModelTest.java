@@ -2,7 +2,6 @@ package tmosq.com.pt.viewModel;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.view.View;
 
 import com.google.gson.Gson;
 
@@ -11,11 +10,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 
-import tmosq.com.pt.BuildConfig;
 import tmosq.com.pt.activity.WorkoutActivity;
 import tmosq.com.pt.model.Exercise;
 
@@ -23,7 +20,6 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static com.google.common.collect.Lists.newArrayList;
 import static org.assertj.core.api.Java6Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
@@ -46,7 +42,6 @@ import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.BODY;
 import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.WARM_UP_AND_COOL_OFF;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, manifest = "src/main/AndroidManifest.xml", sdk = 21)
 public class WorkoutViewModelTest {
     private WorkoutViewModel workoutViewModel;
 

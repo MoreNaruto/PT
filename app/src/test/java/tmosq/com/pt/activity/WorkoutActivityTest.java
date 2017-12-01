@@ -13,11 +13,9 @@ import org.mockito.Mock;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.android.controller.ActivityController;
-import org.robolectric.annotation.Config;
 
 import java.util.List;
 
-import tmosq.com.pt.BuildConfig;
 import tmosq.com.pt.adapter.CoolOffAdapter;
 import tmosq.com.pt.adapter.MainWorkoutAdapter;
 import tmosq.com.pt.adapter.WarmUpAdapter;
@@ -35,7 +33,6 @@ import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, manifest = "src/main/AndroidManifest.xml", sdk = 21)
 public class WorkoutActivityTest {
     private ActivityController<WorkoutActivity> activityController;
 

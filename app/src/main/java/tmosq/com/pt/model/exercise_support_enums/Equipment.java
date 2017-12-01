@@ -6,6 +6,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.Getter;
 import tmosq.com.pt.R;
@@ -42,7 +44,6 @@ public enum Equipment {
     WORKOUT_BOX("workout box", R.id.workout_box_checkbox),
     V_BAR("v-bar", R.id.v_bar_checkbox);
 
-
     private String equipmentNameAlias;
     private Integer resourceIdCheckBox;
 
@@ -71,6 +72,17 @@ public enum Equipment {
         }
         return null;
     }
+
+    public static List<String> allEquipmentNameAliases(){
+        List<String> allEquipmentNames = new ArrayList<>();
+
+        for (Equipment equipment : Equipment.values()) {
+            allEquipmentNames.add(equipment.getEquipmentNameAlias());
+        }
+
+        return allEquipmentNames;
+    }
+
 
     public static class EquipmentDeserializer implements JsonDeserializer<Equipment> {
 

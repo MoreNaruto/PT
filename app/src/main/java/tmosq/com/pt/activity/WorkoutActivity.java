@@ -1,8 +1,8 @@
 package tmosq.com.pt.activity;
 
-import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -13,7 +13,7 @@ import tmosq.com.pt.adapter.WarmUpAdapter;
 import tmosq.com.pt.databinding.ActivityWorkoutBinding;
 import tmosq.com.pt.viewModel.WorkoutViewModel;
 
-public class WorkoutActivity extends Activity {
+public class WorkoutActivity extends AppCompatActivity {
 
     protected ActivityWorkoutBinding binding;
     protected WorkoutViewModel workoutViewModel;

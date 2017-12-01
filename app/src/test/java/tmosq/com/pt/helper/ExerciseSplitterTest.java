@@ -5,9 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
-import tmosq.com.pt.BuildConfig;
 import tmosq.com.pt.model.Exercise;
 
 import static org.junit.Assert.assertEquals;
@@ -17,7 +15,6 @@ import static tmosq.com.pt.model.exercise_support_enums.Equipment.BARBELL;
 import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.POWER_WEIGHT;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, manifest = "src/main/AndroidManifest.xml", sdk = 21)
 public class ExerciseSplitterTest {
 
     private ExerciseSplitter exerciseSplitter;

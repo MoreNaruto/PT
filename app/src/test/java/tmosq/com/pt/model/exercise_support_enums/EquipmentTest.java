@@ -2,6 +2,8 @@ package tmosq.com.pt.model.exercise_support_enums;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import tmosq.com.pt.R;
 
 import static org.junit.Assert.*;
@@ -111,4 +113,38 @@ public class EquipmentTest {
         assertEquals(Equipment.WORKOUT_BOX.getEquipmentNameAlias(), "workout box");
     }
 
+    @Test
+    public void getAllEquipmentNameAliases() throws Exception {
+        List<String> allEquipmentNameAliases = Equipment.allEquipmentNameAliases();
+
+        assertEquals(allEquipmentNameAliases.get(0), "bands");
+        assertEquals(allEquipmentNameAliases.get(1), "barbell");
+        assertEquals(allEquipmentNameAliases.get(2), "bicycle");
+        assertEquals(allEquipmentNameAliases.get(3), "bosu ball");
+        assertEquals(allEquipmentNameAliases.get(4), "cable");
+        assertEquals(allEquipmentNameAliases.get(5), "chair");
+        assertEquals(allEquipmentNameAliases.get(6), "cones");
+        assertEquals(allEquipmentNameAliases.get(7), "dumbbell");
+        assertEquals(allEquipmentNameAliases.get(8), "exercise ball");
+        assertEquals(allEquipmentNameAliases.get(9), "E-Z Curl Bar");
+        assertEquals(allEquipmentNameAliases.get(10), "foam roll");
+        assertEquals(allEquipmentNameAliases.get(11), "jumping rope");
+        assertEquals(allEquipmentNameAliases.get(12), "kettlebell");
+        assertEquals(allEquipmentNameAliases.get(13), "machine");
+        assertEquals(allEquipmentNameAliases.get(14), "medicine ball");
+        assertEquals(allEquipmentNameAliases.get(15), "plate");
+        assertEquals(allEquipmentNameAliases.get(16), "rickshaw");
+        assertEquals(allEquipmentNameAliases.get(17), "roller");
+        assertEquals(allEquipmentNameAliases.get(18), "rope");
+        assertEquals(allEquipmentNameAliases.get(19), "row");
+        assertEquals(allEquipmentNameAliases.get(20), "sled");
+        assertEquals(allEquipmentNameAliases.get(21), "stone");
+        assertEquals(allEquipmentNameAliases.get(22), "straps");
+        assertEquals(allEquipmentNameAliases.get(23), "t-bar");
+        assertEquals(allEquipmentNameAliases.get(24), "toning wheel");
+        assertEquals(allEquipmentNameAliases.get(25), "trap bar");
+        assertEquals(allEquipmentNameAliases.get(26), "treadmill");
+        assertEquals(allEquipmentNameAliases.get(27), "workout box");
+        assertEquals(allEquipmentNameAliases.get(28), "v-bar");
+    }
 }

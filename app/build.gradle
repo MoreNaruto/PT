@@ -25,7 +25,10 @@ android {
     }
 
     testOptions {
-        unitTests.returnDefaultValues = true
+        unitTests{
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
     }
 }
 
@@ -38,6 +41,7 @@ dependencies {
     compile 'com.google.guava:guava:20.0'
     compile 'com.google.code.gson:gson:2.7'
     testCompile 'org.robolectric:robolectric:3.3.2'
+    testCompile "org.robolectric:shadows-support-v4:3.3.2"
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-all:1.8.4'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'

@@ -10,18 +10,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-import tmosq.com.pt.BuildConfig;
 import tmosq.com.pt.activity.WorkoutActivity;
 import tmosq.com.pt.model.Exercise;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static tmosq.com.pt.helper.ExerciseSplitter.HAS_PARTNER;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_EXCLUDED_EQUIPMENT;
@@ -46,7 +44,6 @@ import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.WARM_UP_AND_
 import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.WEIGHTED_MOVEMENTS;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, manifest = "src/main/AndroidManifest.xml", sdk = 21)
 public class ExerciseFilterTest {
     private ExerciseFilter exerciseFilter;
 

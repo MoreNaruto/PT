@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    tools:context="tmosq.com.pt.activity.PreWorkoutActivity">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="tmosq.com.pt.viewModel.LengthOfWorkoutViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/length_of_workout_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/length_of_workout_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/length_of_workout"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/workout_length_dropdown_menu"
+            style="@android:style/Widget.Spinner.DropDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:entries="@array/workout_length_array"
+            android:background="@android:drawable/btn_dropdown"
+            bind:selectedValue="@={viewModel.lengthOfWorkoutText}"
+            android:spinnerMode="dropdown" />
+    </LinearLayout>
+</layout>

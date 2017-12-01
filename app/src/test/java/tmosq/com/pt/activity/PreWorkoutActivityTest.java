@@ -1,5 +1,7 @@
 package tmosq.com.pt.activity;
 
+import android.content.Intent;
+import android.databinding.ObservableField;
 import android.widget.ArrayAdapter;
 
 import org.junit.Before;
@@ -7,37 +9,83 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.android.controller.ActivityController;
-import org.robolectric.annotation.Config;
+import org.robolectric.shadows.ShadowApplication;
 
 import java.util.ArrayList;
 
-import tmosq.com.pt.BuildConfig;
 import tmosq.com.pt.R;
+import tmosq.com.pt.databinding.ActivityPreWorkoutBinding;
+import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
 import tmosq.com.pt.model.exercise_support_enums.Difficulty;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 import tmosq.com.pt.viewModel.PreWorkOutViewModel;
 
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertTrue;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static tmosq.com.pt.helper.ExerciseSplitter.HAS_PARTNER;
+import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
+import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_EXCLUDED_EQUIPMENT;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_DIFFICULTY;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, manifest = "src/main/AndroidManifest.xml", sdk = 21)
 public class PreWorkoutActivityTest {
-    private ActivityController<PreWorkoutActivity> activityController;
+    private PreWorkoutActivity preWorkoutActivity;
+    private ActivityPreWorkoutBinding binding;
 
     @Before
     public void setUp() throws Exception {
-        activityController = Robolectric.buildActivity(PreWorkoutActivity.class);
+        preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class).create().start().get();
+        binding = preWorkoutActivity.binding;
     }
 
     @Test
     public void onCreate_bindsToViewModel() throws Exception {
-        PreWorkoutActivity activity = activityController.create().get();
+        assertEquals(preWorkoutActivity.binding.getViewModel(), preWorkoutActivity.preWorkOutViewModel);
+    }
 
-        assertEquals(activity.binding.getViewModel(), activity.preWorkOutViewModel);
+    @Test
+    public void onCreate_addLengthOfWorkoutFragmentToFragmentManager() throws Exception {
+        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.workout_length_frame_id) instanceof LengthOfWorkoutFragment);
+    }
+
+    @Test
+    public void onStart_whenSelectAllTextCallback_andTextViewValueIsSelectAll_selectAllEquipmentCheckboxes() throws Exception {
+        ObservableField<String> selectAllEquipmentClicked = preWorkoutActivity.preWorkOutViewModel.selectAllEquipmentClicked;
+        selectAllEquipmentClicked.set(preWorkoutActivity.getString(R.string.select_all));
+
+        assertEquals(binding.selectAllTextView.getText().toString(), preWorkoutActivity.getString(R.string.unselect_all));
+        assertEquals(binding.bandsCheckbox.isChecked(), true);
+    }
+
+    @Test
+    public void onStart_whenSelectAllTextCallback_andTextViewValueIsUnSelectAll_selectUnAllEquipmentCheckboxes() throws Exception {
+        ObservableField<String> selectAllEquipmentClicked = preWorkoutActivity.preWorkOutViewModel.selectAllEquipmentClicked;
+        selectAllEquipmentClicked.set(preWorkoutActivity.getString(R.string.unselect_all));
+
+        assertEquals(binding.selectAllTextView.getText().toString(), preWorkoutActivity.getString(R.string.select_all));
+        assertEquals(binding.bandsCheckbox.isChecked(), false);
+    }
+
+    @Test
+    public void onStart_whenMakeWorkoutButtonClickedCallback_goToWorkOutActivity() throws Exception {
+        preWorkoutActivity.preWorkOutViewModel.makeWorkoutButtonClicked.notifyChange();
+
+        Intent intent = ShadowApplication.getInstance().getNextStartedActivity();
+
+        assertEquals(intent.getComponent().getClassName(), WorkoutActivity.class.getName());
+        assertNotNull(intent.getStringExtra(WORK_OUT_REGIMENT));
+        assertNotEquals(intent.getIntExtra(WORK_OUT_LENGTH, 0), 0);
+        assertNotNull(intent.getStringExtra(WORK_OUT_DIFFICULTY));
+        assertEquals(intent.getBooleanExtra(HAS_PARTNER, true), false);
+        assertNotNull(intent.getStringExtra(LIST_OF_EXCLUDED_EQUIPMENT));
+        assertNotNull(intent.getStringExtra(LIST_OF_ACTIVE_BODY_FOCUSES));
     }
 
     @Test
@@ -47,30 +95,26 @@ public class PreWorkoutActivityTest {
             difficultyValues.add(difficulty.getDifficultyNameAlias());
         }
 
-        PreWorkoutActivity activity = activityController.create().start().get();
-
         ArrayAdapter<String> staticAdapter = new ArrayAdapter<>(
-                activity,
+                preWorkoutActivity,
                 R.layout.support_simple_spinner_dropdown_item,
                 difficultyValues);
 
-        assertThat(activity.binding.workoutDifficultyDropdownMenu.getAdapter().getItem(0))
+        assertThat(preWorkoutActivity.binding.workoutDifficultyDropdownMenu.getAdapter().getItem(0))
                 .isEqualTo(staticAdapter.getItem(0));
     }
 
     @Test
     public void onStart_whenItemIsSelected_setWorkOutDifficulty() throws Exception {
-        PreWorkoutActivity activity = activityController.create().start().get();
+        preWorkoutActivity.preWorkOutViewModel = mock(PreWorkOutViewModel.class);
 
-        activity.preWorkOutViewModel = mock(PreWorkOutViewModel.class);
+        preWorkoutActivity.binding.workoutDifficultyDropdownMenu.setSelection(0);
+        preWorkoutActivity.binding.workoutDifficultyDropdownMenu.setSelection(1);
+        preWorkoutActivity.binding.workoutDifficultyDropdownMenu.setSelection(2);
 
-        activity.binding.workoutDifficultyDropdownMenu.setSelection(0);
-        activity.binding.workoutDifficultyDropdownMenu.setSelection(1);
-        activity.binding.workoutDifficultyDropdownMenu.setSelection(2);
-
-        verify(activity.preWorkOutViewModel).setWorkOutDifficulty("basic");
-        verify(activity.preWorkOutViewModel).setWorkOutDifficulty("intermediate");
-        verify(activity.preWorkOutViewModel).setWorkOutDifficulty("advanced");
+        verify(preWorkoutActivity.preWorkOutViewModel).setWorkOutDifficulty("basic");
+        verify(preWorkoutActivity.preWorkOutViewModel).setWorkOutDifficulty("intermediate");
+        verify(preWorkoutActivity.preWorkOutViewModel).setWorkOutDifficulty("advanced");
     }
 
     @Test
@@ -80,65 +124,26 @@ public class PreWorkoutActivityTest {
             workOutRegiment.add(workoutRegiment.getWorkOutRegimentNameAlias());
         }
 
-        PreWorkoutActivity activity = activityController.create().start().get();
 
         ArrayAdapter<String> staticAdapter = new ArrayAdapter<>(
-                activity,
+                preWorkoutActivity,
                 R.layout.support_simple_spinner_dropdown_item,
                 workOutRegiment);
 
-        assertThat(activity.binding.workoutRegimentDropdownMenu.getAdapter().getItem(0))
+        assertThat(preWorkoutActivity.binding.workoutRegimentDropdownMenu.getAdapter().getItem(0))
                 .isEqualTo(staticAdapter.getItem(0));
     }
 
     @Test
     public void onStart_whenItemIsSelected_setWorkOutRegiment() throws Exception {
-        PreWorkoutActivity activity = activityController.create().start().get();
+        preWorkoutActivity.preWorkOutViewModel = mock(PreWorkOutViewModel.class);
 
-        activity.preWorkOutViewModel = mock(PreWorkOutViewModel.class);
+        preWorkoutActivity.binding.workoutRegimentDropdownMenu.setSelection(0);
+        preWorkoutActivity.binding.workoutRegimentDropdownMenu.setSelection(1);
+        preWorkoutActivity.binding.workoutRegimentDropdownMenu.setSelection(2);
 
-        activity.binding.workoutRegimentDropdownMenu.setSelection(0);
-        activity.binding.workoutRegimentDropdownMenu.setSelection(1);
-        activity.binding.workoutRegimentDropdownMenu.setSelection(2);
-
-        verify(activity.preWorkOutViewModel).setWorkOutRegiment("cardio");
-        verify(activity.preWorkOutViewModel).setWorkOutRegiment("cross fit");
-        verify(activity.preWorkOutViewModel).setWorkOutRegiment("power lifting");
-    }
-
-    @Test
-    public void onStart_setUpWorkOutLengthDropDownMenuAdapter() throws Exception {
-        final Integer[] allottedLengthsOfTimes = {30, 45, 60, 75, 90, 105, 120};
-
-        PreWorkoutActivity activity = activityController.create().start().get();
-        ArrayAdapter<Integer> staticAdapter = new ArrayAdapter<>(
-                activity,
-                R.layout.support_simple_spinner_dropdown_item,
-                allottedLengthsOfTimes);
-
-        assertThat(activity.binding.workoutLengthDropdownMenu.getAdapter().getItem(0))
-                .isEqualTo(staticAdapter.getItem(0));
-    }
-
-    @Test
-    public void onStart_whenItemIsSelected_setWorkOutLength() throws Exception {
-        PreWorkoutActivity activity = activityController.create().start().get();
-        activity.preWorkOutViewModel = mock(PreWorkOutViewModel.class);
-
-        activity.binding.workoutLengthDropdownMenu.setSelection(0);
-        activity.binding.workoutLengthDropdownMenu.setSelection(1);
-        activity.binding.workoutLengthDropdownMenu.setSelection(2);
-        activity.binding.workoutLengthDropdownMenu.setSelection(3);
-        activity.binding.workoutLengthDropdownMenu.setSelection(4);
-        activity.binding.workoutLengthDropdownMenu.setSelection(5);
-        activity.binding.workoutLengthDropdownMenu.setSelection(6);
-
-        verify(activity.preWorkOutViewModel).setWorkOutLength(30);
-        verify(activity.preWorkOutViewModel).setWorkOutLength(45);
-        verify(activity.preWorkOutViewModel).setWorkOutLength(60);
-        verify(activity.preWorkOutViewModel).setWorkOutLength(75);
-        verify(activity.preWorkOutViewModel).setWorkOutLength(90);
-        verify(activity.preWorkOutViewModel).setWorkOutLength(105);
-        verify(activity.preWorkOutViewModel).setWorkOutLength(120);
+        verify(preWorkoutActivity.preWorkOutViewModel).setWorkOutRegiment("cardio");
+        verify(preWorkoutActivity.preWorkOutViewModel).setWorkOutRegiment("cross fit");
+        verify(preWorkoutActivity.preWorkOutViewModel).setWorkOutRegiment("power lifting");
     }
 }
