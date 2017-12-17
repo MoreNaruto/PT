@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.ActivityPreWorkoutBinding;
+import tmosq.com.pt.fragment.FocalBodyFocusFragment;
 import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
 import tmosq.com.pt.model.exercise_support_enums.Difficulty;
 import tmosq.com.pt.model.exercise_support_enums.Equipment;
@@ -35,6 +36,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
     protected ActivityPreWorkoutBinding binding;
     protected PreWorkOutViewModel preWorkOutViewModel;
     private LengthOfWorkoutFragment lengthOfWorkoutFragment;
+    private FocalBodyFocusFragment focalBodyFocusFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +49,13 @@ public class PreWorkoutActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         lengthOfWorkoutFragment = new LengthOfWorkoutFragment();
+        focalBodyFocusFragment = new FocalBodyFocusFragment();
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
+
         fragmentTransaction.add(R.id.workout_length_frame_id, lengthOfWorkoutFragment, "length_of_workout_fragment");
+        fragmentTransaction.add(R.id.focal_body_point_frame_id, focalBodyFocusFragment, "focal_body_focus_fragment");
         fragmentTransaction.commit();
     }
 
@@ -97,7 +102,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
                 intent.putExtra(WORK_OUT_DIFFICULTY, preWorkOutViewModel.getWorkoutDifficulty().get());
                 intent.putExtra(HAS_PARTNER, preWorkOutViewModel.getHasPartner().get());
                 intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(preWorkOutViewModel.getExcludedEquipments().get()));
-                intent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(preWorkOutViewModel.getActiveBodyFocuses().get()));
+                intent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(focalBodyFocusFragment.getActiveBodyFocuses()));
                 activity.startActivity(intent);
             }
         };

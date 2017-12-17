@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
-import tmosq.com.pt.model.exercise_support_enums.BodyFocus;
 import tmosq.com.pt.model.exercise_support_enums.Difficulty;
 import tmosq.com.pt.model.exercise_support_enums.Equipment;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
@@ -23,8 +22,6 @@ public class PreWorkOutViewModel {
     private ObservableField<String> workOutRegiment = new ObservableField<>(WorkoutRegiment.CARDIO.getWorkOutRegimentNameAlias());
     @Getter
     private ObservableBoolean hasPartner = new ObservableBoolean(false);
-    @Getter
-    private ObservableField<List<String>> activeBodyFocuses = new ObservableField<>((List<String>) new ArrayList<String>());
     @Getter
     private ObservableField<List<String>> excludedEquipments = new ObservableField<>((List<String>) new ArrayList<String>());
 
@@ -40,22 +37,6 @@ public class PreWorkOutViewModel {
 
     public void setWorkOutDifficulty(String workOutDifficulty) {
         this.workoutDifficulty.set(workOutDifficulty);
-    }
-
-    public View.OnClickListener clickBodyFocusCheckBox() {
-        return new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                CheckBox bodyFocusCheckBox = (CheckBox) view;
-                String bodyFocus = BodyFocus.fromResourceCheckBoxId(view.getId()).getBodyPartNameAlias();
-                if (bodyFocusCheckBox.isChecked()) {
-                    activeBodyFocuses.get().add(bodyFocus);
-                } else {
-                    activeBodyFocuses.get().remove(bodyFocus);
-                }
-            }
-        };
     }
 
     public View.OnClickListener clickEquipmentCheckBox() {

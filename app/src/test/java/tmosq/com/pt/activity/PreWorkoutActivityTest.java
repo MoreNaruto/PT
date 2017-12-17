@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.ActivityPreWorkoutBinding;
+import tmosq.com.pt.fragment.FocalBodyFocusFragment;
 import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
 import tmosq.com.pt.model.exercise_support_enums.Difficulty;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
@@ -51,8 +52,9 @@ public class PreWorkoutActivityTest {
     }
 
     @Test
-    public void onCreate_addLengthOfWorkoutFragmentToFragmentManager() throws Exception {
+    public void onCreate_addFragmentsToFragmentManager() throws Exception {
         assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.workout_length_frame_id) instanceof LengthOfWorkoutFragment);
+        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.focal_body_point_frame_id) instanceof FocalBodyFocusFragment);
     }
 
     @Test

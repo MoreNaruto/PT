@@ -17,7 +17,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.robolectric.RuntimeEnvironment.application;
-import static tmosq.com.pt.model.exercise_support_enums.BodyFocus.ABDOMINALS;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.ADVANCED;
 import static tmosq.com.pt.model.exercise_support_enums.Equipment.BANDS;
 import static tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment.POWER_LIFTING;
@@ -47,19 +46,6 @@ public class PreWorkOutViewModelTest {
         preWorkOutViewModel.setWorkOutDifficulty(ADVANCED.getDifficultyNameAlias());
 
         assertEquals(preWorkOutViewModel.getWorkoutDifficulty().get(), ADVANCED.getDifficultyNameAlias());
-    }
-
-    @Test
-    public void clickBodyFocusCheckBox_getBodyFocus() throws Exception {
-        preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class).create().get();
-        preWorkOutViewModel = new PreWorkOutViewModel();
-
-        CheckBox abdominalsCheckBox = new CheckBox(application);
-        abdominalsCheckBox.setId(R.id.abdominals_checkbox);
-        abdominalsCheckBox.setChecked(true);
-
-        preWorkOutViewModel.clickBodyFocusCheckBox().onClick(abdominalsCheckBox);
-        assertEquals(preWorkOutViewModel.getActiveBodyFocuses().get().get(0), ABDOMINALS.getBodyPartNameAlias());
     }
 
     @Test
