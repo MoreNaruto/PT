@@ -16,7 +16,7 @@ import tmosq.com.pt.viewModel.FocalBodyFocusViewModel;
 
 public class FocalBodyFocusFragment extends Fragment{
     protected FocalBodyFocusViewModel viewModel;
-    public FocalBodyFocusFragmentBinding binding;
+    protected FocalBodyFocusFragmentBinding binding;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

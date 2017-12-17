@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 
 import com.google.gson.Gson;
 
@@ -19,9 +18,9 @@ import java.util.ArrayList;
 import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.ActivityPreWorkoutBinding;
 import tmosq.com.pt.fragment.DifficultyFragment;
+import tmosq.com.pt.fragment.EquipmentFragment;
 import tmosq.com.pt.fragment.FocalBodyFocusFragment;
 import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
-import tmosq.com.pt.model.exercise_support_enums.Equipment;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 import tmosq.com.pt.viewModel.PreWorkOutViewModel;
 
@@ -38,6 +37,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
     private LengthOfWorkoutFragment lengthOfWorkoutFragment;
     private FocalBodyFocusFragment focalBodyFocusFragment;
     private DifficultyFragment difficultyFragment;
+    private EquipmentFragment equipmentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
         lengthOfWorkoutFragment = new LengthOfWorkoutFragment();
         focalBodyFocusFragment = new FocalBodyFocusFragment();
         difficultyFragment = new DifficultyFragment();
+        equipmentFragment = new EquipmentFragment();
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
@@ -59,6 +60,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.workout_length_frame_id, lengthOfWorkoutFragment, "length_of_workout_fragment");
         fragmentTransaction.add(R.id.focal_body_point_frame_id, focalBodyFocusFragment, "focal_body_focus_fragment");
         fragmentTransaction.add(R.id.difficulty_frame_id, difficultyFragment, "difficulty_fragment");
+        fragmentTransaction.add(R.id.equipment_frame_id, equipmentFragment, "equipment_fragment");
         fragmentTransaction.commit();
     }
 
@@ -67,31 +69,9 @@ public class PreWorkoutActivity extends AppCompatActivity {
         super.onStart();
 
         preWorkOutViewModel.makeWorkoutButtonClicked.addOnPropertyChangedCallback(navigateToWorkoutActivityCallback());
-        preWorkOutViewModel.selectAllEquipmentClicked.addOnPropertyChangedCallback(selectAllTextCallback());
         setWorkoutRegimentDropDownMenuAdapter();
     }
 
-    private Observable.OnPropertyChangedCallback selectAllTextCallback() {
-        final PreWorkoutActivity activity = this;
-        return new Observable.OnPropertyChangedCallback() {
-            @Override
-            public void onPropertyChanged(Observable observable, int i) {
-                if (preWorkOutViewModel.selectAllEquipmentClicked.get().equals(activity.getString(R.string.select_all))) {
-                    binding.selectAllTextView.setText(activity.getString(R.string.unselect_all));
-                    for (Equipment equipment : Equipment.values()) {
-                        CheckBox checkBox = (CheckBox) activity.findViewById(equipment.getResourceIdCheckBox());
-                        checkBox.setChecked(true);
-                    }
-                } else {
-                    binding.selectAllTextView.setText(activity.getString(R.string.select_all));
-                    for (Equipment equipment : Equipment.values()) {
-                        CheckBox checkBox = (CheckBox) activity.findViewById(equipment.getResourceIdCheckBox());
-                        checkBox.setChecked(false);
-                    }
-                }
-            }
-        };
-    }
 
     private Observable.OnPropertyChangedCallback navigateToWorkoutActivityCallback() {
         final PreWorkoutActivity activity = this;
@@ -103,7 +83,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
                 intent.putExtra(WORK_OUT_LENGTH, lengthOfWorkoutFragment.getLengthOfWorkout());
                 intent.putExtra(WORK_OUT_DIFFICULTY, difficultyFragment.getDifficulty());
                 intent.putExtra(HAS_PARTNER, preWorkOutViewModel.getHasPartner().get());
-                intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(preWorkOutViewModel.getExcludedEquipments().get()));
+                intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(equipmentFragment.getExcludedEquipmentItems()));
                 intent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(focalBodyFocusFragment.getActiveBodyFocuses()));
                 activity.startActivity(intent);
             }

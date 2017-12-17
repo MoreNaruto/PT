@@ -1,7 +1,6 @@
 package tmosq.com.pt.activity;
 
 import android.content.Intent;
-import android.databinding.ObservableField;
 import android.widget.ArrayAdapter;
 
 import org.junit.Before;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
 import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.ActivityPreWorkoutBinding;
 import tmosq.com.pt.fragment.DifficultyFragment;
+import tmosq.com.pt.fragment.EquipmentFragment;
 import tmosq.com.pt.fragment.FocalBodyFocusFragment;
 import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
@@ -56,24 +56,7 @@ public class PreWorkoutActivityTest {
         assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.workout_length_frame_id) instanceof LengthOfWorkoutFragment);
         assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.focal_body_point_frame_id) instanceof FocalBodyFocusFragment);
         assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.difficulty_frame_id) instanceof DifficultyFragment);
-    }
-
-    @Test
-    public void onStart_whenSelectAllTextCallback_andTextViewValueIsSelectAll_selectAllEquipmentCheckboxes() throws Exception {
-        ObservableField<String> selectAllEquipmentClicked = preWorkoutActivity.preWorkOutViewModel.selectAllEquipmentClicked;
-        selectAllEquipmentClicked.set(preWorkoutActivity.getString(R.string.select_all));
-
-        assertEquals(binding.selectAllTextView.getText().toString(), preWorkoutActivity.getString(R.string.unselect_all));
-        assertEquals(binding.bandsCheckbox.isChecked(), true);
-    }
-
-    @Test
-    public void onStart_whenSelectAllTextCallback_andTextViewValueIsUnSelectAll_selectUnAllEquipmentCheckboxes() throws Exception {
-        ObservableField<String> selectAllEquipmentClicked = preWorkoutActivity.preWorkOutViewModel.selectAllEquipmentClicked;
-        selectAllEquipmentClicked.set(preWorkoutActivity.getString(R.string.unselect_all));
-
-        assertEquals(binding.selectAllTextView.getText().toString(), preWorkoutActivity.getString(R.string.select_all));
-        assertEquals(binding.bandsCheckbox.isChecked(), false);
+        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.equipment_frame_id) instanceof EquipmentFragment);
     }
 
     @Test
