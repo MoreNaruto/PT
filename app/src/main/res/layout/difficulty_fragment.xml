@@ -4,26 +4,25 @@
     tools:context="tmosq.com.pt.activity.PreWorkoutActivity">
 
     <LinearLayout
-        android:id="@+id/length_of_workout_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="11dp">
 
         <TextView
-            android:id="@+id/length_of_workout_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/length_of_workout"
+            android:text="@string/workout_difficulty"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/workout_length_dropdown_menu"
+            android:id="@+id/workout_difficulty_dropdown_menu"
             style="@android:style/Widget.Spinner.DropDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:entries="@array/workout_length_array"
+            android:entries="@array/difficulty_array"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown" />
     </LinearLayout>

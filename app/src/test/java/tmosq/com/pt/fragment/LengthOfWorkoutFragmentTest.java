@@ -7,12 +7,10 @@ import org.robolectric.RobolectricTestRunner;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
 import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFragment;
 
 @RunWith(RobolectricTestRunner.class)
 public class LengthOfWorkoutFragmentTest {
-
     private LengthOfWorkoutFragment lengthOfWorkoutFragment;
 
     @Before
@@ -21,11 +19,6 @@ public class LengthOfWorkoutFragmentTest {
 
         startFragment(lengthOfWorkoutFragment);
         assertNotNull(lengthOfWorkoutFragment);
-    }
-
-    @Test
-    public void onCreateView_shouldBindToViewModel() throws Exception {
-        assertTrue(lengthOfWorkoutFragment.binding.getViewModel().equals(lengthOfWorkoutFragment.viewModel));
     }
 
     @Test

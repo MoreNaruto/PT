@@ -15,9 +15,9 @@ import java.util.ArrayList;
 
 import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.ActivityPreWorkoutBinding;
+import tmosq.com.pt.fragment.DifficultyFragment;
 import tmosq.com.pt.fragment.FocalBodyFocusFragment;
 import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
-import tmosq.com.pt.model.exercise_support_enums.Difficulty;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 import tmosq.com.pt.viewModel.PreWorkOutViewModel;
 
@@ -55,6 +55,7 @@ public class PreWorkoutActivityTest {
     public void onCreate_addFragmentsToFragmentManager() throws Exception {
         assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.workout_length_frame_id) instanceof LengthOfWorkoutFragment);
         assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.focal_body_point_frame_id) instanceof FocalBodyFocusFragment);
+        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.difficulty_frame_id) instanceof DifficultyFragment);
     }
 
     @Test
@@ -88,35 +89,6 @@ public class PreWorkoutActivityTest {
         assertEquals(intent.getBooleanExtra(HAS_PARTNER, true), false);
         assertNotNull(intent.getStringExtra(LIST_OF_EXCLUDED_EQUIPMENT));
         assertNotNull(intent.getStringExtra(LIST_OF_ACTIVE_BODY_FOCUSES));
-    }
-
-    @Test
-    public void onStart_setUpWorkoutDifficultyDropDownMenuAdapter() throws Exception {
-        final ArrayList<String> difficultyValues = new ArrayList<>();
-        for (Difficulty difficulty : Difficulty.values()) {
-            difficultyValues.add(difficulty.getDifficultyNameAlias());
-        }
-
-        ArrayAdapter<String> staticAdapter = new ArrayAdapter<>(
-                preWorkoutActivity,
-                R.layout.support_simple_spinner_dropdown_item,
-                difficultyValues);
-
-        assertThat(preWorkoutActivity.binding.workoutDifficultyDropdownMenu.getAdapter().getItem(0))
-                .isEqualTo(staticAdapter.getItem(0));
-    }
-
-    @Test
-    public void onStart_whenItemIsSelected_setWorkOutDifficulty() throws Exception {
-        preWorkoutActivity.preWorkOutViewModel = mock(PreWorkOutViewModel.class);
-
-        preWorkoutActivity.binding.workoutDifficultyDropdownMenu.setSelection(0);
-        preWorkoutActivity.binding.workoutDifficultyDropdownMenu.setSelection(1);
-        preWorkoutActivity.binding.workoutDifficultyDropdownMenu.setSelection(2);
-
-        verify(preWorkoutActivity.preWorkOutViewModel).setWorkOutDifficulty("basic");
-        verify(preWorkoutActivity.preWorkOutViewModel).setWorkOutDifficulty("intermediate");
-        verify(preWorkoutActivity.preWorkOutViewModel).setWorkOutDifficulty("advanced");
     }
 
     @Test

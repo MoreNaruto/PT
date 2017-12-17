@@ -11,4 +11,10 @@
         <item>105</item>
         <item>120</item>
     </string-array>
+
+    <string-array name="difficulty_array">
+        <item>basic</item>
+        <item>intermediate</item>
+        <item>advanced</item>
+    </string-array>
 </resources>

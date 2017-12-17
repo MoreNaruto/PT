@@ -18,9 +18,9 @@ import java.util.ArrayList;
 
 import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.ActivityPreWorkoutBinding;
+import tmosq.com.pt.fragment.DifficultyFragment;
 import tmosq.com.pt.fragment.FocalBodyFocusFragment;
 import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
-import tmosq.com.pt.model.exercise_support_enums.Difficulty;
 import tmosq.com.pt.model.exercise_support_enums.Equipment;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 import tmosq.com.pt.viewModel.PreWorkOutViewModel;
@@ -37,6 +37,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
     protected PreWorkOutViewModel preWorkOutViewModel;
     private LengthOfWorkoutFragment lengthOfWorkoutFragment;
     private FocalBodyFocusFragment focalBodyFocusFragment;
+    private DifficultyFragment difficultyFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +51,14 @@ public class PreWorkoutActivity extends AppCompatActivity {
 
         lengthOfWorkoutFragment = new LengthOfWorkoutFragment();
         focalBodyFocusFragment = new FocalBodyFocusFragment();
+        difficultyFragment = new DifficultyFragment();
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
 
         fragmentTransaction.add(R.id.workout_length_frame_id, lengthOfWorkoutFragment, "length_of_workout_fragment");
         fragmentTransaction.add(R.id.focal_body_point_frame_id, focalBodyFocusFragment, "focal_body_focus_fragment");
+        fragmentTransaction.add(R.id.difficulty_frame_id, difficultyFragment, "difficulty_fragment");
         fragmentTransaction.commit();
     }
 
@@ -65,7 +68,6 @@ public class PreWorkoutActivity extends AppCompatActivity {
 
         preWorkOutViewModel.makeWorkoutButtonClicked.addOnPropertyChangedCallback(navigateToWorkoutActivityCallback());
         preWorkOutViewModel.selectAllEquipmentClicked.addOnPropertyChangedCallback(selectAllTextCallback());
-        setWorkoutDifficultyDropDownMenuAdapter();
         setWorkoutRegimentDropDownMenuAdapter();
     }
 
@@ -99,7 +101,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
                 Intent intent = new Intent(activity, WorkoutActivity.class);
                 intent.putExtra(WORK_OUT_REGIMENT, preWorkOutViewModel.getWorkOutRegiment().get());
                 intent.putExtra(WORK_OUT_LENGTH, lengthOfWorkoutFragment.getLengthOfWorkout());
-                intent.putExtra(WORK_OUT_DIFFICULTY, preWorkOutViewModel.getWorkoutDifficulty().get());
+                intent.putExtra(WORK_OUT_DIFFICULTY, difficultyFragment.getDifficulty());
                 intent.putExtra(HAS_PARTNER, preWorkOutViewModel.getHasPartner().get());
                 intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(preWorkOutViewModel.getExcludedEquipments().get()));
                 intent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(focalBodyFocusFragment.getActiveBodyFocuses()));
@@ -125,32 +127,6 @@ public class PreWorkoutActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 preWorkOutViewModel.setWorkOutRegiment(workOutRegiment.get(position));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }
-
-    private void setWorkoutDifficultyDropDownMenuAdapter() {
-        final ArrayList<String> difficultyValues = new ArrayList<>();
-        for (Difficulty difficulty : Difficulty.values()) {
-            difficultyValues.add(difficulty.getDifficultyNameAlias());
-        }
-
-        ArrayAdapter<String> staticAdapter = new ArrayAdapter<>(
-                this,
-                R.layout.support_simple_spinner_dropdown_item,
-                difficultyValues);
-
-        staticAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.workoutDifficultyDropdownMenu.setAdapter(staticAdapter);
-        binding.workoutDifficultyDropdownMenu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                preWorkOutViewModel.setWorkOutDifficulty(difficultyValues.get(position));
             }
 
             @Override
