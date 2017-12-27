@@ -7,13 +7,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.ActivityPreWorkoutBinding;
@@ -21,7 +16,7 @@ import tmosq.com.pt.fragment.DifficultyFragment;
 import tmosq.com.pt.fragment.EquipmentFragment;
 import tmosq.com.pt.fragment.FocalBodyFocusFragment;
 import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
-import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
+import tmosq.com.pt.fragment.WorkoutRegimentFragment;
 import tmosq.com.pt.viewModel.PreWorkOutViewModel;
 
 import static tmosq.com.pt.helper.ExerciseSplitter.HAS_PARTNER;
@@ -38,6 +33,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
     private FocalBodyFocusFragment focalBodyFocusFragment;
     private DifficultyFragment difficultyFragment;
     private EquipmentFragment equipmentFragment;
+    private WorkoutRegimentFragment workoutRegimentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +49,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
         focalBodyFocusFragment = new FocalBodyFocusFragment();
         difficultyFragment = new DifficultyFragment();
         equipmentFragment = new EquipmentFragment();
+        workoutRegimentFragment = new WorkoutRegimentFragment();
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
@@ -61,15 +58,14 @@ public class PreWorkoutActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.focal_body_point_frame_id, focalBodyFocusFragment, "focal_body_focus_fragment");
         fragmentTransaction.add(R.id.difficulty_frame_id, difficultyFragment, "difficulty_fragment");
         fragmentTransaction.add(R.id.equipment_frame_id, equipmentFragment, "equipment_fragment");
+        fragmentTransaction.add(R.id.workout_regiment_frame_id, workoutRegimentFragment, "workout_regiment_fragment");
         fragmentTransaction.commit();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
         preWorkOutViewModel.makeWorkoutButtonClicked.addOnPropertyChangedCallback(navigateToWorkoutActivityCallback());
-        setWorkoutRegimentDropDownMenuAdapter();
     }
 
 
@@ -79,7 +75,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
             @Override
             public void onPropertyChanged(Observable observable, int i) {
                 Intent intent = new Intent(activity, WorkoutActivity.class);
-                intent.putExtra(WORK_OUT_REGIMENT, preWorkOutViewModel.getWorkOutRegiment().get());
+                intent.putExtra(WORK_OUT_REGIMENT, workoutRegimentFragment.getWorkOutRegiment());
                 intent.putExtra(WORK_OUT_LENGTH, lengthOfWorkoutFragment.getLengthOfWorkout());
                 intent.putExtra(WORK_OUT_DIFFICULTY, difficultyFragment.getDifficulty());
                 intent.putExtra(HAS_PARTNER, preWorkOutViewModel.getHasPartner().get());
@@ -90,29 +86,5 @@ public class PreWorkoutActivity extends AppCompatActivity {
         };
     }
 
-    private void setWorkoutRegimentDropDownMenuAdapter() {
-        final ArrayList<String> workOutRegiment = new ArrayList<>();
-        for (WorkoutRegiment workoutRegiment : WorkoutRegiment.values()) {
-            workOutRegiment.add(workoutRegiment.getWorkOutRegimentNameAlias());
-        }
 
-        ArrayAdapter<String> staticAdapter = new ArrayAdapter<>(
-                this,
-                R.layout.support_simple_spinner_dropdown_item,
-                workOutRegiment);
-
-        staticAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.workoutRegimentDropdownMenu.setAdapter(staticAdapter);
-        binding.workoutRegimentDropdownMenu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                preWorkOutViewModel.setWorkOutRegiment(workOutRegiment.get(position));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }
 }

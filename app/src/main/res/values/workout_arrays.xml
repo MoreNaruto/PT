@@ -17,4 +17,10 @@
         <item>intermediate</item>
         <item>advanced</item>
     </string-array>
+
+    <string-array name="workout_regiment_array">
+        <item>cardio</item>
+        <item>cross fit</item>
+        <item>power lifting</item>
+    </string-array>
 </resources>
