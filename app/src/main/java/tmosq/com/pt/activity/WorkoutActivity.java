@@ -40,12 +40,15 @@ public class WorkoutActivity extends AppCompatActivity {
 
         warmUpRecyclerView = binding.warmUpRecyclerView;
         warmUpRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        warmUpRecyclerView.setNestedScrollingEnabled(false);
 
         coolOffRecyclerView = binding.coolOffRecyclerView;
         coolOffRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        coolOffRecyclerView.setNestedScrollingEnabled(false);
 
         mainWorkoutRecyclerView = binding.mainWorkoutRecyclerView;
         mainWorkoutRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mainWorkoutRecyclerView.setNestedScrollingEnabled(false);
 
         WarmUpAdapter warmUpAdapter = new WarmUpAdapter(workoutViewModel.warmUpExercises.get());
         CoolOffAdapter coolOffAdapter = new CoolOffAdapter(workoutViewModel.coolOffExercises.get());

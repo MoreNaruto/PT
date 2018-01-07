@@ -71,6 +71,10 @@ public class WorkoutActivityTest {
                 .isExactlyInstanceOf(WarmUpAdapter.class);
         assertThat(activity.mainWorkoutRecyclerView.getAdapter())
                 .isExactlyInstanceOf(MainWorkoutAdapter.class);
+
+        assertThat(activity.coolOffRecyclerView.isNestedScrollingEnabled()).isFalse();
+        assertThat(activity.warmUpRecyclerView.isNestedScrollingEnabled()).isFalse();
+        assertThat(activity.mainWorkoutRecyclerView.isNestedScrollingEnabled()).isFalse();
     }
 
     @NonNull

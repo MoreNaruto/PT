@@ -10,7 +10,7 @@
             type="tmosq.com.pt.viewModel.WorkoutViewModel" />
     </data>
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -95,5 +95,5 @@
                 android:scrollbars="vertical"
                 android:visibility="@{viewModel.warmUpAndCoolOffListItemsVisibility}" />
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 </layout>
