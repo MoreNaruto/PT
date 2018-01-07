@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#222222</color>
     <color name="colorAccent">#CFB53B</color>
     <color name="hyperlinkColor">#e500a3ee</color>
-    <color name="dividerText">#ffffff</color>
+    <color name="blandWhite">#ffffff</color>
+    <color name="lightishGray">#a7a7a7</color>
 </resources>

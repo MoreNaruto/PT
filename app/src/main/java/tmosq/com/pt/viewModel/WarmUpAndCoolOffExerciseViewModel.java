@@ -1,6 +1,5 @@
 package tmosq.com.pt.viewModel;
 
-import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 
 import tmosq.com.pt.model.Exercise;
@@ -10,9 +9,8 @@ public class WarmUpAndCoolOffExerciseViewModel {
     public ObservableField<String> exerciseRegiment = new ObservableField<>("");
     public ObservableField<String> exerciseDifficulty = new ObservableField<>("");
     public ObservableField<String> exerciseWorkout = new ObservableField<>("");
-    public ObservableBoolean isWarmUpField = new ObservableBoolean(false);
 
-    public void setExercise(Exercise exercise, boolean isWarmUp) {
+    public void setExercise(Exercise exercise) {
         exerciseWorkout.set(exercise.getWorkout());
 
         if (exercise.getForTime() && exercise.getAlternateSide()){
@@ -26,6 +24,5 @@ public class WarmUpAndCoolOffExerciseViewModel {
         }
 
         exerciseDifficulty.set("Difficulty: " + exercise.getDifficulty().getDifficultyNameAlias());
-        isWarmUpField.set(isWarmUp);
     }
 }

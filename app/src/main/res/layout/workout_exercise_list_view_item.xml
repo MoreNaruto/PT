@@ -3,17 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
-            type="tmosq.com.pt.viewModel.WarmUpAndCoolOffExerciseViewModel" />
+            type="tmosq.com.pt.viewModel.WorkoutExerciseViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="98dp"
-        android:background="@{viewModel.isWarmUpField ? @drawable/warm_up_gradient_background : @drawable/cool_off_gradient_background}"
         android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark"
         android:weightSum="1">
 
         <ImageView
@@ -35,7 +34,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.exerciseWorkout}"
+                android:maxLines="1"
                 android:textSize="20sp"
+                android:textColor="@color/blandWhite"
                 tools:text="Roller Curls" />
 
             <TextView
@@ -43,6 +44,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="20dp"
                 android:text="@{viewModel.exerciseRegiment}"
+                android:maxLines="1"
+                android:textColor="@color/lightishGray"
                 tools:text="2 sets for 10 reps" />
 
             <TextView
@@ -52,6 +55,8 @@
                 android:paddingStart="160dp"
                 android:paddingTop="15dp"
                 android:text="@{viewModel.exerciseDifficulty}"
+                android:maxLines="1"
+                android:textColor="@color/lightishGray"
                 tools:text="Difficulty: Basic" />
         </LinearLayout>
     </LinearLayout>

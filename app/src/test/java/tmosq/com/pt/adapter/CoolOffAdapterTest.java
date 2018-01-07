@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 
 import tmosq.com.pt.model.Exercise;
-import tmosq.com.pt.viewModel.WarmUpAndCoolOffExerciseViewModel;
+import tmosq.com.pt.viewModel.WorkoutExerciseViewModel;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -21,7 +21,7 @@ public class CoolOffAdapterTest {
     CoolOffAdapter.ViewHolder mockViewHolder;
 
     @Mock
-    WarmUpAndCoolOffExerciseViewModel mockViewModel;
+    WorkoutExerciseViewModel mockViewModel;
 
     private CoolOffAdapter coolOffAdapter;
     private Exercise exercise;

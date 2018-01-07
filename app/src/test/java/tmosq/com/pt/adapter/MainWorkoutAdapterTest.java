@@ -16,15 +16,14 @@ import static tmosq.com.pt.model.exercise_support_enums.Difficulty.ADVANCED;
 import static tmosq.com.pt.model.exercise_support_enums.Equipment.BARBELL;
 import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.WARM_UP_AND_COOL_OFF;
 
-public class WarmUpAdapterTest {
-
+public class MainWorkoutAdapterTest {
     @Mock
-    WarmUpAdapter.ViewHolder mockViewHolder;
+    MainWorkoutAdapter.ViewHolder mockViewHolder;
 
     @Mock
     WorkoutExerciseViewModel mockViewModel;
 
-    private WarmUpAdapter warmUpAdapter;
+    private MainWorkoutAdapter mainWorkoutAdapter;
     private Exercise exercise;
 
     @Before
@@ -43,18 +42,18 @@ public class WarmUpAdapterTest {
                 .equipment(BARBELL)
                 .build();
 
-        warmUpAdapter = new WarmUpAdapter(newArrayList(exercise));
+        mainWorkoutAdapter = new MainWorkoutAdapter(newArrayList(exercise));
     }
 
     @Test
     public void onBindViewHolder_bindToViewHolder() throws Exception {
-        warmUpAdapter.onBindViewHolder(mockViewHolder, 0);
+        mainWorkoutAdapter.onBindViewHolder(mockViewHolder, 0);
 
         verify(mockViewHolder).bind(exercise);
     }
 
     @Test
     public void getItemCount_getNumberOfExercises() throws Exception {
-        assertThat(warmUpAdapter.getItemCount()).isEqualTo(1);
+        assertThat(mainWorkoutAdapter.getItemCount()).isEqualTo(1);
     }
 }

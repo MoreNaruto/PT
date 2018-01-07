@@ -33,11 +33,10 @@ public class WarmUpAndCoolOffExerciseViewModelTest {
                 .equipment(BARBELL)
                 .build();
 
-        warmUpAndCoolOffExerciseViewModel.setExercise(exercise, true);
+        warmUpAndCoolOffExerciseViewModel.setExercise(exercise);
         assertThat(warmUpAndCoolOffExerciseViewModel.exerciseRegiment.get()).isEqualTo("2 sets: 10 reps");
         assertThat(warmUpAndCoolOffExerciseViewModel.exerciseDifficulty.get()).isEqualTo("Difficulty: advanced");
         assertThat(warmUpAndCoolOffExerciseViewModel.exerciseWorkout.get()).isEqualTo("Rollers Curls");
-        assertThat(warmUpAndCoolOffExerciseViewModel.isWarmUpField.get()).isTrue();
     }
 
     @Test
@@ -54,7 +53,7 @@ public class WarmUpAndCoolOffExerciseViewModelTest {
                 .equipment(BARBELL)
                 .build();
 
-        warmUpAndCoolOffExerciseViewModel.setExercise(exercise, true);
+        warmUpAndCoolOffExerciseViewModel.setExercise(exercise);
         assertThat(warmUpAndCoolOffExerciseViewModel.exerciseRegiment.get()).isEqualTo("2 sets: 10 reps (5 each side)");
         assertThat(warmUpAndCoolOffExerciseViewModel.exerciseDifficulty.get()).isEqualTo("Difficulty: advanced");
         assertThat(warmUpAndCoolOffExerciseViewModel.exerciseWorkout.get()).isEqualTo("Rollers Curls");
@@ -74,7 +73,7 @@ public class WarmUpAndCoolOffExerciseViewModelTest {
                 .equipment(BARBELL)
                 .build();
 
-        warmUpAndCoolOffExerciseViewModel.setExercise(exercise, true);
+        warmUpAndCoolOffExerciseViewModel.setExercise(exercise);
         assertThat(warmUpAndCoolOffExerciseViewModel.exerciseRegiment.get()).isEqualTo("2 sets: 30 seconds for each rep");
         assertThat(warmUpAndCoolOffExerciseViewModel.exerciseDifficulty.get()).isEqualTo("Difficulty: advanced");
         assertThat(warmUpAndCoolOffExerciseViewModel.exerciseWorkout.get()).isEqualTo("Rollers Curls");
@@ -94,7 +93,7 @@ public class WarmUpAndCoolOffExerciseViewModelTest {
                 .equipment(BARBELL)
                 .build();
 
-        warmUpAndCoolOffExerciseViewModel.setExercise(exercise, true);
+        warmUpAndCoolOffExerciseViewModel.setExercise(exercise);
         assertThat(warmUpAndCoolOffExerciseViewModel.exerciseRegiment.get()).isEqualTo("2 sets: 30 seconds for each rep (15 seconds each side)");
         assertThat(warmUpAndCoolOffExerciseViewModel.exerciseDifficulty.get()).isEqualTo("Difficulty: advanced");
         assertThat(warmUpAndCoolOffExerciseViewModel.exerciseWorkout.get()).isEqualTo("Rollers Curls");
@@ -114,9 +113,6 @@ public class WarmUpAndCoolOffExerciseViewModelTest {
                 .equipment(BARBELL)
                 .build();
 
-        warmUpAndCoolOffExerciseViewModel.setExercise(exercise, false);
-
-        assertThat(warmUpAndCoolOffExerciseViewModel.isWarmUpField.get()).isFalse();
-
+        warmUpAndCoolOffExerciseViewModel.setExercise(exercise);
     }
 }

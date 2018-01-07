@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import tmosq.com.pt.R;
-import tmosq.com.pt.databinding.WarmUpAndCoolOffExerciseListItemLayoutBinding;
+import tmosq.com.pt.databinding.WorkoutExerciseListViewItemBinding;
 import tmosq.com.pt.model.Exercise;
-import tmosq.com.pt.viewModel.WarmUpAndCoolOffExerciseViewModel;
+import tmosq.com.pt.viewModel.WorkoutExerciseViewModel;
 
 public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder> {
 
@@ -22,10 +22,10 @@ public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        WarmUpAndCoolOffExerciseListItemLayoutBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.warm_up_and_cool_off_exercise_list_item_layout, parent, false);
+        WorkoutExerciseListViewItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.workout_exercise_list_view_item, parent, false);
         return new ViewHolder(
                 binding,
-                new WarmUpAndCoolOffExerciseViewModel()
+                new WorkoutExerciseViewModel()
         );
     }
 
@@ -42,17 +42,17 @@ public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private WarmUpAndCoolOffExerciseListItemLayoutBinding binding;
-        private WarmUpAndCoolOffExerciseViewModel viewModel;
+        private WorkoutExerciseListViewItemBinding binding;
+        private WorkoutExerciseViewModel viewModel;
 
-        public ViewHolder(WarmUpAndCoolOffExerciseListItemLayoutBinding binding, WarmUpAndCoolOffExerciseViewModel viewModel) {
+        public ViewHolder(WorkoutExerciseListViewItemBinding binding, WorkoutExerciseViewModel viewModel) {
             super(binding.getRoot());
             this.binding = binding;
             this.viewModel = viewModel;
         }
 
         public void bind(final Exercise exercise) {
-            viewModel.setExercise(exercise, true);
+            viewModel.setExercise(exercise, false);
             binding.setViewModel(viewModel);
         }
     }
