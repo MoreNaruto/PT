@@ -12,12 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="98dp"
         android:orientation="horizontal"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/workout_cell_item_background"
         android:weightSum="1">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="101dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:contentDescription="@string/picture_here"
             android:src="@drawable/pt_logo"
@@ -42,7 +42,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="20dp"
+                android:paddingTop="15dp"
                 android:text="@{viewModel.exerciseRegiment}"
                 android:maxLines="1"
                 android:textColor="@color/lightishGray"
@@ -52,7 +52,6 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="160dp"
                 android:paddingTop="15dp"
                 android:text="@{viewModel.exerciseDifficulty}"
                 android:maxLines="1"
