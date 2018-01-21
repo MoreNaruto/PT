@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="tmosq.com.pt.activity.WorkoutDetailActivity">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="tmosq.com.pt.viewModel.WorkoutDetailViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--<android.support.constraint.ConstraintLayout-->
+            <!--android:id="@+id/linearLayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/workout_image"-->
+                <!--android:layout_width="387dp"-->
+                <!--android:layout_height="151dp"-->
+                <!--android:contentDescription="@string/workout_detail_image"-->
+                <!--android:src="@drawable/pt_logo"-->
+                <!--app:layout_constraintBottom_toTopOf="@+id/workout_title"-->
+                <!--app:layout_constraintStart_toEndOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent"-->
+                <!--tools:src="@drawable/pt_logo" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/workout_title"-->
+                <!--android:layout_width="374dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginEnd="4dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textSize="18sp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:text="@{viewModel.exerciseWorkout}"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--tools:ignore="MissingConstraints"-->
+                <!--tools:layout_editor_absoluteY="151dp"-->
+                <!--tools:text="Roller Mains" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/workout_steps"-->
+                <!--android:layout_width="378dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="381dp"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:text="@{viewModel.workoutDescription}"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="1.0"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/workout_title"-->
+                <!--tools:text="@string/description_example" />-->
+
+        <!--</android.support.constraint.ConstraintLayout>-->
+    </ScrollView>
+</layout>

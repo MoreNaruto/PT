@@ -1,16 +1,23 @@
 package tmosq.com.pt.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
 import tmosq.com.pt.R;
+import tmosq.com.pt.activity.WorkoutDetailActivity;
 import tmosq.com.pt.databinding.WorkoutExerciseListViewItemBinding;
 import tmosq.com.pt.model.Exercise;
 import tmosq.com.pt.viewModel.WorkoutExerciseViewModel;
+
+import static tmosq.com.pt.activity.WorkoutDetailActivity.WORKOUT;
+import static tmosq.com.pt.activity.WorkoutDetailActivity.WORKOUT_DESCRIPTION;
 
 public class CoolOffAdapter extends RecyclerView.Adapter<CoolOffAdapter.ViewHolder> {
     private List<Exercise> exercises;
@@ -37,10 +44,11 @@ public class CoolOffAdapter extends RecyclerView.Adapter<CoolOffAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return exercises.size() ;
+        return exercises.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         private WorkoutExerciseListViewItemBinding binding;
         private WorkoutExerciseViewModel viewModel;
 
@@ -53,6 +61,16 @@ public class CoolOffAdapter extends RecyclerView.Adapter<CoolOffAdapter.ViewHold
         public void bind(final Exercise exercise) {
             viewModel.setExercise(exercise, false);
             binding.setViewModel(viewModel);
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, WorkoutDetailActivity.class);
+                    intent.putExtra(WORKOUT, exercise.getWorkout());
+                    intent.putExtra(WORKOUT_DESCRIPTION, exercise.getDescription());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

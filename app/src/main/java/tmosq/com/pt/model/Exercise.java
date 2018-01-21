@@ -44,4 +44,7 @@ public class Exercise {
 
     @SerializedName("equipment type")
     private Equipment equipment;
+
+    @SerializedName("description")
+    private String description;
 }
