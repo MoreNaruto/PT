@@ -16,6 +16,9 @@ import tmosq.com.pt.databinding.WorkoutExerciseListViewItemBinding;
 import tmosq.com.pt.model.Exercise;
 import tmosq.com.pt.viewModel.WorkoutExerciseViewModel;
 
+import static tmosq.com.pt.activity.WorkoutDetailActivity.WORKOUT;
+import static tmosq.com.pt.activity.WorkoutDetailActivity.WORKOUT_DESCRIPTION;
+
 public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder> {
 
     private List<Exercise> exercises;
@@ -63,8 +66,8 @@ public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder
                 public void onClick(View view) {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, WorkoutDetailActivity.class);
-                    intent.putExtra("workout", exercise.getWorkout());
-                    intent.putExtra("workout_description", exercise.getDescription());
+                    intent.putExtra(WORKOUT, exercise.getWorkout());
+                    intent.putExtra(WORKOUT_DESCRIPTION, exercise.getDescription());
                     context.startActivity(intent);
                 }
             });

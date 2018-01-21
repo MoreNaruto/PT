@@ -1,6 +1,5 @@
 package tmosq.com.pt.activity;
 
-import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +9,6 @@ import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.ActivityWorkoutDetailBinding;
 import tmosq.com.pt.viewModel.WorkoutDetailViewModel;
 
-@SuppressLint("Registered")
 public class WorkoutDetailActivity extends AppCompatActivity {
     public static final String WORKOUT = "workout";
     public static final String WORKOUT_DESCRIPTION = "workout_description";
