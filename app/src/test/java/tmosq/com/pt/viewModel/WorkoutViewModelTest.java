@@ -280,31 +280,15 @@ public class WorkoutViewModelTest {
         Exercise mainExerciseFour = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
                 .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout("morning kicks").build();
 
-        Exercise mainExerciseFive = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout("star days").build();
-
-        Exercise mainExerciseSix = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout("uber walks").build();
-
-        Exercise mainExerciseSeven = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout("flybys").build();
-
-        Exercise mainExerciseEight = Exercise.builder().equipment(BICYCLE).difficulty(ADVANCED).workOutType(BODY).forTime(false)
-                .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout("yolkers").build();
-
         workoutViewModel.filteredExercises = newArrayList(mainExerciseOne, mainExerciseTwo,
-                mainExerciseThree, mainExerciseFour, mainExerciseFive, mainExerciseSix, mainExerciseSeven, mainExerciseEight);
+                mainExerciseThree, mainExerciseFour);
 
         workoutViewModel.generateAllExercises();
 
         assertTrue(workoutViewModel.mainWorkoutExercises.get().contains(mainExerciseOne) &&
                 workoutViewModel.mainWorkoutExercises.get().contains(mainExerciseTwo) &&
                 workoutViewModel.mainWorkoutExercises.get().contains(mainExerciseThree) &&
-                workoutViewModel.mainWorkoutExercises.get().contains(mainExerciseFour) &&
-                workoutViewModel.mainWorkoutExercises.get().contains(mainExerciseFive) &&
-                workoutViewModel.mainWorkoutExercises.get().contains(mainExerciseSix) &&
-                workoutViewModel.mainWorkoutExercises.get().contains(mainExerciseSeven) &&
-                workoutViewModel.mainWorkoutExercises.get().contains(mainExerciseEight));
+                workoutViewModel.mainWorkoutExercises.get().contains(mainExerciseFour));
     }
 
     @Test
@@ -383,8 +367,6 @@ public class WorkoutViewModelTest {
         assertTrue(workoutViewModel.mainWorkoutExercises.get().get(2).equals(mainExerciseShoulders));
         assertTrue(workoutViewModel.mainWorkoutExercises.get().get(3).equals(mainExerciseMiddleBack) ||
                 workoutViewModel.mainWorkoutExercises.get().get(3).equals(mainExerciseSecondMiddleBack));
-        assertTrue(workoutViewModel.mainWorkoutExercises.get().get(4).equals(mainExerciseSecondMiddleBack) ||
-                workoutViewModel.mainWorkoutExercises.get().get(4).equals(mainExerciseMiddleBack));
     }
 
     @Test

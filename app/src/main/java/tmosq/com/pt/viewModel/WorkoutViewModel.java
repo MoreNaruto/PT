@@ -3,7 +3,6 @@ package tmosq.com.pt.viewModel;
 import android.content.Intent;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
-import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
 
@@ -21,7 +20,6 @@ import tmosq.com.pt.model.exercise_support_enums.BodyFocus;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static com.google.common.collect.Lists.newArrayList;
 import static java.math.BigDecimal.ONE;
 import static java.math.BigDecimal.ZERO;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
@@ -30,9 +28,9 @@ public class WorkoutViewModel {
     private static final Integer NUMBER_OF_REPS = 10;
     private static final Double NUMBER_OF_SETS_FOR_REGULAR_WORKOUT = 3.0;
     private static final Double NUMBER_OF_SETS_FOR_COOL_OFF_AND_WARM_UP_WORKOUT = 2.0;
-    private static final Double SECONDS_TO_REST_FOR_REGULAR_WORKOUT = 30.0 / 60.0;
-    private static final Double SECONDS_TO_REST_FOR_COOL_OFF_AND_WARM_UP_WORKOUT = 15.0 / 60.0;
-    private static final Double PADDING_TIME = 2.0;
+    private static final Double SECONDS_TO_REST_FOR_REGULAR_WORKOUT = 60.0 / 60.0;
+    private static final Double SECONDS_TO_REST_FOR_COOL_OFF_AND_WARM_UP_WORKOUT = 30.0 / 60.0;
+    private static final Double PADDING_TIME = 6.0;
     private static final int MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF = 40;
     private static final int WORKOUT_LENGTH_IS_GREATER_THAN_ZERO = 1;
     private final ExerciseFilter exerciseFilter;
