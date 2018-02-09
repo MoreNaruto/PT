@@ -43,7 +43,7 @@ public class WarmUpAdapterTest {
                 .equipment(BARBELL)
                 .build();
 
-        warmUpAdapter = new WarmUpAdapter(newArrayList(exercise));
+        warmUpAdapter = new WarmUpAdapter(newArrayList(exercise), null);
     }
 
     @Test

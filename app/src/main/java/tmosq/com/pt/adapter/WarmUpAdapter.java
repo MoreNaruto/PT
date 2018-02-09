@@ -1,8 +1,11 @@
 package tmosq.com.pt.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,9 +25,11 @@ import static tmosq.com.pt.activity.WorkoutDetailActivity.WORKOUT_DESCRIPTION;
 public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder> {
 
     private List<Exercise> exercises;
+    public Activity workoutActivity;
 
-    public WarmUpAdapter(List<Exercise> exercises) {
+    public WarmUpAdapter(List<Exercise> exercises, Activity workoutActivity) {
         this.exercises = exercises;
+        this.workoutActivity = workoutActivity;
     }
 
     @Override
@@ -32,7 +37,8 @@ public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder
         WorkoutExerciseListViewItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.workout_exercise_list_view_item, parent, false);
         return new ViewHolder(
                 binding,
-                new WorkoutExerciseViewModel()
+                new WorkoutExerciseViewModel(),
+                workoutActivity
         );
     }
 
@@ -51,11 +57,16 @@ public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private WorkoutExerciseListViewItemBinding binding;
         private WorkoutExerciseViewModel viewModel;
+        private Activity workoutActivity;
 
-        public ViewHolder(WorkoutExerciseListViewItemBinding binding, WorkoutExerciseViewModel viewModel) {
+        public ViewHolder(WorkoutExerciseListViewItemBinding binding,
+                          WorkoutExerciseViewModel viewModel,
+                          Activity workoutActivity)
+        {
             super(binding.getRoot());
             this.binding = binding;
             this.viewModel = viewModel;
+            this.workoutActivity = workoutActivity;
         }
 
         public void bind(final Exercise exercise) {
@@ -68,7 +79,13 @@ public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder
                     Intent intent = new Intent(context, WorkoutDetailActivity.class);
                     intent.putExtra(WORKOUT, exercise.getWorkout());
                     intent.putExtra(WORKOUT_DESCRIPTION, exercise.getDescription());
-                    context.startActivity(intent);
+
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                            workoutActivity,
+                            binding.workoutImageView,
+                            ViewCompat.getTransitionName(binding.workoutImageView));
+
+                    context.startActivity(intent, options.toBundle());
                 }
             });
         }

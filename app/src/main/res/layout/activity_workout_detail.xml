@@ -20,12 +20,13 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/workout_image"
+                android:id="@+id/workout_image_view"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:contentDescription="@string/workout_image_alt_image_text"
+                android:transitionName="@string/workout_detail_image"
                 app:srcCompat="@drawable/pt_logo"
-                tools:srcCompat="@drawable/pt_logo"
-                android:contentDescription="@string/workout_image_alt_image_text" />
+                tools:srcCompat="@drawable/pt_logo" />
 
             <TextView
                 android:id="@+id/workout_title"
@@ -42,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.workoutDescription}"
-                tools:text="@string/description_example"/>
+                tools:text="@string/description_example" />
         </LinearLayout>
     </ScrollView>
 </layout>

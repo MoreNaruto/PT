@@ -21,7 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WorkoutDetailActivity" />
+        <activity
+            android:name=".activity.WorkoutDetailActivity"
+            android:theme="@style/DetailTheme"/>
     </application>
 
 </manifest>

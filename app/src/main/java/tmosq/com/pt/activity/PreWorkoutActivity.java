@@ -1,5 +1,6 @@
 package tmosq.com.pt.activity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.Observable;
@@ -29,11 +30,11 @@ import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 public class PreWorkoutActivity extends AppCompatActivity {
     protected ActivityPreWorkoutBinding binding;
     protected PreWorkOutViewModel preWorkOutViewModel;
-    private LengthOfWorkoutFragment lengthOfWorkoutFragment;
-    private FocalBodyFocusFragment focalBodyFocusFragment;
-    private DifficultyFragment difficultyFragment;
-    private EquipmentFragment equipmentFragment;
-    private WorkoutRegimentFragment workoutRegimentFragment;
+    protected LengthOfWorkoutFragment lengthOfWorkoutFragment;
+    protected FocalBodyFocusFragment focalBodyFocusFragment;
+    protected DifficultyFragment difficultyFragment;
+    protected EquipmentFragment equipmentFragment;
+    protected WorkoutRegimentFragment workoutRegimentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +70,6 @@ public class PreWorkoutActivity extends AppCompatActivity {
         super.onStart();
     }
 
-
     private Observable.OnPropertyChangedCallback navigateToWorkoutActivityCallback() {
         final PreWorkoutActivity activity = this;
         return new Observable.OnPropertyChangedCallback() {
@@ -82,7 +82,8 @@ public class PreWorkoutActivity extends AppCompatActivity {
                 intent.putExtra(HAS_PARTNER, preWorkOutViewModel.getHasPartner().get());
                 intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(equipmentFragment.getExcludedEquipmentItems()));
                 intent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(focalBodyFocusFragment.getActiveBodyFocuses()));
-                activity.startActivity(intent);
+
+                activity.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle());
             }
         };
     }
