@@ -60,12 +60,13 @@ public class PreWorkoutActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.equipment_frame_id, equipmentFragment, "equipment_fragment");
         fragmentTransaction.add(R.id.workout_regiment_frame_id, workoutRegimentFragment, "workout_regiment_fragment");
         fragmentTransaction.commit();
+
+        preWorkOutViewModel.makeWorkoutButtonClicked.addOnPropertyChangedCallback(navigateToWorkoutActivityCallback());
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        preWorkOutViewModel.makeWorkoutButtonClicked.addOnPropertyChangedCallback(navigateToWorkoutActivityCallback());
     }
 
 
