@@ -9,15 +9,13 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment.CARDIO;
-import static tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment.CROSS_FIT;
-import static tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment.POWER_LIFTING;
+import static tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment.TABATA;
 
 public enum WorkOutType {
-    BODY("body", newArrayList(CROSS_FIT.getWorkOutRegimentNameAlias(), CARDIO.getWorkOutRegimentNameAlias())),
-    POWER_WEIGHT("power weight", newArrayList(POWER_LIFTING.getWorkOutRegimentNameAlias())),
-    WARM_UP_AND_COOL_OFF("warm-up/cool-off", newArrayList(POWER_LIFTING.getWorkOutRegimentNameAlias(), CROSS_FIT.getWorkOutRegimentNameAlias(), CARDIO.getWorkOutRegimentNameAlias())),
-    WEIGHTED_MOVEMENTS("weighted movements", newArrayList(CROSS_FIT.getWorkOutRegimentNameAlias(), POWER_LIFTING.getWorkOutRegimentNameAlias()));
+    BODY("body", newArrayList(TABATA.getWorkoutRegimentTitle())),
+    POWER_WEIGHT("power weight", newArrayList(TABATA.getWorkoutRegimentTitle())),
+    WARM_UP_AND_COOL_OFF("warm-up/cool-off", newArrayList(TABATA.getWorkoutRegimentTitle())),
+    WEIGHTED_MOVEMENTS("weighted movements", newArrayList(TABATA.getWorkoutRegimentTitle()));
 
     private String workOutTypesNameAlias;
     private List<String> workOutRegimentNameAliases;

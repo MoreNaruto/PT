@@ -6,4 +6,12 @@
     <color name="hyperlinkColor">#e500a3ee</color>
     <color name="blandWhite">#ffffff</color>
     <color name="lightishGray">#a7a7a7</color>
+    <color name="rosyRed">#cc1c1c</color>
+    <color name="nickelodeonOrange">#df7109</color>
+    <color name="sunflowerYellow">#f7f303</color>
+    <color name="grassGreen">#3bbc08</color>
+    <color name="turquoise">#01b3bf</color>
+    <color name="deepWaterBlue">#0016c1</color>
+    <color name="magenta">#7104d7</color>
+    <color name="hotPink">#ea01cf</color>
 </resources>

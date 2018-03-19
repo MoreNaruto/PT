@@ -76,7 +76,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
             @Override
             public void onPropertyChanged(Observable observable, int i) {
                 Intent intent = new Intent(activity, WorkoutActivity.class);
-                intent.putExtra(WORK_OUT_REGIMENT, workoutRegimentFragment.getWorkOutRegiment());
+                intent.putExtra(WORK_OUT_REGIMENT, "placement");
                 intent.putExtra(WORK_OUT_LENGTH, lengthOfWorkoutFragment.getLengthOfWorkout());
                 intent.putExtra(WORK_OUT_DIFFICULTY, difficultyFragment.getDifficulty());
                 intent.putExtra(HAS_PARTNER, preWorkOutViewModel.getHasPartner().get());

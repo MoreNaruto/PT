@@ -2,12 +2,9 @@ package tmosq.com.pt.viewModel;
 
 import android.content.Intent;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
+import com.annimon.stream.Stream;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import tmosq.com.pt.model.Exercise;
@@ -35,37 +32,40 @@ class ExerciseFilter {
     }
 
     List<Exercise> filterExercises(List<Exercise> exercises) {
-        Collection<Exercise> filteredExercises = Collections2.filter(exercises, new Predicate<Exercise>() {
-            @Override
-            public boolean apply(Exercise exercise) {
-                return filterOutDifficulty(exercise.getDifficulty()) &&
-                        filterOutUnavailableEquipment(exercise.getEquipment()) &&
-                        filterOutWorkoutsNotInTheRegiment(exercise.getWorkOutType()) &&
-                        filterOutBodyPartsNotFocusedOn(exercise.getBodyFocus()) &&
-                        filterOutPartnerNeeded(exercise.getPartnerNeeded());
-            }
-        });
-        return new ArrayList<>(filteredExercises);
+        return Stream.of(exercises)
+                .filter(new com.annimon.stream.function.Predicate<Exercise>() {
+                    @Override
+                    public boolean test(Exercise exercise) {
+                        return filterOutDifficulty(exercise.getDifficulty()) &&
+                                filterOutUnavailableEquipment(exercise.getEquipment()) &&
+                                filterOutWorkoutsNotInTheRegiment(exercise.getWorkOutType()) &&
+                                filterOutBodyPartsNotFocusedOn(exercise.getBodyFocus()) &&
+                                filterOutPartnerNeeded(exercise.getPartnerNeeded());
+                    }
+                })
+                .toList();
     }
 
     List<Exercise> filterWarmUpAndCoolOffExercises(List<Exercise> exercises, final Boolean isFilteringInWarmUpsAndCoolOffs) {
-        Collection<Exercise> filteredExercises = Collections2.filter(exercises, new Predicate<Exercise>() {
-            @Override
-            public boolean apply(Exercise exercise) {
-                return filteringWarmUpsAndCoolOffs(exercise.getWorkOutType(), isFilteringInWarmUpsAndCoolOffs);
-            }
-        });
-        return new ArrayList<>(filteredExercises);
+        return Stream.of(exercises)
+                .filter(new com.annimon.stream.function.Predicate<Exercise>() {
+                    @Override
+                    public boolean test(Exercise exercise) {
+                        return filteringWarmUpsAndCoolOffs(exercise.getWorkOutType(), isFilteringInWarmUpsAndCoolOffs);
+                    }
+                })
+                .toList();
     }
 
     List<Exercise> filterForSpecificBodyFocus(List<Exercise> exercises, final BodyFocus bodyFocus) {
-        Collection<Exercise> filteredExercises = Collections2.filter(exercises, new Predicate<Exercise>() {
-            @Override
-            public boolean apply(Exercise exercise) {
-                return exercise.getBodyFocus().equals(bodyFocus);
-            }
-        });
-        return new ArrayList<>(filteredExercises);
+        return Stream.of(exercises)
+                .filter(new com.annimon.stream.function.Predicate<Exercise>() {
+                    @Override
+                    public boolean test(Exercise exercise) {
+                        return exercise.getBodyFocus().equals(bodyFocus);
+                    }
+                })
+                .toList();
     }
 
     private Boolean filteringWarmUpsAndCoolOffs(WorkOutType workOutType, Boolean isFilteringInWarmUpsAndCoolOffs) {

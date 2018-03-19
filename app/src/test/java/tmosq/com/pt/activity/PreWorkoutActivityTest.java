@@ -65,8 +65,8 @@ public class PreWorkoutActivityTest {
         preWorkoutActivity.equipmentFragment = mock(EquipmentFragment.class);
         preWorkoutActivity.focalBodyFocusFragment = mock(FocalBodyFocusFragment.class);
 
-        when(preWorkoutActivity.workoutRegimentFragment.getWorkOutRegiment())
-                .thenReturn("Flyer Cooks");
+//        when(preWorkoutActivity.workoutRegimentFragment.())
+//                .thenReturn("Flyer Cooks");
         when(preWorkoutActivity.lengthOfWorkoutFragment.getLengthOfWorkout())
                 .thenReturn(15);
         when(preWorkoutActivity.difficultyFragment.getDifficulty())
