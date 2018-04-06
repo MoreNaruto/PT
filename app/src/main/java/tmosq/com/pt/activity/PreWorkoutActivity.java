@@ -50,16 +50,13 @@ public class PreWorkoutActivity extends AppCompatActivity {
         focalBodyFocusFragment = new FocalBodyFocusFragment();
         difficultyFragment = new DifficultyFragment();
         equipmentFragment = new EquipmentFragment();
-        workoutRegimentFragment = new WorkoutRegimentFragment();
 
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-//        fragmentTransaction.add(R.id.workout_length_frame_id, lengthOfWorkoutFragment, "length_of_workout_fragment");
-//        fragmentTransaction.add(R.id.focal_body_point_frame_id, focalBodyFocusFragment, "focal_body_focus_fragment");
-//        fragmentTransaction.add(R.id.difficulty_frame_id, difficultyFragment, "difficulty_fragment");
-//        fragmentTransaction.add(R.id.equipment_frame_id, equipmentFragment, "equipment_fragment");
-        fragmentTransaction.add(R.id.workout_regiment_frame_id, workoutRegimentFragment, "workout_regiment_fragment");
+        fragmentTransaction.add(R.id.workout_length_frame_id, lengthOfWorkoutFragment, "length_of_workout_fragment");
+        fragmentTransaction.add(R.id.focal_body_point_frame_id, focalBodyFocusFragment, "focal_body_focus_fragment");
+        fragmentTransaction.add(R.id.difficulty_frame_id, difficultyFragment, "difficulty_fragment");
+        fragmentTransaction.add(R.id.equipment_frame_id, equipmentFragment, "equipment_fragment");
         fragmentTransaction.commit();
 
         preWorkOutViewModel.makeWorkoutButtonClicked.addOnPropertyChangedCallback(navigateToWorkoutActivityCallback());

@@ -3,6 +3,7 @@ package tmosq.com.pt.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 import lombok.NoArgsConstructor;
 import tmosq.com.pt.R;
+import tmosq.com.pt.activity.PreWorkoutActivity;
 import tmosq.com.pt.activity.SplashActivity;
 import tmosq.com.pt.activity.WorkoutActivity;
 import tmosq.com.pt.activity.WorkoutDetailActivity;
@@ -24,6 +26,7 @@ import static tmosq.com.pt.activity.WorkoutDetailActivity.WORKOUT_DESCRIPTION;
 
 @NoArgsConstructor
 public class WorkoutRegimentRecyclerViewAdapter extends RecyclerView.Adapter<WorkoutRegimentRecyclerViewAdapter.ViewHolder> {
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         WorkoutRegimentRecyclerViewItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.workout_regiment_recycler_view_item, parent, false);
@@ -52,7 +55,7 @@ public class WorkoutRegimentRecyclerViewAdapter extends RecyclerView.Adapter<Wor
             this.context = binding.getRoot().getContext();
         }
 
-        public void bind(WorkoutRegiment workoutRegiment){
+        public void bind(WorkoutRegiment workoutRegiment) {
             binding.workoutRegimentTextView.setText(workoutRegiment.getWorkoutRegimentTitle());
             binding.workoutRegimentImageView.setImageResource(workoutRegiment.getImageId());
             binding.workoutRegimentImageView.setContentDescription(workoutRegiment.getContentDescription());
@@ -60,9 +63,7 @@ public class WorkoutRegimentRecyclerViewAdapter extends RecyclerView.Adapter<Wor
             binding.workoutRegimentRelativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, WorkoutDetailActivity.class);
-                    intent.putExtra(WORKOUT, "moneky bar");
-                    intent.putExtra(WORKOUT_DESCRIPTION, "Fly to the moon and eat a banana");
+                    Intent intent = new Intent(context, PreWorkoutActivity.class);
                     context.startActivity(intent);
                 }
             });

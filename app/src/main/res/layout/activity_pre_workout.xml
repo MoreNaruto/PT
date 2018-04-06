@@ -11,69 +11,64 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/default_margin">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--<FrameLayout-->
-                <!--android:id="@+id/workout_length_frame_id"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent" />-->
-
-            <!--<FrameLayout-->
-                <!--android:id="@+id/focal_body_point_frame_id"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent" />-->
-
-            <!--<FrameLayout-->
-                <!--android:id="@+id/difficulty_frame_id"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent" />-->
-
-            <!--<FrameLayout-->
-                <!--android:id="@+id/equipment_frame_id"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent" />-->
-
             <FrameLayout
-                android:id="@+id/workout_regiment_frame_id"
+                android:id="@+id/workout_length_frame_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
-            <!--<LinearLayout-->
-                <!--android:id="@+id/partner_layout"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:orientation="horizontal">-->
+            <FrameLayout
+                android:id="@+id/focal_body_point_frame_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-                <!--<TextView-->
-                    <!--android:id="@+id/partner_text"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginEnd="20dp"-->
-                    <!--android:text="@string/do_you_have_a_partner"-->
-                    <!--android:textSize="18sp"-->
-                    <!--android:textStyle="bold" />-->
+            <FrameLayout
+                android:id="@+id/difficulty_frame_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-                <!--<CheckBox-->
-                    <!--android:id="@+id/partner_checkbox"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:onClick="@{viewModel.clickPartnerBox}" />-->
+            <FrameLayout
+                android:id="@+id/equipment_frame_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-            <!--</LinearLayout>-->
+            <LinearLayout
+                android:id="@+id/partner_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <!--<Button-->
-                <!--android:id="@+id/make_workout_button"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginEnd="60dp"-->
-                <!--android:onClick="@{viewModel.clickMakeWorkOutButton}"-->
-                <!--android:text="@string/make_workout" />-->
+                <TextView
+                    android:id="@+id/partner_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/do_you_have_a_partner"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/partner_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{viewModel.clickPartnerBox}" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/make_workout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="@{viewModel.clickMakeWorkOutButton}"
+                android:text="@string/make_workout" />
         </LinearLayout>
     </ScrollView>
 </layout>
