@@ -13,8 +13,7 @@
             android:layout_height="150dp"
             app:cardCornerRadius="0dp"
             app:cardElevation="@dimen/margin10"
-            app:cardMaxElevation="@dimen/margin10"
-            app:contentPadding="@dimen/margin10">
+            app:cardMaxElevation="@dimen/margin10">
 
 
             <RelativeLayout
