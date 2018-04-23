@@ -1,10 +1,13 @@
 package tmosq.com.pt.helper;
 
+import android.os.Build;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
+import org.robolectric.annotation.Config;
 
 import tmosq.com.pt.model.Exercise;
 
@@ -15,6 +18,7 @@ import static tmosq.com.pt.model.exercise_support_enums.Equipment.BARBELL;
 import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.POWER_WEIGHT;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(sdk = Build.VERSION_CODES.M)
 public class ExerciseSplitterTest {
 
     private ExerciseSplitter exerciseSplitter;

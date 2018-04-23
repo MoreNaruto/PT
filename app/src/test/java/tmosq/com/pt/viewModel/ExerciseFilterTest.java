@@ -1,6 +1,7 @@
 package tmosq.com.pt.viewModel;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
@@ -10,12 +11,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
+import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import tmosq.com.pt.activity.SplashActivity;
 import tmosq.com.pt.activity.WorkoutActivity;
 import tmosq.com.pt.model.Exercise;
+import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.junit.Assert.assertFalse;
@@ -44,14 +49,13 @@ import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.WARM_UP_AND_
 import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.WEIGHTED_MOVEMENTS;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(sdk = Build.VERSION_CODES.M)
 public class ExerciseFilterTest {
     private ExerciseFilter exerciseFilter;
 
     @Before
-    public void setUp() throws Exception {
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(getInitialIntent()).create().get();
-
-        exerciseFilter = new ExerciseFilter(workoutActivity.getIntent());
+    public void setUp() {
+        exerciseFilter = new ExerciseFilter(getInitialIntent());
     }
 
     @Test
@@ -299,8 +303,8 @@ public class ExerciseFilterTest {
 
     @NonNull
     private Intent getInitialIntent() {
-        Intent initialIntent = new Intent();
-        initialIntent.putExtra(WORK_OUT_REGIMENT, "cross fit");
+        Intent initialIntent = new Intent(RuntimeEnvironment.application.getApplicationContext(), SplashActivity.class);
+        initialIntent.putExtra(WORK_OUT_REGIMENT, WorkoutRegiment.AMRAP.getWorkoutRegimentTitle());
         initialIntent.putExtra(WORK_OUT_LENGTH, 75);
         initialIntent.putExtra(WORK_OUT_DIFFICULTY, "advanced");
         initialIntent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(newArrayList("bands", "barbell", "bicycle", "exercise ball")));

@@ -28,5 +28,4 @@ public enum WorkoutRegiment {
         this.colorBackgroundId = colorBackgroundId;
         this.imageId = imageId;
     }
-
 }

@@ -1,6 +1,7 @@
 package tmosq.com.pt.adapter;
 
 import android.content.Intent;
+import android.os.Build;
 import android.widget.TextView;
 
 import org.junit.Before;
@@ -9,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
+import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
 
 import tmosq.com.pt.activity.WorkoutDetailActivity;
@@ -28,6 +30,7 @@ import static tmosq.com.pt.model.exercise_support_enums.Equipment.BARBELL;
 import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.WARM_UP_AND_COOL_OFF;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(sdk = Build.VERSION_CODES.M)
 public class MainWorkoutAdapterTest {
     @Mock
     MainWorkoutAdapter.ViewHolder mockViewHolder;

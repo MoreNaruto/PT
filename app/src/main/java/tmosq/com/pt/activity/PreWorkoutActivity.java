@@ -3,11 +3,10 @@ package tmosq.com.pt.activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.databinding.Observable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.google.gson.Gson;
 
@@ -18,7 +17,6 @@ import tmosq.com.pt.fragment.EquipmentFragment;
 import tmosq.com.pt.fragment.FocalBodyFocusFragment;
 import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
 import tmosq.com.pt.fragment.WorkoutRegimentFragment;
-import tmosq.com.pt.viewModel.PreWorkOutViewModel;
 
 import static tmosq.com.pt.helper.ExerciseSplitter.HAS_PARTNER;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
@@ -29,7 +27,6 @@ import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 
 public class PreWorkoutActivity extends AppCompatActivity {
     protected ActivityPreWorkoutBinding binding;
-    protected PreWorkOutViewModel preWorkOutViewModel;
     protected LengthOfWorkoutFragment lengthOfWorkoutFragment;
     protected FocalBodyFocusFragment focalBodyFocusFragment;
     protected DifficultyFragment difficultyFragment;
@@ -39,11 +36,7 @@ public class PreWorkoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_pre_workout);
-        preWorkOutViewModel = new PreWorkOutViewModel();
-        binding.setViewModel(preWorkOutViewModel);
-
         setContentView(binding.getRoot());
 
         lengthOfWorkoutFragment = new LengthOfWorkoutFragment();
@@ -59,31 +52,21 @@ public class PreWorkoutActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.equipment_frame_id, equipmentFragment, "equipment_fragment");
         fragmentTransaction.commit();
 
-        preWorkOutViewModel.makeWorkoutButtonClicked.addOnPropertyChangedCallback(navigateToWorkoutActivityCallback());
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    private Observable.OnPropertyChangedCallback navigateToWorkoutActivityCallback() {
         final PreWorkoutActivity activity = this;
-        return new Observable.OnPropertyChangedCallback() {
+
+        binding.makeWorkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onPropertyChanged(Observable observable, int i) {
-                Intent intent = new Intent(activity, WorkoutActivity.class);
-                intent.putExtra(WORK_OUT_REGIMENT, "placement");
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), WorkoutActivity.class);
+                intent.putExtra(WORK_OUT_REGIMENT, getIntent().getStringExtra(WORK_OUT_REGIMENT));
                 intent.putExtra(WORK_OUT_LENGTH, lengthOfWorkoutFragment.getLengthOfWorkout());
                 intent.putExtra(WORK_OUT_DIFFICULTY, difficultyFragment.getDifficulty());
-                intent.putExtra(HAS_PARTNER, preWorkOutViewModel.getHasPartner().get());
+                intent.putExtra(HAS_PARTNER, binding.partnerCheckbox.isChecked());
                 intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(equipmentFragment.getExcludedEquipmentItems()));
                 intent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(focalBodyFocusFragment.getActiveBodyFocuses()));
 
                 activity.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle());
             }
-        };
+        });
     }
-
-
 }

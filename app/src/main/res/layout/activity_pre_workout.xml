@@ -3,12 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="tmosq.com.pt.activity.PreWorkoutActivity">
 
-    <data>
-        <variable
-            name="viewModel"
-            type="tmosq.com.pt.viewModel.PreWorkOutViewModel" />
-    </data>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,8 +51,7 @@
                 <CheckBox
                     android:id="@+id/partner_checkbox"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="@{viewModel.clickPartnerBox}" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -67,7 +60,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:onClick="@{viewModel.clickMakeWorkOutButton}"
                 android:text="@string/make_workout" />
         </LinearLayout>
     </ScrollView>

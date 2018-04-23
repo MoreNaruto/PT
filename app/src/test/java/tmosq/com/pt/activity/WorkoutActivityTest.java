@@ -2,6 +2,7 @@ package tmosq.com.pt.activity;
 
 import android.content.Intent;
 import android.databinding.ObservableField;
+import android.os.Build;
 import android.support.annotation.NonNull;
 
 import com.google.gson.Gson;
@@ -13,6 +14,7 @@ import org.mockito.Mock;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.android.controller.ActivityController;
+import org.robolectric.annotation.Config;
 
 import java.util.List;
 
@@ -33,6 +35,7 @@ import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(sdk = Build.VERSION_CODES.M)
 public class WorkoutActivityTest {
     private ActivityController<WorkoutActivity> activityController;
 

@@ -23,6 +23,7 @@ import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 
 import static tmosq.com.pt.activity.WorkoutDetailActivity.WORKOUT;
 import static tmosq.com.pt.activity.WorkoutDetailActivity.WORKOUT_DESCRIPTION;
+import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 
 @NoArgsConstructor
 public class WorkoutRegimentRecyclerViewAdapter extends RecyclerView.Adapter<WorkoutRegimentRecyclerViewAdapter.ViewHolder> {
@@ -55,18 +56,29 @@ public class WorkoutRegimentRecyclerViewAdapter extends RecyclerView.Adapter<Wor
             this.context = binding.getRoot().getContext();
         }
 
-        public void bind(WorkoutRegiment workoutRegiment) {
+        public void bind(final WorkoutRegiment workoutRegiment) {
             binding.workoutRegimentTextView.setText(workoutRegiment.getWorkoutRegimentTitle());
             binding.workoutRegimentImageView.setImageResource(workoutRegiment.getImageId());
             binding.workoutRegimentImageView.setContentDescription(workoutRegiment.getContentDescription());
             binding.workoutRegimentRelativeLayout.setBackgroundColor(ContextCompat.getColor(context, workoutRegiment.getColorBackgroundId()));
+            binding.workoutRegimentRelativeLayout.setId(workoutRegiment.getImageId());
             binding.workoutRegimentRelativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
                     Intent intent = new Intent(context, PreWorkoutActivity.class);
+                    intent.putExtra(WORK_OUT_REGIMENT, getWorkoutRegimentTitleFromImageId(view.getId()));
                     context.startActivity(intent);
                 }
             });
+        }
+
+        private String getWorkoutRegimentTitleFromImageId(int imageId) {
+            for (WorkoutRegiment workoutRegiment : WorkoutRegiment.values()) {
+                if (workoutRegiment.getImageId() == imageId){
+                    return workoutRegiment.getWorkoutRegimentTitle();
+                }
+            }
+            return "";
         }
     }
 }

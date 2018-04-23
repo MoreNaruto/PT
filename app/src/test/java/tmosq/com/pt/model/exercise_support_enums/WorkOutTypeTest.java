@@ -24,9 +24,16 @@ public class WorkOutTypeTest {
 
     @Test
     public void getWorkOutRegimentNameAliases() throws Exception {
-        assertEquals(WorkOutType.BODY.getWorkOutRegimentNameAliases(), newArrayList("cross fit", "cardio"));
-        assertEquals(WorkOutType.WEIGHTED_MOVEMENTS.getWorkOutRegimentNameAliases(), newArrayList("cross fit", "power lifting"));
-        assertEquals(WorkOutType.POWER_WEIGHT.getWorkOutRegimentNameAliases(), newArrayList("power lifting"));
-        assertEquals(WorkOutType.WARM_UP_AND_COOL_OFF.getWorkOutRegimentNameAliases(), newArrayList("power lifting", "cross fit", "cardio"));
+        assertEquals(WorkOutType.BODY.getWorkOutRegimentNameAliases(),
+                newArrayList("TABATA", "CARDIO", "EMOM", "AMRAP", "RFT", "CHIPPER", "LADDER"));
+
+        assertEquals(WorkOutType.WEIGHTED_MOVEMENTS.getWorkOutRegimentNameAliases(),
+                newArrayList("WEIGHT LIFTING", "CARDIO", "TABATA", "EMOM", "AMRAP", "RFT", "CHIPPER", "LADDER"));
+
+        assertEquals(WorkOutType.POWER_WEIGHT.getWorkOutRegimentNameAliases(),
+                newArrayList("WEIGHT LIFTING"));
+
+        assertEquals(WorkOutType.WARM_UP_AND_COOL_OFF.getWorkOutRegimentNameAliases(),
+                newArrayList("WEIGHT LIFTING", "CARDIO", "TABATA", "EMOM", "AMRAP", "RFT", "CHIPPER", "LADDER"));
     }
 }

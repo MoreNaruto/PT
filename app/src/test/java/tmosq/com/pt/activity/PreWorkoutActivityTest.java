@@ -1,6 +1,7 @@
 package tmosq.com.pt.activity;
 
 import android.content.Intent;
+import android.os.Build;
 
 import com.google.gson.Gson;
 
@@ -9,6 +10,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
+import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
 
 import tmosq.com.pt.R;
@@ -18,6 +21,7 @@ import tmosq.com.pt.fragment.EquipmentFragment;
 import tmosq.com.pt.fragment.FocalBodyFocusFragment;
 import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
 import tmosq.com.pt.fragment.WorkoutRegimentFragment;
+import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static junit.framework.Assert.assertTrue;
@@ -33,19 +37,18 @@ import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(sdk = Build.VERSION_CODES.M)
 public class PreWorkoutActivityTest {
     private PreWorkoutActivity preWorkoutActivity;
     private ActivityPreWorkoutBinding binding;
 
     @Before
     public void setUp() throws Exception {
-        preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class).create().start().get();
-        binding = preWorkoutActivity.binding;
-    }
+        Intent intent = new Intent(RuntimeEnvironment.application.getApplicationContext(), PreWorkoutActivity.class);
+        intent.putExtra(WORK_OUT_REGIMENT, WorkoutRegiment.CHIPPER.getWorkoutRegimentTitle());
 
-    @Test
-    public void onCreate_bindsToViewModel() throws Exception {
-        assertEquals(preWorkoutActivity.binding.getViewModel(), preWorkoutActivity.preWorkOutViewModel);
+        preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class, intent).create().start().get();
+        binding = preWorkoutActivity.binding;
     }
 
     @Test
@@ -54,19 +57,16 @@ public class PreWorkoutActivityTest {
         assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.focal_body_point_frame_id) instanceof FocalBodyFocusFragment);
         assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.difficulty_frame_id) instanceof DifficultyFragment);
         assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.equipment_frame_id) instanceof EquipmentFragment);
-        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.workout_regiment_frame_id) instanceof WorkoutRegimentFragment);
     }
 
     @Test
-    public void onStart_whenMakeWorkoutButtonClickedCallback_goToWorkOutActivity() throws Exception {
+    public void onCreate_whenMakeWorkoutButtonClickedCallback_goToWorkOutActivity() throws Exception {
         preWorkoutActivity.workoutRegimentFragment = mock(WorkoutRegimentFragment.class);
         preWorkoutActivity.lengthOfWorkoutFragment = mock(LengthOfWorkoutFragment.class);
         preWorkoutActivity.difficultyFragment = mock(DifficultyFragment.class);
         preWorkoutActivity.equipmentFragment = mock(EquipmentFragment.class);
         preWorkoutActivity.focalBodyFocusFragment = mock(FocalBodyFocusFragment.class);
 
-//        when(preWorkoutActivity.workoutRegimentFragment.())
-//                .thenReturn("Flyer Cooks");
         when(preWorkoutActivity.lengthOfWorkoutFragment.getLengthOfWorkout())
                 .thenReturn(15);
         when(preWorkoutActivity.difficultyFragment.getDifficulty())
@@ -76,13 +76,13 @@ public class PreWorkoutActivityTest {
         when(preWorkoutActivity.focalBodyFocusFragment.getActiveBodyFocuses())
                 .thenReturn(newArrayList("hamstring", "lower back"));
 
-        preWorkoutActivity.preWorkOutViewModel.makeWorkoutButtonClicked.notifyChange();
+        preWorkoutActivity.binding.makeWorkoutButton.callOnClick();
 
         Intent intent = ShadowApplication.getInstance().getNextStartedActivity();
 
         assertEquals(intent.getComponent().getClassName(), WorkoutActivity.class.getName());
         assertThat(intent.getStringExtra(WORK_OUT_REGIMENT))
-                .isEqualTo("Flyer Cooks");
+                .isEqualTo(WorkoutRegiment.CHIPPER.getWorkoutRegimentTitle());
         assertThat(intent.getIntExtra(WORK_OUT_LENGTH, 0))
                 .isEqualTo(15);
         assertThat(intent.getStringExtra(WORK_OUT_DIFFICULTY))

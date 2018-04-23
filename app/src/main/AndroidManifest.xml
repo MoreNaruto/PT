@@ -9,9 +9,14 @@
         android:roundIcon="@drawable/pt_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.PreWorkoutActivity"/>
-        <activity android:name=".activity.WorkoutActivity" />
-        <activity android:name=".activity.WorkOutRegimentActivity" />
+        <activity android:name=".activity.PreWorkoutActivity"
+            android:parentActivityName=".activity.WorkOutRegimentActivity"
+            />
+
+        <activity android:name=".activity.WorkoutActivity"
+            android:parentActivityName=".activity.PreWorkoutActivity"/>
+
+        <activity android:name=".activity.WorkOutRegimentActivity"/>
 
         <activity
             android:name=".activity.SplashActivity"
@@ -22,9 +27,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.WorkoutDetailActivity"
-            android:theme="@style/DetailTheme"/>
+            android:theme="@style/DetailTheme"
+            android:parentActivityName=".activity.WorkoutActivity"/>
     </application>
 
 </manifest>
