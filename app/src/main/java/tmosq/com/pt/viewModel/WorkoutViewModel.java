@@ -80,6 +80,7 @@ public class WorkoutViewModel {
             mainWorkoutExercises.set(new ArrayList<Exercise>());
             return;
         }
+
         mainWorkoutEmptyVisibility.set(GONE);
         mainWorkoutListItemsVisibility.set(VISIBLE);
 
@@ -99,7 +100,6 @@ public class WorkoutViewModel {
         );
 
         addMainWorkoutToList(lengthOfWorkout, bodyFocusExercise);
-
     }
 
     private void createInitialBodyExerciseMapForActiveBodyFocuses(List<Exercise> filteredOutWarmUpAndCoolOffExercises, BodyFocusExercise bodyFocusExercise) {
@@ -174,7 +174,7 @@ public class WorkoutViewModel {
         mainWorkoutEmptyVisibility.set(GONE);
         mainWorkoutListItemsVisibility.set(VISIBLE);
 
-        pullingOutExercisesForWorkout(bodyFocusExercise, lengthOfWorkout);
+        pullOutExercisesForWorkout(bodyFocusExercise, lengthOfWorkout);
 
         List<Exercise> orderedExercisesByBodyFocus = new ArrayList<>();
         for (String bodyFocus : bodyFocusExercise.getChosenBodyFocuses()) {
@@ -184,7 +184,7 @@ public class WorkoutViewModel {
         mainWorkoutExercises.set(orderedExercisesByBodyFocus);
     }
 
-    private void pullingOutExercisesForWorkout(BodyFocusExercise bodyFocusExercise, BigDecimal lengthOfWorkout) {
+    private void pullOutExercisesForWorkout(BodyFocusExercise bodyFocusExercise, BigDecimal lengthOfWorkout) {
         BigDecimal remainingTimeForMainWorkoutRegiment = lengthOfWorkout;
         int numberOfActiveBodyFocuses = bodyFocusExercise.getBodyFocusExerciseMap().size();
         int currentActiveBodyFocusIndex = 0;

@@ -13,6 +13,7 @@ import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.DifficultyFragmentBinding;
 
 public class DifficultyFragment extends Fragment {
+    public static final String TAG = DifficultyFragment.class.getSimpleName();
     public DifficultyFragmentBinding binding;
 
     @Override

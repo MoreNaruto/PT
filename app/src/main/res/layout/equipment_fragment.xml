@@ -4,7 +4,6 @@
     tools:context="tmosq.com.pt.activity.PreWorkoutActivity">
 
     <data>
-
         <variable
             name="viewModel"
             type="tmosq.com.pt.viewModel.EquipmentViewModel" />
@@ -25,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:text="@string/equipment_accessibility"
-                android:textSize="18sp"
+                android:textSize="@dimen/text_subhead"
                 android:textStyle="bold" />
 
             <TextView
@@ -35,7 +34,7 @@
                 android:onClick="@{viewModel.clickSelectAllEquipmentCheckBox}"
                 android:text="@string/select_all"
                 android:textColor="@color/hyperlinkColor"
-                android:textSize="16sp" />
+                android:textSize="@dimen/text_body" />
 
         </LinearLayout>
 
@@ -53,11 +52,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bands" />
-
-            <Space
-                android:layout_width="80dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/bands"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/barbell_checkbox"
@@ -85,11 +81,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bicycle" />
-
-            <Space
-                android:layout_width="74dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/bicycle"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/cable_checkbox"
@@ -117,11 +110,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/chair" />
-
-            <Space
-                android:layout_width="86dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/chair"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/cones_checkbox"
@@ -149,11 +139,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dumbbell" />
-
-            <Space
-                android:layout_width="59dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/dumbbell"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/exercise_ball_checkbox"
@@ -181,11 +168,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ez_curl_bar" />
-
-            <Space
-                android:layout_width="44dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/ez_curl_bar"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/foam_roll_checkbox"
@@ -213,11 +197,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/kettlebell" />
-
-            <Space
-                android:layout_width="58dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/kettlebell"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/machine_checkbox"
@@ -245,11 +226,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/medicine_ball" />
-
-            <Space
-                android:layout_width="35dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/medicine_ball"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/plate_checkbox"
@@ -277,11 +255,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/rickshaw" />
-
-            <Space
-                android:layout_width="59dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/rickshaw"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/roller_checkbox"
@@ -309,11 +284,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/rope" />
-
-            <Space
-                android:layout_width="86dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/rope"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/row_checkbox"
@@ -341,11 +313,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sled" />
-
-            <Space
-                android:layout_width="90dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/sled"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/stone_checkbox"
@@ -373,11 +342,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/straps" />
-
-            <Space
-                android:layout_width="77dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/straps"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/toning_wheel_checkbox"
@@ -406,11 +372,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/trap_bar" />
-
-            <Space
-                android:layout_width="64dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/trap_bar"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/treadmill_checkbox"
@@ -439,11 +402,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bosu_ball" />
-
-            <Space
-                android:layout_width="60dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/bosu_ball"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/v_bar_checkbox"
@@ -471,11 +431,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/workout_box" />
-
-            <Space
-                android:layout_width="38dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/workout_box"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/t_bar_checkbox"
@@ -503,7 +460,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/jumping_rope" />
+                android:text="@string/jumping_rope"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

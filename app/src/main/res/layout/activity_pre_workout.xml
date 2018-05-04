@@ -6,7 +6,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/default_margin">
+        android:layout_margin="@dimen/spacing_medium">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:text="@string/do_you_have_a_partner"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_subhead"
                     android:textStyle="bold" />
 
                 <CheckBox

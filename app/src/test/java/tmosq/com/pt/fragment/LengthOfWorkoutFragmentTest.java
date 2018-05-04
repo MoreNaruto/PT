@@ -8,8 +8,11 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
+
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
+import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFragment;
 
 @RunWith(RobolectricTestRunner.class)
@@ -18,19 +21,30 @@ public class LengthOfWorkoutFragmentTest {
     private LengthOfWorkoutFragment lengthOfWorkoutFragment;
 
     @Before
-    public void setUp() throws Exception {
-        lengthOfWorkoutFragment = new LengthOfWorkoutFragment();
+    public void setUp() {
+        lengthOfWorkoutFragment = LengthOfWorkoutFragment.newInstance(WorkoutRegiment.CARDIO.getWorkoutRegimentTitle());
 
         startFragment(lengthOfWorkoutFragment);
         assertNotNull(lengthOfWorkoutFragment);
     }
 
     @Test
-    public void getLengthOfWorkout() throws Exception {
-        lengthOfWorkoutFragment.binding.workoutLengthDropdownMenu.setSelection(1);
-        assertEquals(lengthOfWorkoutFragment.getLengthOfWorkout(), 45);
+    public void newInstance_shouldArgumentValueForWorkoutRegiment() {
+        assertThat(lengthOfWorkoutFragment.getArguments().getString(LengthOfWorkoutFragment.WORKOUT_REGIMENT_KEY))
+                .isEqualTo(WorkoutRegiment.CARDIO.getWorkoutRegimentTitle());
+    }
 
-        lengthOfWorkoutFragment.binding.workoutLengthDropdownMenu.setSelection(2);
-        assertEquals(lengthOfWorkoutFragment.getLengthOfWorkout(), 60);
+    @Test
+    public void onCreate_setUpWorkoutLengthPicker() {
+        assertThat(lengthOfWorkoutFragment.binding.workoutNumberPicker.getMaxValue()).isEqualTo(120);
+        assertThat(lengthOfWorkoutFragment.binding.workoutNumberPicker.getMinValue()).isEqualTo(0);
+        assertThat(lengthOfWorkoutFragment.binding.workoutNumberPicker.getValue()).isEqualTo(WorkoutRegiment.CARDIO.getMinimumWorkoutLength());
+        assertThat(lengthOfWorkoutFragment.binding.workoutNumberPicker.getWrapSelectorWheel()).isEqualTo(true);
+    }
+
+    @Test
+    public void getLengthOfWorkout() {
+        lengthOfWorkoutFragment.binding.workoutNumberPicker.setValue(30);
+        assertThat(lengthOfWorkoutFragment.getLengthOfWorkout()).isEqualTo(30);
     }
 }

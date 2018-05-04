@@ -15,6 +15,7 @@ import tmosq.com.pt.databinding.FocalBodyFocusFragmentBinding;
 import tmosq.com.pt.viewModel.FocalBodyFocusViewModel;
 
 public class FocalBodyFocusFragment extends Fragment{
+    public static final String TAG = FocalBodyFocusFragment.class.getSimpleName();
     protected FocalBodyFocusViewModel viewModel;
     protected FocalBodyFocusFragmentBinding binding;
 

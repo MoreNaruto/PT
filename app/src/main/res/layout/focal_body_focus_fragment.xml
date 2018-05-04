@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="11dp">
+        android:paddingTop="@dimen/spacing_small">
 
         <TextView
             android:id="@+id/select_focal_body_point_text"
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
 
             android:text="@string/focal_body_parts"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_subhead"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -39,11 +39,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/abdominals" />
-
-            <Space
-                android:layout_width="41dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/abdominals"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/abductors_checkbox"
@@ -71,11 +68,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/adductors" />
-
-            <Space
-                android:layout_width="50dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/adductors"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/biceps_checkbox"
@@ -103,11 +97,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/calves" />
-
-            <Space
-                android:layout_width="73dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/calves"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/chest_checkbox"
@@ -135,11 +126,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/forearms" />
-
-            <Space
-                android:layout_width="55dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/forearms"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/glutes_checkbox"
@@ -167,11 +155,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/hamstring" />
-
-            <Space
-                android:layout_width="51dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/hamstring"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/lats_checkbox"
@@ -199,11 +184,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lower_back" />
-
-            <Space
-                android:layout_width="42dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/lower_back"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/middle_back_checkbox"
@@ -231,11 +213,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/neck" />
-
-            <Space
-                android:layout_width="83dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/neck"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/quadriceps_checkbox"
@@ -263,11 +242,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/shoulders" />
-
-            <Space
-                android:layout_width="52dp"
-                android:layout_height="wrap_content" />
+                android:text="@string/shoulders"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
             <CheckBox
                 android:id="@+id/traps_checkbox"
@@ -295,7 +271,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/triceps" />
+                android:text="@string/triceps"
+                android:minWidth="@dimen/spacing_xxxlarge"/>
 
         </LinearLayout>
     </LinearLayout>

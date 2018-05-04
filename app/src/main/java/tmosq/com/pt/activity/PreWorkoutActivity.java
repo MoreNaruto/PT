@@ -39,17 +39,17 @@ public class PreWorkoutActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_pre_workout);
         setContentView(binding.getRoot());
 
-        lengthOfWorkoutFragment = new LengthOfWorkoutFragment();
+        lengthOfWorkoutFragment = LengthOfWorkoutFragment.newInstance(getIntent().getStringExtra(WORK_OUT_REGIMENT));
         focalBodyFocusFragment = new FocalBodyFocusFragment();
         difficultyFragment = new DifficultyFragment();
         equipmentFragment = new EquipmentFragment();
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-        fragmentTransaction.add(R.id.workout_length_frame_id, lengthOfWorkoutFragment, "length_of_workout_fragment");
-        fragmentTransaction.add(R.id.focal_body_point_frame_id, focalBodyFocusFragment, "focal_body_focus_fragment");
-        fragmentTransaction.add(R.id.difficulty_frame_id, difficultyFragment, "difficulty_fragment");
-        fragmentTransaction.add(R.id.equipment_frame_id, equipmentFragment, "equipment_fragment");
+        fragmentTransaction.add(R.id.workout_length_frame_id, lengthOfWorkoutFragment, LengthOfWorkoutFragment.TAG);
+        fragmentTransaction.add(R.id.focal_body_point_frame_id, focalBodyFocusFragment, FocalBodyFocusFragment.TAG);
+        fragmentTransaction.add(R.id.difficulty_frame_id, difficultyFragment, DifficultyFragment.TAG);
+        fragmentTransaction.add(R.id.equipment_frame_id, equipmentFragment, EquipmentFragment.TAG);
         fragmentTransaction.commit();
 
         final PreWorkoutActivity activity = this;

@@ -19,6 +19,7 @@ import tmosq.com.pt.model.exercise_support_enums.Equipment;
 import tmosq.com.pt.viewModel.EquipmentViewModel;
 
 public class EquipmentFragment extends Fragment{
+    public static final String TAG = EquipmentFragment.class.getSimpleName();
     protected EquipmentFragmentBinding binding;
     protected EquipmentViewModel viewModel;
 
@@ -48,13 +49,13 @@ public class EquipmentFragment extends Fragment{
                 if (viewModel.shouldSwitchToSelectAllTextValue.get()){
                     binding.selectAllTextView.setText(R.string.select_all);
                     for (Equipment equipment : Equipment.values()) {
-                        CheckBox equipmentCheckBox = (CheckBox) getView().findViewById(equipment.getResourceIdCheckBox());
+                        CheckBox equipmentCheckBox = getView().findViewById(equipment.getResourceIdCheckBox());
                         equipmentCheckBox.setChecked(false);
                     }
                 } else {
                     binding.selectAllTextView.setText(R.string.unselect_all);
                     for (Equipment equipment : Equipment.values()) {
-                        CheckBox equipmentCheckBox = (CheckBox) getView().findViewById(equipment.getResourceIdCheckBox());
+                        CheckBox equipmentCheckBox = getView().findViewById(equipment.getResourceIdCheckBox());
                         equipmentCheckBox.setChecked(true);
                     }
                 }
