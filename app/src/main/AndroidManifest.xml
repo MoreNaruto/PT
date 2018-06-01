@@ -12,20 +12,24 @@
 
         <activity
             android:name=".activity.WorkOutRegimentActivity"
+            android:label="@string/workout_regiment_label"
             android:launchMode="singleTop" />
 
         <activity
             android:name=".activity.PreWorkoutActivity"
+            android:label="@string/preworkout_label"
             android:launchMode="singleTop"
             android:parentActivityName=".activity.WorkOutRegimentActivity" />
 
         <activity
             android:name=".activity.WorkoutActivity"
+            android:label="@string/workout_label"
             android:launchMode="singleTop"
             android:parentActivityName=".activity.PreWorkoutActivity" />
 
         <activity
             android:name=".activity.WorkoutDetailActivity"
+            android:label="@string/workout_description_label"
             android:launchMode="singleTop"
             android:parentActivityName=".activity.WorkoutActivity"
             android:theme="@style/DetailTheme" />

@@ -2,6 +2,10 @@
     <string name="app_name">PT</string>
     <string name="length_of_workout">Length of workout</string>
     <string name="focal_body_parts">Focal Body Parts</string>
+    <string name="workout_regiment_label">Workout Regiment</string>
+    <string name="preworkout_label">Workout Creation</string>
+    <string name="workout_label">Workout</string>
+    <string name="workout_description_label">Workout Description</string>
     <string name="abdominals">Abdominals</string>
     <string name="abductors">Abductors</string>
     <string name="adductors">Adductors</string>
