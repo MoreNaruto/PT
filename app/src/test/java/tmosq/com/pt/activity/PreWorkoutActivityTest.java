@@ -20,7 +20,7 @@ import tmosq.com.pt.fragment.DifficultyFragment;
 import tmosq.com.pt.fragment.EquipmentFragment;
 import tmosq.com.pt.fragment.FocalBodyFocusFragment;
 import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
-import tmosq.com.pt.fragment.WorkoutRegimentFragment;
+import tmosq.com.pt.fragment.WorkoutRegimentGridFragment;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 
 import static com.google.common.collect.Lists.newArrayList;
@@ -61,7 +61,7 @@ public class PreWorkoutActivityTest {
 
     @Test
     public void onCreate_whenMakeWorkoutButtonClickedCallback_goToWorkOutActivity() throws Exception {
-        preWorkoutActivity.workoutRegimentFragment = mock(WorkoutRegimentFragment.class);
+        preWorkoutActivity.workoutRegimentGridFragment = mock(WorkoutRegimentGridFragment.class);
         preWorkoutActivity.lengthOfWorkoutFragment = mock(LengthOfWorkoutFragment.class);
         preWorkoutActivity.difficultyFragment = mock(DifficultyFragment.class);
         preWorkoutActivity.equipmentFragment = mock(EquipmentFragment.class);

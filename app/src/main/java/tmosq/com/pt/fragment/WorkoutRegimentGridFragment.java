@@ -14,7 +14,7 @@ import tmosq.com.pt.R;
 import tmosq.com.pt.adapter.WorkoutRegimentRecyclerViewAdapter;
 import tmosq.com.pt.databinding.WorkoutRegimentFragmentBinding;
 
-public class WorkoutRegimentFragment extends Fragment {
+public class WorkoutRegimentGridFragment extends Fragment {
     WorkoutRegimentFragmentBinding binding;
 
     @Override

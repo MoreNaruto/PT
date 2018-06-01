@@ -17,21 +17,21 @@ import static org.robolectric.shadows.support.v4.SupportFragmentTestUtil.startFr
 
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = Build.VERSION_CODES.M)
-public class WorkoutRegimentFragmentTest {
+public class WorkoutRegimentGridFragmentTest {
 
-    private WorkoutRegimentFragment workoutRegimentFragment;
+    private WorkoutRegimentGridFragment workoutRegimentGridFragment;
 
     @Before
     public void setUp() throws Exception {
-        workoutRegimentFragment = new WorkoutRegimentFragment();
+        workoutRegimentGridFragment = new WorkoutRegimentGridFragment();
 
-        startFragment(workoutRegimentFragment);
-        assertNotNull(workoutRegimentFragment);
+        startFragment(workoutRegimentGridFragment);
+        assertNotNull(workoutRegimentGridFragment);
     }
 
     @Test
     public void onCreate_configureAdapter() throws Exception {
-        assertThat(workoutRegimentFragment.binding.workoutRegimentRecyclerView.getAdapter()).isInstanceOf(WorkoutRegimentRecyclerViewAdapter.class);
-        assertThat(workoutRegimentFragment.binding.workoutRegimentRecyclerView.getLayoutManager()).isInstanceOf(GridLayoutManager.class);
+        assertThat(workoutRegimentGridFragment.binding.workoutRegimentRecyclerView.getAdapter()).isInstanceOf(WorkoutRegimentRecyclerViewAdapter.class);
+        assertThat(workoutRegimentGridFragment.binding.workoutRegimentRecyclerView.getLayoutManager()).isInstanceOf(GridLayoutManager.class);
     }
 }

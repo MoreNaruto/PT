@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,15 +13,9 @@ import android.view.ViewGroup;
 import lombok.NoArgsConstructor;
 import tmosq.com.pt.R;
 import tmosq.com.pt.activity.PreWorkoutActivity;
-import tmosq.com.pt.activity.SplashActivity;
-import tmosq.com.pt.activity.WorkoutActivity;
-import tmosq.com.pt.activity.WorkoutDetailActivity;
 import tmosq.com.pt.databinding.WorkoutRegimentRecyclerViewItemBinding;
-import tmosq.com.pt.fragment.WorkoutRegimentFragment;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 
-import static tmosq.com.pt.activity.WorkoutDetailActivity.WORKOUT;
-import static tmosq.com.pt.activity.WorkoutDetailActivity.WORKOUT_DESCRIPTION;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 
 @NoArgsConstructor

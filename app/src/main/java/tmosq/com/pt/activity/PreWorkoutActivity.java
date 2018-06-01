@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.google.gson.Gson;
@@ -16,7 +15,7 @@ import tmosq.com.pt.fragment.DifficultyFragment;
 import tmosq.com.pt.fragment.EquipmentFragment;
 import tmosq.com.pt.fragment.FocalBodyFocusFragment;
 import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
-import tmosq.com.pt.fragment.WorkoutRegimentFragment;
+import tmosq.com.pt.fragment.WorkoutRegimentGridFragment;
 
 import static tmosq.com.pt.helper.ExerciseSplitter.HAS_PARTNER;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
@@ -25,13 +24,13 @@ import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_DIFFICULTY;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_LENGTH;
 import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 
-public class PreWorkoutActivity extends AppCompatActivity {
+public class PreWorkoutActivity extends BaseActivity {
     protected ActivityPreWorkoutBinding binding;
     protected LengthOfWorkoutFragment lengthOfWorkoutFragment;
     protected FocalBodyFocusFragment focalBodyFocusFragment;
     protected DifficultyFragment difficultyFragment;
     protected EquipmentFragment equipmentFragment;
-    protected WorkoutRegimentFragment workoutRegimentFragment;
+    protected WorkoutRegimentGridFragment workoutRegimentGridFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

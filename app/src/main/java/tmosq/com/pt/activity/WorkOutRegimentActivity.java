@@ -4,13 +4,12 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 
 import tmosq.com.pt.R;
 import tmosq.com.pt.databinding.ActivityWorkoutRegimentBinding;
-import tmosq.com.pt.fragment.WorkoutRegimentFragment;
+import tmosq.com.pt.fragment.WorkoutRegimentGridFragment;
 
-public class WorkOutRegimentActivity extends AppCompatActivity {
+public class WorkOutRegimentActivity extends BaseActivity {
     protected ActivityWorkoutRegimentBinding binding;
 
     @Override
@@ -21,7 +20,7 @@ public class WorkOutRegimentActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.workout_regiment_frame_id, new WorkoutRegimentFragment(), "workout_regiment_fragment");
+        fragmentTransaction.add(R.id.workout_regiment_frame_id, new WorkoutRegimentGridFragment(), "workout_regiment_fragment");
         fragmentTransaction.commit();
     }
 }

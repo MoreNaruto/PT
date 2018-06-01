@@ -4,12 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="tmosq.com.pt.activity.WorkoutDetailActivity">
 
-    <data>
-        <variable
-            name="viewModel"
-            type="tmosq.com.pt.viewModel.WorkoutDetailViewModel" />
-    </data>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -34,15 +28,14 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@{viewModel.exerciseWorkout}"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="Roller Mains" />
 
             <TextView
+                android:id="@+id/workout_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.workoutDescription}"
                 tools:text="@string/description_example" />
         </LinearLayout>
     </ScrollView>
