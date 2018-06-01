@@ -40,7 +40,7 @@ public class LengthOfWorkoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.length_of_workout_fragment, container, false);
-        WorkoutRegiment workoutRegiment = WorkoutRegiment.valueOf(getArguments().getString(WORKOUT_REGIMENT_KEY));
+        WorkoutRegiment workoutRegiment = WorkoutRegiment.valueOfWorkoutRegimentTitle(getArguments().getString(WORKOUT_REGIMENT_KEY));
         binding.workoutNumberPicker.setMaxValue(MAX_VALUE);
         binding.workoutNumberPicker.setMinValue(MIN_VALUE);
         binding.workoutNumberPicker.setWrapSelectorWheel(true);

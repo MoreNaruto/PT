@@ -7,7 +7,7 @@ import lombok.Getter;
 import tmosq.com.pt.R;
 
 public enum WorkoutRegiment {
-    WEIGHT_LIFTING("WEIGHT_LIFTING", "weight lifting workout", R.color.rosyRed, R.drawable.weight_lifting_image, 15),
+    WEIGHT_LIFTING("WEIGHT LIFTING", "weight lifting workout", R.color.rosyRed, R.drawable.weight_lifting_image, 15),
     CARDIO("CARDIO", "cardio workout", R.color.nickelodeonOrange, R.drawable.cardio_image, 15),
     TABATA("TABATA", "20 seconds on, 10 seconds off", R.color.sunflowerYellow, R.drawable.tabata_image, 16),
     EMOM("EMOM", "every minute on the minute", R.color.grassGreen, R.drawable.emom_image, 15),
@@ -37,5 +37,14 @@ public enum WorkoutRegiment {
         this.colorBackgroundId = colorBackgroundId;
         this.imageId = imageId;
         this.minimumWorkoutLength = minimumWorkoutLength;
+    }
+
+    public static WorkoutRegiment valueOfWorkoutRegimentTitle(String workoutRegimentTitle) {
+        for (WorkoutRegiment workoutRegiment : WorkoutRegiment.values()) {
+            if (workoutRegiment.getWorkoutRegimentTitle().equals(workoutRegimentTitle)) {
+                return workoutRegiment;
+            }
+        }
+        return null;
     }
 }

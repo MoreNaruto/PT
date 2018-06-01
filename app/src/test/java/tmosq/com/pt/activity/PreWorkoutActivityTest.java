@@ -53,10 +53,10 @@ public class PreWorkoutActivityTest {
 
     @Test
     public void onCreate_addFragmentsToFragmentManager() throws Exception {
-        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.workout_length_frame_id) instanceof LengthOfWorkoutFragment);
-        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.focal_body_point_frame_id) instanceof FocalBodyFocusFragment);
-        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.difficulty_frame_id) instanceof DifficultyFragment);
-        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.equipment_frame_id) instanceof EquipmentFragment);
+        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.workout_length_frame) instanceof LengthOfWorkoutFragment);
+        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.focal_body_point_frame) instanceof FocalBodyFocusFragment);
+        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.difficulty_frame) instanceof DifficultyFragment);
+        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.equipment_frame) instanceof EquipmentFragment);
     }
 
     @Test
