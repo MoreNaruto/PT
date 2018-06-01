@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="tmosq.com.pt.activity.PreWorkoutActivity">
 
@@ -8,59 +9,126 @@
         android:layout_height="match_parent"
         android:layout_margin="@dimen/spacing_medium">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <FrameLayout
-                android:id="@+id/workout_length_frame_id"
+                android:id="@+id/workout_length_frame"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/focal_body_point_frame"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <FrameLayout
-                android:id="@+id/focal_body_point_frame_id"
+                android:id="@+id/focal_body_point_frame"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/difficulty_frame"
+                app:layout_constraintTop_toBottomOf="@id/workout_length_frame" />
 
             <FrameLayout
-                android:id="@+id/difficulty_frame_id"
+                android:id="@+id/difficulty_frame"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/equipment_frame"
+                app:layout_constraintTop_toBottomOf="@id/focal_body_point_frame" />
 
             <FrameLayout
-                android:id="@+id/equipment_frame_id"
+                android:id="@+id/equipment_frame"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/partner_text"
+                app:layout_constraintTop_toBottomOf="@id/difficulty_frame" />
 
-            <LinearLayout
-                android:id="@+id/partner_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/partner_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                app:layout_constraintTop_toBottomOf="@id/equipment_frame"
+                app:layout_constraintEnd_toStartOf="@id/partner_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/make_workout_button"/>
 
-                <TextView
-                    android:id="@+id/partner_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:text="@string/do_you_have_a_partner"
-                    android:textSize="@dimen/text_subhead"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/partner_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_xsmall"
+                android:text="@string/do_you_have_a_partner"
+                android:textSize="@dimen/text_subhead"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/partner_checkbox"
+                app:layout_constraintTop_toTopOf="@+id/partner_checkbox"
+                app:layout_constraintBottom_toBottomOf="@+id/partner_checkbox"/>
 
-                <CheckBox
-                    android:id="@+id/partner_checkbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
 
             <Button
                 android:id="@+id/make_workout_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/make_workout" />
-        </LinearLayout>
+                android:text="@string/make_workout"
+                app:layout_constraintTop_toBottomOf="@+id/partner_checkbox"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<FrameLayout-->
+        <!--android:id="@+id/workout_length_frame_id"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+        <!--<FrameLayout-->
+        <!--android:id="@+id/focal_body_point_frame_id"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+        <!--<FrameLayout-->
+        <!--android:id="@+id/difficulty_frame_id"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+        <!--<FrameLayout-->
+        <!--android:id="@+id/equipment_frame_id"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+        <!--<LinearLayout-->
+        <!--android:id="@+id/partner_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/partner_text"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginEnd="20dp"-->
+        <!--android:text="@string/do_you_have_a_partner"-->
+        <!--android:textSize="@dimen/text_subhead"-->
+        <!--android:textStyle="bold" />-->
+
+        <!--<CheckBox-->
+        <!--android:id="@+id/partner_checkbox"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--<Button-->
+        <!--android:id="@+id/make_workout_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:text="@string/make_workout" />-->
+        <!--</LinearLayout>-->
     </ScrollView>
 </layout>

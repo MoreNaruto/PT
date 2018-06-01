@@ -46,10 +46,10 @@ public class PreWorkoutActivity extends AppCompatActivity {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-        fragmentTransaction.add(R.id.workout_length_frame_id, lengthOfWorkoutFragment, LengthOfWorkoutFragment.TAG);
-        fragmentTransaction.add(R.id.focal_body_point_frame_id, focalBodyFocusFragment, FocalBodyFocusFragment.TAG);
-        fragmentTransaction.add(R.id.difficulty_frame_id, difficultyFragment, DifficultyFragment.TAG);
-        fragmentTransaction.add(R.id.equipment_frame_id, equipmentFragment, EquipmentFragment.TAG);
+        fragmentTransaction.add(R.id.workout_length_frame, lengthOfWorkoutFragment, LengthOfWorkoutFragment.TAG);
+        fragmentTransaction.add(R.id.focal_body_point_frame, focalBodyFocusFragment, FocalBodyFocusFragment.TAG);
+        fragmentTransaction.add(R.id.difficulty_frame, difficultyFragment, DifficultyFragment.TAG);
+        fragmentTransaction.add(R.id.equipment_frame, equipmentFragment, EquipmentFragment.TAG);
         fragmentTransaction.commit();
 
         final PreWorkoutActivity activity = this;
