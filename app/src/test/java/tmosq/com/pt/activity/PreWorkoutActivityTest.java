@@ -43,24 +43,13 @@ public class PreWorkoutActivityTest {
     private ActivityPreWorkoutBinding binding;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         Intent intent = new Intent(RuntimeEnvironment.application.getApplicationContext(), PreWorkoutActivity.class);
         intent.putExtra(WORK_OUT_REGIMENT, WorkoutRegiment.CHIPPER.getWorkoutRegimentTitle());
 
         preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class, intent).create().start().get();
         binding = preWorkoutActivity.binding;
-    }
 
-    @Test
-    public void onCreate_addFragmentsToFragmentManager() throws Exception {
-        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.workout_length_frame) instanceof LengthOfWorkoutFragment);
-        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.focal_body_point_frame) instanceof FocalBodyFocusFragment);
-        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.difficulty_frame) instanceof DifficultyFragment);
-        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.equipment_frame) instanceof EquipmentFragment);
-    }
-
-    @Test
-    public void onCreate_whenMakeWorkoutButtonClickedCallback_goToWorkOutActivity() throws Exception {
         preWorkoutActivity.workoutRegimentGridFragment = mock(WorkoutRegimentGridFragment.class);
         preWorkoutActivity.lengthOfWorkoutFragment = mock(LengthOfWorkoutFragment.class);
         preWorkoutActivity.difficultyFragment = mock(DifficultyFragment.class);
@@ -75,12 +64,22 @@ public class PreWorkoutActivityTest {
                 .thenReturn(newArrayList("chair", "barbell"));
         when(preWorkoutActivity.focalBodyFocusFragment.getActiveBodyFocuses())
                 .thenReturn(newArrayList("hamstring", "lower back"));
+    }
 
+    @Test
+    public void onCreate_addFragmentsToFragmentManager() {
+        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.workout_length_frame) instanceof LengthOfWorkoutFragment);
+        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.focal_body_point_frame) instanceof FocalBodyFocusFragment);
+        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.difficulty_frame) instanceof DifficultyFragment);
+        assertTrue(preWorkoutActivity.getSupportFragmentManager().findFragmentById(R.id.equipment_frame) instanceof EquipmentFragment);
+    }
+
+    @Test
+    public void onCreate_whenMakeWorkoutButtonClickedCallback_shouldCreateIntentExtras() {
         preWorkoutActivity.binding.makeWorkoutButton.callOnClick();
 
         Intent intent = ShadowApplication.getInstance().getNextStartedActivity();
 
-        assertEquals(intent.getComponent().getClassName(), WorkoutActivity.class.getName());
         assertThat(intent.getStringExtra(WORK_OUT_REGIMENT))
                 .isEqualTo(WorkoutRegiment.CHIPPER.getWorkoutRegimentTitle());
         assertThat(intent.getIntExtra(WORK_OUT_LENGTH, 0))
@@ -93,5 +92,109 @@ public class PreWorkoutActivityTest {
                 .isEqualTo(new Gson().toJson(newArrayList("chair", "barbell")));
         assertThat(intent.getStringExtra(LIST_OF_ACTIVE_BODY_FOCUSES))
                 .isEqualTo(new Gson().toJson(newArrayList("hamstring", "lower back")));
+    }
+
+    @Test
+    public void onCreate_whenMakeWorkOutButtonIsClickedWithWeightLifting_shouldNavigateToGenericWorkoutActivity() {
+        Intent intent = new Intent(RuntimeEnvironment.application.getApplicationContext(), PreWorkoutActivity.class);
+        intent.putExtra(WORK_OUT_REGIMENT, WorkoutRegiment.WEIGHT_LIFTING.getWorkoutRegimentTitle());
+        preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class, intent).create().start().get();
+        binding = preWorkoutActivity.binding;
+
+        preWorkoutActivity.binding.makeWorkoutButton.callOnClick();
+
+        Intent activityIntent = ShadowApplication.getInstance().getNextStartedActivity();
+        assertEquals(activityIntent.getComponent().getClassName(), GenericWorkoutActivity.class.getName());
+    }
+
+    @Test
+    public void onCreate_whenMakeWorkOutButtonIsClickedWithCardio_shouldNavigateToGenericWorkoutActivity() {
+        Intent intent = new Intent(RuntimeEnvironment.application.getApplicationContext(), PreWorkoutActivity.class);
+        intent.putExtra(WORK_OUT_REGIMENT, WorkoutRegiment.CARDIO.getWorkoutRegimentTitle());
+        preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class, intent).create().start().get();
+        binding = preWorkoutActivity.binding;
+
+        preWorkoutActivity.binding.makeWorkoutButton.callOnClick();
+
+        Intent activityIntent = ShadowApplication.getInstance().getNextStartedActivity();
+        assertEquals(activityIntent.getComponent().getClassName(), GenericWorkoutActivity.class.getName());
+    }
+
+    @Test
+    public void onCreate_whenMakeWorkOutButtonIsClickedWithTabata_shouldNavigateToTabataWorkoutActivity() {
+        Intent intent = new Intent(RuntimeEnvironment.application.getApplicationContext(), PreWorkoutActivity.class);
+        intent.putExtra(WORK_OUT_REGIMENT, WorkoutRegiment.TABATA.getWorkoutRegimentTitle());
+        preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class, intent).create().start().get();
+        binding = preWorkoutActivity.binding;
+
+        preWorkoutActivity.binding.makeWorkoutButton.callOnClick();
+
+        Intent activityIntent = ShadowApplication.getInstance().getNextStartedActivity();
+        assertEquals(activityIntent.getComponent().getClassName(), TabataWorkoutActivity.class.getName());
+    }
+
+    @Test
+    public void onCreate_whenMakeWorkOutButtonIsClickedWithEmom_shouldNavigateToEmomWorkoutActivity() {
+        Intent intent = new Intent(RuntimeEnvironment.application.getApplicationContext(), PreWorkoutActivity.class);
+        intent.putExtra(WORK_OUT_REGIMENT, WorkoutRegiment.EMOM.getWorkoutRegimentTitle());
+        preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class, intent).create().start().get();
+        binding = preWorkoutActivity.binding;
+
+        preWorkoutActivity.binding.makeWorkoutButton.callOnClick();
+
+        Intent activityIntent = ShadowApplication.getInstance().getNextStartedActivity();
+        assertEquals(activityIntent.getComponent().getClassName(), EmomWorkoutActivity.class.getName());
+    }
+
+    @Test
+    public void onCreate_whenMakeWorkOutButtonIsClickedWithAmrap_shouldNavigateToAmrapWorkoutActivity() {
+        Intent intent = new Intent(RuntimeEnvironment.application.getApplicationContext(), PreWorkoutActivity.class);
+        intent.putExtra(WORK_OUT_REGIMENT, WorkoutRegiment.AMRAP.getWorkoutRegimentTitle());
+        preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class, intent).create().start().get();
+        binding = preWorkoutActivity.binding;
+
+        preWorkoutActivity.binding.makeWorkoutButton.callOnClick();
+
+        Intent activityIntent = ShadowApplication.getInstance().getNextStartedActivity();
+        assertEquals(activityIntent.getComponent().getClassName(), AmrapWorkoutActivity.class.getName());
+    }
+
+    @Test
+    public void onCreate_whenMakeWorkOutButtonIsClickedWithRft_shouldNavigateToRftWorkoutActivity() {
+        Intent intent = new Intent(RuntimeEnvironment.application.getApplicationContext(), PreWorkoutActivity.class);
+        intent.putExtra(WORK_OUT_REGIMENT, WorkoutRegiment.RFT.getWorkoutRegimentTitle());
+        preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class, intent).create().start().get();
+        binding = preWorkoutActivity.binding;
+
+        preWorkoutActivity.binding.makeWorkoutButton.callOnClick();
+
+        Intent activityIntent = ShadowApplication.getInstance().getNextStartedActivity();
+        assertEquals(activityIntent.getComponent().getClassName(), RftWorkoutActivity.class.getName());
+    }
+
+    @Test
+    public void onCreate_whenMakeWorkOutButtonIsClickedWithChipper_shouldNavigateToChipperWorkoutActivity() {
+        Intent intent = new Intent(RuntimeEnvironment.application.getApplicationContext(), PreWorkoutActivity.class);
+        intent.putExtra(WORK_OUT_REGIMENT, WorkoutRegiment.CHIPPER.getWorkoutRegimentTitle());
+        preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class, intent).create().start().get();
+        binding = preWorkoutActivity.binding;
+
+        preWorkoutActivity.binding.makeWorkoutButton.callOnClick();
+
+        Intent activityIntent = ShadowApplication.getInstance().getNextStartedActivity();
+        assertEquals(activityIntent.getComponent().getClassName(), ChipperWorkoutActivity.class.getName());
+    }
+
+    @Test
+    public void onCreate_whenMakeWorkOutButtonIsClickedWithLadder_shouldNavigateToLadderWorkoutActivity() {
+        Intent intent = new Intent(RuntimeEnvironment.application.getApplicationContext(), PreWorkoutActivity.class);
+        intent.putExtra(WORK_OUT_REGIMENT, WorkoutRegiment.LADDER.getWorkoutRegimentTitle());
+        preWorkoutActivity = Robolectric.buildActivity(PreWorkoutActivity.class, intent).create().start().get();
+        binding = preWorkoutActivity.binding;
+
+        preWorkoutActivity.binding.makeWorkoutButton.callOnClick();
+
+        Intent activityIntent = ShadowApplication.getInstance().getNextStartedActivity();
+        assertEquals(activityIntent.getComponent().getClassName(), LadderWorkoutActivity.class.getName());
     }
 }

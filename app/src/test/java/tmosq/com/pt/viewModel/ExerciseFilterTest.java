@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tmosq.com.pt.activity.SplashActivity;
-import tmosq.com.pt.activity.WorkoutActivity;
+import tmosq.com.pt.activity.GenericWorkoutActivity;
 import tmosq.com.pt.model.Exercise;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 
@@ -83,9 +83,9 @@ public class ExerciseFilterTest {
         Intent intent = getInitialIntent();
         intent.putExtra(WORK_OUT_DIFFICULTY, "intermediate");
 
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+        GenericWorkoutActivity genericWorkoutActivity = Robolectric.buildActivity(GenericWorkoutActivity.class).withIntent(intent).create().get();
 
-        exerciseFilter = new ExerciseFilter(workoutActivity.getIntent());
+        exerciseFilter = new ExerciseFilter(genericWorkoutActivity.getIntent());
 
         Exercise basicExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();
@@ -110,9 +110,9 @@ public class ExerciseFilterTest {
         Intent intent = getInitialIntent();
         intent.putExtra(WORK_OUT_DIFFICULTY, "basic");
 
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+        GenericWorkoutActivity genericWorkoutActivity = Robolectric.buildActivity(GenericWorkoutActivity.class).withIntent(intent).create().get();
 
-        exerciseFilter = new ExerciseFilter(workoutActivity.getIntent());
+        exerciseFilter = new ExerciseFilter(genericWorkoutActivity.getIntent());
 
         Exercise basicExercise = Exercise.builder().equipment(CHAIR).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDOMINALS).partnerNeeded(false).averageSecondsPerRep(5.0).build();

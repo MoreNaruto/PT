@@ -16,6 +16,7 @@ import tmosq.com.pt.fragment.EquipmentFragment;
 import tmosq.com.pt.fragment.FocalBodyFocusFragment;
 import tmosq.com.pt.fragment.LengthOfWorkoutFragment;
 import tmosq.com.pt.fragment.WorkoutRegimentGridFragment;
+import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
 
 import static tmosq.com.pt.helper.ExerciseSplitter.HAS_PARTNER;
 import static tmosq.com.pt.helper.ExerciseSplitter.LIST_OF_ACTIVE_BODY_FOCUSES;
@@ -56,16 +57,20 @@ public class PreWorkoutActivity extends BaseActivity {
         binding.makeWorkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), WorkoutActivity.class);
-                intent.putExtra(WORK_OUT_REGIMENT, getIntent().getStringExtra(WORK_OUT_REGIMENT));
-                intent.putExtra(WORK_OUT_LENGTH, lengthOfWorkoutFragment.getLengthOfWorkout());
-                intent.putExtra(WORK_OUT_DIFFICULTY, difficultyFragment.getDifficulty());
-                intent.putExtra(HAS_PARTNER, binding.partnerCheckbox.isChecked());
-                intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(equipmentFragment.getExcludedEquipmentItems()));
-                intent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(focalBodyFocusFragment.getActiveBodyFocuses()));
-
+                WorkoutRegiment workoutRegiment = WorkoutRegiment.valueOfWorkoutRegimentTitle(getIntent().getStringExtra(WORK_OUT_REGIMENT));
+                Intent intent = new Intent(view.getContext(), workoutRegiment.getWorkoutRegimentActivityClass());
+                putExtrasOnActivityIntent(intent);
                 activity.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle());
             }
         });
+    }
+
+    private void putExtrasOnActivityIntent(Intent intent) {
+        intent.putExtra(WORK_OUT_REGIMENT, getIntent().getStringExtra(WORK_OUT_REGIMENT));
+        intent.putExtra(WORK_OUT_LENGTH, lengthOfWorkoutFragment.getLengthOfWorkout());
+        intent.putExtra(WORK_OUT_DIFFICULTY, difficultyFragment.getDifficulty());
+        intent.putExtra(HAS_PARTNER, binding.partnerCheckbox.isChecked());
+        intent.putExtra(LIST_OF_EXCLUDED_EQUIPMENT, new Gson().toJson(equipmentFragment.getExcludedEquipmentItems()));
+        intent.putExtra(LIST_OF_ACTIVE_BODY_FOCUSES, new Gson().toJson(focalBodyFocusFragment.getActiveBodyFocuses()));
     }
 }

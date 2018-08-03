@@ -22,7 +22,43 @@
             android:parentActivityName=".activity.WorkOutRegimentActivity" />
 
         <activity
-            android:name=".activity.WorkoutActivity"
+            android:name=".activity.GenericWorkoutActivity"
+            android:label="@string/workout_label"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activity.PreWorkoutActivity" />
+
+        <activity
+            android:name=".activity.TabataWorkoutActivity"
+            android:label="@string/workout_label"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activity.PreWorkoutActivity" />
+
+        <activity
+            android:name=".activity.EmomWorkoutActivity"
+            android:label="@string/workout_label"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activity.PreWorkoutActivity" />
+
+        <activity
+            android:name=".activity.AmrapWorkoutActivity"
+            android:label="@string/workout_label"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activity.PreWorkoutActivity" />
+
+        <activity
+            android:name=".activity.RftWorkoutActivity"
+            android:label="@string/workout_label"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activity.PreWorkoutActivity" />
+
+        <activity
+            android:name=".activity.ChipperWorkoutActivity"
+            android:label="@string/workout_label"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activity.PreWorkoutActivity" />
+
+        <activity
+            android:name=".activity.LadderWorkoutActivity"
             android:label="@string/workout_label"
             android:launchMode="singleTop"
             android:parentActivityName=".activity.PreWorkoutActivity" />
@@ -31,7 +67,7 @@
             android:name=".activity.WorkoutDetailActivity"
             android:label="@string/workout_description_label"
             android:launchMode="singleTop"
-            android:parentActivityName=".activity.WorkoutActivity"
+            android:parentActivityName=".activity.GenericWorkoutActivity"
             android:theme="@style/DetailTheme" />
 
         <activity

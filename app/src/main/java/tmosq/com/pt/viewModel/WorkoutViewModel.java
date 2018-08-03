@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import tmosq.com.pt.activity.WorkoutActivity;
+import tmosq.com.pt.activity.GenericWorkoutActivity;
 import tmosq.com.pt.helper.ExerciseSplitter;
 import tmosq.com.pt.model.BodyFocusExercise;
 import tmosq.com.pt.model.Exercise;
@@ -48,10 +48,10 @@ public class WorkoutViewModel {
     private final Intent intent;
     private final Random random;
 
-    public WorkoutViewModel(WorkoutActivity workoutActivity) {
-        intent = workoutActivity.getIntent();
+    public WorkoutViewModel(GenericWorkoutActivity genericWorkoutActivity) {
+        intent = genericWorkoutActivity.getIntent();
         exerciseFilter = new ExerciseFilter(intent);
-        filteredExercises = exerciseFilter.filterExercises(new ExerciseSplitter(workoutActivity).generateAllExercises());
+        filteredExercises = exerciseFilter.filterExercises(new ExerciseSplitter(genericWorkoutActivity).generateAllExercises());
 
         random = new Random();
         workOutLength = intent.getIntExtra(WORK_OUT_LENGTH, 60);

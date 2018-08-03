@@ -13,7 +13,7 @@ import tmosq.com.pt.adapter.WarmUpAdapter;
 import tmosq.com.pt.databinding.ActivityWorkoutBinding;
 import tmosq.com.pt.viewModel.WorkoutViewModel;
 
-public class WorkoutActivity extends BaseActivity {
+public class GenericWorkoutActivity extends BaseActivity {
 
     protected ActivityWorkoutBinding binding;
     protected WorkoutViewModel workoutViewModel;

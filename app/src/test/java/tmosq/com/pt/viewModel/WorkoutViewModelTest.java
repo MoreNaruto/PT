@@ -15,7 +15,7 @@ import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 
-import tmosq.com.pt.activity.WorkoutActivity;
+import tmosq.com.pt.activity.GenericWorkoutActivity;
 import tmosq.com.pt.model.Exercise;
 
 import static android.view.View.GONE;
@@ -50,9 +50,9 @@ public class WorkoutViewModelTest {
 
     @Before
     public void setUp() throws Exception {
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(getInitialIntent()).create().get();
+        GenericWorkoutActivity genericWorkoutActivity = Robolectric.buildActivity(GenericWorkoutActivity.class).withIntent(getInitialIntent()).create().get();
 
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
+        workoutViewModel = new WorkoutViewModel(genericWorkoutActivity);
     }
 
     @Test
@@ -135,9 +135,9 @@ public class WorkoutViewModelTest {
         Intent intent = getInitialIntent();
         intent.putExtra(WORK_OUT_LENGTH, 90);
 
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+        GenericWorkoutActivity genericWorkoutActivity = Robolectric.buildActivity(GenericWorkoutActivity.class).withIntent(intent).create().get();
 
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
+        workoutViewModel = new WorkoutViewModel(genericWorkoutActivity);
 
         Exercise coolOffExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout("hyper rocks").build();
@@ -175,9 +175,9 @@ public class WorkoutViewModelTest {
     public void generateAllExercises_forWarmUpAndCoolOffRoutine_ifNoCoolOffOrWarmUpRoutineExists_shouldNotHaveAnyExercises() throws Exception {
         Intent intent = getInitialIntent();
 
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+        GenericWorkoutActivity genericWorkoutActivity = Robolectric.buildActivity(GenericWorkoutActivity.class).withIntent(intent).create().get();
 
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
+        workoutViewModel = new WorkoutViewModel(genericWorkoutActivity);
 
         Exercise nonCoolOffExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
                 .bodyFocus(ABDOMINALS).averageSecondsPerRep(5.0).workout("hyper rocks").build();
@@ -196,9 +196,9 @@ public class WorkoutViewModelTest {
     public void generateAllExercises_forWarmUpAndCoolOffRoutine_noDuplicateWorkouts() throws Exception {
         Intent intent = getInitialIntent();
 
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+        GenericWorkoutActivity genericWorkoutActivity = Robolectric.buildActivity(GenericWorkoutActivity.class).withIntent(intent).create().get();
 
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
+        workoutViewModel = new WorkoutViewModel(genericWorkoutActivity);
 
         Exercise warmUpExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout("hyper rocks").build();
@@ -216,9 +216,9 @@ public class WorkoutViewModelTest {
         Intent intent = getInitialIntent();
         intent.putExtra(WORK_OUT_LENGTH, 35);
 
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+        GenericWorkoutActivity genericWorkoutActivity = Robolectric.buildActivity(GenericWorkoutActivity.class).withIntent(intent).create().get();
 
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
+        workoutViewModel = new WorkoutViewModel(genericWorkoutActivity);
 
         Exercise warmUpExerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDOMINALS).alternateSide(true).averageSecondsPerRep(5.0).workout("hyperRocks").build();
@@ -301,9 +301,9 @@ public class WorkoutViewModelTest {
                 ABDOMINALS.getBodyPartNameAlias())));
         intent.putExtra(WORK_OUT_LENGTH, 15);
 
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+        GenericWorkoutActivity genericWorkoutActivity = Robolectric.buildActivity(GenericWorkoutActivity.class).withIntent(intent).create().get();
 
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
+        workoutViewModel = new WorkoutViewModel(genericWorkoutActivity);
 
         Exercise exerciseOne = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
                 .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout("hyper rocks").build();
@@ -337,9 +337,9 @@ public class WorkoutViewModelTest {
                 SHOULDERS.getBodyPartNameAlias(),
                 MIDDLE_BACK.getBodyPartNameAlias())));
 
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+        GenericWorkoutActivity genericWorkoutActivity = Robolectric.buildActivity(GenericWorkoutActivity.class).withIntent(intent).create().get();
 
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
+        workoutViewModel = new WorkoutViewModel(genericWorkoutActivity);
 
         Exercise mainExerciseAbdomianls = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
                 .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(3.0).workout("hyper rocks").build();
@@ -421,9 +421,9 @@ public class WorkoutViewModelTest {
     public void generateAllExercises_mainWorkoutRoutine_ifNoNonWarmUpAndCoolOffWorkoutRoutineExists_shouldNotShowList() throws Exception {
         Intent intent = getInitialIntent();
 
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+        GenericWorkoutActivity genericWorkoutActivity = Robolectric.buildActivity(GenericWorkoutActivity.class).withIntent(intent).create().get();
 
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
+        workoutViewModel = new WorkoutViewModel(genericWorkoutActivity);
 
         Exercise coolOffExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(WARM_UP_AND_COOL_OFF).forTime(false)
                 .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout("hyper rocks").build();
@@ -441,9 +441,9 @@ public class WorkoutViewModelTest {
     public void generateAllExercises_mainWorkoutRoutine_ifNonWarmUpAndCoolOffWorkoutRoutineExists_shouldShowList() throws Exception {
         Intent intent = getInitialIntent();
 
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+        GenericWorkoutActivity genericWorkoutActivity = Robolectric.buildActivity(GenericWorkoutActivity.class).withIntent(intent).create().get();
 
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
+        workoutViewModel = new WorkoutViewModel(genericWorkoutActivity);
 
         Exercise coolOffExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
                 .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout("hyper rocks").build();
@@ -460,9 +460,9 @@ public class WorkoutViewModelTest {
     public void generateAllExercises_mainWorkoutRoutine_noDuplicateWorkouts() throws Exception {
         Intent intent = getInitialIntent();
 
-        WorkoutActivity workoutActivity = Robolectric.buildActivity(WorkoutActivity.class).withIntent(intent).create().get();
+        GenericWorkoutActivity genericWorkoutActivity = Robolectric.buildActivity(GenericWorkoutActivity.class).withIntent(intent).create().get();
 
-        workoutViewModel = new WorkoutViewModel(workoutActivity);
+        workoutViewModel = new WorkoutViewModel(genericWorkoutActivity);
 
         Exercise nonCoolOffExercise = Exercise.builder().equipment(BANDS).difficulty(BASIC).workOutType(BODY).forTime(false)
                 .bodyFocus(ABDOMINALS).alternateSide(false).averageSecondsPerRep(5.0).workout("hyper rocks").build();

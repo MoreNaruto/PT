@@ -36,8 +36,8 @@ import static tmosq.com.pt.helper.ExerciseSplitter.WORK_OUT_REGIMENT;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = Build.VERSION_CODES.M)
-public class WorkoutActivityTest {
-    private ActivityController<WorkoutActivity> activityController;
+public class GenericWorkoutActivityTest {
+    private ActivityController<GenericWorkoutActivity> activityController;
 
     @Mock
     WorkoutViewModel mockWorkoutViewModel;
@@ -45,12 +45,12 @@ public class WorkoutActivityTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        activityController = Robolectric.buildActivity(WorkoutActivity.class);
+        activityController = Robolectric.buildActivity(GenericWorkoutActivity.class);
     }
 
     @Test
     public void onCreate_bindsToViewModel() throws Exception {
-        WorkoutActivity activity = activityController.withIntent(getInitialIntent()).create().get();
+        GenericWorkoutActivity activity = activityController.withIntent(getInitialIntent()).create().get();
 
         assertThat(activity.binding.getViewModel()).isEqualTo(activity.workoutViewModel);
     }
@@ -60,7 +60,7 @@ public class WorkoutActivityTest {
         Exercise warmUpAndCoolOffExercise = Exercise.builder().workOutType(WorkOutType.WARM_UP_AND_COOL_OFF).build();
         Exercise bodyExercise = Exercise.builder().workOutType(WorkOutType.BODY).build();
 
-        WorkoutActivity activity = activityController.withIntent(getInitialIntent()).create().get();
+        GenericWorkoutActivity activity = activityController.withIntent(getInitialIntent()).create().get();
 
         activity.workoutViewModel = mockWorkoutViewModel;
         mockWorkoutViewModel.warmUpExercises = new ObservableField<List<Exercise>>(newArrayList(warmUpAndCoolOffExercise));
