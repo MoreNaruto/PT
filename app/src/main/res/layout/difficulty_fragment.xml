@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="tmosq.com.pt.activity.PreWorkoutActivity">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="11dp">
+        android:layout_margin="@dimen/spacing_medium">
 
         <TextView
+            android:id="@+id/difficulty_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/workout_difficulty"
             android:textSize="@dimen/text_subhead"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/workout_difficulty_dropdown_menu"
             style="@android:style/Widget.Spinner.DropDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:entries="@array/difficulty_array"
             android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown" />
-    </LinearLayout>
+            android:entries="@array/difficulty_array"
+            android:spinnerMode="dropdown"
+            app:layout_constraintTop_toBottomOf="@+id/difficulty_text"/>
+    </android.support.constraint.ConstraintLayout>
 </layout>

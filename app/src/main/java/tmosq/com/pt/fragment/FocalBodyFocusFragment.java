@@ -27,7 +27,6 @@ public class FocalBodyFocusFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.focal_body_focus_fragment, container, false);
         View view = binding.getRoot();

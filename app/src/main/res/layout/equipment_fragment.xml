@@ -1,467 +1,298 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="tmosq.com.pt.activity.PreWorkoutActivity">
 
     <data>
+
         <variable
             name="viewModel"
             type="tmosq.com.pt.viewModel.EquipmentViewModel" />
     </data>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/equipment_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_margin="@dimen/spacing_medium">
 
-        <LinearLayout
+        <android.support.constraint.Guideline
+            android:id="@+id/middle_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:text="@string/equipment_accessibility"
-                android:textSize="@dimen/text_subhead"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/select_all_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:onClick="@{viewModel.clickSelectAllEquipmentCheckBox}"
-                android:text="@string/select_all"
-                android:textColor="@color/hyperlinkColor"
-                android:textSize="@dimen/text_body" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/equipment_to_exclude_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:text="@string/equipment_accessibility"
+            android:textSize="@dimen/text_subhead"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <CheckBox
-                android:id="@+id/bands_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bands"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/barbell_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/barbell" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/select_all_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickSelectAllEquipmentCheckBox}"
+            android:text="@string/select_all"
+            android:textColor="@color/hyperlinkColor"
+            android:textSize="@dimen/text_body"
+            android:layout_marginStart="@dimen/spacing_medium"
+            app:layout_constraintStart_toEndOf="@+id/equipment_to_exclude_text_view"
+            app:layout_constraintTop_toTopOf="@+id/equipment_to_exclude_text_view"
+            app:layout_constraintBottom_toBottomOf="@+id/equipment_to_exclude_text_view"/>
 
-            <CheckBox
-                android:id="@+id/bicycle_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bicycle"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/cable_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cable" />
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/bands_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/bands"
+            app:layout_constraintTop_toBottomOf="@+id/equipment_to_exclude_text_view"/>
 
-            <CheckBox
-                android:id="@+id/chair_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/chair"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/cones_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cones" />
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/barbell_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/barbell"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/equipment_to_exclude_text_view"/>
 
-            <CheckBox
-                android:id="@+id/dumbbell_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dumbbell"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/exercise_ball_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/exercise_ball" />
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/bicycle_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/bicycle"
+            app:layout_constraintTop_toBottomOf="@+id/bands_checkbox"/>
 
-            <CheckBox
-                android:id="@+id/ez_curl_bar_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ez_curl_bar"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/foam_roll_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/foam_roll" />
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/bosu_ball"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/bosu_ball"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/barbell_checkbox"/>
 
-            <CheckBox
-                android:id="@+id/kettlebell_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/kettlebell"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/machine_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/workout_machines" />
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/cable_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/cable"
+            app:layout_constraintTop_toBottomOf="@+id/bicycle_checkbox"/>
 
-            <CheckBox
-                android:id="@+id/medicine_ball_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/medicine_ball"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/plate_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/weight_plate" />
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/chair_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/chair"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/bosu_ball"/>
 
-            <CheckBox
-                android:id="@+id/rickshaw_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/rickshaw"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/roller_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/roller" />
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/cones_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/cones"
+            app:layout_constraintTop_toBottomOf="@+id/cable_checkbox"/>
 
-            <CheckBox
-                android:id="@+id/rope_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/rope"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/row_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/row" />
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/dumbbell_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/dumbbell"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/chair_checkbox"/>
 
-            <CheckBox
-                android:id="@+id/sled_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sled"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/stone_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/stone" />
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/exercise_ball_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/exercise_ball"
+            app:layout_constraintTop_toBottomOf="@+id/cones_checkbox"/>
 
-            <CheckBox
-                android:id="@+id/straps_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/straps"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/toning_wheel_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/toning_wheel" />
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/ez_curl_bar_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/ez_curl_bar"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/dumbbell_checkbox"/>
 
-
-            <CheckBox
-                android:id="@+id/trap_bar_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/trap_bar"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/treadmill_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/treadmill" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/foam_roll_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/foam_roll"
+            app:layout_constraintTop_toBottomOf="@+id/exercise_ball_checkbox"/>
 
-            <CheckBox
-                android:id="@+id/bosu_ball"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bosu_ball"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/v_bar_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/v_bar" />
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/jumping_rope_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/jumping_rope"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/ez_curl_bar_checkbox"/>
 
-            <CheckBox
-                android:id="@+id/workout_box_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/workout_box"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-
-            <CheckBox
-                android:id="@+id/t_bar_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/t_bar" />
-        </LinearLayout>
-
-        <LinearLayout
+        <CheckBox
+            android:id="@+id/kettlebell_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/kettlebell"
+            app:layout_constraintTop_toBottomOf="@+id/foam_roll_checkbox"/>
 
-            <CheckBox
-                android:id="@+id/jumping_rope_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="@{viewModel.clickEquipmentCheckBox}" />
+        <CheckBox
+            android:id="@+id/medicine_ball_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/medicine_ball"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/jumping_rope_checkbox"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/jumping_rope"
-                android:minWidth="@dimen/spacing_xxxlarge"/>
-        </LinearLayout>
-    </LinearLayout>
+        <CheckBox
+            android:id="@+id/rickshaw_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/rickshaw"
+            app:layout_constraintTop_toBottomOf="@+id/kettlebell_checkbox"/>
+
+        <CheckBox
+            android:id="@+id/roller_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/roller"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/medicine_ball_checkbox"/>
+
+        <CheckBox
+            android:id="@+id/rope_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/rope"
+            app:layout_constraintTop_toBottomOf="@+id/rickshaw_checkbox"/>
+
+        <CheckBox
+            android:id="@+id/row_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/row"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/roller_checkbox"/>
+
+        <CheckBox
+            android:id="@+id/sled_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/sled"
+            app:layout_constraintTop_toBottomOf="@+id/rope_checkbox"/>
+
+        <CheckBox
+            android:id="@+id/stone_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/stone"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/row_checkbox"/>
+
+        <CheckBox
+            android:id="@+id/straps_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/straps"
+            app:layout_constraintTop_toBottomOf="@+id/sled_checkbox"/>
+
+        <CheckBox
+            android:id="@+id/t_bar_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/t_bar"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/stone_checkbox"/>
+
+        <CheckBox
+            android:id="@+id/toning_wheel_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/toning_wheel"
+            app:layout_constraintTop_toBottomOf="@+id/straps_checkbox"/>
+
+        <CheckBox
+            android:id="@+id/trap_bar_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/trap_bar"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/t_bar_checkbox"/>
+
+        <CheckBox
+            android:id="@+id/treadmill_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/treadmill"
+            app:layout_constraintTop_toBottomOf="@+id/toning_wheel_checkbox"/>
+
+
+        <CheckBox
+            android:id="@+id/v_bar_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/v_bar"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/trap_bar_checkbox"
+            />
+
+        <CheckBox
+            android:id="@+id/weight_machine_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/workout_machines"
+            app:layout_constraintTop_toBottomOf="@+id/treadmill_checkbox"/>
+
+        <CheckBox
+            android:id="@+id/weight_plate_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/weight_plate"
+            app:layout_constraintStart_toEndOf="@+id/middle_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/v_bar_checkbox"/>
+
+        <CheckBox
+            android:id="@+id/workout_box_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.clickEquipmentCheckBox}"
+            android:text="@string/workout_box"
+            app:layout_constraintTop_toBottomOf="@+id/weight_machine_checkbox"/>
+
+    </android.support.constraint.ConstraintLayout>
 </layout>

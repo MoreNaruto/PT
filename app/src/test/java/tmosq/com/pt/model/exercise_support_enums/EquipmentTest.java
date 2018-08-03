@@ -60,9 +60,9 @@ public class EquipmentTest {
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.ez_curl_bar_checkbox), Equipment.EZ_CURL_BAR);
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.foam_roll_checkbox), Equipment.FOAM_ROLL);
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.kettlebell_checkbox), Equipment.KETTLEBELL);
-        assertEquals(Equipment.fromResourceCheckBoxId(R.id.machine_checkbox), Equipment.MACHINE);
+        assertEquals(Equipment.fromResourceCheckBoxId(R.id.weight_machine_checkbox), Equipment.MACHINE);
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.medicine_ball_checkbox), Equipment.MEDICINE_BALL);
-        assertEquals(Equipment.fromResourceCheckBoxId(R.id.plate_checkbox), Equipment.PLATE);
+        assertEquals(Equipment.fromResourceCheckBoxId(R.id.weight_plate_checkbox), Equipment.PLATE);
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.rickshaw_checkbox), Equipment.RICKSHAW);
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.roller_checkbox), Equipment.ROLLER);
         assertEquals(Equipment.fromResourceCheckBoxId(R.id.rope_checkbox), Equipment.ROPE);

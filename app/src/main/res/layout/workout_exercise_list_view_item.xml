@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,7 +10,7 @@
             type="tmosq.com.pt.viewModel.WorkoutExerciseViewModel" />
     </data>
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="98dp"
         android:background="@drawable/workout_cell_item_background"
@@ -25,42 +26,44 @@
             android:contentDescription="@string/picture_here"
             android:src="@drawable/pt_logo"
             android:transitionName="@string/workout_detail_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/pt_logo" />
 
-        <LinearLayout
+
+        <TextView
+            android:id="@+id/workout_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp">
+            android:maxLines="1"
+            android:text="@{viewModel.exerciseWorkout}"
+            android:textColor="@color/blandWhite"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/workout_image_view"
+            tools:text="Roller Curls" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:text="@{viewModel.exerciseWorkout}"
-                android:textColor="@color/blandWhite"
-                android:textSize="20sp"
-                tools:text="Roller Curls" />
+        <TextView
+            android:id="@+id/workout_exercise_regiment_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:paddingTop="15dp"
+            android:text="@{viewModel.exerciseRegiment}"
+            android:textColor="@color/lightishGray"
+            app:layout_constraintStart_toEndOf="@+id/workout_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/workout_text_view"
+            tools:text="2 sets for 10 reps" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:paddingTop="15dp"
-                android:text="@{viewModel.exerciseRegiment}"
-                android:textColor="@color/lightishGray"
-                tools:text="2 sets for 10 reps" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:paddingTop="15dp"
-                android:text="@{viewModel.exerciseDifficulty}"
-                android:textColor="@color/lightishGray"
-                tools:text="Difficulty: Basic" />
-        </LinearLayout>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/workout_exercise_difficulty_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:paddingTop="15dp"
+            android:text="@{viewModel.exerciseDifficulty}"
+            android:textColor="@color/lightishGray"
+            app:layout_constraintStart_toEndOf="@+id/workout_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/workout_exercise_regiment_text_view"
+            tools:text="Difficulty: Basic" />
+    </android.support.constraint.ConstraintLayout>
 </layout>
