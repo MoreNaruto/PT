@@ -21,6 +21,7 @@ import tmosq.com.pt.activity.SplashActivity;
 import tmosq.com.pt.activity.GenericWorkoutActivity;
 import tmosq.com.pt.model.Exercise;
 import tmosq.com.pt.model.exercise_support_enums.WorkoutRegiment;
+import tmosq.com.pt.util.ExerciseFilter;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.junit.Assert.assertFalse;

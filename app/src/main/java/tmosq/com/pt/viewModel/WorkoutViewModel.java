@@ -1,5 +1,6 @@
 package tmosq.com.pt.viewModel;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
@@ -12,11 +13,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import tmosq.com.pt.activity.GenericWorkoutActivity;
 import tmosq.com.pt.helper.ExerciseSplitter;
 import tmosq.com.pt.model.BodyFocusExercise;
 import tmosq.com.pt.model.Exercise;
 import tmosq.com.pt.model.exercise_support_enums.BodyFocus;
+import tmosq.com.pt.util.ExerciseFilter;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -33,8 +34,6 @@ public class WorkoutViewModel {
     private static final Double PADDING_TIME = 6.0;
     private static final int MINIMUM_MINUTES_TO_INCLUDE_WARM_UP_AND_COOL_OFF = 40;
     private static final int WORKOUT_LENGTH_IS_GREATER_THAN_ZERO = 1;
-    private final ExerciseFilter exerciseFilter;
-    private final int workOutLength;
 
     public ObservableField<List<Exercise>> warmUpExercises = new ObservableField<>();
     public ObservableField<List<Exercise>> coolOffExercises = new ObservableField<>();
@@ -44,20 +43,21 @@ public class WorkoutViewModel {
     public ObservableInt warmUpAndCoolOffListItemsVisibility = new ObservableInt(VISIBLE);
     public ObservableInt mainWorkoutListItemsVisibility = new ObservableInt(VISIBLE);
 
+    private ExerciseFilter exerciseFilter;
+    private int workOutLength;
+    private Intent intent;
+    private final Random random = new Random();
     List<Exercise> filteredExercises;
-    private final Intent intent;
-    private final Random random;
 
-    public WorkoutViewModel(GenericWorkoutActivity genericWorkoutActivity) {
-        intent = genericWorkoutActivity.getIntent();
+    public WorkoutViewModel(Context context, Intent intent) {
+        this.intent = intent;
+
         exerciseFilter = new ExerciseFilter(intent);
-        filteredExercises = exerciseFilter.filterExercises(new ExerciseSplitter(genericWorkoutActivity).generateAllExercises());
-
-        random = new Random();
-        workOutLength = intent.getIntExtra(WORK_OUT_LENGTH, 60);
+        filteredExercises = exerciseFilter.filterExercises(ExerciseSplitter.generateAllExercises(context));
     }
 
     public void generateAllExercises() {
+        workOutLength = intent.getIntExtra(WORK_OUT_LENGTH, 60);
         warmUpRoutine();
         coolOffRoutine();
         mainWorkoutRoutine();

@@ -29,13 +29,7 @@ public class ExerciseSplitter {
     public static final String LIST_OF_ACTIVE_BODY_FOCUSES = "listOfActiveBodyFocuses";
     public static final String HAS_PARTNER = "hasPartner";
 
-    private Context context;
-
-    public ExerciseSplitter(Context context) {
-        this.context = context;
-    }
-
-    public List<Exercise> generateAllExercises() {
+    public static List<Exercise> generateAllExercises(Context context) {
         InputStream inputStream = context.getResources().openRawResource(R.raw.exercises);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         Type listType = new TypeToken<ArrayList<Exercise>>() {

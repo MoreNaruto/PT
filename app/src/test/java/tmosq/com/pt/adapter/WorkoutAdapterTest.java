@@ -31,9 +31,9 @@ import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.WARM_UP_AND_
 
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = Build.VERSION_CODES.M)
-public class MainWorkoutAdapterTest {
+public class WorkoutAdapterTest {
     @Mock
-    MainWorkoutAdapter.ViewHolder mockViewHolder;
+    WorkoutAdapter.ViewHolder mockViewHolder;
 
     @Mock
     WorkoutExerciseViewModel mockViewModel;
@@ -41,7 +41,7 @@ public class MainWorkoutAdapterTest {
     @Mock
     WorkoutExerciseListViewItemBinding mockBinding;
 
-    private MainWorkoutAdapter mainWorkoutAdapter;
+    private WorkoutAdapter workoutAdapter;
     private Exercise exercise;
 
     @Before
@@ -60,19 +60,19 @@ public class MainWorkoutAdapterTest {
                 .equipment(BARBELL)
                 .build();
 
-        mainWorkoutAdapter = new MainWorkoutAdapter(newArrayList(exercise));
+        workoutAdapter = new WorkoutAdapter(newArrayList(exercise));
     }
 
     @Test
     public void onBindViewHolder_bindToViewHolder() throws Exception {
-        mainWorkoutAdapter.onBindViewHolder(mockViewHolder, 0);
+        workoutAdapter.onBindViewHolder(mockViewHolder, 0);
 
         verify(mockViewHolder).bind(exercise);
     }
 
     @Test
     public void getItemCount_getNumberOfExercises() throws Exception {
-        assertThat(mainWorkoutAdapter.getItemCount()).isEqualTo(1);
+        assertThat(workoutAdapter.getItemCount()).isEqualTo(1);
     }
 
     @Test
@@ -80,7 +80,7 @@ public class MainWorkoutAdapterTest {
         TextView textView = new TextView(RuntimeEnvironment.application);
         when(mockBinding.getRoot()).thenReturn(textView);
 
-        new MainWorkoutAdapter.ViewHolder(mockBinding, mockViewModel).bind(new Exercise());
+        new WorkoutAdapter.ViewHolder(mockBinding, mockViewModel).bind(new Exercise());
         textView.callOnClick();
 
         Intent intent = ShadowApplication.getInstance().getNextStartedActivity();

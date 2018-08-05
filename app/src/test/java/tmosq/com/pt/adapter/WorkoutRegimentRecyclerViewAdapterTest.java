@@ -72,9 +72,9 @@ public class WorkoutRegimentRecyclerViewAdapterTest {
         assertThat(binding.workoutRegimentTextView.getText()).isEqualTo(WorkoutRegiment.WEIGHT_LIFTING.getWorkoutRegimentTitle());
         assertThat(binding.workoutRegimentImageView.getContentDescription().toString())
                 .isEqualTo(WorkoutRegiment.WEIGHT_LIFTING.getContentDescription());
-        assertThat(((ColorDrawable) binding.workoutRegimentRelativeLayout.getBackground()).getColor())
+        assertThat(((ColorDrawable) binding.workoutRegimentConstraintLayout.getBackground()).getColor())
                 .isEqualTo(ContextCompat.getColor(RuntimeEnvironment.application.getApplicationContext(), WorkoutRegiment.WEIGHT_LIFTING.getColorBackgroundId()));
-        assertThat(binding.workoutRegimentRelativeLayout.getId())
+        assertThat(binding.workoutRegimentConstraintLayout.getId())
                 .isEqualTo(WorkoutRegiment.WEIGHT_LIFTING.getImageId());
     }
 
@@ -88,7 +88,7 @@ public class WorkoutRegimentRecyclerViewAdapterTest {
         WorkoutRegimentRecyclerViewAdapter.ViewHolder viewHolder = new WorkoutRegimentRecyclerViewAdapter.ViewHolder(binding);
 
         workoutRegimentRecyclerViewAdapter.onBindViewHolder(viewHolder, 0);
-        binding.workoutRegimentRelativeLayout.callOnClick();
+        binding.workoutRegimentConstraintLayout.callOnClick();
 
         Intent intent = ShadowApplication.getInstance().getNextStartedActivity();
         ShadowIntent shadowIntent = shadowOf(intent);

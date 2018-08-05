@@ -21,13 +21,6 @@ import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.POWER_WEIGHT
 @Config(sdk = Build.VERSION_CODES.M)
 public class ExerciseSplitterTest {
 
-    private ExerciseSplitter exerciseSplitter;
-
-    @Before
-    public void setUp() throws Exception {
-        exerciseSplitter = new ExerciseSplitter(RuntimeEnvironment.application);
-    }
-
     @Test
     public void generateAllExercises_shouldHaveListOfAllExercises() throws Exception {
         Exercise exercise = Exercise.builder()
@@ -48,7 +41,7 @@ public class ExerciseSplitterTest {
                         "3. After the bar crosses the knees, complete the lift by driving the hips into the bar until your hips and knees are extended.")
                 .build();
 
-        assertEquals(exerciseSplitter.generateAllExercises().get(0), exercise);
+        assertEquals(ExerciseSplitter.generateAllExercises(RuntimeEnvironment.application).get(0), exercise);
     }
 
 }

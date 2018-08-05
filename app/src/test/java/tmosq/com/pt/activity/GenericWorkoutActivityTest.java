@@ -19,7 +19,7 @@ import org.robolectric.annotation.Config;
 import java.util.List;
 
 import tmosq.com.pt.adapter.CoolOffAdapter;
-import tmosq.com.pt.adapter.MainWorkoutAdapter;
+import tmosq.com.pt.adapter.WorkoutAdapter;
 import tmosq.com.pt.adapter.WarmUpAdapter;
 import tmosq.com.pt.model.Exercise;
 import tmosq.com.pt.model.exercise_support_enums.WorkOutType;
@@ -43,24 +43,24 @@ public class GenericWorkoutActivityTest {
     WorkoutViewModel mockWorkoutViewModel;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         initMocks(this);
-        activityController = Robolectric.buildActivity(GenericWorkoutActivity.class);
+        activityController = Robolectric.buildActivity(GenericWorkoutActivity.class, getInitialIntent());
     }
 
     @Test
-    public void onCreate_bindsToViewModel() throws Exception {
-        GenericWorkoutActivity activity = activityController.withIntent(getInitialIntent()).create().get();
+    public void onCreate_bindsToViewModel() {
+        GenericWorkoutActivity activity = activityController.create().get();
 
         assertThat(activity.binding.getViewModel()).isEqualTo(activity.workoutViewModel);
     }
 
     @Test
-    public void onStart_setAdaptersForWorkout() throws Exception {
+    public void onStart_setAdaptersForWorkout() {
         Exercise warmUpAndCoolOffExercise = Exercise.builder().workOutType(WorkOutType.WARM_UP_AND_COOL_OFF).build();
         Exercise bodyExercise = Exercise.builder().workOutType(WorkOutType.BODY).build();
 
-        GenericWorkoutActivity activity = activityController.withIntent(getInitialIntent()).create().get();
+        GenericWorkoutActivity activity = activityController.create().get();
 
         activity.workoutViewModel = mockWorkoutViewModel;
         mockWorkoutViewModel.warmUpExercises = new ObservableField<List<Exercise>>(newArrayList(warmUpAndCoolOffExercise));
@@ -73,7 +73,7 @@ public class GenericWorkoutActivityTest {
         assertThat(activity.warmUpRecyclerView.getAdapter())
                 .isExactlyInstanceOf(WarmUpAdapter.class);
         assertThat(activity.mainWorkoutRecyclerView.getAdapter())
-                .isExactlyInstanceOf(MainWorkoutAdapter.class);
+                .isExactlyInstanceOf(WorkoutAdapter.class);
 
         assertThat(activity.coolOffRecyclerView.isNestedScrollingEnabled()).isFalse();
         assertThat(activity.warmUpRecyclerView.isNestedScrollingEnabled()).isFalse();

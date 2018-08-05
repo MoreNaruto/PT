@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import tmosq.com.pt.R;
 import tmosq.com.pt.adapter.CoolOffAdapter;
-import tmosq.com.pt.adapter.MainWorkoutAdapter;
+import tmosq.com.pt.adapter.WorkoutAdapter;
 import tmosq.com.pt.adapter.WarmUpAdapter;
 import tmosq.com.pt.databinding.ActivityGenericWorkoutBinding;
 import tmosq.com.pt.viewModel.WorkoutViewModel;
@@ -26,7 +26,7 @@ public class GenericWorkoutActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_generic_workout);
-        workoutViewModel = new WorkoutViewModel(this);
+        workoutViewModel = new WorkoutViewModel(this.getApplicationContext(), this.getIntent());
         binding.setViewModel(workoutViewModel);
 
         setContentView(binding.getRoot());
@@ -51,10 +51,10 @@ public class GenericWorkoutActivity extends BaseActivity {
 
         WarmUpAdapter warmUpAdapter = new WarmUpAdapter(workoutViewModel.warmUpExercises.get(), this);
         CoolOffAdapter coolOffAdapter = new CoolOffAdapter(workoutViewModel.coolOffExercises.get());
-        MainWorkoutAdapter mainWorkoutAdapter = new MainWorkoutAdapter(workoutViewModel.mainWorkoutExercises.get());
+        WorkoutAdapter workoutAdapter = new WorkoutAdapter(workoutViewModel.mainWorkoutExercises.get());
 
         warmUpRecyclerView.setAdapter(warmUpAdapter);
         coolOffRecyclerView.setAdapter(coolOffAdapter);
-        mainWorkoutRecyclerView.setAdapter(mainWorkoutAdapter);
+        mainWorkoutRecyclerView.setAdapter(workoutAdapter);
     }
 }

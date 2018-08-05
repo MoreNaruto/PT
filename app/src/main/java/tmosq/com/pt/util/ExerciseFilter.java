@@ -1,4 +1,4 @@
-package tmosq.com.pt.viewModel;
+package tmosq.com.pt.util;
 
 import android.content.Intent;
 
@@ -22,16 +22,15 @@ import static tmosq.com.pt.model.exercise_support_enums.Difficulty.BASIC;
 import static tmosq.com.pt.model.exercise_support_enums.Difficulty.INTERMEDIATE;
 import static tmosq.com.pt.model.exercise_support_enums.WorkOutType.WARM_UP_AND_COOL_OFF;
 
-class ExerciseFilter {
+public class ExerciseFilter {
     private Intent intent;
-    private Gson gson;
+    private Gson gson = new Gson();
 
-    ExerciseFilter(Intent intent) {
+    public ExerciseFilter(Intent intent) {
         this.intent = intent;
-        this.gson = new Gson();
     }
 
-    List<Exercise> filterExercises(List<Exercise> exercises) {
+    public List<Exercise> filterExercises(List<Exercise> exercises) {
         return Stream.of(exercises)
                 .filter(new com.annimon.stream.function.Predicate<Exercise>() {
                     @Override
@@ -46,7 +45,7 @@ class ExerciseFilter {
                 .toList();
     }
 
-    List<Exercise> filterWarmUpAndCoolOffExercises(List<Exercise> exercises, final Boolean isFilteringInWarmUpsAndCoolOffs) {
+    public List<Exercise> filterWarmUpAndCoolOffExercises(List<Exercise> exercises, final Boolean isFilteringInWarmUpsAndCoolOffs) {
         return Stream.of(exercises)
                 .filter(new com.annimon.stream.function.Predicate<Exercise>() {
                     @Override
@@ -57,7 +56,7 @@ class ExerciseFilter {
                 .toList();
     }
 
-    List<Exercise> filterForSpecificBodyFocus(List<Exercise> exercises, final BodyFocus bodyFocus) {
+    public List<Exercise> filterForSpecificBodyFocus(List<Exercise> exercises, final BodyFocus bodyFocus) {
         return Stream.of(exercises)
                 .filter(new com.annimon.stream.function.Predicate<Exercise>() {
                     @Override

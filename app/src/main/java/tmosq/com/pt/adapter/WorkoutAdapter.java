@@ -20,17 +20,17 @@ import static tmosq.com.pt.activity.WorkoutDetailActivity.WORKOUT;
 import static tmosq.com.pt.activity.WorkoutDetailActivity.WORKOUT_DESCRIPTION;
 
 
-public class MainWorkoutAdapter extends RecyclerView.Adapter<MainWorkoutAdapter.ViewHolder> {
+public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHolder> {
     private List<Exercise> exercises;
 
-    public MainWorkoutAdapter(List<Exercise> exercises) {
+    public WorkoutAdapter(List<Exercise> exercises) {
         this.exercises = exercises;
     }
 
     @Override
-    public MainWorkoutAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public WorkoutAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         WorkoutExerciseListViewItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.workout_exercise_list_view_item, parent, false);
-        return new MainWorkoutAdapter.ViewHolder(
+        return new WorkoutAdapter.ViewHolder(
                 binding,
                 new WorkoutExerciseViewModel()
         );
