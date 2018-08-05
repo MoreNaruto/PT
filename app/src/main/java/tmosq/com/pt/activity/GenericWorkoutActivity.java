@@ -2,7 +2,6 @@ package tmosq.com.pt.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -10,12 +9,12 @@ import tmosq.com.pt.R;
 import tmosq.com.pt.adapter.CoolOffAdapter;
 import tmosq.com.pt.adapter.MainWorkoutAdapter;
 import tmosq.com.pt.adapter.WarmUpAdapter;
-import tmosq.com.pt.databinding.ActivityWorkoutBinding;
+import tmosq.com.pt.databinding.ActivityGenericWorkoutBinding;
 import tmosq.com.pt.viewModel.WorkoutViewModel;
 
 public class GenericWorkoutActivity extends BaseActivity {
 
-    protected ActivityWorkoutBinding binding;
+    protected ActivityGenericWorkoutBinding binding;
     protected WorkoutViewModel workoutViewModel;
     protected RecyclerView warmUpRecyclerView;
     protected RecyclerView coolOffRecyclerView;
@@ -26,7 +25,7 @@ public class GenericWorkoutActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_workout);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_generic_workout);
         workoutViewModel = new WorkoutViewModel(this);
         binding.setViewModel(workoutViewModel);
 

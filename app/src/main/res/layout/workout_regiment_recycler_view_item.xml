@@ -16,8 +16,8 @@
             app:cardMaxElevation="@dimen/margin10">
 
 
-            <RelativeLayout
-                android:id="@+id/workout_regiment_relative_layout"
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/workout_regiment_constraint_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -27,10 +27,13 @@
                     android:id="@+id/workout_regiment_image_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
                     android:contentDescription="@string/empty_image"
                     android:padding="5dp"
-                    android:tint="@android:color/white" />
+                    android:tint="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/workout_regiment_text_view"
@@ -38,8 +41,11 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/workout_regiment_image_view"
                     android:layout_centerHorizontal="true"
-                    android:textColor="@android:color/white" />
-            </RelativeLayout>
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/workout_regiment_image_view" />
+            </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>
 </layout>

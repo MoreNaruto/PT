@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/spacing_medium">
+
+        <TextView
+            android:id="@+id/countdown_timer_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_billboard"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/spacing_xxxlarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="0:30" />
+
+        <ProgressBar
+            android:id="@+id/ProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressDrawable="@drawable/progress_bar_circle"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="0"
+            android:secondaryProgress="100"
+            app:layout_constraintTop_toTopOf="@+id/countdown_timer_text_view"
+            app:layout_constraintBottom_toBottomOf="@+id/countdown_timer_text_view"
+            app:layout_constraintStart_toStartOf="@+id/countdown_timer_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/countdown_timer_text_view"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/workout_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/start_tabata"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

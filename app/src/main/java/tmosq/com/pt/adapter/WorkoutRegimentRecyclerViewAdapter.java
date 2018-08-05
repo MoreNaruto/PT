@@ -53,9 +53,9 @@ public class WorkoutRegimentRecyclerViewAdapter extends RecyclerView.Adapter<Wor
             binding.workoutRegimentTextView.setText(workoutRegiment.getWorkoutRegimentTitle());
             binding.workoutRegimentImageView.setImageResource(workoutRegiment.getImageId());
             binding.workoutRegimentImageView.setContentDescription(workoutRegiment.getContentDescription());
-            binding.workoutRegimentRelativeLayout.setBackgroundColor(ContextCompat.getColor(context, workoutRegiment.getColorBackgroundId()));
-            binding.workoutRegimentRelativeLayout.setId(workoutRegiment.getImageId());
-            binding.workoutRegimentRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            binding.workoutRegimentConstraintLayout.setBackgroundColor(ContextCompat.getColor(context, workoutRegiment.getColorBackgroundId()));
+            binding.workoutRegimentConstraintLayout.setId(workoutRegiment.getImageId());
+            binding.workoutRegimentConstraintLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, PreWorkoutActivity.class);
